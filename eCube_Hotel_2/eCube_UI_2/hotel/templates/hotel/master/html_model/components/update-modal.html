@@ -1,0 +1,54 @@
+<div class="modal fade" id="{{ object.id }}__update_id" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Update {{ model_title|title }} Object: {{ object }}</h4>
+            </div>
+            <div class="modal-body">
+                <form action="{{ update_url }}{{ object.id }}/" id="update_model__{{ object.id }}" method="POST">
+                    {% for field in update_fields %}
+                        <div class="row">
+                        {{ field }}
+                        </div>
+                    {% endfor %}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" form="update_model__{{ object.id }}" onclick="validate()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function validate()
+    {
+        debugger;
+        new_arr1 = {}
+        arr = $('#update_model__').serializeArray()
+        for(i in arr){new_arr1[arr[i].name]=arr[i].value} 
+        url = window.location.href + 'update/'
+        
+        $.ajax({
+            url:url,
+            type:"POST",
+            data:new_arr1,
+            success:function (data) {
+                console.log(data)
+                debugger;
+                errors = data.error;
+                for(i in errors){
+                    error = errors[i]
+                    elem = $('#' + error['name'] + '__error_span');
+                    elem.html(error['html'])
+                }
+                
+            }
+        })
+            
+    }
+
+</script>

@@ -1,0 +1,176 @@
+<ul class="pos_list">
+    <li>
+        {% if opened %}
+        <div class="collpas_expand opened"></div>
+        {% else %}
+        <div class="collpas_expand"></div>
+        {% endif %}
+
+        <div class="pos_heading">
+            <h4>
+                <span class="font12">Point of Sale</span>
+                <br> {{ data.country.pos }}
+            </h4>
+        </div>
+
+        <div class="pos_status">
+            <ul class="pos_status_list">
+                <li> No. of Adults
+                    <label id="adult_view__sub_request_id_{{data.booking.adult_count }}" class="label_value"> {{ data.booking.adult_count }} </label>
+                </li>
+                <li> No. of Child
+                    <label id="children_view__sub_request_id_{{ data.booking.children_count }}" class="label_value">
+                        {{ data.booking.children_count }} </label>
+                </li>
+                <li> Star Rating
+                    <label id="star_rating_view__sub_request_id_{{ data.booking.star_rating  }}" class="label_value">
+                        {{ data.booking.star_rating }} </label>
+                </li>
+                <li> No. of Nights
+                    <label id="no_of_nights_view__sub_request_id_{{ data.booking.no_of_nights}}" class="label_value">
+                        {{ data.booking.no_of_nights }} </label>
+                </li>
+                <li class="actionable_btn" data-sub_request_id="{{ data.id }}">
+                    <a href="javascript:void(0)" id="edit_a_{{data.id}}" class="edit_btn_click" onclick="edit_func({{ data.id }})">
+                        <i class="fa fa-pencil"></i> Edit </a>
+                    <a href="javascript:void(0)" id="close_a_{{data.id}}" class="close_btn_click" onclick="resetFunction()" style="display:none;">
+                        <i class="fa fa-close"></i> Close </a>
+                    <a href="javascript:void(0)" id="delete_a_{{data.id}}" onclick="delet_func({{data.id}})">
+                        <i class="fa fa-trash"></i> Delete </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="pos_body clearfix" style="display: {% if opened %}block;{% else %}none;{% endif %}">
+
+         <div class="row">
+            <div class="col-sm-4 col-md-3 ">
+                <div class="pos_inside_list">
+                    <h3 class="pos_body_list_heading"> Airport Code </h3>
+                    <ul class="pos_body_list clearfix">
+                        <li> From
+                            <br>
+                            <label id="from_airport_code_view__sub_request_id_{{ data.airport.from }}"> {{ data.airport.from }} </label>
+                        </li>
+                        <li> To
+                            <br>
+                            <label id="to_airport_code_view__sub_request_id_{{ data.airport.to }}"> {{ data.airport.to }} </label>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-3">
+                <div class="pos_inside_list">
+                    <h3 class="pos_body_list_heading"> Hotel Details </h3>
+                    <ul class="pos_body_list h_r_b_list clearfix">
+                            {% if data.country_id.hotel_name == None  %}
+                            <li> Hotel Name <br> <label id="crawl_mode_view__sub_request_id_{{ data.crawl.mode }}">  </label></li>
+                            {% else %}
+                            <li> Hotel Name <br> <label id="crawl_mode_view__sub_request_id_{{ data.crawl.mode }}"> {{ data.country_id.hotel_name }} </label></li>
+                            {% endif %}
+                            {% if data.booking.room_type == None  %}
+                            <li> Room Type <br> <label id="room_type_view__sub_request_id_{{ data.booking.room_type }}">  </label></li>
+                            {% else %}
+                            <li> Room Type <br> <label id="room_type_view__sub_request_id_{{ data.booking.room_type }}"> {{ data.booking.room_type }} </label></li>
+                            {% endif %}
+                            {% if data.booking.board_type == None  %}
+                            <li> Board Type <br> <label id="board_type_view__sub_request_id_{{ data.booking.board_type}}">  </label></li>
+                            {% else %}
+                            <li> Board Type <br> <label id="board_type_view__sub_request_id_{{ data.booking.board_type}}"> {{ data.booking.board_type }} </label></li>
+                            {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="pos_inside_list">
+                    <h3 class="pos_body_list_heading"> Suppliers Details </h3>
+                    <ul class="pos_body_list clearfix">
+                        <li> Suppliers Name
+                            <br>
+                            <label id="crawl_mode_view__sub_request_id_{{ data.crawl.mode }}"> {{ data.booking.suppliers_name }} </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            {%ifequal data.booking.bookingperiods 1 %}
+            <div class="col-sm-3 ">
+                <div class="pos_inside_list">
+                    <h3 class="pos_body_list_heading"> Date Details </h3>
+                    <ul class="pos_body_list clearfix">
+                        <li> From Date
+                            <br>
+                            <label id="crawl_mode_view__sub_request_id_{{ data.crawl.fromdate }}"> {{ data.booking.fromdate }} </label>
+                        </li>
+                        <li> To Date
+                            <br>
+                            <label id="crawl_mode_view__sub_request_id_{{ data.crawl.todate }}"> {{ data.booking.todate }} </label>
+                        </li>
+                    </ul>
+            
+                </div>
+            </div>
+        </div>
+
+        <div class="row marT20">
+            {% if data.booking.week_days %}
+            <div class="col-sm-3 ">
+                <div class="pos_inside_list">
+                    <h3 class="pos_body_list_heading"> Week Days </h3>
+                    <ul class="pos_body_list clearfix">
+                        <li> Week Days
+                            <br>
+                            <label id="crawl_mode_view__sub_request_id_{{ data.crawl.week_days }}"> {{ data.booking.week_days }} </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %} {% endifequal %} {% ifequal data.booking.bookingperiods 2 %}
+            <div class="col-sm-3 ">
+                <div class="pos_inside_list">
+                    <h3 class="pos_body_list_heading"> Advance Days </h3>
+                    <ul class="pos_body_list clearfix">
+                        <li> Advance Days
+                            <br>
+                            <label id="crawl_mode_view__sub_request_id_{{ data.crawl.advance_dates }}"> {{ data.booking.advance_dates }} </label>
+                        </li>
+                    </ul>
+            
+                </div>
+            </div>
+            {% endifequal %} {% ifequal data.booking.bookingperiods 3 %}
+            <div class="col-sm-3 ">
+                <div class="pos_inside_list">
+                    <h3 class="pos_body_list_heading"> Multiple Check-In Dates </h3>
+                    <ul class="pos_body_list clearfix">
+                        <li>  Multiple Check-In Dates
+                            <br>
+                            <label id="crawl_mode_view__sub_request_id_{{ data.crawl.advance_dates }}"> {{ data.booking.advance_dates }} </label>
+                        </li>
+                    </ul>
+            
+                </div>
+            </div>
+            {% endifequal %} {% ifequal data.booking.bookingperiods 4 %}
+            <div class="col-sm-3 ">
+                <div class="pos_inside_list">
+                    <h3 class="pos_body_list_heading"> Advance Week </h3>
+                    <ul class="pos_body_list clearfix">
+                        <li> Advance Week
+                            <br>
+                            <label id="crawl_mode_view__sub_request_id_{{ data.crawl.advance_dates }}"> {{ data.booking.advance_dates }} </label>
+                        </li>
+                    </ul>
+            
+                </div>
+            </div>
+            {% endifequal %}
+        </div>  
+            </div>
+            </li>
+            </ul>

@@ -1,0 +1,392 @@
+{% extends 'hotel/base.html' %} {% load static %} {% block header %} {% endblock %} {% block content %} {% if msg %}
+<script type="text/javascript">
+  alert("{{ msg }}", 1);
+</script> {% endif %}
+
+<section class="body_contaner no_sidebar">
+  <div class="container_content">
+    <div class="inner_content_contaner">
+      <div class="clearfix marT20"></div>
+      <div class="col-md-12">
+        <h2 class="pull-left">Airport Master</h2>
+        <input type="button" name="" id="addNewRecord" onclick="return LoadRecord(event);" class="save_request_button pull-right"
+          value="Add Record" data-toggle="modal" data-target="#Addnew_master">
+      </div>
+      <div class="clearfix marT10"></div>
+      <div class="table-responsive marT20">
+        <table id="datavalidation" class="display nowrap custom_table" style="width:100%">
+          <thead>
+            <tr id="ColumnHead">
+
+              <th width="15%">AirportName </th>
+              <th width="20%">AirportCode</th>
+              <th width="15%">CountryName</th>
+              <th width="15%"> CityName</th>
+              <th width="15%">Status</th>
+              <th width="15%">Action</th>
+              <th width="15%">Action</th>
+
+            </tr>
+          </thead>
+          <tbody id="tbl_tbody">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <input type="hidden" id="hdn_id_json">
+    <input type="hidden" id="hdn_id_star">
+  </div>
+
+  <!-- /*******************************************/-->
+  <!-- Modal -->
+  <div class="modal fade" id="Addnew_master" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id='h_id'>Add new</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4">
+              <form name="AddEditRecord" onsubmit="return addFromValidate()" action="{%url 'master_airport' %}" id="AddEditRecord" method="post">{% csrf_token %}
+                <table>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <input type="hidden" class="form-control" id="ed_referenceNo" name="ed_referenceNo" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>
+                      <input type="hidden" class="form-control" id="ed_activeValue" name="ed_activeValue" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>Airport Name</label>
+                    </td>
+                    <td>
+                      <input class="form-control" id="ed_AirportName" name="ed_AirportName" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>Airport Code</label>
+                    </td>
+                    <td>
+                      <input class="form-control" id="ed_AirportCode" name="ed_AirportCode" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>Country Name </label>
+                    </td>
+                    <td>
+
+                      <select id='ed_CountryName' name='ed_CountryName' class="multiselect_box form-control" onchange="bind_city_name_on_page_load();">
+
+
+                      </select>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>City Name</label>
+                    </td>
+                    <td>
+
+                      <select id='ed_CityName' name='ed_CityName' class="multiselect_box form-control">
+
+
+                      </select>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>Active</label>
+                    </td>
+                    <td>
+                      <input class="form-control" type="checkbox" id="ed_active" name="ed_active" value="Active">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan=2>
+                      <input id="aded_newRecord" class="save_request_button pull-right" type="submit" value="Save">
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+</section>
+<script src="/static/hotel/js/jquery-1.11.3.min.js"></script>
+<script>
+  Bind_airport_master_name = "{% url 'Bind_airport_master_name' %}";
+  Bind_Hotel_master_city_name = "{% url 'Bind_Hotel_master_city_name' %}";
+  $(document).ready(function ($) {
+    Bind_data_on_page_load();
+  });
+
+  function Bind_data_on_page_load() {
+
+    $.ajax({
+      url: Bind_airport_master_name,
+      type: "GET",
+      contentType: false,
+      beforeSend: function () {
+        $('.loader_div').show();
+      },
+      success: function (data) {
+        Bind_grid_main(data.ap);
+        //  var val_js = encodeURIComponent(JSON.stringify(data.city)); //setting json in hidden field
+        //  $('#hdn_id_json').val(val_js);
+        var val_js_star = encodeURIComponent(JSON.stringify(data.country)); //setting json in hidden field
+        $('#hdn_id_star').val(val_js_star);
+      },
+      complete: function (data) {
+        $('.loader_div').hide();
+      },
+
+      error: function (xhr, errorType, exception) {
+        alert(exception)
+      }
+    });
+  }
+
+  function Bind_grid_main(data) {
+    var css = '';
+    var table = $("#datavalidation").dataTable();
+    table.fnClearTable();
+    table.fnDraw();
+    table.fnDestroy();
+    var trHTML = '';
+
+    $.each(data, function (i, item) {
+      css = 'green';
+      if (item[3] == '0') {
+        css = 'red';
+      }
+      trHTML += '<tr id="trid_' + item[0] + '">' +
+        '<td><label id="airportName_' + item[0] + '">' + item[2] + '</label></td>' +
+        '<td><label id="airportCode_' + item[0] + '">' + item[1] + '</label></td>' +
+        '<td><label id="countryId_' + item[0] + '"> ' + item[5] + ' </label></td>' +
+        '<td><label id="cityId_' + item[0] + '"> ' + item[4] + ' </label></td>' +
+        '<td><span class="circle ' + css + '"><label id="activestatus_' + item[0] + '">' + item[6] + '</label></span></td>' +
+        '<td><span class="edit_btn" data-toggle="modal" id="edit_' + item[0] + '" data-target="#Addnew_master" onclick="return LoadRecord(event);">Edit</span></td>' +
+        '<td><span class="del_btn" onclick="Delete_main_grp_dtls(' + item[0] + ')">Delete</span></td>' +
+        '</tr>';
+
+
+    });
+    $('#tbl_tbody').append(trHTML);
+
+
+    $('#datavalidation').dataTable({
+      "sPaginationType": "full_numbers",
+      "bFilter": true,
+      "bInfo": false,
+      "aaSorting": [],
+      "bPaginate": true,
+      paging: true,
+    });
+    $('.dataTables_wrapper,.addhotel_checkbox_contaner').perfectScrollbar();
+  }
+
+
+  function Delete_main_grp_dtls(id) {
+    if (confirm("Are you sure?")) {
+        var model={id:id};
+          $.ajax({
+           url: "{% url 'Delete_Airport_master_name' %}",
+           type: 'POST',
+           data: model,
+           dataType: 'json',
+           success: function (data) {
+               alert('Record deleted successfully ');
+               Bind_grid_main(data.ap);
+               //  var val_js = encodeURIComponent(JSON.stringify(data.city)); //setting json in hidden field
+               //  $('#hdn_id_json').val(val_js);
+               var val_js_star = encodeURIComponent(JSON.stringify(data.country)); //setting json in hidden field
+               $('#hdn_id_star').val(val_js_star);
+           },
+           error: function (xhr, errorType, exception) {
+               alert(exception)
+           }
+       });
+       }
+       return false;
+   }
+
+
+  function addFromValidate() {
+    var format = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]+/;
+    var airName = document.getElementById('ed_AirportName').value.length
+    var airVal = document.getElementById('ed_AirportName').value
+
+    if (airName < 1 || format.test(airVal)) {
+      alert("Airport Name can not be null or Special Character");
+      return false;
+    }
+    var airCodeName = document.getElementById('ed_AirportCode').value.length
+    var aircodeVal = document.getElementById('ed_AirportCode').value
+    if (airCodeName < 1 || format.test(aircodeVal)) {
+      alert("Airport Code can not be null or Special Character");
+      return false;
+    }
+    var selected = document.getElementById('ed_CountryName').value;
+    if (selected == "--Select--") {
+      alert("Invalid Country Selected");
+      return false;
+    }
+    var selected = document.getElementById('ed_CityName').value;
+    if (selected == "--Select--") {
+      alert("Invalid City Selected");
+      return false;
+    }
+    if (document.getElementById('ed_active').checked) {
+      document.getElementById('ed_activeValue').value = "Active";
+    }
+    else {
+      document.getElementById('ed_activeValue').value = "Inactive";
+    }
+  }
+
+  function LoadRecord(e) {
+    // var data_json = JSON.parse(decodeURIComponent($('#hdn_id_json').val())); 
+    // $('#ed_CityName').empty(); 
+    // $('#ed_CityName').append($('<option></option>').val('0').html('--Select City ---'));      
+    // $(data_json).each(function (index, item) {
+    //   $('#ed_CityName').append($('<option></option>').val(item[0]).html(item[1]));
+    // });
+    var data_json_star = JSON.parse(decodeURIComponent($('#hdn_id_star').val()));
+    $('#ed_CountryName').empty();
+    $('#ed_CountryName').append($('<option></option>').val('0').html('--Select Country---'));
+    $(data_json_star).each(function (index, item) {
+      $('#ed_CountryName').append($('<option></option>').val(item[0]).html(item[1]));
+    });
+
+    if (e.target.id == "addNewRecord") {
+      document.getElementById('ed_AirportName').value = "";
+      document.getElementById('ed_AirportCode').value = "";
+      document.getElementById('ed_CountryName').value = "";
+      document.getElementById('ed_CityName').value = "";
+      document.getElementById('ed_active').value = "";
+      document.getElementById('ed_CountryName').options[0].selected = true;
+      document.getElementById('ed_CityName').options[0].selected = true;
+      document.getElementById('aded_newRecord').value = "Add";
+      $('#h_id').text('Add New');
+    }
+    else {
+      var recordID = e.target.id.split('_').pop();
+      var airportName = document.getElementById('airportName_' + recordID).innerHTML;
+      var airportCode = document.getElementById('airportCode_' + recordID).innerHTML;
+      var countryID = document.getElementById('countryId_' + recordID).innerHTML;
+      var cityID = document.getElementById('cityId_' + recordID).innerHTML;
+      var activeFlg = document.getElementById('activestatus_' + recordID).innerHTML;
+
+      if (activeFlg == "Active") {
+        document.getElementById('ed_active').checked = true;
+      }
+      else {
+        document.getElementById('ed_active').checked = false;
+      }
+
+      $("#ed_CountryName option").each(function () {
+        if ($(this).text().trim() == countryID.trim()) {
+          $(this).attr('selected', 'selected');
+        }
+      });
+
+      bind_city_name_on_page_load_after_selecteion(cityID.trim());
+
+
+      document.getElementById('ed_AirportName').value = airportName;
+      document.getElementById('ed_AirportCode').value = airportCode;
+      document.getElementById('ed_referenceNo').value = recordID;
+      document.getElementById('aded_newRecord').value = "Edit";
+      $('#h_id').text('Edit');
+    }
+  }
+
+
+  function bind_city_name_on_page_load() {
+    var country_id = $('#ed_CountryName').val();
+    if (country_id > 0) {
+      var model = { country_id: country_id }
+      $.ajax({
+        url: Bind_Hotel_master_city_name,
+        type: 'POST',
+        data: model,
+        dataType: 'json',
+        success: function (data) {
+          if (data.city.length > 0) {
+
+            $('#ed_CityName').empty();
+            $('#ed_CityName').append($('<option></option>').val('0').html('---Select city---'));
+            $(data.city).each(function (index, item) {
+              $('#ed_CityName').append($('<option></option>').val(item[0]).html(item[1]));
+            });
+          }
+          else {
+
+          }
+        },
+        error: function (xhr, errorType, exception) {
+          alert(exception)
+        }
+      });
+    }
+    else {
+      alert('Please select any country !!');
+    }
+  }
+
+
+  function bind_city_name_on_page_load_after_selecteion(city_id) {
+    var country_id = $('#ed_CountryName').val();
+    if (country_id > 0) {
+      var model = { country_id: country_id }
+      $.ajax({
+        url: Bind_Hotel_master_city_name,
+        type: 'POST',
+        data: model,
+        dataType: 'json',
+        success: function (data) {
+          if (data.city.length > 0) {
+
+            $('#ed_CityName').empty();
+            $('#ed_CityName').append($('<option></option>').val('0').html('---Select city---'));
+            $(data.city).each(function (index, item) {
+              $('#ed_CityName').append($('<option></option>').val(item[0]).html(item[1]));
+            });
+            $("#ed_CityName option").each(function () {
+              if ($(this).text().trim() == city_id.trim()) {
+                $(this).attr('selected', 'selected');
+              }
+            });
+
+
+          }
+          else {
+
+          }
+        },
+        error: function (xhr, errorType, exception) {
+          alert(exception)
+        }
+      });
+    }
+    else {
+      alert('Please select any country !!');
+    }
+  }
+</script> {% endblock %}

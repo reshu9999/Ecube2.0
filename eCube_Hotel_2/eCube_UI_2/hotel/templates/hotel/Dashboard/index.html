@@ -1,0 +1,307 @@
+{% extends 'hotel/base.html' %}
+ 
+ {% block header %} 
+ <link rel="stylesheet" href="/static/hotel/css/bootstrap.css">
+ <link rel="stylesheet" href="/static/hotel/css/reset.css">
+ <link rel="stylesheet" href="/static/hotel/css/vertical-slider.css">
+ <link rel="stylesheet" href="/static/hotel/css/main.css">
+ <link rel="stylesheet" href="/static/hotel/css/responsive.css">
+
+  {% endblock %}
+
+{% block content %}
+<span class="ribbons animated slideInDown delay-6">
+   <img src="/static/hotel/images/left_ribbons.png" alt=""> 
+  </span>
+
+  <div class="vs-slider"  >
+    <div class="vs-section active">
+    <div class="container-fluid">
+      <div class="col-md-1 hidden-sm">&nbsp;</div>
+      <div class="col-md-11">
+        <div class="col-md-11 marT30 pad0 custom_margin" >
+          <h2 class="heading_text animated fadeInUp">Batch <span>Information</span> </h2>
+          <div class="tabs_contaner">
+            <ul class="lsiting_tabs">
+              <li class="today_tab active_tab animated fadeInDown selectFilter"><span>Today</span></li>
+              <li class="last_7 animated fadeInDown selectFilter"><span>Last 7</span></li>
+              <li class="month_tab animated fadeInDown selectFilter"><span>Monthly</span></li>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+          <div class="row">
+            <div class="col-md-12 pad0 border_contaner">
+              <ul class="batch_info custom_height_slideone">
+                <li class="animated fadeInDown delay-1">
+                  <div class="box_contaner lightblue_bg">
+                    <div class="text_cintaner">
+                      <h3 id="RunningCount">{{Running}}</h3>
+                      <span>Running</span></div>
+                    {% if Running != '0'%}
+                      <div class="btn_contaner" id="runningView">
+                        <button class="ghost_white_btn" id="btnRunning"> view </button>
+                      </div>
+                    {% else %}
+                      <div class="btn_contaner" id="runningView" style="display:none">
+                        <button class="ghost_white_btn" id="btnRunning"> view </button>
+                      </div>
+                    {% endif %}
+                  </div>
+                </li>
+                <li class="animated fadeInDown delay-2">
+                  <div class="box_contaner yellow_bg">
+                    <div class="text_cintaner">
+                      <h3 id="QueueCount">{{Queue}}</h3>
+                      <span>Queue</span></div>
+                    {% if Queue != '0'%}
+                      <div class="btn_contaner" id="queueView">
+                        <button class="ghost_white_btn" id="btnQueue"> view </button>
+                      </div>
+                    {% else %}
+                      <div class="btn_contaner" id="queueView" style="display:none">
+                        <button class="ghost_white_btn" id="btnQueue"> view </button>
+                      </div>
+                    {% endif %}
+                  </div>
+                </li>
+                <li class="animated fadeInDown delay-3">
+                  <div class="box_contaner green_bg">
+                    <div class="text_cintaner">
+                      <h3 id="CompleteCount">{{Complete}}</h3>
+                      <span>Complete</span></div>
+                    {% if Complete != '0'%}
+                      <div class="btn_contaner" id="completeView">
+                        <button class="ghost_white_btn" id="btnComplete"> view </button>
+                      </div>
+                    {% else %}
+                      <div class="btn_contaner" id="completeView" style="display:none">
+                        <button class="ghost_white_btn" id="btnComplete"> view </button>
+                      </div>
+                    {% endif %}
+                  </div>
+                </li>
+               
+                <li class="animated fadeInDown delay-6">
+                  <div class="box_contaner purple_bg">
+                    <div class="text_cintaner">
+                      <h3 id="ScheduledCount">{{Scheduled}}</h3>
+                      <span>Scheduled</span></div>
+                    {% if Scheduled != '0'%}
+                      <div class="btn_contaner" id="scheduledView">
+                        <button class="ghost_white_btn" id="btnScheduled"> view </button>
+                      </div>
+                    {% else %}
+                      <div class="btn_contaner" id="scheduledView" style="display:none">
+                        <button class="ghost_white_btn" id="btnScheduled"> view </button>
+                      </div>
+                    {% endif %}
+                  </div>
+                </li>
+                <li> <a href="{% url 'hotel_request_management_index' %}" class="view_all animated slideInLeft delay-2">View All Batches </a> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center marT30 custom_margin"> <a href="#" class="vs-next arrow_to_down" id = "batchData" title="Click Here To Scroll Down" data-toggle="tooltip" data-placement="left" > <img src="/static/hotel/images/arrow_top.png" alt="next"/> </a> </div>
+      </div>
+    </div>
+  </div>
+  <!--Slide 1 End-->
+  <div class="vs-section second_slide">
+    <div class="container-fluid">
+      <div class="col-md-12 text-center"> <a href="#" class="vs-prev arrow_to_up" title="Click Here To Scroll Up " data-toggle="tooltip" data-placement="left"> <img src="/static/hotel/images/arrow_top.png" alt="next"/>  </a></div>
+      <div class="col-md-1">&nbsp;</div>
+      <div class="col-md-11">
+        <div class="col-md-11 pad0 custom_margin" >
+          <h2 class="heading_text full_line">RECENT 5 <span>Batches</span> </h2>
+          <div class="col-md-12 custom_height" id="divBatchData">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Slide 2 End-->
+</div>
+{% endblock %}
+
+{% block footer %}
+ 
+<script src="/static/hotel/js/modernizr.min.js"></script>
+<script src="/static/hotel/js/velocity.min.js"></script> 
+<script src="/static/hotel/js/velocity.ui.min.js"></script> 
+<script src="/static/hotel/js/vertical-slider.js"></script> 
+<script src="/static/hotel/js/main.js"></script> 
+<script src="/static/hotel/js/moment.js"></script> 
+<script>
+
+    function RedirectTo(status) {
+
+      var daysCount = 0;
+      var spanText = $('.active_tab').find('span').text();
+      if(spanText === 'Monthly')
+      {
+         daysCount = 30;
+      }
+      if(spanText === 'Last 7') {
+          daysCount = 7;
+      }
+      var toDate = moment().format("MM-DD-YYYY");
+      var fromDate = moment().subtract(daysCount, "days").format("MM-DD-YYYY");
+      if(status == ''){
+        window.location.href = "{% url 'hotel_request_management_index' %}";  
+      }
+      else{
+        window.location.href = "{% url 'hotel_request_management_index' %}"+'?status='+status+'&fromDate='+fromDate+'&toDate='+toDate;
+      }
+    }
+
+    $('.selectFilter').click(function(){
+      debugger;
+     $('.selectFilter').removeClass('active_tab');
+     $(this).addClass('active_tab');
+     var daysCount = 0;
+      var spanText = $(this).find('span').text();
+     if(spanText === 'Monthly')
+     {
+        daysCount = 30;
+     }
+     if(spanText === 'Last 7') {
+         daysCount = 7;
+     }
+
+
+    $.ajax({
+        url: "{%  url 'dashboard_GetCountData' %}",
+        type:"POST",
+        data : { daysCount: daysCount},
+        success : function(data) {
+            if(data.data[0]== 0) {
+                $('#runningView').hide();
+            }
+            else{
+                $('#runningView').show();
+            }
+            if(data.data[1]== 0) {
+                $('#queueView').hide();
+            }
+            else{
+                $('#queueView').show();
+            }
+            if(data.data[2]== 0) {
+                $('#completeView').hide();
+            }
+            else{
+                $('#completeView').show();
+            }
+            if(data.data[5]== 0) {
+                $('#scheduledView').hide();
+            }
+            else{
+                $('#scheduledView').show();
+            }
+            $('#RunningCount').html(data.data[0])
+            $('#QueueCount').html(data.data[1])
+            $('#CompleteCount').html(data.data[2])
+            $('#ScheduledCount').html(data.data[5])
+        },
+        error: function(data) {
+            alert("You have encountered an error here");
+        }
+    })
+  });
+
+  $('#batchData').click(function(event){
+      event.preventDefault();
+      var Id = 1;
+      $.ajax({
+        url: "{%  url 'dashboard_GetBatchData' %}",
+        type:"POST",
+        data : { Id: Id},
+        success : function(data) {
+            debugger;
+            var result = data.data;
+            var dynamicHTML = '<ul class="second_slide_content">'
+            $.each(result,function(index,value){
+                var statusClass = (value.Status == "Running")? 'class = "status blue"': ((value.Status == "Complete")?'class = "status green"' : 'class = "status orange"' );
+                dynamicHTML = dynamicHTML + '<li><div class="recent_batch">\n' +
+          '         <div class="recent_batch_header">'+value.RequestName+'</div>\n' +
+          '         <div class="recent_batch_body">\n' +
+          '            <div class="top_half">\n' +
+          '               <div '+statusClass+'>'+value.Status+'</div>\n' +
+          '            </div>\n'
+                if(value.Status != 'Queue')
+                {
+                dynamicHTML = dynamicHTML + '<div class="top_half">\n' +
+          '               <div class="progresbar_contaner">\n' +
+          '                  <div class="progress">\n' +
+          '                     <div class="progress-bar" role="progressbar" aria-valuenow="70"\n' +
+          '                        aria-valuemin="0" aria-valuemax="100" style="width:'+value.Percent+'%"> <span class="sr-only"></span> </div>\n' +
+          '                  </div>\n' +
+          '                  <span class="value_progress" >'+value.Percent+'%</span> \n' +
+          '               </div>\n' +
+          '            </div>\n'
+                }
+                dynamicHTML = dynamicHTML + '<div class="clearfix"></div>\n' +
+          '            <div class="top_half content_text">\n' +
+          '               <span>Created</span>\n' +
+          '               <p>'+value.Date+'</p>\n' +
+          '               <p>'+value.Time+'</p>\n' +
+          '            </div>\n' +
+          '            <div class="top_half content_text border_before_box">\n' +
+          '               <span>Initiated</span>\n' +
+          '               <p>'+value.Date+'</p>\n' +
+          '               <p>'+value.Time+'</p>\n' +
+          '            </div>\n' +
+          '         </div>\n' +
+          '      </div></li>'
+
+            });
+            dynamicHTML = dynamicHTML + '<li>\n' +
+                '<div class="view_allcontaner"> <a href="{% url "hotel_request_management_index" %}" onclick="RedirectToViewAll();" class="view_all animated slideInLeft delay-2">View All Batches </a> </div>\n' +
+                '</li>'
+            dynamicHTML = dynamicHTML + '</ul>'
+            $('#divBatchData').html(dynamicHTML)
+        },
+        error: function(data) {
+            alert("You have encountered an error here");
+        }
+    })
+
+
+  });
+
+  $('#btnRunning').click(function(evt){
+      var status ='Running';
+      RedirectTo(status);
+  });
+
+  $('#btnQueue').click(function(evt){
+      var status ='Inqueue';
+      RedirectTo(status);
+  });
+
+  $('#btnComplete').click(function(evt){
+      var status ='Completed';
+      RedirectTo(status);
+  });
+
+  $('#btnScheduled').click(function(evt){
+      var status ='Scheduled';
+      RedirectTo(status);
+  });
+  $('.view_all').click(function(evt){
+      RedirectTo('');
+  });
+
+  function RedirectToViewAll() {
+    RedirectTo('');
+  }
+</script>
+
+
+{% endblock %}
+
+
+
+
+

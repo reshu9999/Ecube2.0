@@ -1,0 +1,13 @@
+<div class="col-md-4">
+    <div class="form-group">
+        <label class="">{{ display_name|title }}</label>
+        {% if readonly %}
+        <br><span>{{ input_val }}</span>
+        {% else %}
+        <div class="clearfix"></div>
+        <span class="counter"> <a id="minus1" href="javascript:void(0);" class="minus"> - </a>
+        <input id="{{ field_name }}__id" type="text" name="{{ field_name }}" value="{{ input_val }}">
+        <a id="add1" href="javascript:void(0);" class="plus"> + </a> </span>
+        {% endif %}
+    </div>
+</div>

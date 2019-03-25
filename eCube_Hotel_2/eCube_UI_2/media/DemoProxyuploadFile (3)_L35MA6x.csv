@@ -1,0 +1,4 @@
+ProxyName,ProxyPort,ProxyUserName,ProxyPassword,ProxyType,CountryName,RegionId,VendorName
+139.81.56.104,29842,csimonra,h19VA2xZ,Med,INDIA,1,Vendor1_26
+139.81.56.105,29842,csimonra,h19VA2xZ,Low,INDIA,1,Vendor2_26
+139.81.56.107,29842,csimonra,h19VA2xZ,High,INDIA,1,Vendor2_26

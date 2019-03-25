@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* CSS Document */
+body{background: url(../images/login_bg.png) no-repeat; background-size: cover; overflow: hidden;font-family: 'Lato', sans-serif;}
+.contaner_login {background: url(../images/login_bg_21.png)no-repeat; width: 50%; height: 650px; float: right; background-size: cover;z-index: 99; position: relative;}
+.login_box { float: right; position: relative; top: 18%; right: 14%;}
+.login_header{background: url(../images/login_top.png) no-repeat; width: 304px; height: 52px;}
+.login_body{ width: 304px;min-height: 250px;border: 4px solid #ffe400; border-top:none; border-left: none;position: relative;padding-bottom: 40px; float: left;background:url(../images/login_field_bg.png); background-position: -5px;}
+.login_body:after{content: ''; width: 4px; height:50px; position: absolute; left: 0; bottom: 0;background: #ffe400}
+.login_area {float: left; font-size: 21px; position: relative;}
+.login_text{font-size: 28px; padding-left:25px; text-transform: uppercase;position: relative}
+.login_text:before{content: ''; width: 4px; height:50px; position: absolute; left:15px; bottom: 0;background: #ffe400}
+.login_fields {padding: 25px; width: 100%;}
+.login_fields label{ font-size: 12px; color: #a3a3a3; font-weight: 600; width: 100%; margin-top: 20px; } 
+.login_fields input{ background: none; border: none; border-bottom: 1px solid #a267c8; width: 100%; font-weight: bold; font-size: 14px;padding:10px 41px 10px 5px;}
+.login_fields input.user_name{ background: url(../images/../images/user.png) no-repeat 95% center;}
+.login_fields input.password_field{ background: url(../images/../images/pass_icon.png) no-repeat 95% center;}
+a.forgot_pw,
+a.reset_pwd{font-size: 14px;font-weight: bold; color: #9d9b9a;text-decoration: none; position: relative; top: 15px; left: 2px;}
+.login_btn_contaner{width: 100px; }
+.login_fields input.login_button { background: url(../images/login_btn.png) no-repeat; float: right; width: auto; padding:11px 36px 13px;    border: none; color: #fff; font-size: 16px; text-transform: uppercase;position: relative; right: -85px; top: 24px;}
+.top_purple{height: 5px; width: 100%; position: fixed; top: 0; z-index: 999; left: 0;background: #a267c8;background: -moz-linear-gradient(left, #a267c8 0%, #a267c8 33%, #3fa4d7 89%, #3fa4d7 100%); background: -webkit-linear-gradient(left, #a267c8 0%,#a267c8 33%,#3fa4d7 89%,#3fa4d7 100%); background: linear-gradient(to right, #a267c8 0%,#a267c8 33%,#3fa4d7 89%,#3fa4d7 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a267c8', endColorstr='#3fa4d7',GradientType=1 );}
+.buildings {background: url(../images/bg_buildings.png) no-repeat bottom left;width: 100%; height: 400px;position: fixed;bottom: 0;}
+.bottom_purple,
+.bottom_yellow { width: 100%; height: 65px; background:#ffe400 ; position: fixed; bottom: -62px; transform: rotate(1.9deg);  left: -10px;}
+.bottom_purple { background: #a267c8; transform: rotate(1.4deg); -webkit-animation: mymove 2s }
+.bottom_yellow { -webkit-animation: mymove1 2s }
+.text_area_login { float: left; width: 45%; padding-left: 5%; margin-top: 5%;}
+.text_area_login a {padding: 0 0 25px 0; float: left; width: 100%;}
+.text_area_login h2 {font-size: 40px;  color: #343434; line-height: 45px; margin-bottom: 15px;}
+.text_area_login p { color: #737373; font-size: 16px; line-height: 25px; width: 90%;}
+.login_button:after{content:''; width: 15px; height: 15px; background: url(../images/login_arrow.png)no-repeat; position: absolute;}
+
+.login_area.forgot_area h2.login_text { font-size: 18px; font-weight: bold;}
+
+
+.spaprator { width: 100%; height: 12px; text-align: center; margin-top: 15px;}
+.spaprator span { background: #fff; padding: 0 5px;}
+.small_forgot {
+    font-size: 12px;
+    text-align: left;
+    padding-left: 26px;
+    color: #f00;
+    float: left;
+    margin: 10px 0;
+}
+@keyframes mymove {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(1.4deg);}
+}
+@keyframes mymove1 {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(1.9deg);}
+}
+
+
+
+

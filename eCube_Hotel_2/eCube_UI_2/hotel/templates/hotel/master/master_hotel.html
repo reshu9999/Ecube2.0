@@ -1,0 +1,1020 @@
+{% extends 'hotel/base.html' %} {% load static %} {% block header %}
+<style>
+  .master_upload_view {
+    max-width: 380px;
+    right: 9%;
+    top: 50px;
+  }
+
+  .clx {
+    margin-right: 2%;
+  }
+  .choose_file, .error_log, .success_msg { width:168px; }
+  #btn_error {
+    width: 150px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 19px;
+}
+.common_div .excelupload_view {
+z-index:9;
+}
+
+.required-field:after {
+   content:"*";
+   color:red;
+}
+
+</style>
+
+{% endblock %} {% block content %} {% if msg %}
+<script type="text/javascript">
+  alert("{{ msg }}", 1);
+</script> {% endif %}
+
+<section class="body_contaner no_sidebar">
+  <div class="container_content">
+    <div class="inner_content_contaner">
+      <div class="clearfix marT20"></div>
+      <div class="white_bg marT30 multibatch_download common_div keyword_rules clearfix">
+        <div class="col-md-12">
+          <h3 class="slide_heading border_heading"> Hotel Master </h3>
+        </div>
+        <div class="marT70 clearfix">
+          <div class="col-sm-12">
+            <div class="col-sm-2">
+              <div class="form-group ">
+                <label for="hotel_type">Select Country</label>
+                <select id="drp_country" class="form-control" onchange="bind_city_name_on_page_load();">
+
+                </select>
+              </div>
+            </div>
+
+            <div class="col-sm-2" id="city_select" style="display: none;">
+              <div class="form-group ">
+                <label for="hotel_type">Select City</label>
+                <select id="drp_city" class="form-control" onchange="bid_data_city_changed();">
+
+                </select>
+              </div>
+            </div>
+
+
+          
+              <div class="col-sm-2" style="display: none;" id = "div_sup" >
+                  <div class="form-group multi_select_contaner required">
+                      <label for="suppliers">Suppliers</label>
+                      <select class="multiselect_box form-control" multiple="multiple"
+                              id="drp_supplier" onchange="get_hotels();">
+                      </select>
+                  </div>
+              </div>
+
+
+            <div class="col-sm-6">
+              <input type="button" name="" id="addNewRecord" onclick="return LoadRecord(event);" class="save_request_button pull-right"
+                value="Add Record" data-toggle="modal" data-target="#Addnew_master">
+              <input type="button" class="save_request_button clx pull-right" onclick="SaveClasa()" value="Excel Upload">
+              <input type="button" class="save_request_button pull-right" onclick="download_hotel_master()" value=" Excel Download">
+            
+              <div class="excelupload_view master_upload_view fade in">
+                  <span class="close_excel" onclick="close_excel();"> X </span>
+                  <div class="excelupload_heading">
+                    <h3> Excel Upload </h3>
+                    <a href="#" onclick="download_template();"> Download template </a>
+                  </div>
+                  <div class="box_view clearfix">
+                    <div class="file_upload_tabs"> 
+                      <div class="tab-content">
+                        <div id="schedule_batch" class="tab-pane fade in active">
+                          <div class="row">
+                            <div class="">
+                              <div class="">
+                                <div class="form-group ">
+                                  <span class="upload upload_file">
+                                    <input type="file" id="input_file_excel">
+                                    <img src="/static/hotel/images/upload_file.png" alt="">
+                                    <p> Drag File to upload </p>
+                                    <span class="file_type"></span>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="clearfix marT20">
+                              <div class="pull-left">
+                                <input name="" class="choose_file float_none" value="Upload File" type="button" onclick="upload_excel();">
+                              </div>
+      
+                               <div class="pull-right">
+                                  <a  class="error_log float_none" href="javascript:void(0);"
+                                   id="btn_error" style="display: none;">Error Log</a>
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix marT10"></div>
+      <div class="table-responsive marT20" id='div_table' style="display: none;">
+        <table id="datavalidation" class="display nowrap custom_table">
+          <thead>
+            <tr id="ColumnHead">
+              <th width="15%">Competitor HotelID</th>
+              <th width="15%">Name</th>
+              <th width="15%">City</th>
+              <th width="15%">Rating</th>
+              <th width="15%">PINCode</th>
+              <th width="15%">Supplier</th>
+              <th width="15%">Status</th>
+              <th width="15%">Action</th>
+              <th width="15%">Action</th>
+              <th width="15%" style="display: none;">Add_1</th>
+              <th width="15%" style="display: none;">Hotel_status</th>
+              <th width="15%" style="display: none;">Long</th>
+              <th width="15%" style="display: none;">lat</th>
+              <th width="15%" style="display: none;">Y</th>
+              <th width="15%" style="display: none;">c</th>
+              <th width="15%" style="display: none;">d</th>
+              <th width="15%" style="display: none;">start_tsts</th>
+              <th width="15%" style="display: none;">cont</th>
+              <th width="15%" style="display: none;">cit</th>
+              
+            </tr>
+          </thead>
+          <tbody id="tbl_tbody">
+
+          </tbody>
+        </table>
+        <p id="div_p" style="display: none;">
+
+        </p>
+      
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+
+</section>
+
+<!-- Modal -->
+<div class="modal fade master_modal" id="Addnew_master" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="" id="h_id">Add new</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label class="required-field" for="">Web site HotelID </label>
+              <input type="text" class="form-control" id="ed_HotelID" name="ed_HotelID" placeholder="">
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label class="required-field" for="">Hotel Name </label>
+              <input type="text" class="form-control" id="ed_HotelName" name="ed_HotelName" placeholder="">
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label class="required-field" for="">Star </label>
+              <select class="form-control" id="ed_Star" name="ed_Star" placeholder="">
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label for="">Address1 </label>
+              <textarea class="form-control" id="ed_HotelAdd1" name="ed_HotelAdd1" placeholder=""></textarea>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label class="required-field" for="">Country Name </label>
+              <select id="drp_country_popup" class="form-control" onchange="bind_city_name_on_page_load_by_popup();">
+
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3">
+
+            <div class="form-group">
+              <label class="required-field" for="">City Name </label>
+              <select class="form-control" id="ed_HotelCity" name="ed_HotelCity" placeholder="">
+              </select>
+
+            </div>
+
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label for="">Zip Code </label>
+              <input type="text" class="form-control" id="ed_PinCode" name="ed_PinCode" placeholder="">
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label for="">Longitude </label>
+              <input type="text" class="form-control" id="ed_Long" name="ed_Long" placeholder="">
+            </div>
+          </div>
+         
+         
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label for="">Latitude </label>
+              <input type="text" class="form-control" id="ed_Lat" name="ed_Lat" placeholder="">
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label for="">Hotel Status </label>
+              <select class="form-control"  id ="drp_htls_status">
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label for="">Yield Manager        </label>
+              <input type="text" class="form-control" id="ed_Yield" name="ed_Yield" placeholder="">
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label for="">Contract Manager</label>
+              <input type="text" class="form-control" id="ed_Contract" name="ed_Contract" placeholder="">
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <label for="">Demand Group</label>
+              <input type="text" class="form-control" id="ed_Demand" name="ed_Demand" placeholder="">
+            </div>
+          </div>
+         
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="ed_referenceNo" name="ed_referenceNo" placeholder="">
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <div class="form-group">
+              <input type="hidden" class="form-control" id="ed_activeValue" name="ed_activeValue" placeholder="">
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 marT20">
+            <div class="">
+              <label for="ed_active"> Active </label>
+              <input id="ed_active" name="ed_active" type="checkbox" value="">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <input id="aded_newRecord" type="submit" class="btn btn-default" value="save" onclick="Add_hotels();">
+          <input type="reset" class="btn btn-default" value="Reset" onclick="reset();" />
+          <input type="hidden" id="hdn_id_json">
+          <input type="hidden" id="hdn_id_star">
+          <input type="hidden" id="hdn_Hotel_City">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <script>
+
+    function addFromValidate() {
+      var format = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]+/;
+      if (document.getElementById('ed_active').checked) {
+          document.getElementById('ed_activeValue').value = "Active";
+      }
+      else {
+        document.getElementById('ed_activeValue').value = "Inactive";
+      }
+
+      var hotelId = document.getElementById('ed_HotelID').value.length
+      var hotelIdVal = document.getElementById('ed_HotelID').value
+
+      if (hotelId < 1 || format.test(hotelIdVal)) {
+        alert("Hotel ID can not be Null or Any Special Characters");
+        return false;
+      }
+      var hotelName = document.getElementById('ed_HotelName').value.length
+      var hotelNameVal = document.getElementById('ed_HotelName').value
+
+      if (hotelName < 1 || format.test(hotelNameVal)) {
+        alert("Hotel Name can not be Null or Any Special Character");
+        return false;
+      }
+     
+
+      if (document.getElementById('ed_Star').value.length < 1 || document.getElementById('ed_Star').value.length > 1) {
+        alert("Star Rating Should be 1 to 5.5");
+        return false;
+      }
+      else if (document.getElementById('ed_Star').value != 1 && document.getElementById('ed_Star').value != 2 && document.getElementById('ed_Star').value != 3
+        && document.getElementById('ed_Star').value != 4 && document.getElementById('ed_Star').value != 5) {
+
+        alert("Please Insert Star Rating 1 to 5.5");
+        return false;
+      }
+
+      var x = document.getElementById('ed_PinCode').value;
+      if (x != ''){
+        if (x.length < 1 || x.length > 6) {
+          alert("Pincode should be 6 digit");
+          return false;
+        }
+        else if (isNaN(x)) {
+          alert("Pincode can not be String");
+          return false;
+        }
+      }
+      
+      var selected_city = $('#ed_HotelCity').val();
+      if (selected_city ==undefined|| selected_city ==0 || selected_city.trim() =='') {
+        alert("Invalid City Selected");
+        return false;
+      }
+    
+
+      return true;
+
+    }
+
+    function LoadRecord(e) {
+      debugger;
+     
+      if (e.target.id == "addNewRecord") {
+        reset();
+      }
+      else {
+        $('#aded_newRecord').removeAttr('onclick');
+        $('#aded_newRecord').attr('onClick', 'Update_hotels();');
+        $('#h_id').text('');
+        $('#h_id').text('Edit');
+        var recordID = e.target.id.split('_').pop();
+        var webHotelID = document.getElementById('webhotelid_' + recordID).innerHTML;
+        var hotelName = document.getElementById('hotelname_' + recordID).innerHTML;
+        var hotelCity = document.getElementById('hotelcity_' + recordID).innerHTML;
+        var hotelConutry_grid = document.getElementById('Hotel_cont_lbl_' + recordID).innerHTML;
+        var hotelcity_grid = document.getElementById('Hotel_city_lbl_' + recordID).innerHTML;
+        var hotelRating = document.getElementById('Hotel_star_lbl_' + recordID).innerHTML;
+        var pinCode = document.getElementById('pincode_' + recordID).innerHTML;
+        var hotelAdd1 = document.getElementById('address1_' + recordID).innerHTML;
+        var htls_stst = document.getElementById('Hotel_status_lbl_' + recordID).innerHTML;
+        var Long = document.getElementById('Hotel_long_lbl_' + recordID).innerHTML;
+        var lat = document.getElementById('Hotel_lat_lbl_' + recordID).innerHTML;
+        var Yield = document.getElementById('Hotel_yield_lbl_' + recordID).innerHTML;
+        var cont = document.getElementById('Hotel_contract_lbl_' + recordID).innerHTML;
+        var Domin = document.getElementById('Hotel_Demand_grp_lbl_' + recordID).innerHTML;
+        var activeFlg = document.getElementById('activestatus_' + recordID).innerHTML;
+        if (activeFlg == "Active") {
+          document.getElementById('ed_active').checked = true;
+        }
+        else {
+          document.getElementById('ed_active').checked = false;
+        }
+        document.getElementById('ed_HotelID').value = webHotelID;
+        document.getElementById('ed_HotelName').value = hotelName;
+       
+        document.getElementById('ed_HotelAdd1').value = hotelAdd1;
+        document.getElementById('ed_PinCode').value = pinCode;
+        document.getElementById('ed_active').value = activeFlg;
+        document.getElementById('ed_Long').value = Long;
+        document.getElementById('ed_Lat').value = lat;
+        document.getElementById('ed_Yield').value = Yield;
+        document.getElementById('ed_Contract').value = cont;
+        document.getElementById('ed_Demand').value = Domin;
+        $('#drp_htls_status').val(htls_stst);
+        $('#drp_country_popup').val(hotelConutry_grid);
+        bind_city_name_on_page_load_by_popup_edit(hotelcity_grid);
+        document.getElementById('ed_referenceNo').value = recordID;
+        document.getElementById('aded_newRecord').value = "Update";
+        $('#ed_Star').val(hotelRating);
+     
+      }
+    }
+
+
+
+
+
+  </script>
+  <script src="/static/hotel/js/jquery-1.11.3.min.js"></script>
+  <script>
+    Hotel_master_upload_excel = "{% url 'Hotel_master_upload_excel' %}";
+    Bind_Hotel_master_name = "{% url 'Bind_Hotel_master_name' %}";
+    Bind_Hotel_master_country_name = "{% url 'Bind_Hotel_master_country_name' %}";
+    Bind_Hotel_master_city_name = "{% url 'Bind_Hotel_master_city_name' %}";
+    update_Hotel_master = "{% url 'update_Hotel_master' %}";
+    Add_New_Hotel_master = "{% url 'Add_New_Hotel_master' %}";
+    Bind_sup_name_by_city = "{% url 'Bind_sup_name_by_city' %}";
+    
+    $(document).ready(function ($) {
+      bind_country_name_on_page_load();
+      
+    });
+
+    
+ 
+
+    function reset() {
+      document.getElementById('ed_HotelID').value = '';
+      document.getElementById('ed_HotelName').value = '';
+      document.getElementById('ed_active').value = "";
+      document.getElementById('aded_newRecord').value = "Add";
+      document.getElementById('ed_HotelAdd1').value = '';
+      document.getElementById('ed_Yield').value = '';
+      document.getElementById('ed_Contract').value = '';
+      document.getElementById('ed_Demand').value = '';
+      document.getElementById('ed_Long').value = '';
+      document.getElementById('ed_Lat').value = '';
+      document.getElementById('ed_active').value = '';
+      document.getElementById('ed_referenceNo').value = '';
+      document.getElementById('ed_PinCode').value = '';
+      $('#ed_active').prop('checked',false);
+      $('#h_id').text('');
+      $('#h_id').text('Add new');
+      $('#ed_HotelCity').val('0');
+      $('#drp_country_popup').val('0');
+      $('#drp_htls_status').val('0');
+      $('#ed_Star').val('0')
+      $('#aded_newRecord').removeAttr('onclick');
+      $('#aded_newRecord').attr('onClick', 'Add_hotels();');
+    }
+
+    
+       
+
+    function bind_country_name_on_page_load() {
+      $.ajax({
+        url: Bind_Hotel_master_country_name,
+        type: "GET",
+        contentType: false,
+        success: function (data) {
+
+          $('#drp_country').empty();
+          $('#drp_country').append($('<option></option>').val('0').html('---Select Country---'));
+          $(data.country).each(function (index, item) {
+            $('#drp_country').append($('<option></option>').val(item[0]).html(item[1]));
+          });
+
+          $('#ed_Star').empty();
+          $('#ed_Star').append($('<option></option>').val('0').html('---Select Star---'));
+          $(data.star).each(function (index, item) {
+            $('#ed_Star').append($('<option></option>').val(item[0]).html(item[1]));
+          });
+
+          $('#drp_country_popup').empty();
+          $('#drp_country_popup').append($('<option></option>').val('0').html('---Select Country---'));
+          $(data.country).each(function (index, item) {
+            $('#drp_country_popup').append($('<option></option>').val(item[0]).html(item[1]));
+          });
+
+           $('#drp_htls_status').empty();
+           $('#drp_htls_status').append($('<option></option>').val('0').html('--Hotel Status----'));
+            $(data.htls_status).each(function (index, item) {
+                $('#drp_htls_status').append($('<option></option>').val(item[0]).html(item[1]));
+            });
+			
+		  
+
+
+
+        },
+        error: function (xhr, errorType, exception) {
+          alert(exception)
+        }
+      });
+    }
+
+
+    function bind_city_name_on_page_load() {
+      var country_id = $('#drp_country').val();
+      if (country_id > 0) {
+        var model = { country_id: country_id }
+        $.ajax({
+          url: Bind_Hotel_master_city_name,
+          type: 'POST',
+          data: model,
+          dataType: 'json',
+          success: function (data) {
+            if (data.city.length > 0) {
+              $('#city_select').show();
+              $('#drp_city').empty();
+              $('#drp_city').append($('<option></option>').val('0').html('---Select city---'));
+              $(data.city).each(function (index, item) {
+                $('#drp_city').append($('<option></option>').val(item[0]).html(item[1]));
+              });
+            }
+            else {
+              $('#city_select').hide();
+            }
+          },
+          error: function (xhr, errorType, exception) {
+            alert(exception)
+          }
+        });
+      }
+      else {
+        alert('Please select any country !!');
+      }
+    }
+
+
+
+function bid_data_city_changed()
+{
+  debugger;
+      if ($(".multiselect").is(":visible"))
+        {
+           get_hotels();
+        }
+        else
+        {
+          bind_sup_name_by_city();
+        }
+
+}
+
+  function bind_sup_name_by_city() {
+
+    var city_id = $('#drp_city').val();
+
+    if (city_id > 0) {
+      var model = { city_id: city_id }
+      $.ajax({
+        url: Bind_sup_name_by_city,
+        type: 'POST',
+        data: model,
+        dataType: 'json',
+        success: function (data) {
+          if (data.supplier.length > 0) {
+
+            $('#div_sup').show();
+            $('#drp_supplier').empty();
+            // $('#drp_supplier').append($('<option></option>').val('0').html('--Select Supplier----'));
+            $(data.supplier).each(function (index, item) {
+              $('#drp_supplier').append($('<option></option>').val(item[0]).html(item[1]));
+            });
+
+            $('.multiselect_box').multiselect({
+              includeSelectAllOption: true,
+              buttonWidth: 250,
+              enableFiltering: true,
+              enableCaseInsensitiveFiltering:  true
+
+            });
+            $('.multiselect_box').perfectScrollbar();
+            $('ul.multiselect-container.dropdown-menu').perfectScrollbar();
+          }
+          else{
+            $('#div_sup').hide();
+          }
+         
+        },
+        error: function (xhr, errorType, exception) {
+          alert(exception)
+        }
+      });
+    }
+    else {
+      alert('please select city !!')
+    }
+
+  }
+
+
+    
+    function bind_city_name_on_page_load_by_popup() {
+      var country_id = $('#drp_country_popup').val();
+      if (country_id > 0) {
+        var model = { country_id: country_id }
+        $.ajax({
+          url: Bind_Hotel_master_city_name,
+          type: 'POST',
+          data: model,
+          dataType: 'json',
+          success: function (data) {
+            if (data.city.length > 0) {
+              $('#ed_HotelCity').empty();
+              $('#ed_HotelCity').append($('<option></option>').val('0').html('---Select---'));
+              $(data.city).each(function (index, item) {
+                $('#ed_HotelCity').append($('<option></option>').val(item[0]).html(item[1]));
+              });
+            }
+           
+          },
+          error: function (xhr, errorType, exception) {
+            alert(exception)
+          }
+        });
+      }
+      else {
+        alert('Please select any country !!');
+      }
+    }
+
+     function bind_city_name_on_page_load_by_popup_edit(city_id) {
+      var country_id = $('#drp_country_popup').val();
+      if (country_id > 0) {
+        var model = { country_id: country_id }
+        $.ajax({
+          url: Bind_Hotel_master_city_name,
+          type: 'POST',
+          data: model,
+          dataType: 'json',
+          success: function (data) {
+            if (data.city.length > 0) 
+            {
+              $('#ed_HotelCity').empty();
+              $('#ed_HotelCity').append($('<option></option>').val('0').html('---Select---'));
+              $(data.city).each(function (index, item) {
+                $('#ed_HotelCity').append($('<option></option>').val(item[0]).html(item[1]));
+              });
+              $('#ed_HotelCity').val(city_id);
+            }
+            
+           
+          },
+          error: function (xhr, errorType, exception) {
+            alert(exception)
+          }
+        });
+      }
+      else {
+        alert('Please select any country !!');
+      }
+    }
+
+    function get_hotels() {
+      debugger;
+      var city_id = $('#drp_city').val();
+    var selected_sup_type = $("#drp_supplier option:selected");
+    var sup_type = "";
+    selected_sup_type.each(function () {
+        sup_type += $(this).val() + ",";
+    });
+    sup_type = sup_type.replace(/,\s*$/, "").trim();
+    
+      if (city_id > 0 && sup_type !='') {
+       
+        var model = { city_id: city_id, supplier_id: sup_type}
+        $.ajax({
+          url: Bind_Hotel_master_name,
+          type: 'POST',
+          data: model,
+          dataType: 'json',
+          beforeSend: function(){
+            $('.loader_div').show();
+            },
+          success: function (data) {
+            if (data.hotel.length > 0) {
+              debugger;
+              $('#div_table').show();
+            }
+            Bind_grid_main(data.hotel);
+          },
+          complete:function(data){
+    
+           
+            $('.loader_div').hide();
+   },
+          error: function (xhr, errorType, exception) {
+            alert(exception)
+          }
+        });
+      }
+      else {
+        if ($(".multiselect").is(":visible"))
+        {
+          alert('Please select any city  or suplier !!!');
+        }
+
+        
+      }
+    }
+
+
+    function Update_hotels() {
+      debugger;
+
+      if (addFromValidate()) {
+        
+        var model = {
+
+        ed_HotelID: document.getElementById('ed_HotelID').value,
+        ed_HotelName: document.getElementById('ed_HotelName').value,
+        ed_HotelAdd1: document.getElementById('ed_HotelAdd1').value,
+        ed_PinCode: document.getElementById('ed_PinCode').value,
+        ed_activeValue: document.getElementById('ed_activeValue').value,
+        ed_referenceNo: document.getElementById('ed_referenceNo').value,
+        ed_HotelCity: $('#ed_HotelCity').val(),
+        ed_Star: $('#ed_Star').val(),
+        ed_Long: document.getElementById('ed_Long').value,
+        ed_Lat: document.getElementById('ed_Lat').value,
+        ed_Yield: document.getElementById('ed_Yield').value,
+        ed_Contract: document.getElementById('ed_Contract').value,
+        ed_Demand: document.getElementById('ed_Demand').value,
+        drp_htls_status: $('#drp_htls_status').val(),
+
+        }
+        $.ajax({
+          url: update_Hotel_master,
+          type: 'POST',
+          data: model,
+          dataType: 'json',
+          success: function (data) {
+            debugger;
+            if (data.htls.length > 0) {
+              alert('hotel updated successfully ');
+              reset();
+              // data-dismiss:'modal';
+              $('.close')[0].click()
+              Bind_grid_main(data.htls);
+            }
+
+          },
+          error: function (xhr, errorType, exception) {
+            alert(exception)
+          }
+        });
+      }
+
+    }
+
+  function Add_hotels() {
+    if (addFromValidate()) {
+   
+      var model = {
+        ed_HotelID: document.getElementById('ed_HotelID').value,
+        ed_HotelName: document.getElementById('ed_HotelName').value,
+        ed_HotelAdd1: document.getElementById('ed_HotelAdd1').value,
+        ed_PinCode: document.getElementById('ed_PinCode').value,
+        ed_activeValue: document.getElementById('ed_activeValue').value,
+        ed_referenceNo: document.getElementById('ed_referenceNo').value,
+        ed_HotelCity: $('#ed_HotelCity').val(),
+        ed_Star: $('#ed_Star').val(),
+        ed_Long: document.getElementById('ed_Long').value,
+        ed_Lat: document.getElementById('ed_Lat').value,
+        ed_Yield: document.getElementById('ed_Yield').value,
+        ed_Contract: document.getElementById('ed_Contract').value,
+        ed_Demand: document.getElementById('ed_Demand').value,
+        drp_htls_status: $('#drp_htls_status').val(),
+      }
+      $.ajax({
+        url: Add_New_Hotel_master,
+        type: 'POST',
+        data: model,
+        dataType: 'json',
+        beforeSend: function () {
+          $('.loader_div').show();
+        },
+        success: function (data) {
+          if (data.htls.length > 0) {
+            $('.close')[0].click();
+            $('#div_table').show();
+            Bind_grid_main(data.htls);
+            reset();
+          }
+          alert(data.msg);
+        },
+        complete: function (data) {
+          $('.loader_div').hide();
+        },
+        error: function (xhr, errorType, exception) {
+          alert(exception)
+        }
+      });
+    }
+
+  }
+
+
+
+    function SaveClasa() {
+      $(".master_upload_view").toggleClass("active");
+    }
+    function close_excel() {
+      $(".master_upload_view").removeClass("active");
+    }
+    function download_template() {
+      window.location.href = '/static/Excel_Templates/HotelUploadTemplate.xlsx';
+    }
+    function upload_excel() {
+      var file_val = $("#input_file_excel").val();
+      if (file_val == '') {
+        alert('Please select file and upload !!!');
+        return false;
+      }
+	   var ext = file_val.split('.').pop()
+	  if (ext.trim()!='xlsx')
+	  {
+	    alert('Please upload only xlsx file for hotel master !!!');
+        return false;
+	  }
+      var fileUpload = $("#input_file_excel").get(0);
+      var files = fileUpload.files;
+      var formdata = new FormData();
+      formdata.append("File", files[0]);
+      $.ajax({
+        url: Hotel_master_upload_excel,
+        type: "POST",
+        processData: false,
+        dataType: 'json',
+        data: formdata,
+        contentType: false,
+        beforeSend: function () {
+          $('.loader_div').show();
+        },
+        success: function (data) {
+          $("#input_file_excel").val(null);
+          $('.file_type').text('');
+          $('.file_type').css('opacity', '0');
+          if (data.count > 0) {
+            alert('Please  click on  Error log  button for download Error file !!!');
+            $('#btn_error').show();
+            $('#btn_error').attr('href',data.Path);
+          }
+          else {
+            alert(data.htl_grp_dtls);
+          }
+        },
+        complete: function (data) {
+          $('.loader_div').hide();
+        },
+        error: function (xhr, errorType, exception) {
+          alert(exception)
+        }
+      });
+    }
+
+    function download_hotel_master(){
+
+      var country = $('#drp_country').val()
+      if (country == '' || country == '0'){
+        alert("please select country!")
+        return false
+      }
+
+      var city = $('#drp_city').val()
+      if (city == '' || city == '0'){
+        alert("please select city!")
+        return false
+      }
+
+      var supplier = $('#drp_supplier').val()
+      if (supplier == '' || supplier == '0'){
+        alert("please select supplier!")
+        return false
+      }
+
+
+var selected_sup_type = $("#drp_supplier option:selected");
+    var sup_type = "";
+    selected_sup_type.each(function () {
+        sup_type += $(this).val() + ",";
+    });
+    sup_type = sup_type.replace(/,\s*$/, "").trim();
+
+
+
+      $.ajax({
+         url: "{% url 'Download_Hotel_master' %}",
+         type: 'POST',
+         data: {"country": country, "city": city, "supplier": sup_type},
+         dataType: 'json',
+         success: function (data) {
+             if (data.path != ''){
+                window.location = data.path;
+             } else{
+                alert("No data to Download!!")
+             }
+         },
+         error: function (xhr, errorType, exception) {
+             alert(exception)
+         }
+     });
+
+    }
+
+    function Bind_grid_main(data) {
+      var css = '';
+      var table = $("#datavalidation").dataTable();
+      table.fnClearTable();
+      table.fnDraw();
+      table.fnDestroy();
+      var trHTML = '';
+      var hidden_filed = '';
+      $.each(data, function (i, item) {
+        css = 'green';
+        if (item[5] != 'Active') {
+          css = 'red';
+        }
+        trHTML += '<tr id="trid_' + item[0] + '">' +
+          '<td><label id="webhotelid_' + item[0] + '">' + item[6] + '</label></td>' +
+          '<td><label id="hotelname_' + item[0] + '">' + item[1] + '</label></td>' +
+          '<td><label id="hotelcity_' + item[0] + '">' + item[2] + '</label></td>' +
+          '<td><label id="rating_' + item[0] + '">' + item[3] + '</label></td>' +
+          '<td><label id="pincode_' + item[0] + '">' + item[4] + '</label></td>' +
+          '<td><label id="hotel_sup_' + item[0] + '">' + item[17] + '</label></td>' +
+          '<td><span class="circle ' + css + '"><label id="activestatus_' + item[0] + '">' + item[5] + '</label></span></td>' +
+          '<td><span class="edit_btn" data-toggle="modal" id="edit_' + item[0] + '" data-target="#Addnew_master" onclick="return LoadRecord(event);">Edit</span></td>' +
+          '<td><span class="del_btn" onclick="Delete_main_grp_dtls(' + item[0] + ')">Delete</span></td>' +
+          '<td style= "display :none;"><label id="address1_' + item[0] + '">' + item[7] + '</label></td>' +
+
+          '<td style= "display :none;"><label id="Hotel_status_lbl_' + item[0] + '">' + item[18] + '</label></td>' +
+          '<td style= "display :none;"><label id="Hotel_long_lbl_' + item[0] + '">' + item[19] + '</label></td>' +
+          '<td style= "display :none;"><label id="Hotel_lat_lbl_' + item[0] + '">' + item[20] + '</label></td>' +
+          '<td style= "display :none;"><label id="Hotel_yield_lbl_' + item[0] + '">' + item[21] + '</label></td>' +
+          '<td style= "display :none;"><label id="Hotel_contract_lbl_' + item[0] + '">' + item[22] + '</label></td>' +
+          '<td style= "display :none;"><label id="Hotel_Demand_grp_lbl_' + item[0] + '">' + item[23] + '</label></td>' +
+          '<td style= "display :none;"><label id="Hotel_star_lbl_' + item[0] + '">' + item[24] + '</label></td>' +
+          '<td style= "display :none;"><label id="Hotel_cont_lbl_' + item[0] + '">' + item[25] + '</label></td>' +
+          '<td style= "display :none;"><label id="Hotel_city_lbl_' + item[0] + '">' + item[26] + '</label></td>' +
+         
+
+          '</tr>';
+        
+      });
+      $('#tbl_tbody').append(trHTML);
+      $('#datavalidation').dataTable({
+        "sPaginationType": "full_numbers",
+        "bFilter": true,
+        "bInfo": true,
+        "aaSorting": [],
+        "bPaginate": true,
+        "bLengthChange" :false,
+        paging: true,
+      });
+      $('.dataTables_wrapper,.addhotel_checkbox_contaner').perfectScrollbar();
+    }
+
+
+    function Delete_main_grp_dtls(id) {
+      if (confirm("Are you sure?")) {
+        var selected_sup_type = $("#drp_supplier option:selected");
+    var sup_type = "";
+    selected_sup_type.each(function () {
+        sup_type += $(this).val() + ",";
+    });
+    sup_type = sup_type.replace(/,\s*$/, "").trim();
+        var city_id = $('#drp_city').val();
+        if (city_id > 0) {
+          var model  = { city_id: city_id ,
+          id:id, sup_id : sup_type
+          }
+          
+            $.ajax({
+             url: "{% url 'Delete_Hotel_master_name' %}",
+             type: 'POST',
+             data: model,
+             dataType: 'json',
+			  beforeSend: function () {
+          $('.loader_div').show();
+        },
+             success: function (data) {
+                 alert('Record deleted successfully ');
+                 if (data.hotel.length > 0) {
+                  
+                  $('#div_table').show();
+                }
+                Bind_grid_main(data.hotel);
+             },
+			 complete: function (data) {
+          $('.loader_div').hide();
+        },
+             error: function (xhr, errorType, exception) {
+                 alert(exception)
+             }
+         });
+         }
+        }
+         return false;
+     }
+  </script> {% endblock %}

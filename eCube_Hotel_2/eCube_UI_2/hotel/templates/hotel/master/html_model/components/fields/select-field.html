@@ -1,0 +1,14 @@
+<div class="col-md-4">
+    <div class="form-group">
+        <label class="">{{ display_name|title }}</label>
+        {% if options %}
+        <select class="form-control" id="{{ field_name }}__id" name="{{ field_name }}">
+            {% for option in options %}
+            <option value="{{ option.id }}" {% if input_val == option.id %}selected{% endif %} >{{ option }}</option>
+            {% endfor %}
+        </select>
+        {% else %}
+        <br><span>{{ input_val }}</span>
+        {% endif %}
+    </div>
+</div>

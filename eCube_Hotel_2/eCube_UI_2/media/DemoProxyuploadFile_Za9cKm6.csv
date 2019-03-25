@@ -1,0 +1,12 @@
+ProxyName,ProxyPort,ProxyUserName,ProxyPassword,ProxyType,CountryName,RegionId,VendorName,POS,PageType
+shp-prx118-pt-v00001.tp-ns.com,80,,,High,,1,Trusted_Booking,Portugal,
+shp-prx118-ae-v00001.tp-ns.com,80,,,High,,1,Trusted_Booking,Saudi Arabia,
+shp-prx118-ae-d00001.tp-ns.com,80,,,High,,1,Trusted_Booking,UAE,
+shp-prx118-us-v00001.tp-ns.com,80,,,High,,1,Trusted_Booking,UNITED STATES - USA,
+shp-prx118-us-v00001.tp-ns.com,80,,,High,,1,Trusted_Booking,COSTA RICA,
+shp-prx118-uk-v00004.tp-ns.com,80,,,High,,1,Trusted_Booking,United Kingdom,
+shp-prx118-es-v00001.tp-ns.com,80,,,High,,1,Trusted_Booking,Spain,
+shp-prx118-it-d00001.tp-ns.com,80,,,High,,1,Trusted_Booking,Italy,
+shp-prx118-br-d00001.tp-ns.com,80,,,High,,1,Trusted_Booking,Brazil,
+shp-prx118-ar-d00001.tp-ns.com,80,,,High,,1,Trusted_Booking,Argentina,
+shp-prx118-kr-d00001.tp-ns.com,80,,,High,,1,Trusted_Booking,South Korea,

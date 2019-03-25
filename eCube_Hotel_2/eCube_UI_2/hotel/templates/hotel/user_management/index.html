@@ -1,0 +1,1105 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+{% load user_management %}
+
+{% block header %}
+<style>
+   a.reset_btn { padding: 10px 25px!important;}
+    .module_access .formgroup label { font-weight: 300; }
+    .popup_area .form-group label {     color: #888;}
+    .add_user_popup_modal button.close {
+        right:15px;     z-index: 9;
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+<section class="body_contaner">
+    <div class="sidebar_contaner"><span class="toggle_sidebar icon_close"><span class="plus_icon"></span><span
+            class="minus_icon"></span></span>
+        <div class="custom_scroll">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder=" " name=" ">
+            </div>
+            <div class="form-group">
+                <label for="f_name">First name</label>
+                <input type="text" class="form-control" id="f_name" placeholder=" " name=" ">
+            </div>
+            <div class="form-group">
+                <label for="l_name">Last name</label>
+                <input type="text" class="form-control" id="l_name" placeholder=" " name=" ">
+            </div>
+            <div class="form-group">
+                <label for="mail">Email Address</label>
+                <input type="text" class="form-control" id="mail" placeholder=" " name=" ">
+            </div>
+
+            <div class="form-group multi_select_contaner">
+                <label for="username">Select Bli </label>
+                <select id="drpBli" class="form-control" multiple>
+                </select>
+            </div>
+
+            <div class=" clearfix">
+                <div class="col-md-6">
+                    <a href="javascript:void(0)" id="btn_clear" class="reset_btn" onclick="return reset();">Reset</a>
+                </div>
+                <div class="col-md-6">
+                    <input type="button" id="btnUserSave" class="search_btn" value="Add User"
+                           onclick="return validate_user()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container_content">
+        <div class="inner_content_contaner">
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+                <div class="table-responsive marT20">
+                    <table id="user_management" class="display nowrap custom_table" cellspacing="0" width="100%">
+                        <thead>
+                        <tr class="row_contaner">
+                            <th style='display:none'>Bli</th>
+                            <th>USERNAME</th>
+                            <th>FIRST NAME</th>
+                            <th>LAST NAME</th>
+                            <th>EMAIL ADDRESS</th>
+                            <th>Role</th>
+                            <th>Active</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="Alluser_tbody" style="width:100%">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hdn_usr_id" value="">
+</section>
+
+<!-- Modal -->
+<div id="userpopup" class="modal fade" role="dialog">
+    <div class="add_user_popup_modal">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal-body">
+                <div class="row popup_area">
+
+                    <div class="col-md-3">
+                        <h2 class="slide_heading" style="float:none;">Project Rights</h2>
+                        <div class="form-group">
+                            <div><label for="username">Role </label></div>
+                            <select id="drpusr_type1" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-9 P_L40">
+                        <h2 class="slide_heading">Menu Access Rights</h2>
+                        <div class="row module_access">
+                            {% include 'hotel/user_management/components/views/menu_rows.html' with MENU_DATA=MENU_DATA %}
+                        </div>
+                    </div>
+                    <div class="col-md-12 marT20">
+                        <h2 class="slide_heading">Data Harvesting Rights</h2>
+                        <div class="row module_access">
+                            {% include 'hotel/user_management/components/limits/menu_rows.html' with LIMIT_DATA=LIMIT_DATA %}
+                        </div>
+                    </div>
+                    <div class="col-md-12 marT20">
+                        <h2 class="slide_heading">Operational Rights - Request Management</h2>
+                        <div class="row module_access">
+                            {% include 'hotel/user_management/components/ops/menu_rows.html' with OPS_DATA=OPS_DATA %}
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-12 text-center">
+                        <input type="button" name="" class="action_button_submit float_none" value="Save" id="btnSave"
+                               onclick="SaveUserPermissions()">
+                        <input type="button" name="" class="previous_action_button float_none" value="Reset"
+                               id="btnReset">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script>
+    // DJANGO VARIABLES
+    ROLES_DATA = JSON.parse('{{ ROLES_DATA|escapejs }}');
+</script>
+
+<script type='text/javascript'>
+
+	$('.btn-toggle').click(function() {
+
+    $(this).find('.btn').toggleClass('active');
+    if ($(this).find('.btn-primary').size()>0) {
+    	$(this).find('.btn').toggleClass('btn-primary');
+    }
+    if ($(this).find('.btn-danger').size()>0) {
+    	$(this).find('.btn').toggleClass('btn-danger');
+    }
+    if ($(this).find('.btn-success').size()>0) {
+    	$(this).find('.btn').toggleClass('btn-success');
+    }
+    if ($(this).find('.btn-info').size()>0) {
+    	$(this).find('.btn').toggleClass('btn-info');
+    }
+    $(this).find('.btn').toggleClass('btn-default');
+
+	if ($(".no_active").hasClass("active")) {
+
+  		$(this).addClass('red');
+	}else{
+		$(this).removeClass('red');
+	}
+});
+
+	$('.dropdown-toggle').click( function () {
+		$(".notification_contaner_outer").slideDown();
+		$(".black_overlay").show();
+	});
+
+
+	$('.close').on ( 'click',function () {
+
+	if ( $('.notification_contaner_outer li').length > 1 ) {
+		$(this).parent("a").parent("li").remove();
+	 }
+		else{
+		 $(this).parent("a").parent("li").remove('');
+		 $(".notification_contaner_outer").hide();
+		 $(".black_overlay").hide();
+          }
+	});
+
+	$('.black_overlay').click (function () {
+		 $(this).hide();
+		 $(".notification_contaner_outer").hide();
+
+	});
+
+
+</script>
+
+<script type="text/javascript">
+    $('.multipleselector').perfectScrollbar();
+    $('.add_user_popup_modal').perfectScrollbar();
+//    $('.add_user_popup_modal .modal-body').perfectScrollbar(); 
+
+</script>
+
+<script type="text/javascript">
+  var global_data_permissions = []
+  var competitorid = {};
+  $(document).ready(function () {
+
+
+    $('.req_mgmt_checkbox').hide()
+     $("#divCompetitors").attr('title','Select Competitors')
+      Bind_grid();
+      $('#user_management').on('draw.dt', function () {
+          $('.btn-toggle').click(function () {
+              $(this).find('.btn').toggleClass('active');
+              if ($(this).find('.btn-primary').size() > 0) {
+                  $(this).find('.btn').toggleClass('btn-primary');
+              }
+              if ($(this).find('.btn-danger').size() > 0) {
+                  $(this).find('.btn').toggleClass('btn-danger');
+              }
+              if ($(this).find('.btn-success').size() > 0) {
+                  $(this).find('.btn').toggleClass('btn-success');
+              }
+              if ($(this).find('.btn-info').size() > 0) {
+                  $(this).find('.btn').toggleClass('btn-info');
+              }
+              $(this).find('.btn').toggleClass('btn-default');
+
+              if ($(".no_active").hasClass("active")) {
+                  $(this).addClass('red');
+              } else {
+                  $(this).removeClass('red');
+              }
+          });
+      });
+  });
+
+  //When new user is created
+function Bind_grid() {
+      $.ajax({
+          url: "{% url 'hotel_user_management_bind_grid' %}",
+          type: 'GET',
+          success: function (data) {
+              $("#drpBli").empty()
+              $("#drpBli").attr("class", "multiselect_box form-control")
+
+                for(var i = 0; i < data.Bli.length; i++)
+                {
+                    $('#drpBli').append($('<option></option>').val(data.Bli[i].BliId).html(data.Bli[i].BliName))
+                }
+
+             // BindPermissions(data.Permissions)
+
+              $('#drpusr_type1').empty();
+              $('#drpusr_type1').append($('<option></option>').val(0).html("Select Role"));
+
+                /*for(var key in data.Roles)
+                {
+                    $('#drpusr_type1').append($('<option></option>').val(key).html(data.Roles[key]))
+                }*/
+
+                for(var key in ROLES_DATA){
+                    $('#drpusr_type1').append($('<option></option>').val(key).html(ROLES_DATA[key].verbose))
+                }
+
+                $('#drpCompetitors').empty();
+                $("#drpCompetitors").attr("class","multiselect_box form-control")
+
+
+                for(var key in data.Competitors)
+                {
+                   $('#drpCompetitors').append($('<option></option>').val(key).html(data.Competitors[key]))
+                }
+
+                $('.multiselect_box').multiselect({
+                    includeSelectAllOption: true,
+                    buttonWidth: 250,
+                    enableFiltering: true,
+                    enableCaseInsensitiveFiltering: true
+                });
+
+              setData(data.Grid)
+
+          },
+          error: function (xhr, errorType, exception) {
+              alert("Something went wrong. Please contact administrator")
+              console.log(exception +" <br/>"+errorType + "<br/> " + exception)
+          }
+      });
+  }
+
+
+function setData(data) {
+      var table = $("#user_management").dataTable();
+      table.fnClearTable();
+      table.fnDraw();
+      table.fnDestroy();
+      var trHTML = '';
+      $.each(data, function (i, item) {
+          var usr = "'" + item.UserID + "'";
+          var usrname = "'" + item.UserName + "'";
+          var btn_val = ''
+          if (item.Active == true) {
+
+              btn_val = '<button class="btn btn-xs no_active btn-default" value="0" onclick="set_Active(this.value,' + usr + ',event)">No</button><button value="1" class="btn btn-xs  active btn-success" onclick="set_Active(this.value,' + usr + ',event)">Yes</button>'
+          }
+          else {
+              btn_val = '<button class="btn btn-xs no_active active btn-success" value="0" onclick="set_Active(this.value,' + usr + ',event)">No</button><button value="1" class="btn btn-xs btn-default" onclick="set_Active(this.value,' + usr + ',event)">Yes</button>'
+          }
+          trHTML += '<tr class="row_contaner" id="tr_' + item.UserID + '">' +
+              '<td style="display:none" width="10%" >' + item.Bli + '</td>' +
+              '<td width="10%" >' + item.UserName + '</td>' +
+              '<td width="10%">' + item.FirstName + '</td>' +
+              '<td width="10%">' + item.LastName + '</td>' +
+              '<td width="15%">' + item.Email + '</td>' +
+              '<td width="10%">' + item.rolename + '</td>' +
+              '<td width="10%"><div class="btn-group btn-toggle red"> ' + btn_val + '</div></td>' +
+              '<td width="15%"><span id="span_edit_' + item.UserName + '" class="edit_btn" onclick="EditUSer(' + usr + ')">Edit</span> <span class="del_btn" onclick="Delete_User(' + usr + ','+usrname+', event,' + (i + 1) + ')">Delete</span><span class="reset_btn1" onclick="Reset_User(' + usr + ', event)">Reset Pass</span></td>' +
+              '</tr>';
+      });
+      $('#Alluser_tbody').append(trHTML);
+      $('#user_management').dataTable({
+          "sPaginationType": "full_numbers",
+          "bFilter": true,
+          "bInfo": false,
+          "bPaginate": true,
+          "scrollX": true,
+      });
+      $($('#user_management_filter').find('input[type="text"]')[0]).attr("placeholder", "search");
+
+  }
+
+
+function Reset_User(usr, e) {
+      if (confirm('Are you sure ?')) {
+          var id = $('#tr_' + usr);
+          //var usr = id.find('td').eq(1).text();
+          //alert(usr)
+          var email = id.find('td').eq(4).text();
+          var url = "{% url 'hotel_user_management_reset_password' %}";
+          var model = {
+              userid: usr,
+              email: email
+          }
+
+          $.ajax({
+              url: url,
+              type: 'POST',
+              data: model,
+              dataType: 'json',
+              success: function (data) {
+                  if(data.MSG_TYPE == '1')
+                  {
+                    alert(data.Message)
+                  }
+                  else if(data.MSG_TYPE == '2')
+                  {
+                    alert(data.Message)
+                    window.location.href = "{% url 'hotel_user_management_reset_password' %}";
+                  }
+                  else
+                  {
+                    alert(data.Message)
+                  }
+                  reset();
+              },
+             error: function (xhr, errorType, exception) {
+              alert("Something went wrong. Please contact administrator")
+              console.log(exception +" <br/>"+errorType + "<br/> " + exception)
+          }
+          });
+      }
+      else {
+          e.stopImmediatePropagation();
+      }
+  }
+
+
+function set_Active(val, userid, e) {
+    if (confirm('Are you sure ?')) {
+        var url = "{% url 'hotel_user_management_account_ops' %}";
+        var model = {
+            Act_val: val,
+            userid: userid,
+        }
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: model,
+            dataType: 'json',
+            success: function (data) {
+
+                setData(data.Grid)
+                alert(data.Message);
+                reset();
+            },
+           error: function (xhr, errorType, exception) {
+            alert("Something went wrong. Please contact administrator")
+            console.log(exception +" <br/>"+errorType + "<br/> " + exception)
+        }
+        });
+    }
+    else {
+
+        e.stopImmediatePropagation();
+    }
+}
+
+
+function EditUSer(userid) {
+      permission_reset()
+      var id = $('#tr_' + userid);
+      $("#btnUserSave").val("Edit User")
+      var bli =  id.find('td').eq(0).text();
+      username = id.find('td').eq(1).text();
+      var f_name = id.find('td').eq(2).text();
+      var l_name = id.find('td').eq(3).text();
+      var email = id.find('td').eq(4).text();
+      var role = id.find('td').eq(5).text();
+
+      $('#btn_save_update').prop('value', 'Update');
+      $('#username').val(username);
+      $('#username').attr('readonly', true);
+      $('#f_name').val(f_name);
+      $('#l_name').val(l_name);
+      $('#mail').val(email);
+
+      var drp_value = $("#drpusr_type option").filter(function () {
+          return $(this).text().toUpperCase().trim() == role.toUpperCase().trim();
+      }).first().attr("value");
+      $("#drpusr_type").val(drp_value);
+      //$('#hdn_usr_id').val(username);
+      $('#hdn_usr_id').val(userid);
+
+     // var userid = $('#hdn_usr_id').val();
+      $('#user_management tr').removeClass("selectedrow");
+      id.addClass('selectedrow')
+      $("#user_management").removeClass('selectedtable')
+      $("#user_management").addClass('selectedtable')
+
+      $('#user_management tr').find('.selectedrow').index()
+
+      var datarray = bli.split(',')
+      $("#drpBli").val(datarray)
+      $("#drpBli").multiselect('refresh')
+      $("#ddlcategoryL2").empty()
+
+      if ($('#hdn_usr_id').val().trim() == '') {
+          $("#div_edit").addClass('fadeInRight animated')
+      }
+      else {
+
+          if ($("#div_edit").hasClass('fadeInRight')) {
+              $("#div_edit").removeClass('fadeInRight animated')
+              $("#div_edit").addClass('fadeInLeft animated')
+
+          }
+          else {
+              $("#div_edit").removeClass('fadeInLeft animated')
+              $("#div_edit").addClass('fadeInRight animated')
+          }
+      }
+    //Bind UserPermisssions
+   //BindUserPermission(userid)
+  }
+
+
+function Delete_User(userid,username, e, index) {
+      if (confirm('Are you sure  to delete  ' + username + '?')) {
+          var url = "{% url 'hotel_user_management_delete_account' %}";
+          var model = {
+            userid: userid
+          }
+          $.ajax({
+              url: url,
+              type: 'POST',
+              data: model,
+              dataType: 'json',
+              success: function (data) {
+
+                  if (data.MSG_TYPE == '1') {
+                      alert(data.Message)
+                      setData(data.Grid)
+                      reset();
+                  }
+                  else if(data.MSG_TYPE == '2')
+                  {
+                      alert(data.Message)
+                  }
+              },
+              error: function (xhr, errorType, exception) {
+              alert("Something went wrong. Please contact administrator")
+              console.log(exception +" <br/>"+errorType + "<br/> " + exception)
+          }
+          });
+      }
+      else {
+          e.preventDefault();
+      }
+  }
+
+
+function reset() {
+      $('#username').val('');
+      $('#f_name').val('');
+      $('#l_name').val('');
+      $('#mail').val('');
+      $('#drpusr_type').val(1);
+      $('#btn_save_update').prop('value', 'Add User');
+      $('#username').attr('readonly', false);
+      $('#hdn_usr_id').val('');
+      $("#user_management").removeClass('selectedtable');
+      $("#drpBli").multiselect("clearSelection");
+      $("#drpBli").multiselect('refresh');
+      $("#btnUserSave").val("Add User")
+  }
+
+function validate_user() {
+
+        var flag = false
+        var usr_name = $('#username').val().trim();
+        var f_name = $('#f_name').val().trim();
+        var l_name = $('#l_name').val().trim();
+        var e_mail = $('#mail').val().trim();
+        var bld = $("#drpBli").val()
+        var url = "{% url 'hotel_user_management_index' %}";
+
+        if (usr_name != '')
+        {
+            if (f_name != '') {
+                if (l_name != '') {
+                    if (e_mail != '') {
+                        if (validateEmail(e_mail)) {
+                            if (bld != "" && bld != 0 && bld != null) {
+
+                                if ($('#hdn_usr_id').val().trim() != '') {
+                                    //url = "{% url 'hotel_user_management_edit_account' %}";
+                                    usr_name = $('#hdn_usr_id').val();
+                                    if (confirm("Do you want to edit user permissions?")) {
+                                        BindUserPermission(usr_name)
+                                    }
+                                    else
+                                    {
+                                        $("#btnUserSave").removeAttr('data-target')
+                                        $("#btnUserSave").removeAttr('data-toggle')
+                                        flag = true
+                                        UpdateUserInfo(usr_name, f_name, l_name, e_mail, bld)
+                                    }
+                                }
+                                if(flag == false)
+                                {
+                                    $("#btnUserSave").attr('class', 'search_btn userpopsrc')
+                                    $("#btnUserSave").attr('data-target', '#userpopup')
+                                    $("#btnUserSave").attr('data-toggle', 'modal')
+                                    $(".userpopsrc").click(function () {
+                                        $(".modal-backdrop").addClass("fade");
+                                    });
+                                }
+                            }
+                            else {
+                                alert("Please select BLI")
+                                $("#drpBli").focus()
+                                return false;
+                            }
+                        }
+                        else {
+                            alert("Please enter valid Email ")
+                             $("#mail").focus()
+                            return false;
+                        }
+                    }
+                    else {
+                        alert("Please enter Email")
+                        $("#mail").focus()
+                        return false;
+                    }
+                }
+                else {
+                    alert("Please enter Last name")
+                    $("#l_name").focus()
+                    return false;
+                }
+            }
+            else {
+                alert("Please enter First name")
+                $("#f_name").focus()
+                return false;
+            }
+        }
+        else {
+            alert("Please enter user name")
+            $("#username").focus()
+            return false;
+        }
+    }
+
+
+function validateEmail(sEmail) {
+      var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+      if (filter.test(sEmail)) {
+          return true;
+      }
+      else {
+          return false;
+      }
+  }
+
+
+function UpdateUserInfo(username, firstname, lastname, emailid, bliid)
+  {
+
+    var usermodel = {
+        username: username,
+        firstname : firstname,
+        lastname: lastname,
+        emailid : emailid,
+        blid :bliid
+    }
+    $.ajax({
+        url:'{% url "hotel_user_management_update_account" %}',
+        type:'POST',
+        data:{usermodel : JSON.stringify(usermodel)},
+        success: function(data){
+            if(data.status == "0")
+            {
+                alert("Information updated")
+                window.location.href = '{% url "hotel_user_management_index" %}'
+            }
+        },
+        error: function (xhr, errorType, exception) {
+              alert("Something went wrong. Please contact administrator")
+              console.log(exception +" <br/>"+errorType + "<br/> " + exception)
+          }
+    })
+  }
+
+
+function permission_reset()
+   {
+        $("#txtScheduleRequest").val('')
+        $("#txtRequest").val('')
+        $("#txtSKULimit").val('')
+        $("#txtUserLimit").val('')
+        $(":input[type='checkbox']").prop('checked',false)
+        $("#drpCompetitors").multiselect('rebuild')
+        $("#drpCompetitor_Marker").empty()
+        $("#ddlcategoryL2").empty()
+        $("#drpCompetitors").multiselect("clearSelection");
+        $("#drpCompetitors").multiselect('refresh');
+   }
+
+
+function binduserroles(userrole)
+{
+    $("#drpusr_type1").val(userrole)
+}
+
+function BindUserPermission(userid)
+    {
+    $.ajax({
+        url: "{% url 'hotel_user_management_bind_user_permissions' %}",
+        type: 'POST',
+        data: { model : JSON.stringify(userid) },
+        success : function(data)
+        {
+            binduserroles(data.role)
+            render_permissions(data.permissions)
+
+            $("#drpCompetitors").attr("class","multiselect_box form-control")
+            $("#drpCompetitor_Marker").empty()
+            $("#ddlcategoryL2").empty()
+
+            for(var i = 0 ; i < data.Competitors.length ;i++)
+            {
+                $("#drpCompetitors option").each(function(index,value){
+                    if($(this).val() == data.Competitors[i].compid)
+                    {
+                        $(this).prop('selected', true)
+                    }
+                })
+                for(var j = 0 ;j< data.Competitors[i].countries.length ; j++)
+                {
+                    $("#drpCompetitor_Marker").append($('<option></option>').val(data.Competitors[i].countries[j].countryid).html(data.Competitors[i].countries[j].countryname))
+                    $("#ddlcategoryL2").append($('<option selected></option>').val(data.Competitors[i].compid+","+data.Competitors[i].countries[j].countryid).html(data.Competitors[i].name +' and '+ data.Competitors[i].countries[j].countryname))
+                }
+            }
+
+            $('#drpCompetitors').multiselect('rebuild')
+            $('.multiselect_box').multiselect({
+                    includeSelectAllOption: true,
+                    buttonWidth: 250,
+                    enableFiltering: true,
+                    enableCaseInsensitiveFiltering: true
+                });
+        },
+        error: function (xhr, errorType, exception) {
+                alert("Something went wrong. Please contact administrator")
+                console.log(exception +" <br/>"+errorType + "<br/> " + exception)
+            }
+    })
+
+    }
+
+
+function render_permissions(permissions){
+
+    for (i in permissions)
+    {
+        permission = permissions[i];
+        if(document.getElementById(permission.accessitems)){
+            switch(permission['permission_type']){
+                case 'view':
+                    render_view_permission(permission);
+                    break;
+                case 'limit':
+                    render_limit_permission(permission);
+                    break;
+                case 'ops':
+                    render_ops_permission(permission);
+                    break;
+            }
+         }
+         //else{
+        //    // alert('You have Permission for "' + permission.accessitems + '" but there is no provision for that\nPlease Contact Dev Team');
+        // }
+    }
+}
+
+
+function render_view_permission(permission)
+{
+    if(permission.limits == 1)
+    {
+        document.getElementById(permission.accessitems).checked = true;
+        $('#' + permission.accessitems + '__child').show();
+    }
+}
+
+
+function render_limit_permission(permission)
+{
+    document.getElementById(permission.accessitems).value = permission.limits
+}
+
+
+function render_ops_permission(permission)
+{
+    if(permission.limits == 1)
+    {
+        document.getElementById(permission.accessitems).checked = true
+    }
+}
+
+
+function SaveUserPermissions()
+{
+    var global_data_array = []
+    var dictionary_model = {}
+    var userrole =  $("#drpusr_type1").val()
+    var drpCompetitors = $("#drpCompetitors").val()
+    if (userrole == 0)
+    {
+        alert("Select User Roles")
+        $(userrole).focus()
+        return false;
+    }else{
+        {% for view_perm in MENU_DATA %}
+
+        if(document.getElementById('{{ view_perm.name|snake_case }}').checked == true){
+            {{ view_perm.name|snake_case }}_dictionary_model = {}
+            {{ view_perm.name|snake_case }}_dictionary_model["UserType"] = userrole
+            {{ view_perm.name|snake_case }}_dictionary_model["accessitems"] = '{{ view_perm.name|snake_case }}'
+            {{ view_perm.name|snake_case }}_dictionary_model["limits"] = 1
+            {{ view_perm.name|snake_case }}_dictionary_model['permission_type'] = 'view'
+            global_data_array.push({{ view_perm.name|snake_case }}_dictionary_model)
+        }
+        {% for child_view_perm in view_perm.list %}
+        if(document.getElementById('{{ child_view_perm.name|snake_case }}').checked == true){
+            {{ view_perm.name|snake_case }}_dictionary_model = {}
+            {{ view_perm.name|snake_case }}_dictionary_model["UserType"] = userrole
+            {{ view_perm.name|snake_case }}_dictionary_model["accessitems"] = '{{ child_view_perm.name|snake_case }}'
+            {{ view_perm.name|snake_case }}_dictionary_model["limits"] = 1
+            {{ view_perm.name|snake_case }}_dictionary_model['permission_type'] = 'view'
+            global_data_array.push({{ view_perm.name|snake_case }}_dictionary_model)
+        }
+        {% endfor %}
+        {% endfor %}
+        {% for limit_perm in LIMIT_DATA %}
+            {{ limit_perm.name|snake_case }}_dictionary_model = {}
+            {{ limit_perm.name|snake_case }}_dictionary_model["UserType"] = userrole
+            {{ limit_perm.name|snake_case }}_dictionary_model["accessitems"] =  '{{ limit_perm.name|snake_case }}'
+            {{ limit_perm.name|snake_case }}_dictionary_model["limits"] = document.getElementById('{{ limit_perm.name|snake_case }}').value// todo: add limit using dynamically created id
+            {{ limit_perm.name|snake_case }}_dictionary_model['permission_type'] = 'limit'
+            global_data_array.push({{ limit_perm.name|snake_case }}_dictionary_model)
+        {% endfor %}
+
+        {% for ops_perm in OPS_DATA %}
+            {{ ops_perm.name|snake_case }}_dictionary_model = {}
+            {{ ops_perm.name|snake_case }}_dictionary_model["UserType"] = userrole
+            {{ ops_perm.name|snake_case }}_dictionary_model["accessitems"] =  '{{ ops_perm.name|snake_case }}'
+            {{ ops_perm.name|snake_case }}_dictionary_model["limits"] = 1
+            {{ ops_perm.name|snake_case }}_dictionary_model['permission_type'] = 'ops'
+            global_data_array.push({{ ops_perm.name|snake_case }}_dictionary_model)
+        {% endfor %}
+
+        var usr_name = $('#username').val().trim()
+        var f_name = $('#f_name').val().trim()
+        var l_name = $('#l_name').val().trim()
+        var e_mail = $('#mail').val().trim()
+        var roleid;
+
+        var bliids =  $("#drpBli").val()
+        var url = "{% url 'hotel_user_management_index' %}";
+        if ($('#hdn_usr_id').val().trim() != '') {
+
+            url = "{% url 'hotel_user_management_edit_account' %}";
+            usr_name = $('#hdn_usr_id').val();
+        }
+        /** if(drpCompetitors == null || drpCompetitors == 0)
+        {
+            alert('Select Competitor')
+            $(drpCompetitors).focus()
+            return false;
+        } 
+        if($("#ddlcategoryL2").val() == null)
+        {
+            alert('Please select competitor and market')
+            $("#ddlcategoryL2").focus()
+            return false;
+        }**/
+        
+
+        dic_competitor_model = {}
+        //dic_competitor_model[$("#drpCompetitors").val()] = $("#ddlcategoryL2").val()
+
+        var model = {
+            U_Name: usr_name,
+            F_Name: f_name,
+            L_Name: l_name,
+            E_Mail: e_mail
+
+        }
+        $.ajax({
+            url:url,
+            type:"POST",
+            //  data: { usermodel: JSON.stringify(model), permissionmodel: JSON.stringify(global_data_array), competitormodel: JSON.stringify(dic_competitor_model), blimodel : JSON.stringify(bliids) },
+            data: { usermodel: JSON.stringify(model), permissionmodel: JSON.stringify(global_data_array),blimodel : JSON.stringify(bliids)},
+            success: function(data)
+            {
+                if (data.MSG_TYPE == '1')
+                {
+                    message = "User Permission Created Successfully"
+                    alert(message)
+                    window.location.href = "{% url 'hotel_user_management_index' %}"
+
+                    var usr = "'" + data.Grid[0].UserID+ "'";
+                    var id = $('#tr_' + data.Grid[0].UserID);
+                    id.find('td').eq(0).text(data.Grid[0].Bli);
+                    id.find('td').eq(1).text(data.Grid[0].UserName);
+                    id.find('td').eq(2).text(data.Grid[0].FirstName);
+                    id.find('td').eq(3).text(data.Grid[0].LastName);
+                    id.find('td').eq(4).text(data.Grid[0].Email);
+                    id.find('td').eq(5).text(data.Grid[0].rolename);
+                    id.removeClass('selectedrow');
+                    $("#span_edit_" + data.Grid[0].id).attr("onclick", "EditUSer(" + usr + ")");
+                    $("#user_management").removeClass('selectedtable')
+                    $("#div_edit").removeClass('fadeInRight animated')
+                    setData(data.Grid)
+                }
+                else if (data.MSG_TYPE == '2')
+                {
+                    alert('User Already Created')
+                    return false;
+                }
+                else
+                {
+
+                }
+
+            },
+            error: function (xhr, errorType, exception) {
+                alert("Something went wrong. Please contact administrator")
+                console.log(exception +" <br/>"+errorType + "<br/> " + exception)
+            }
+        })
+    }
+        
+  }
+  
+  $("#username").change(function(e){
+    username = $(this).val();
+    first_name = username.split('.')[0];
+    $('#f_name').val(first_name);
+    last_name = username.split('.')[1];
+    $('#l_name').val(last_name);
+    email = username + '@eclerx.com';
+    $('#mail').val(email);
+
+    var model = {
+                U_Name: $(this).val()
+            }
+      $.ajax({
+
+        url:"{% url 'hotel_user_management_user_exists_check' %}",
+        type:'POST',
+        data : {usermodel:JSON.stringify(model)},
+        success :function(data)
+        {
+            if(data.MSG_TYPE =='2')
+            {
+                alert(data.Message)
+                $('#username').focus()
+                $('#f_name').val('')
+                $('#l_name').val('')
+                $('#mail').val('')
+
+                return false;
+            }
+            else
+            {
+                return true; //User does not exists. Create New User
+            }
+        },
+        error: function (xhr, errorType, exception) {
+              alert("Something went wrong. Please contact administrator")
+              console.log(exception +" <br/>"+errorType + "<br/> " + exception)
+          }
+
+      })
+  })
+
+
+  $("#drpusr_type1").change(function(e){
+    permission_reset();
+    if($(this).val() == 0)
+    {
+        return false;
+    }
+    console.log("ROLES_DATA",ROLES_DATA)
+    render_permissions(ROLES_DATA[$(this).val()]['list'])
+
+  })
+
+
+  $("#mail").change(function(e){
+    var model = {
+                U_Mail: $(this).val()
+            }
+      $.ajax({
+
+        url:"{% url 'hotel_user_management_email_exists_check' %}",
+        type:'POST',
+        data : {usermodel:JSON.stringify(model)},
+        success :function(data)
+        {
+            if(data.MSG_TYPE =='2')
+            {
+                alert(data.Message)
+                return false;
+            }
+            else
+            {
+                return true; //User does not exists. Create New User
+            }
+        },
+        error: function (xhr, errorType, exception) {
+              alert("Something went wrong. Please contact administrator")
+              console.log(exception +" <br/>"+errorType + "<br/> " + exception)
+          }
+      })
+  })
+
+
+//Reset User Permissions
+$("#btnReset").click(function(e)
+{
+    $("#drpusr_type1").val('0')
+    permission_reset();
+})
+
+
+$("#drpCompetitors").change(function(e){
+
+    $("#drpCompetitor_Marker").empty()
+    $("#ddlcategoryL2").empty()
+    if($(this).val() == null)
+    {
+        return false;
+    }
+    else
+    {
+        $.ajax({
+            url :"{% url 'hotel_user_management_bind_competitor_market' %}",
+            type: 'POST',
+            data : { model: JSON.stringify($(this).val())},
+            success : function(data){
+
+                for(var i = 0; i < data.length; i++)
+                {
+                    $('#drpCompetitor_Marker').append($('<option></option>').val(data[i].id).html(data[i].name))
+                }
+
+            },
+            error: function (xhr, errorType, exception) {
+              alert("Something went wrong. Please contact administrator")
+              console.log(exception +" <br/>"+errorType + "<br/> " + exception)
+          }
+
+        });
+    }
+
+});
+
+
+(function () {
+    $('#btnRight').click(function (e) {
+        add()
+    });
+    $('#btnAllRight').click(function (e) {
+        addall()
+    });
+
+    $('#btnLeft').click(function (e) {
+        var selectedOpts = $('#ddlcategoryL2 option:selected');
+        if (selectedOpts.length == 0) {
+            alert('Nothing to move')
+            e.preventDefault();
+        }
+        $(selectedOpts).remove()
+    });
+    $('#btnAllLeft').click(function (e) {
+        var selectedOpts = $('#ddlcategoryL2 option');
+        if (selectedOpts.length == 0) {
+            alert('Nothing to move')
+            e.preventDefault();
+        }
+        $(selectedOpts).remove()
+    });
+}(jQuery));
+
+
+function addall()
+{
+    dic_competitors = {}
+    $("#drpCompetitors option:selected").each(function(index,val){
+        dic_competitors[$(val).val()] = $(val).text()
+    })
+    var selectedOpts = $('#drpCompetitor_Marker option');
+    if (selectedOpts.length == 0) {
+        alert('Nothing to move')
+    }
+    dict_markets =  {}
+    $(selectedOpts).each(function(index,value){
+        dict_markets[$(value).val()] = $(value).text()
+    })
+    $('#ddlcategoryL2').empty()
+    for(var competitor in dic_competitors)
+    {
+        for(var markets in dict_markets)
+        {
+            $('#ddlcategoryL2').append($('<option selected></option>').val(competitor+","+markets).html(dic_competitors[competitor]+" and "+dict_markets[markets]))
+        }
+    }
+}
+
+
+function add()
+{
+    dic_competitors = {}
+    $("#drpCompetitors option:selected").each(function(index,val){
+        dic_competitors[$(val).val()] = $(val).text()
+    })
+    var selectedOpts = $('#drpCompetitor_Marker option:selected');
+    if (selectedOpts.length == 0) {
+        alert('Nothing to move')
+    }
+    dict_markets =  {}
+    $(selectedOpts).each(function(index,value){
+        dict_markets[$(value).val()] = $(value).text()
+    })
+    $('#ddlcategoryL2').empty()
+    for(var competitor in dic_competitors)
+    {
+        for(var markets in dict_markets)
+        {
+            $('#ddlcategoryL2').append($('<option selected></option>').val(competitor+","+markets).html(dic_competitors[competitor]+" and "+dict_markets[markets]))
+        }
+    }
+}
+
+
+$(".parent_checkbox").change(function(e){
+    if($(this).is(":checked")) {
+        $('#' + $(this).data('child_id')).find(":input[type='checkbox']").prop('checked',true)
+        $('#' + $(this).data('child_id')).show();
+    } else {
+        $('#' + $(this).data('child_id')).find(":input[type='checkbox']").prop('checked',false)
+        $('#' + $(this).data('child_id')).hide();
+    }
+})
+
+</script>
+
+{% endblock %}

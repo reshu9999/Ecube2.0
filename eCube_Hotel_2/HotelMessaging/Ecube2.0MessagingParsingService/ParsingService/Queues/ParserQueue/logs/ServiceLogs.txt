@@ -1,0 +1,7 @@
+2018-06-13 18:48:35,646 - ServicesLog - DEBUG - Dynamic Parsing Consumer --- Group Master Called
+2018-06-13 19:11:01,066 - ServicesLog - DEBUG - Dynamic Parsing Consumer --- Group Master Called
+2018-06-13 20:01:40,766 - ServicesLog - DEBUG - Dynamic Parsing Consumer --- Group Master Called
+2018-06-13 20:45:49,639 - ServicesLog - DEBUG - Dynamic Parsing Consumer --- Group Master Called
+2018-06-13 20:46:24,497 - ServicesLog - DEBUG - Dynamic Parsing Consumer --- Group Master Called
+2018-06-13 20:46:32,207 - ServicesLog - DEBUG - Dynamic Parsing Consumer --- Group Master Called
+2018-06-13 20:48:15,657 - ServicesLog - DEBUG - Dynamic Parsing Consumer --- Group Master Called

@@ -1,0 +1,4 @@
+ProxyName,ProxyPort,ProxyUserName,ProxyPassword,ProxyType,CountryName,RegionId,VendorName,POS
+139.81.56.104,29842,csimonra,h19VA2xZ,Low,United States - USA,1,MAPPER,United States - USA
+192.168.1.1,6969,csimonra,h19VA2xZ,Low,United States - USA,1,GETTER,United States - USA
+192.168.1.1,6969,,,Low,United States - USA,1,GETTER,

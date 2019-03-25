@@ -1,0 +1,1503 @@
+{% extends 'hotel/base.html' %} {% load static %} {% block header %}
+{% load tz %}
+<style>
+    .action_items_contaner span {
+        opacity: 1;
+    }
+
+    .action_items_contaner span.active_visible {
+        opacity: .5;
+        pointer-events: none;
+    }
+
+    #ui-datepicker-div .ui-datepicker-title .ui-datepicker-month {
+        color: #333;
+        font-size: 13px;
+    }
+
+    .custom_request h4 {
+        display: inline-block;
+        font-size: 12px;
+        line-height: 20px;
+        color: #777;
+    }
+
+    .custom_request h4 strong {
+        display: block;
+        float: left;
+        padding: 0 30px;
+        border-right: 1px solid #fff;
+        border-left: 1px solid #bbb;
+    }
+
+    .custom_request .header_popup {
+        display: inline-block;
+    }
+
+    .custom_request h4 strong:first-child {
+        padding-left: 10px;
+        border-left: none;
+    }
+
+    .custom_request h4 strong:last-child {
+        border-right: none;
+    }
+
+    .action_items_contaner {
+        width: 225px !important;
+    }
+
+    /*-----status -----*/
+     span.compleated_percent.green_bg {
+      background: #5cb85c;
+      font-weight: normal;
+    }
+
+	
+
+    span.compleated_percent.blue_bg {
+        background: #5ea8ef;
+        font-weight: normal;
+    }
+
+    span.compleated_percent.red_bg {
+        background: #ff887c;
+        font-weight: normal;
+    }
+
+    span.compleated_percent.yellow_bg {
+        background: #ffcc00;
+        font-weight: normal;
+        color: #000;
+    }
+
+    span.compleated_percent {
+        width: 40px;
+        overflow: hidden;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        left:-2px;
+    }
+
+    /*----------multi button -------*/
+    .action_items_contaner {
+      transition: .5s; opacity: 0; visibility: hidden;
+      position: absolute;
+        width: auto!important;
+        right:0;
+        bottom: 5px;
+        z-index: 9;
+    }
+
+    .custom_table > tbody > tr td:last-child {
+      position: relative; text-align: center;
+    }
+
+    .action_items_contaner .inner_view {
+        position: absolute;
+        left: -260px;
+        background: #fff;
+        padding: 5px;
+        border-radius: 50px;
+        box-shadow: 0 0 5px rgba(0,0,0,.2);
+        width: auto !important;
+        z-index: 9;
+        border: 1px solid #a267c8;
+        top: -33px;
+    }
+    .action_items_contaner .inner_view::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        right: -5px;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 6px solid #a267c8;
+        top: 9px;
+    }
+    .action_view_fa {
+      background: #ccc;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50px;
+      line-height: 25px;
+      cursor: pointer;
+    }
+    .action_items_contaner.active {
+        display: block;
+        right: -47px;
+        visibility: visible;
+        opacity: 1;
+    }
+    .action_items_contaner .action_items {
+        width: 28px;
+        height: 21px;
+        text-align: center;
+        margin: 0;
+        float: left;
+        white-space: nowrap;
+        display: block;
+        transition: .1s;
+        background-size: 14px;
+    }
+    .action_items_contaner span.active_visible {
+      background-size: 14px;
+    }
+    .action_items_contaner .action_items:hover, .action_items_contaner span.active_visible:hover {
+      background-size:18px!important;
+    }
+    .action_items_contaner.active {
+        display: block;
+        right: -47px;
+        visibility: visible;
+        opacity: 1;
+
+    }
+    .action_items_contaner1:hover  .action_items_contaner {
+      visibility: visible;
+      opacity: 1;
+      display:block;
+    }
+	
+		  input.search_btn {
+    width: 100%!important;
+}
+
+
+
+.re_pnf_crawl {
+    background-image: url(/static/hotel/images/ps_failure.png);
+    transform: rotate(301deg);
+}
+
+
+</style>
+
+{% endblock %} {% block content %}
+
+    {% csrf_token %}
+    <section class="body_contaner">
+        <div class="sidebar_contaner animated flipInY">
+            <span class="toggle_sidebar icon_close">
+                <span class="plus_icon"></span>
+                <span class="minus_icon"></span>
+            </span>
+            <div class="custom_scroll">
+                <div class="form-group">
+                    <label for="reqnumber">REQUEST NUMBER</label>
+                    <span class="reset_trigger" onclick="Resetall();">RESET ALL</span>
+                    <input type="text" class="form-control" id="reqnumber" placeholder=" " name="reqnumber" onkeypress="validate(event)">
+                </div>
+
+                <div class="form-group">
+                    <label for="">REQUEST Title</label>
+                    <input type="text" class="form-control" id="RequestDesc" placeholder=" " name="RequestDesc">
+                </div>
+
+                <div class="form-group pull-left">
+                    <label>creation date</label>
+                    <div class="calander_cotanet">
+                        <div class=" col-xs-6   border_right padL0">
+                            <input type="text" id ="txt_cre_date_start" class="from1 fromCreateDate" name="fromCreateDate" placeholder="From" readonly>
+                        </div>
+                        <div class=" col-xs-6 ">
+                            <input type="text" id ="txt_cre_date_end" class="to1 toCreateDate" name="toCreateDate" placeholder="To" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group pull-left">
+                    <label>next schedule date</label>
+                    <div class="calander_cotanet">
+                        <div class=" col-xs-6  border_right padL0">
+                            <input type="text" id ="txt_sch_date_start" class="from2 FromNextScheduleDate" name="FromNextScheduleDate" placeholder="From" readonly>
+                        </div>
+                        <div class=" col-xs-6 ">
+                            <input type="text" id ="txt_sch_date_end" class="to2 TONextScheduleDate" name="TONextScheduleDate" placeholder="To" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group pull-left">
+                    <label>completed date</label>
+                    <div class="calander_cotanet">
+                        <div class=" col-xs-6  border_right padL0">
+                            <input type="text" id ="txt_comp_date_start" class="from1 FromCompletionDate" name="FromCompletionDate" placeholder="From" readonly>
+                        </div>
+                        <div class=" col-xs-6 ">
+                            <input type="text" id ="txt_comp_date_end" class="to1 ToCompletionDate" name="ToCompletionDate" placeholder="To" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class=" clearfix">
+                    <input type="button" class="search_btn" value="Search"  onclick="clickhere_by_search();">
+                </div>
+            </div>
+        </div>
+        <div class="container_content">
+            <div class="inner_content_contaner">
+                <div class="header_bodyarea">
+                    <ul class="filter_bodyarea clearfix">
+                        <li class="{% if ReqStatus == 'Completed' %}active_tabs{% endif %} completed" id="licomplte">
+                            <a>
+                                <input    type="button" value="Completed" onclick="clickhere('Completed');">
+                            </a>
+                        </li>
+                        <li class="{% if ReqStatus == 'InQueue' %}active_tabs{% endif %} in_queue" id="liqueu">
+                            <a>
+                                <input type="button" value="InQueue" onclick="clickhere('InQueue');">
+                            </a>
+                        </li>
+                        <li class="{% if ReqStatus == 'Running' %}active_tabs{% endif %} running" id="lirun">
+                            <a>
+                                <input type="button" value="Running" onclick="clickhere('Running');">
+                            </a>
+                        </li>
+                        <li class="{% if ReqStatus == 'Scheduled' %}active_tabs{% endif %} not_started" id="linotstarted">
+                            <a>
+                                <input type="button" value="Scheduled" onclick="clickhere('Scheduled');">
+                            </a>
+                        </li>
+                        <li class="{% if ReqStatus == 'Non-Scheduled' %}active_tabs{% endif %} not_scheduled" id="linotscheduled">
+                            <a>
+                                <input type="button" value="Non-Scheduled" onclick="clickhere('non scheduled');">
+                            </a>
+                        </li>
+                        <li class="{% if ReqStatus == 'Today' %}active_tabs{% endif %} today" id="litoday">
+                            <a>
+                                <input type="button" value="Today" onclick="clickhere('Today');">
+                            </a>
+                        </li>
+                        <li class="All_text active_tabs" id="liall">
+                            <a>
+                                <input type="button" value="All" id="btnall" onclick="clickhere('All');">
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="javascript:void(0)" class="refresh_page"  style="visibility:hidden;" onclick="auto_refresh()"> Refresh </a>
+                    <input type="hidden" name="ReqStatus" id="ReqStatus" value="">
+                    <input type="hidden" name="fn_chk" id="fn_chk" value="">
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="col-md-12">
+                    <div class=" table-responsive" style="position: relative; top:20px;   ">
+
+                        <table id="request_mgmt" class="display nowrap custom_table" cellspacing="0" width="100%">
+                            <thead>
+                                <tr class="row_contaner">
+                                    <th rowspan="2" style="display: none">RequestRunId</th>
+
+                                    <th rowspan="2">request
+                                        <br> Number
+                                    </th>
+                                    <th rowspan="2" style="display: none">request
+                                        <br> number
+                                    </th>
+                                    <th rowspan="2">request
+                                        <br> title
+                                    </th>
+                                   
+                                    <th rowspan="2">frequency</th>
+                                    <th rowspan="2">Next
+                                        <br>Schedule Date</th>
+                                   <th rowspan="2">initiated
+                                        <br> date
+                                    </th> 
+                                    <th rowspan="2">completed Date</th>
+                                   
+                                    <th colspan="5" style="text-align: center; border-bottom: 1px solid #ccc;" valign="top">
+                                        stats
+                                    </th>
+
+                                    <th rowspan="2">Status</th>
+                                    <th rowspan="2">Reporting</th>
+                                    <th rowspan="2">Action</th>
+                                </tr>
+                                <tr class="small_fonts">
+                                    <th>OR</th>
+                                    <th>TR</th>
+                                    <th>DONE</th>
+                                    <th>PNF</th>
+                                    <th>PS Fail</th>
+                                </tr>
+                            </thead>
+                            <tbody  id ="tbl_tbody">
+                                
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <div class="modal fade custom_modal" id="myModal" role="dialog">
+
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body custom_request">
+                    <div class="col-md-12">
+                        <div class="header_popup">
+                            <h4 class="">
+                                <strong>Request Number:
+                                    <span id="spn_req_id"></span>
+                                </strong>
+                                <strong>Request Name:
+                                    <span id="spn_req_name"></span>
+                                </strong>
+                            </h4>
+
+
+                            <button type="button" class="close" data-dismiss="modal">
+                                <img src="{% static 'retail/images/close_pop.png' %}" alt="">
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="table-responsive custom_responsive_table">
+                                <!--<table cellpadding="0" cellspacing="0" border="0" class="dataTable custom_table display nowrap" id="example">-->
+                                <table id="popup_table" class="display nowrap custom_table" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr class="row_contaner">
+                                            <th width="15%">Competitor Name</th>
+                                            <th width="15%">Country</th>
+                                            <th width="15%">City</th>
+                                            <th width="15%">POS</th>
+                                            <th width="15%">Check in Date</th>
+                                            <th width="15%">Nights</th>
+                                            <th width="15%">Adult</th>
+                                            <th width="15%">Child</th>
+                                            <th width="15%">Hotel Name</th>
+                                            <th width="15%">Status</th>
+                                            <th width="15%">Action</th>
+                                            <th width="15%"> </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbpdy_modelBody">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" id="div_2" style="display: none;">
+                            <div class="table-responsive custom_responsive_table">
+                                <!--<table cellpadding="0" cellspacing="0" border="0" class="dataTable custom_table display nowrap" id="example">-->
+                                <table id="popup_table_2" class="display nowrap custom_table" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr class="row_contaner">
+                                            <th width="15%">Hotel Name</th>
+                                            <th width="15%">Star</th>
+                                            <th width="15%">Room Type</th>
+                                            <th width="15%">Board Type</th>
+                                            <th width="15%">Price</th>
+                                            <th width="15%">Currency</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbpdy_modelBody_2">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="hdn_req_id">
+    </div>
+
+
+{% endblock %} {% block footer %} 
+
+
+<script>
+    File_download_excel_req_man = "{% url 'File_download_excel_req_man' %}"
+    Pnf_Recrwal = "{% url 'Pnf_Recrwal' %}"
+    Bind_modal = "{% url 'Bind_modal' %}"
+    Bind_Second_modal = "{% url 'Bind_Second_modal' %}"
+    File_download_excel_req_man_mongo  = "{% url 'File_download_excel_req_man_mongo' %}"
+    Sub_Recrwal = "{% url 'Sub_Recrwal' %}"
+    Recrwal = "{% url 'Recrwal' %}"
+    
+</script>
+<script src="{% static 'hotel/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'hotel/js/app/crawlerops.js' %}"></script>
+<script src="{% static 'hotel/js/app/request_management.js' %}"></script>
+<script type="text/javascript">
+
+    function edit_request_redirect(id) {
+        var requestId = id;
+
+        $.ajax({
+            url: "{% url 'hotel_request_management_edit_request_router' %}",
+            type: 'POST',
+            data: {
+                'req_id': requestId
+            },
+            success: function (data) {
+                window.location.href = data.url + requestId
+            },
+            error: function (error) {
+
+                alert('error:' + error);
+            }
+
+
+        });
+    }
+
+    function clickme(i) {
+
+        var runId = $('#spregenrate' + i).parent().siblings(':first').text();
+        var userid = 1;
+
+        $.ajax({
+            url: 'http://38.76.27.230/site3/api/v1/StartReport',
+            type: 'GET',
+            data: {
+                'requestRunId': runId,
+                'userId': userid,
+            },
+            success: function (data) {
+
+                alert("Report Generated Successfully");
+            },
+            error: function () {
+
+                alert('error');
+            }
+
+
+        });
+
+    }
+    function Download_file_by_mongo(req_run_id, req_id)
+    {
+        var model = { req_run_id: req_run_id, req_id: req_id };
+        $.ajax({
+            url: File_download_excel_req_man_mongo,
+            type: 'POST',
+            data: model,
+            dataType: 'json',
+            beforeSend: function(){
+                  $('.loader_div').show();
+                },
+
+            success: function (data) {
+                if (data.count > 0) {
+                    window.location.href = data.Path;
+                }
+                else
+                {
+                    alert("No record found !!!!")
+                }
+            },
+
+ complete:function(data){
+                    $('.loader_div').hide();
+              },
+
+
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+    }
+    function Download_file(req_run_id, req_id) {
+
+        var model = { req_run_id: req_run_id, req_id: req_id };
+        $.ajax({
+            url: File_download_excel_req_man,
+            type: 'POST',
+            data: model,
+            dataType: 'json',
+            beforeSend: function(){
+                  $('.loader_div').show();
+                },
+            success: function (data) {
+                if (data.count > 0) {
+                    window.location.href = data.Path;
+                }
+                else
+                {
+                    alert("No record found !!!!")
+                }
+            },
+            complete:function(data){
+                    $('.loader_div').hide();
+              },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+    }
+
+    function Download_psfail_file(field_id, field_type) {
+
+        var model = { field_id: field_id, field_type: field_type };
+        $.ajax({
+            url: "{% url 'download_psfail_excel' %}",
+            type: 'POST',
+            data: model,
+            dataType: 'json',
+            beforeSend: function(){
+                  $('.loader_div').show();
+                },
+            success: function (data) {
+                if (data.path != '') {
+                    window.location.href = data.path;
+                }
+                else
+                {
+                    alert(data.msg)
+                }
+            },
+            complete:function(data){
+                    $('.loader_div').hide();
+              },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+    }
+
+    function Download_pnf_file(field_id, field_type) {
+
+        var model = { field_id: field_id, field_type: field_type };
+        $.ajax({
+            url: "{% url 'download_pnf_excel' %}",
+            type: 'POST',
+            data: model,
+            dataType: 'json',
+            beforeSend: function(){
+                  $('.loader_div').show();
+                },
+            success: function (data) {
+                if (data.path != '') {
+                    window.location.href = data.path;
+                }
+                else
+                {
+                    alert(data.msg)
+                }
+            },
+            complete:function(data){
+                    $('.loader_div').hide();
+              },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+    }
+
+    function geturl(req_runid, req_id, req_name, status) {
+        window.location.href ="/request-management/popup/?req_runid="+req_runid+"&req_id="+req_id+"&req_name="+req_name+"&status="+status+"";
+    }
+
+    function Set_Data_sel_grid(data, req_runid, req_id, status) {
+        var table = $("#popup_table").dataTable();
+        table.fnClearTable();
+        table.fnDraw();
+        table.fnDestroy();
+        var trHTML = '';
+        var css = 'reparse_job action_items active_visible';
+        if (status.toLowerCase() == "completed") {
+            css = 'reparse_job action_items';
+        }
+        var css_reparse = 'recrawl_job action_items active_visible';
+        if (status.toLowerCase() == "completed") {
+            css_reparse = 'recrawl_job action_items';
+        }
+        $.each(data, function (i, item) {
+
+            trHTML += '<tr class="row_contaner" id="' + item[0] + '">' +
+                '  <td width="15%">' + item[1] + '</td>' +
+                '  <td width="15%">' + item[2] + '</td>' +
+                '  <td width="15%">' + item[3] + '</td>' +
+                '  <td width="15%">' + item[4] + '</td>' +
+                '  <td width="15%">' + item[5] + '</td>' +
+                '  <td width="15%">' + item[6] + '</td>' +
+                '  <td width="15%">' + item[7] + '</td>' +
+                '  <td width="15%">' + item[8] + '</td>' +
+                '  <td width="15%">' + item[9] + '</td>' +
+                '  <td width="15%">' + item[10] + '</td>' +
+                '  <td width="15%"> <div class="action_items_contaner" style="display:inline-block; width:75px!important;"> <span class="' + css + '"   data-toggle="tooltip" title="Reparse" onclick="ClickReparse_by_popup(' + req_runid + ', ' + item[0] + ')"></span> <span  class="' + css_reparse + '" data-toggle="tooltip" title="Recrawl" onclick="Fn_Recrawl_by_popup(' + item[0] + ')"></span></div>   </td>' +
+                '  <td width="15%"><a href="javascript:void(0)" id ="a_' + item[0] + '"  onclick ="view_data(' + item[0] + ')" >View Data</a></td>' +
+                '  </tr>'
+        });
+        $('#tbpdy_modelBody').append(trHTML);
+        $('#popup_table').dataTable({
+            "sPaginationType": "full_numbers",
+            "bFilter": true,
+            "bLengthChange": false,
+            "bInfo": false,
+            "bPaginate": true,
+            paging: true,
+        });
+    }
+
+    function PNFRecrawl(req_id, req_run_id) {
+        if (confirm('Do you want to pnf recrawl req id ='+req_id+'  ?')) {
+            var model = { id: req_run_id };
+            $.ajax({
+                url: Pnf_Recrwal,
+                type: 'POST',
+                data: model,
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Req_man);
+                    window.location.href = window.location.href;
+                },
+                error: function (xhr, errorType, exception) {
+                    alert(exception)
+                }
+            });
+        }
+    }
+
+    function Fn_Recrawl(requId, req_run_id) {
+        if (confirm('Do you want to recrawl   req id = ' + requId + '?')) {
+            alert('recrawl for req id =' + requId + ' and req run id =' + req_run_id);
+            var model = {requId :requId, req_run_id: req_run_id };
+            $.ajax({
+                url: Recrwal,
+                type: 'POST',
+                data: model,
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Req_man);
+                    window.location.href = window.location.href;
+                },
+                error: function (xhr, errorType, exception) {
+                    alert(exception)
+                }
+            });
+        }
+    }
+
+    function Fn_Recrawl_by_popup(sub_id) {
+
+            if (confirm('Do you want to recrawl  req id = ' + sub_id + '?')) {
+                if ($('#hdn_req_id').val() != undefined && $('#hdn_req_id').val() != '') {
+                    alert('recrawl  for req id =' + $('#spn_req_id').text().trim() + ' and req run id =' + $('#hdn_req_id').val() + ' and sub id =' + sub_id);
+                    var model = { requId:  $('#spn_req_id').text().trim(), req_run_id: $('#hdn_req_id').val() ,sub_id:sub_id };
+                    $.ajax({
+                        url: Sub_Recrwal,
+                        type: 'POST',
+                        data: model,
+                        dataType: 'json',
+                        success: function (data) {
+                            alert(data.Req_man);
+                            window.location.href = window.location.href;
+                        },
+                        error: function (xhr, errorType, exception) {
+                            alert(exception)
+                        }
+                    });
+                }
+            }
+        }
+
+
+    function ClickReparse(requId, req_run_id) {
+
+            if (confirm('Do you want to reparse  req id = '+requId+'?')) {
+                // alert('reparse for req id =' + requId + ' and req run id =' + req_run_id);
+                reparse_request(req_run_id)
+            }
+        }
+
+    function ClickReparse_by_popup(req_run_id, sub_id) {
+
+            if (confirm('Do you want to reparse  req id = ' + sub_id + '?')) {
+                if ($('#hdn_req_id').val() != undefined && $('#hdn_req_id').val() != '') {
+                    // alert('reparsed  for req id =' + $('#spn_req_id').text().trim() + ' and req run id =' + $('#hdn_req_id').val() + ' and sub id =' + sub_id);
+                    reparse_sub_request(req_run_id, sub_id);
+                }
+            }
+        }
+    
+        function ref_btn_clk() {
+                var item = $('li.active_tabs a input');
+                if (item[0] != undefined) {
+                    item[0].click();
+                }
+                else {
+                    $('#btnall').click();
+                }
+            }
+
+    function ClickPause(requId, req_run_id) {
+            if (confirm('Do you want to pause  req id = ' + requId + '?')) {
+                // alert('pause for req id =' + requId + ' and req run id =' + req_run_id);
+                pause_request(req_run_id);
+            }
+        }
+
+    function Clickstop(requId, req_run_id) {
+        if (confirm('Do you want to Stop  req id = ' + requId + '?')) {
+            // alert('Stopped for req id =' + requId + ' and req run id =' + req_run_id);
+            stop_request(req_run_id);
+        }
+    }
+
+
+    function ClickResume(reqId, req_run_id) {
+            if (confirm('Do you want to Resume  req id = ' + reqId + '?')) {
+                // alert('Resume for req id =' + reqId + ' and req run id =' + req_run_id);
+                resume_request(req_run_id);
+            }
+
+        }
+
+    function view_data(id) {
+        if ($('#hdn_req_id').val() != undefined && $('#hdn_req_id').val() != '') {
+            var model = { id: id, sec_id: $('#hdn_req_id').val() };
+            $.ajax({
+                url: Bind_Second_modal,
+                type: 'POST',
+                data: model,
+                dataType: 'json',
+                success: function (data) {
+                    $('#div_2').show();
+                    Set_Data_sel_grid_2(data.Req_man);
+                },
+                error: function (xhr, errorType, exception) {
+                    alert(exception)
+                }
+            });
+        }
+        else {
+            alert("Error on server !!!");
+        }
+    }
+
+    function Set_Data_sel_grid_2(data) {
+        var table = $("#popup_table_2").dataTable();
+        table.fnClearTable();
+        table.fnDraw();
+        table.fnDestroy();
+        var trHTML = '';
+        $.each(data, function (i, item) {
+            trHTML += '<tr class="row_contaner">' +
+                '  <td width="15%">' + item[0] + '</td>' +
+                '  <td width="15%">' + item[1] + '</td>' +
+                '  <td width="15%">' + item[2] + '</td>' +
+                '  <td width="15%">' + item[3] + '</td>' +
+                '  <td width="15%">' + item[4] + '</td>' +
+                '  <td width="15%">' + item[5] + '</td>' +
+                '  </tr>'
+        });
+        $('#tbpdy_modelBody_2').append(trHTML);
+        $('#popup_table_2').dataTable({
+            "sPaginationType": "full_numbers",
+            "bFilter": true,
+            "bLengthChange": false,
+            "bInfo": false,
+            "bPaginate": true,
+            paging: true,
+        });
+    }
+
+    function Resetall() {
+        $('input[type=text]').val('');
+        $("[name='fromCreateDate']").val('')
+    }
+
+    function validate(evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+        var regex = /[0-9]|\./;
+        if (!regex.test(key)) {
+            alert('Request Number should be Numeric')
+            theEvent.returnValue = false;
+            if (theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+    
+    function auto_refresh()
+    {
+       var status = $('li.active_tabs a input')[0].value.trim();
+       status = status.replace('-',' ');  
+       var page_no = $($('.paginate_active')).text().trim();
+       var txt_search_text = $('#request_mgmt_filter').find('input').val().trim();
+       clickhere_by_auto_ref(status,page_no,txt_search_text);
+    }
+	
+	window.setInterval(function () {
+    auto_refresh();
+    }, 100000);
+
+
+	function clickhere_by_auto_ref(status,page_no,txt_search_text ) {
+        $.ajax({
+                url: "{% url 'fetch_request' %}",
+                type: "GET",
+                contentType: false,
+                success: function (data) {
+                   var data_after_filter = Common_filter (data.reqList.datalist);
+                   var list = common_search_by_click(status,data_after_filter );
+                   Bind_grid_main(list);
+                   if (txt_search_text!= null   && txt_search_text.trim()!='' )
+                   {
+                     $('#request_mgmt_filter').find('input').val(txt_search_text);
+                     $('#request_mgmt_filter').find('input').keyup();
+                   }
+                   if (page_no!= null)
+                   {
+			           $($('.paginate_button')[page_no]).click();
+                   }
+                },
+               
+                error: function (xhr, errorType, exception) {
+                  alert(exception)
+                }
+              });
+    }
+
+	
+	
+
+    function clickhere(status) {
+       
+        var txt_search_text = $('#request_mgmt_filter').find('input').val().trim();
+        $.ajax({
+                url: "{% url 'fetch_request' %}",
+                type: "GET",
+                contentType: false,
+                beforeSend: function(){
+                  $('.loader_div').show();
+                },
+                success: function (data) {
+                  
+                   var data_after_filter = Common_filter (data.reqList.datalist);
+                   var list = common_search_by_click(status,data_after_filter );
+                   Bind_grid_main(list);
+                   if (txt_search_text!= null   && txt_search_text.trim()!='' )
+                   {
+                     $('#request_mgmt_filter').find('input').val(txt_search_text);
+                     $('#request_mgmt_filter').find('input').keyup();
+                   }
+                },
+                complete:function(data){
+                    $('.loader_div').hide();
+              },
+                error: function (xhr, errorType, exception) {
+                  alert(exception)
+                }
+              });
+    }
+
+    function common_search_by_click(status , data)
+    {
+                if (status.toLowerCase()== 'all')
+                   {
+                      return data;
+                   }
+                   else if (status.toLowerCase()== 'today')
+                   {
+                    var list = $.grep(data, function( n, i ) {
+                                       return     (  n.CreatedDatetime!= null && Date_convert(n.CreatedDatetime).toDateString()==new Date().toDateString()   )
+									       || 
+										    (  n.sch_date!= null && Date_convert(n.sch_date).toDateString()==new Date().toDateString()   )
+										    ||
+										    (  n.EndDateTime!= null && Date_convert(n.EndDateTime).toDateString()==new Date().toDateString()   )
+										    ||
+										    (  n.StartedDatetime!= null && Date_convert(n.StartedDatetime).toDateString()==new Date().toDateString()   )
+                                    });
+                       return list;
+                   } if (status.toLowerCase()== 'running'){
+                         var list1 = $.grep( data, function( n, i ) {
+                                         return n.Status.toLowerCase()=='running';
+                                    });
+                         var list2 = $.grep( data, function( n, i ) {
+                                         return n.Status.toLowerCase()=='reparse running';
+                                    });
+                         var list = $.merge(list1, list2);
+                         return list;
+                   }
+
+                   else
+                   {
+                         var list = $.grep( data, function( n, i ) {
+                                         return n.Status.toLowerCase()==status.toLowerCase();
+                                    });
+                         return list;
+                   }
+    }
+
+    function Date_convert(str)
+    {
+        var date_string_arr = str.split(',');
+        var date_string = str;
+        if (date_string_arr.length>2)
+        {
+           date_string= str.replace(date_string_arr[2],'');
+        }
+        var dt = new Date(date_string);
+        return dt;
+    }
+
+    function  Common_filter(data)
+    {
+        var req_number = $('#reqnumber').val().trim();
+        var req_title = $('#RequestDesc').val().trim();
+        var cre_date_start = $('#txt_cre_date_start').val().trim();
+        var cre_date_end = $('#txt_cre_date_end').val().trim();
+        var sch_date_start = $('#txt_sch_date_start').val().trim();
+        var sch_date_end = $('#txt_sch_date_end').val().trim();
+        var comp_date_start = $('#txt_comp_date_start').val().trim();
+        var comp_date_end = $('#txt_comp_date_end').val().trim();
+        var list = $.grep( data, function( n, i ) {
+                                            return  (
+                                                (req_number !='' ?  (n.RequestId==req_number): (n.RequestId==n.RequestId))
+                                                 && 
+                                                 (req_title !='' ?  (n.RequestTitle==req_title): (n.RequestTitle==n.RequestTitle))
+                                                 &&
+                                                 ( (cre_date_start !='' && cre_date_end !='') ?  (   (n.CreatedDatetime !=null )   && (  Date_convert(n.CreatedDatetime) >= Date_convert(cre_date_start) && Date_convert(n.CreatedDatetime) <= Date_convert(cre_date_end))    ): (n.CreatedDatetime==n.CreatedDatetime))
+                                                 && 
+                                                 ( (sch_date_start !='' && sch_date_end !='') ?  (   (n.sch_date !=null )   && ( Date_convert(n.sch_date) >= Date_convert(sch_date_start) && Date_convert(n.sch_date) <= Date_convert(sch_date_end))    ): (n.sch_date==n.sch_date))
+
+                                                 && 
+                                                 ( (comp_date_start !='' && comp_date_end !='') ?  (   (n.EndDateTime !=null )   && ( Date_convert(n.EndDateTime) >= Date_convert(comp_date_start) && Date_convert(n.EndDateTime) <= Date_convert(comp_date_end))    ): (n.EndDateTime==n.EndDateTime))
+
+                                                 );
+                                       });
+
+                                       return list;
+
+    }
+
+    function  Common_filter_dashboard(data, fromDate, toDate)
+    {
+
+        var list = $.grep( data, function( n, i ) {
+                                            return  (
+                                                ((fromDate !='' && toDate !='') ?  (   (n.CreatedDatetime !=null )   && (  Date_convert(n.CreatedDatetime) >= Date_convert(fromDate) && Date_convert(n.CreatedDatetime) <= Date_convert(toDate))    ): (n.CreatedDatetime==n.CreatedDatetime))
+                                                 ||
+                                                 ( (fromDate !='' && toDate !='') ?  (   (n.sch_date !=null )   && ( Date_convert(n.sch_date) >= Date_convert(fromDate) && Date_convert(n.sch_date) <= Date_convert(toDate))    ): (n.sch_date==n.sch_date))
+                                                 ||
+                                                 ( (fromDate !='' && toDate !='') ?  (   (n.StartedDatetime !=null )   && ( Date_convert(n.StartedDatetime) >= Date_convert(fromDate) && Date_convert(n.StartedDatetime) <= Date_convert(toDate))    ): (n.StartedDatetime==n.StartedDatetime))
+                                                 ||
+                                                 ( (fromDate !='' && toDate !='') ?  (   (n.EndDateTime !=null )   && ( Date_convert(n.EndDateTime) >= Date_convert(fromDate) && Date_convert(n.EndDateTime) <= Date_convert(toDate))    ): (n.EndDateTime==n.EndDateTime))
+
+                                                 );
+                                       });
+
+                                       return list;
+
+    }
+
+    function clickhere_by_search() {
+            var txt_search_text = $('#request_mgmt_filter').find('input').val().trim();
+            $.ajax({
+                url: "{% url 'fetch_request' %}",
+                type: "GET",
+                contentType: false,
+                beforeSend: function () {
+                    $('.loader_div').show();
+                },
+                success: function (data) {
+                    var status = $('li.active_tabs a input')[0].value.trim();
+                    status = status.replace('-', ' ');
+                    var data_after_filter = Common_filter(data.reqList.datalist);
+                    var list = common_search_by_click(status, data_after_filter);
+                    // var list = Common_filter(data.reqList.datalist);
+                    Bind_grid_main(list);
+                    if (txt_search_text != null && txt_search_text.trim() != '') {
+                        $('#request_mgmt_filter').find('input').val(txt_search_text);
+                        $('#request_mgmt_filter').find('input').keyup();
+                    }
+                },
+                complete: function (data) {
+                    $('.loader_div').hide();
+                },
+                error: function (xhr, errorType, exception) {
+                    alert(exception)
+                }
+            });
+
+        }
+
+    function get_dashboard_data(status, fromDate, toDate) {
+            $.ajax({
+                url: "{% url 'fetch_request' %}",
+                type: "GET",
+                contentType: false,
+                beforeSend: function () {
+                    $('.loader_div').show();
+                },
+                success: function (data) {
+                    status = status.replace('-', ' ');
+                    var data_after_filter = Common_filter_dashboard(data.reqList.datalist, fromDate, toDate);
+                    var list = common_search_by_click(status, data_after_filter);
+                    // var list = Common_filter(data.reqList.datalist);
+                    Bind_grid_main(list);
+                    <!--if (txt_search_text != null && txt_search_text.trim() != '') {-->
+                        <!--$('#request_mgmt_filter').find('input').val(txt_search_text);-->
+                        <!--$('#request_mgmt_filter').find('input').keyup();-->
+                    <!--}-->
+                },
+                complete: function (data) {
+                    $('.loader_div').hide();
+                },
+                error: function (xhr, errorType, exception) {
+                    alert(exception)
+                }
+            });
+
+        }
+
+    function clickhere_1(status) {
+        window.location.href = window.location.href;
+    }
+
+    $(document).ready(function () {
+
+        Bind_data_on_page_load();
+    
+        $(".filter_bodyarea li").click(function () {
+          $('.filter_bodyarea li').removeClass('active_tabs');
+          $(this).addClass('active_tabs');
+        
+        });
+    
+        $(".action_items_contaner span").click(function () {
+          $(this).addClass('active_visible');
+        });
+    
+        
+    
+        $('#request_mgmt').on('draw.dt', function () {
+          $(".filter_bodyarea li").click(function () {
+            $('.filter_bodyarea li').removeClass('active_tabs');
+            $(this).addClass('active_tabs');
+          });
+    
+          $(".action_items_contaner span").click(function () {
+            $(this).addClass('active_visible');
+          });
+    
+           $(".action_items_contaner1").hover(function () {
+    
+            $('.action_items_contane557r1').toggleClass("active");
+           
+         });
+        });
+      });
+
+    $(function () {
+        var dateFormat = "mm/dd/yy",
+
+            from = $(".from1")
+                .datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    // minDate: '0',
+                    endDate: "today",
+                    maxDate: '0',
+                    numberOfMonths: 1
+                })
+                .on("change", function () {
+                    to.datepicker("option", "minDate", getDate(this));
+                }),
+            to = $(".to1").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                //	minDate: '0',
+                endDate: "today",
+                maxDate: '0',
+                numberOfMonths: 1
+            })
+                .on("change", function () {
+                    from.datepicker("option", "maxDate", getDate(this));
+                });
+
+
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate(dateFormat, element.value);
+            } catch (error) {
+                date = null;
+            }
+
+            return date;
+        }
+
+    });
+
+    $(function () {
+        var dateFormat = "mm/dd/yy",
+
+            from = $(".from2")
+                .datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    minDate: '0',
+                    endDate: "today",
+                    // maxDate: '0',
+                    numberOfMonths: 1
+                })
+                .on("change", function () {
+                    to.datepicker("option", "minDate", getDate(this));
+                }),
+            to = $(".to2").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                minDate: '0',
+                endDate: "today",
+                // maxDate: '0',
+                numberOfMonths: 1
+            })
+                .on("change", function () {
+                    from.datepicker("option", "maxDate", getDate(this));
+                });
+
+
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate(dateFormat, element.value);
+            } catch (error) {
+                date = null;
+            }
+
+            return date;
+        }
+
+    });
+
+    function getUrlVars()
+  {
+      var vars = [], hash;
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+      for(var i = 0; i < hashes.length; i++)
+      {
+          hash = hashes[i].split('=');
+          vars.push(hash[0]);
+          vars[hash[0]] = hash[1];
+      }
+      return vars;
+  }
+    function Bind_data_on_page_load() {
+
+            var curStatus = getUrlVars()["status"];
+            var FromCompletion = getUrlVars()["fromDate"]
+            var ToCompletion = getUrlVars()["toDate"];
+			
+			if ((typeof (curStatus) == 'undefined') || (typeof (FromCompletion) == 'undefined') || (typeof (ToCompletion) == 'undefined')) {
+			 $.ajax({
+                url: "{% url 'fetch_request' %}",
+                type: "GET",
+                contentType: false,
+                beforeSend: function(){
+                    $('.loader_div').show();
+                    },
+                   success: function (data) {
+
+                   
+                        Bind_grid_main(data.reqList.datalist);
+                   
+                    
+                },
+                complete:function(data){
+				$('.loader_div').hide();
+              },
+                error: function (xhr, errorType, exception) {
+                    alert(exception)
+                }
+            });
+			}
+			else{
+			
+			
+																		
+						$('.filter_bodyarea li').removeClass('active_tabs');
+						if (curStatus.toLowerCase()=='inqueue')
+						{
+							$('#liqueu').addClass('active_tabs');
+						}
+						else if (curStatus.toLowerCase()=='running')
+						{
+							$('#lirun').addClass('active_tabs');
+						}
+						else if (curStatus.toLowerCase()=='completed')
+						{
+							$('#licomplte').addClass('active_tabs');
+						}
+						else if (curStatus.toLowerCase()=='scheduled')
+						{
+							$('#linotstarted').addClass('active_tabs');
+						}
+						else{
+							$('#liall').addClass('active_tabs');
+						}
+						
+						if (curStatus !=''  && FromCompletion !='' && ToCompletion !=''  && curStatus.toLowerCase() !='scheduled')
+						{
+						    FromCompletion  = FromCompletion.replace('-','/').replace('-','/');
+							ToCompletion  = ToCompletion.replace('-','/').replace('-','/');
+							get_dashboard_data(curStatus, FromCompletion, ToCompletion)
+
+						    <!--$('#txt_cre_date_start').val (FromCompletion);-->
+						    <!--$('#txt_cre_date_end').val (ToCompletion);-->
+						}
+						else{
+						    clickhere_by_search();
+
+						    <!--FromCompletion  = FromCompletion.replace('-','/').replace('-','/');-->
+							<!--ToCompletion  =   ToCompletion.replace('-','/').replace('-','/');-->
+						 <!--$('#txt_sch_date_start').val (FromCompletion);-->
+						  <!--$('#txt_sch_date_end').val (ToCompletion);-->
+						}
+			
+			}
+			
+           
+
+
+        }
+      
+          
+    function Bind_grid_main(data) {
+             
+            var table = $("#request_mgmt").dataTable();
+            table.fnClearTable();
+            table.fnDraw();
+            table.fnDestroy();
+            var trHTML_grid = '';
+            var val_chk='';
+            $.each(data, function (i, item) {
+              
+              var  req_anchor  ="";
+              if (item.RequestRunId!=undefined  && item.RequestRunId!=null&& item.RequestRunId!='' )
+              {
+                req_anchor = '<a href="/request-management/popup/?req_runid='+item.RequestRunId+'&req_id='+item.RequestId+'&req_name='+item.RequestTitle +'&status='+item.Status+'" target="_blank">'+item.RequestId+'</a>'
+              }
+              else{
+                req_anchor = item.RequestId
+              }
+             
+
+              var div_Per ='';
+              if (item.Percent!= undefined  && item.Percent!=  null)
+              {
+                div_Per = item.Percent;
+              }
+              else{
+                div_Per =0;
+              }
+              var status_td='';
+              if(item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="completed")
+              {
+                status_td = '<td id="status" value="completed"><span class="compleated_percent green_bg">'+div_Per+'</span> <span class="green"> Completed</span></td>';
+              }
+              else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="running")
+              {
+                status_td ='<td id="status" value="running"><span class="compleated_percent blue_bg">'+ div_Per+'</span> <span class="blue"> '+ item.Status+'</span></td>';
+              }
+              else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="reparse running")
+              {
+                status_td ='<td id="status" value="reparse running"><span class="compleated_percent blue_bg">'+ div_Per+'</span> <span class="blue"> '+ item.Status+'</span></td>';
+              }
+              else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="inqueue")
+              {
+                status_td ='<td id="status" value="InQueue"><span class="compleated_percent yellow_bg">'+ div_Per+'</span> <span class="yellow"> '+ item.Status+'</span></td>';
+              }
+              else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="paused")
+              {
+                status_td ='<td id="status" value="Paused"><span class="compleated_percent yellow_bg">'+ div_Per+'</span> <span class="yellow">'+ item.Status+'</span></td>';
+              }
+              else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="hotel addition")
+              {
+                status_td ='<td id="status" value="Paused"><span class="compleated_percent yellow_bg">'+ div_Per+'</span> <span class="yellow">'+ item.Status+'</span></td>';
+              }
+              else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="stopped")
+              {
+                status_td ='<td id="status" value="Stop"><span class="compleated_percent red_bg">'+ div_Per+'</span> <span class="red"> Stopped </span></td>';
+              }
+              else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="scheduled")
+              {
+                status_td ='<td id="status" value="Stop"><span class="compleated_percent red_bg">'+div_Per+'</span> <span class="red"> Scheduled </span></td>';
+              }
+              else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="non scheduled")
+              {
+                status_td ='<td id="status" value="Stop"><span class="compleated_percent red_bg">'+ div_Per+'</span> <span class="red"> Non Scheduled </span></td>';
+              }
+              else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="hotel addition queued")
+              {
+                status_td ='<td id="status" value="Stop"><span class="compleated_percent yellow_bg">'+ div_Per+'</span> <span class="yellow"> Hotel Addition Queued </span></td>';
+              }else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="bcd insertion")
+              {
+                status_td ='<td id="status" value="Stop"><span class="compleated_percent yellow_bg">'+ div_Per+'</span> <span class="yellow"> BCD Insertion </span></td>';
+              }else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="bcd pending")
+              {
+                status_td ='<td id="status" value="Stop"><span class="compleated_percent yellow_bg">'+ div_Per+'</span> <span class="yellow"> BCD Pending </span></td>';
+              }
+              else{
+                status_td ='<td id="status" value="InQueue"><span class="compleated_percent yellow_bg">'+ div_Per+'</span> <span class="yellow">Unknown</span></td>';
+              }
+
+
+              var download_file_anchr ='';
+              if(item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="completed"  && item.RequestRunId!=undefined  &&  item.Completed!=undefined)
+              {
+                download_file_anchr = '<td id="downloadUrl"><a href="javascript:void(0);" onclick="Download_file('+item.RequestRunId+','+item.RequestId+')">Download</a>  </td>';
+              }
+              else  if(item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()!="completed"  && item.RequestRunId!=undefined)
+              {
+                download_file_anchr = ' <td id="downloadUrl"> <a href="javascript:void(0);" onclick="Download_file_by_mongo('+item.RequestRunId+','+item.RequestId+')">Download </a>  </td>'
+              }
+              else{
+                download_file_anchr ='<td id="downloadUrl"> NA</td>'
+              }
+
+
+              var span_div ='';
+              if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="paused")
+              {
+                span_div ='<span class="Start_job action_items" data-toggle="tooltip" title="resume" onclick="ClickResume(' + item.RequestId +',' + item.RequestRunId+')"></span><span class="Pause_job action_items active_visible" data-toggle="tooltip" title="Pause" onclick="ClickPause(' + item.RequestId +',' + item.RequestRunId+')"></span> <span class="reparse_job action_items active_visible" data-toggle="tooltip" title="Reparse" onclick="ClickReparse(' + item.RequestId +',' + item.RequestRunId+')"></span> <span class="re_pnf_crawl action_items active_visible" data-toggle="tooltip" title="RePNFcrawl" onclick="PNFRecrawl(' + item.RequestId +',' + item.RequestRunId+')"></span> <span class="recrawl_job action_items active_visible" data-toggle="tooltip" title="Recrawl" onclick="Fn_Recrawl(' + item.RequestId +',' + item.RequestRunId+')"></span> <span class="stop_job action_items" data-toggle="tooltip" title="Stop" onclick="Clickstop(' + item.RequestId +',' + item.RequestRunId+')"></span><span class="edit_job action_items" data-toggle="tooltip" title="EditReq" onclick="edit_request_redirect('+ item.RequestId+')"></span>';
+              }
+              
+             else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="running")
+              {
+                span_div ='<span class="Start_job action_items active_visible" data-toggle="tooltip" title="resume" onclick="ClickResume('+item.RequestId +','+item.RequestRunId+')"></span> <span class="Pause_job action_items" data-toggle="tooltip" title="Pause" onclick="ClickPause('+ item.RequestId +','+item.RequestRunId+')"></span><span class="reparse_job action_items active_visible" data-toggle="tooltip" title="Reparse" onclick="ClickReparse('+ item.RequestId +','+item.RequestRunId+')"></span> <span class="re_pnf_crawl action_items active_visible" data-toggle="tooltip" title="RePNFcrawl" onclick="PNFRecrawl('+ item.RequestId +','+item.RequestRunId+')"> </span>  <span class="recrawl_job action_items active_visible" data-toggle="tooltip" title="Recrawl" onclick="Fn_Recrawl('+ item.RequestId +','+item.RequestRunId+')"></span> <span class="stop_job action_items" data-toggle="tooltip" title="Stop" onclick="Clickstop('+ item.RequestId +','+item.RequestRunId+')"></span> <span class="edit_job action_items active_visible" data-toggle="tooltip" title="EditReq" onclick="edit_request_redirect('+ item.RequestId +')"></span>';
+              }
+
+              else if (item.Status!=undefined && item.Status!=  null && item.Status.toString().toLowerCase()=="completed")
+              {
+                span_div =' <span class="Start_job action_items active_visible" data-toggle="tooltip" title="resume" onclick="ClickResume('+ item.RequestId +','+item.RequestRunId+')"></span> <span class="Pause_job action_items active_visible" data-toggle="tooltip" title="Pause" onclick="ClickPause('+ item.RequestId +','+item.RequestRunId+')"></span> <span class="reparse_job action_items" data-toggle="tooltip" title="Reparse" onclick="ClickReparse('+ item.RequestId +','+item.RequestRunId+')"></span>';
+                var pnf_div ='';
+                 if (item.PNF!=undefined && item.PNF!=  null && item.PNF >0)
+                 {
+                    pnf_div = '<span class="re_pnf_crawl action_items" data-toggle="tooltip" title="RePNFcrawl" onclick="PNFRecrawl('+ item.RequestId +','+item.RequestRunId+')"> </span>';
+                 }
+                 else{
+                    pnf_div ='<span class="re_pnf_crawl action_items active_visible" data-toggle="tooltip" title="RePNFcrawl" onclick="PNFRecrawl('+ item.RequestId +','+item.RequestRunId+')"></span>'
+                 }
+                 span_div =span_div+pnf_div;
+                 span_div = span_div +'<span class="recrawl_job action_items" data-toggle="tooltip" title="Recrawl" onclick="Fn_Recrawl('+ item.RequestId +','+item.RequestRunId+')"></span><span class="stop_job action_items active_visible" data-toggle="tooltip" title="Stop" onclick="Clickstop('+ item.RequestId +','+item.RequestRunId+')"></span> <span class="edit_job action_items" data-toggle="tooltip" title="EditReq" onclick="edit_request_redirect('+ item.RequestId +')"></span>';
+              }
+
+              else{
+
+                  span_div ='  <span class="Start_job action_items active_visible" data-toggle="tooltip" title="resume" onclick="ClickResume('+ item.RequestId +','+item.RequestRunId+')"></span><span class="Pause_job action_items active_visible" data-toggle="tooltip" title="Pause" onclick="ClickPause('+ item.RequestId +','+item.RequestRunId+')"></span> <span class="reparse_job action_items active_visible" data-toggle="tooltip" title="Reparse" onclick="ClickReparse('+ item.RequestId +','+item.RequestRunId+')"></span> <span class="re_pnf_crawl action_items active_visible" data-toggle="tooltip" title="RePNFcrawl" onclick="PNFRecrawl('+ item.RequestId +','+item.RequestRunId+')"> </span> <span class="recrawl_job action_items active_visible" data-toggle="tooltip" title="Recrawl" onclick="Fn_Recrawl('+ item.RequestId +','+item.RequestRunId+')"></span><span class="stop_job action_items active_visible" data-toggle="tooltip" title="Stop" onclick="Clickstop('+ item.RequestId +','+item.RequestRunId+')"></span>'
+                  var div_htl ='';
+                  if (item.Status!=undefined && item.Status!=  null && item.Status.toLowerCase()=='hotel addition')
+                  {
+                    div_htl= ' <span class="edit_job action_items active_visible" data-toggle="tooltip" title="EditReq" onclick="edit_request_redirect('+ item.RequestId +')"></span>';
+                  }
+                  else{
+                    div_htl='<span class="edit_job action_items" data-toggle="tooltip" title="EditReq" onclick="edit_request_redirect('+ item.RequestId +')"></span>';
+                  }
+                  span_div =span_div+div_htl;
+                 
+              }
+              var  div_tr = '';
+              if (item.TR!=undefined && item.TR!=  null )
+              {
+                div_tr = item.TR;
+              }
+              else{
+                div_tr ='0';
+              }
+              var  div_OR = '';
+              if (item.OR!=undefined && item.OR!=  null )
+              {
+                div_OR = item.OR;
+              }
+              else{
+                div_OR ='0';
+              }
+              var  div_Completed = '';
+              if (item.Completed!=undefined  && item.Completed!=  null)
+              {
+                div_Completed = item.Completed;
+              }
+              else{
+                div_Completed ='0';
+              }
+              var  div_PNF = '';
+              if (item.PNF!=undefined && item.PNF!=  null )
+              { 
+                if (item.PNF != 0 || item.PNF !='0'){
+                    div_PNF = '<a href="javascript:void(0);" onclick="Download_pnf_file('+item.RequestRunId+','+'1'+')">'+item.PNF+'</a>';
+                }else{
+                    div_PNF ='0';
+                }
+              }
+              else{
+                div_PNF ='0';
+              }
+              var  div_PSFailcount = '';
+              if (item.PSFailcount!=undefined  && item.PSFailcount!=  null)
+              {
+                if (item.PSFailcount != 0 || item.PSFailcount !='0'){
+                    div_PSFailcount = '<a href="javascript:void(0);" onclick="Download_psfail_file('+item.RequestRunId+','+'1'+')">'+item.PSFailcount+'</a>';
+                }else{
+                    div_PSFailcount ='0';
+                }
+              }
+              else{
+                div_PSFailcount ='0';
+              }
+			  
+			  var in_date = '';
+			  if (item.StartedDatetime == null  ||item.StartedDatetime == undefined )
+			  {
+			  in_date = '';
+			  }
+			  else{
+			   in_date = item.StartedDatetime;
+			  }
+			  
+			   var com_date = '';
+			  if (item.EndDateTime == null  ||item.EndDateTime == undefined )
+			  {
+			  com_date = '';
+			  }
+			  else{
+			   com_date = item.EndDateTime;
+			  }
+			  
+               
+                trHTML_grid += '<tr  class="row_contaner"  id="trid_' + item.RequestId + '">' +
+                '<td id="requestrunid" style="display: none">'+item.RequestRunId+'</td>'+
+                '<td > '+req_anchor+' </td>'+
+                '<td id="reqid" style="display: none">' + item.RequestId + '</td>'+
+                '<td>' + item.RequestTitle +'</td>'+
+                '<td>' + item.ScheduleType +'</td>'+
+                '<td>' + item.sch_date +'</td>'+
+                '<td><span data-toggle="tooltip" title=' + in_date+'>' +in_date+'</span></td>'+
+                '<td><span data-toggle="tooltip" title=' + com_date+'>' + com_date+'</span></td>'+
+                 '<td style="text-align: center">'+ div_OR+'</td>'+
+                 '<td style="text-align: center">'+ div_tr+'</td>'+
+                 '<td style="text-align: center">'+ div_Completed+'</td>'+
+                '<td style="text-align: center">'+ div_PNF+'</td>'+
+                 '<td style="text-align: center">'+ div_PSFailcount+'</td>'+
+                status_td+download_file_anchr+
+                '<td><div class="action_items_contaner1"> <span class="action_view_fa"><i class="fa fa-ellipsis-h"></i></span><div class="action_items_contaner"><div class="inner_view"> '+span_div+'   <span class="del_btn action_items" data-toggle="tooltip" title="DeleteSchedule" onclick="delete_request_schedule('+ item.RequestId +')"></span>  </div></div></div> </td></tr>';
+             
+            });
+            
+            $('#tbl_tbody').append(trHTML_grid);
+            $('#request_mgmt').dataTable({
+                "sPaginationType": "full_numbers",
+                "bFilter": true,
+                "bInfo": false,
+                "aaSorting": [],
+                "bPaginate": true,
+                paging: true,
+            });
+          }
+</script>
+{% endblock %}

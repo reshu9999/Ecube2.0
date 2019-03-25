@@ -1,0 +1,372 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+
+{% block header %}
+<style>
+  .master_upload_view {
+    max-width: 380px;
+    right: 9%;
+    top: 50px;
+  }
+  .clx {
+    margin-right: 2%;
+  }
+  .choose_file, .error_log, .success_msg { width:168px; }
+  #btn_error {
+    width: 150px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 19px;
+}
+.common_div .excelupload_view {
+z-index:9;
+}
+
+</style>
+{% endblock %}
+{% block content %}
+
+
+{% if msg %}
+    <script type="text/javascript">
+    alert("{{ msg }}",1);
+    </script>
+{% endif %}
+
+<section class="body_contaner no_sidebar">
+  <div class="container_content">
+    <div class="inner_content_contaner">
+      <div class="clearfix marT20"></div>
+      <div class="col-md-12">
+        <h2 class="pull-left">Country Master</h2>
+        <input type="button" name="" id="addNewRecord" onclick="return LoadRecord(event);" class="save_request_button pull-right" value="Add Record" data-toggle="modal" data-target="#Addnew_master">
+        <input type="button" class="save_request_button clx pull-right" onclick="SaveClasa()" value="Excel Upload">
+        <div class="excelupload_view master_upload_view fade in" >
+          <span class="close_excel" onclick="close_excel();"> X </span>
+          <div class="excelupload_heading">
+            <h3> Excel Upload </h3>
+            <a href="#" onclick="download_template();"> Download template </a>
+          </div>
+          <div class="box_view clearfix">
+            <div class="file_upload_tabs"> 
+              <div class="tab-content">
+                <div id="schedule_batch" class="tab-pane fade in active">
+                  <div class="row">
+                    <div class="">
+                      <div class="">
+                        <div class="form-group ">
+                          <span class="upload upload_file">
+                            <input type="file" id="input_file_excel">
+                            <img src="/static/hotel/images/upload_file.png" alt="">
+                            <p> Drag File to upload </p>
+                            <span class="file_type"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix marT20">
+                      <div class="pull-left">
+                        <input name="" class="choose_file float_none" value="Upload File" type="button" onclick="upload_excel();">
+                      </div>
+  
+                       <div class="pull-right">
+                          <a  class="error_log float_none" href="javascript:void(0);"
+                           id="btn_error" style="display: none;">Error Log</a>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+      <div class="clearfix marT10"></div>
+      <div class="table-responsive marT20">
+        <table id="datavalidation" class="display nowrap custom_table" style="width:100%">
+          <thead>
+            <tr id="ColumnHead">
+          
+              <th width="15%">CountryName </th>
+              <th width="20%">CountryCode</th>
+              <th width="15%">TimeZone</th>
+              <th width="15%">Status</th>
+              <th width="15%">Action</th>
+              <th>Action</th>
+            
+            </tr>
+          </thead>
+          <tbody id ="tbl_tbody">
+           
+           
+           
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  
+  <!-- /*******************************************/--> 
+  <!-- Modal -->
+  <div class="modal fade" id="Addnew_master" role="dialog">
+    <div class="modal-dialog modal-lg"> 
+      
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="h_id">Add new</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4">
+            <form id="AddEditRecord" name="AddEditRecord" onsubmit="return addFromValidate();" action="{%url 'master_country' %}" 
+                                                id="AddEditRecord" method="post">{% csrf_token %}
+            <table>
+            <tr><td></td><td><input class="form-control" type="hidden" id="ed_referenceNo" name="ed_referenceNo" value=""></td></tr>
+            <tr><td></td><td><input class="form-control" type="hidden" id="ed_activeValue" name="ed_activeValue" value=""></td></tr>
+            <tr><td><label>Country Name</label></td><td><input class="form-control" id="ed_CountryName" name="ed_CountryName" value=""></td></tr>
+            <tr><td><label>Country Code</label></td><td><input class="form-control" id="ed_CountryCode" name="ed_Countrycode" value=""></td></tr>
+            <tr><td><label>Time Zone</label></td><td><input class="form-control" id="ed_TimeZone" name="ed_TimeZone" value=""></td></tr>
+            <tr><td><label>Active</label></td><td><input type="checkbox"  class="form-control" id="ed_active" name="ed_active"></td></tr>
+            <tr><td colspan=2><input id="aded_newRecord" class="save_request_button pull-right" type="submit" value="Save"></td></tr>
+            </table>
+            </form>
+            
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/static/hotel/js/jquery-1.11.3.min.js"></script>
+<script>
+
+  Bind_Country_master_name = "{% url 'Bind_Country_master_name' %}";
+  $(document).ready(function ($) {
+    Bind_data_on_page_load();
+  });
+
+function Bind_data_on_page_load()
+{
+  $.ajax({
+         url: Bind_Country_master_name,
+         type: "GET",
+         contentType: false,
+         beforeSend: function(){ 
+           $('.loader_div').show();
+           },
+         success: function (data) {
+          debugger;
+          Bind_grid_main(data.country);
+         },
+         complete:function(data){
+             $('.loader_div').hide();
+          },
+         error: function (xhr, errorType, exception) {
+             alert(exception)
+         }
+     });
+}
+
+
+
+function Bind_grid_main(data) {
+var table = $("#datavalidation").dataTable();
+table.fnClearTable();
+table.fnDraw();
+table.fnDestroy();
+var trHTML = '';
+var css ='';
+$.each(data, function (i, item) {
+    css ='green';
+    if (item[2]==0)
+    {
+      css ='red';
+    }
+    trHTML += '<tr id="trid_'+item[0]+'">'+
+              '<td><label id="country_'+item[0]+'">'+item[1]+'</label></td>'+
+              '<td><label id="countrycode_'+item[0]+'">'+item[6]+'</label></td>'+
+              '<td><label id="timezone_'+item[0]+'">'+item[5]+'</label></td>'+
+              
+              '<td><span class="circle '+css+'"><label id="activestatus_'+item[0]+'">'+item[7]+'</label></span></td>'+
+              
+              '<td><span class="edit_btn" data-toggle="modal" id="edit_'+item[0]+'" data-target="#Addnew_master" onclick="return LoadRecord(event);">Edit</span></td>'+
+              '<td><span class="del_btn" onclick="Delete_main_grp_dtls(' + item[0] + ')">Delete</span></td>' +
+              '</tr>';
+          
+});
+$('#tbl_tbody').append(trHTML);
+$('#datavalidation').dataTable({
+    "sPaginationType": "full_numbers",
+    "bFilter": true,
+    "bInfo": false,
+    "aaSorting":[],
+    "bPaginate": true,
+    paging: true,
+});
+$('.dataTables_wrapper,.addhotel_checkbox_contaner').perfectScrollbar();
+}
+
+
+function Delete_main_grp_dtls(id) {
+  if (confirm("Are you sure?")) {
+      var model={id:id};
+        $.ajax({
+         url: "{% url 'Delete_Country_master_name' %}",
+         type: 'POST',
+         data: model,
+         dataType: 'json',
+         success: function (data) {
+             alert('Record deleted successfully ');
+             Bind_grid_main(data.country);
+         },
+         error: function (xhr, errorType, exception) {
+             alert(exception)
+         }
+     });
+     }
+     return false;
+ }
+function addFromValidate()
+{
+     var format = /[!@#$%^&*()\=\[\]{};'"\\|,.<>\/?]+/;
+     var cntryName = document.getElementById('ed_CountryName').value.length
+     var cntryVal = document.getElementById('ed_CountryName').value
+     
+    if (cntryName < 1 || format.test(cntryVal) )
+    {
+        alert("Country Name can not be Null or special characters");
+        return false;
+    }
+    var cntryCode = document.getElementById('ed_CountryCode').value.length
+    var cntryCodeVal = document.getElementById('ed_CountryCode').value
+    if (cntryCode<1 || format.test(cntryCodeVal) )
+    {
+        alert("Country Code can not be Null or special characters");
+        return false;
+    }
+    //var timeCode = document.getElementById('ed_TimeZone').value.length
+    //var timeCodeVal = document.getElementById('ed_TimeZone').value
+    //if (timeCode<1 || format.test(timeCodeVal) )
+    //{
+    //    alert("TimeZone can not be Null or Any Special Characters");
+    //    return false;
+    //}
+    if (document.getElementById('ed_active').checked)
+    {
+        document.getElementById('ed_activeValue').value="Active";
+    }
+    else
+    {
+        document.getElementById('ed_activeValue').value="Inactive";
+    }
+}
+
+function LoadRecord(e)
+{
+  debugger;
+    if (e.target.id=="addNewRecord")
+    {
+        document.getElementById('ed_CountryName').value="";
+        document.getElementById('ed_CountryCode').value="";
+        document.getElementById('ed_TimeZone').value="";
+        document.getElementById('ed_active').value="";
+        document.getElementById('aded_newRecord').value="Add";
+        $('#h_id').text('Add New');
+    }
+    else
+    {
+        var recordID=e.target.id.split('_').pop();
+        var countryName=document.getElementById('country_'+recordID).innerHTML.trim();
+        var countryCode=document.getElementById('countrycode_'+recordID).innerHTML.trim();
+        var timeZone=document.getElementById('timezone_'+recordID).innerHTML.trim();
+        var activeFlg=document.getElementById('activestatus_'+recordID).innerHTML.trim();
+
+        if (activeFlg=="Active")
+        {
+            //activeFlg=1;
+            document.getElementById('ed_active').checked=true;
+        }
+        else
+        {
+            //activeFlg=0;
+            document.getElementById('ed_active').checked=false;
+        } 
+
+        document.getElementById('ed_CountryName').value=countryName;
+        document.getElementById('ed_CountryCode').value=countryCode;
+        document.getElementById('ed_TimeZone').value=timeZone;
+        document.getElementById('ed_active').value=activeFlg;
+        document.getElementById('ed_referenceNo').value=recordID;
+        document.getElementById('aded_newRecord').value="Edit";
+        $('#h_id').text('Edit');
+    }
+}
+
+
+ function SaveClasa() {
+      $(".master_upload_view").toggleClass("active");
+    }
+    function close_excel() {
+      $(".master_upload_view").removeClass("active");
+    }
+
+    
+function download_template() {
+      window.location.href = '/static/Excel_Templates/Country_excel_template.xlsx';
+    }
+
+
+    function upload_excel() {
+      var file_val = $("#input_file_excel").val();
+      if (file_val == '') {
+        alert('Please select file and upload !!!');
+        return false;
+      }
+      var fileUpload = $("#input_file_excel").get(0);
+      var files = fileUpload.files;
+      var formdata = new FormData();
+      formdata.append("File", files[0]);
+      $.ajax({
+        url: "{% url 'Country_master_upload_excel' %}",
+        type: "POST",
+        processData: false,
+        dataType: 'json',
+        data: formdata,
+        contentType: false,
+        beforeSend: function () {
+          $('.loader_div').show();
+        },
+        success: function (data) {
+          debugger;
+          $("#input_file_excel").val(null);
+          $('.file_type').text('');
+          $('.file_type').css('opacity', '0');
+          alert(data.htl_country_dtls);
+          if (data.count > 0) {
+            alert('Please  click on  Error log  button for download Error file !!!');
+            $('#btn_error').show();
+            $('#btn_error').attr('href',data.Path);
+          }
+		  
+		  if (data.error!='1')
+		  {
+			Bind_grid_main(data.country);
+		  }
+          
+        },
+        complete: function (data) {
+          $('.loader_div').hide();
+        },
+        error: function (xhr, errorType, exception) {
+          alert(exception)
+        }
+      });
+    }
+
+
+</script>
+{% endblock %}

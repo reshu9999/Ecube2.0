@@ -1,0 +1,75 @@
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+--
+-- Host: localhost    Database: eCube_Centralized_DB
+-- ------------------------------------------------------
+-- Server version	5.7.22-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `All_Hotel_details_temp`
+--
+
+DROP TABLE IF EXISTS `All_Hotel_details_temp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `All_Hotel_details_temp` (
+  `HotelId` bigint(20) NOT NULL DEFAULT '0',
+  `WebSiteHotelId` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `HotelName` varchar(512) CHARACTER SET utf8 NOT NULL,
+  `HotelAddress1` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `HotelAddress2` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `CityId` int(11) NOT NULL,
+  `HotelBrandName` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `StarRatingId` int(11) DEFAULT NULL,
+  `HotelPostCode` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `CompetitorId` int(11) DEFAULT NULL,
+  `HotelMatchStatus` tinyint(1) DEFAULT NULL,
+  `HotelDescription` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `CreatedBy` int(11) NOT NULL,
+  `isProceesed` tinyint(1) DEFAULT '0',
+  `CreatedDate` datetime DEFAULT CURRENT_TIMESTAMP,
+  `matchhotelname` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `DipBagSyncId` int(11) DEFAULT NULL,
+  `IsMailed` tinyint(1) DEFAULT '0',
+  `RequestId` int(11) DEFAULT NULL,
+  `MatchHotelAddress1` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
+  `isConsiderForMatching` tinyint(1) DEFAULT NULL,
+  `HotelStatusId` int(11) DEFAULT NULL,
+  `LastAppearnceDate` datetime DEFAULT NULL,
+  `LastRequestRunId` int(11) DEFAULT NULL,
+  `Longitude` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `Latitude` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `YieldManager` varchar(3000) CHARACTER SET utf8 DEFAULT NULL,
+  `ContractManager` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
+  `DemandGroup` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
+  `CrawledHotelAddress` varchar(4000) CHARACTER SET utf8 DEFAULT NULL,
+  `CityName` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `CityCode` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `CountryName` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `nvcrSupplierName` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `HotelStatus` varchar(200) CHARACTER SET utf8,
+  `UserName` varchar(30) DEFAULT NULL,
+  `ZoneName` varchar(500) CHARACTER SET utf8 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-06-29 15:13:21

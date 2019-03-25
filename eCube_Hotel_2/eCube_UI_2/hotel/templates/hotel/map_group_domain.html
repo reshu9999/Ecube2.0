@@ -1,0 +1,289 @@
+{% extends 'hotel/base.html' %}
+{% block header %}
+<style>
+    .border_contaner_large.top_only {
+        width: 100%;
+    }
+    .mapping_domain_group {
+        padding: 5px;
+        border-radius: 3px;
+        box-shadow: 0px 1px 3px rgba(0,0,0,.2);
+        position: relative;
+    }
+    .custom_height_textarea { height: 100px!important; }
+    .form-control {box-shadow: 1px 1px 2px rgba(0,0,0,.1);}
+
+
+/*----------------------------*/
+.fixed_table_container {
+    width: 100%;
+    height: 231px; 
+    background-color: #fff;
+    position: relative;
+    padding-top: 45px;
+    border: 1px solid #fff;
+    border-bottom: none;
+    overflow: hidden;
+}
+
+.header_background {
+    background-color: #fff;
+    height: 45px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+
+
+.fixed_table_container_inner {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+}
+.custom_table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.th-inner {
+    position: absolute;
+    top: 0;
+    line-height: 45px;
+    text-align: left;
+    padding-left: 5px;
+    margin-left: -5px;
+    z-index: 2;
+}
+.th-inner input {
+    line-height: initial;
+    padding: 6px 7px;
+    margin: 0 5px;
+}
+.custom_table > tbody > tr td {
+    padding: 12px 10px;
+}
+.custom_table.gray_table > tbody > tr td {
+    background: #f9f9f9;
+    border-bottom: 1px solid #e0dddd;
+    border-radius: 0;
+}
+#msform input[type=text].MappingField {
+	top:auto;
+}
+    
+    </style>
+{% endblock %}
+{% block content %}
+<section class="body_contaner no_sidebar">
+    <div class="container_content">
+  <div class="inner_content_contaner">
+        <div class="clearfix"></div>
+        <div class="white_bg marT30 mapping_domain_group clearfix"> 
+      <!-- multistep form -->
+      <form id="msform">
+         <div class="col-md-12 col-sm-12 col-xs-12 slides_contaner animated fadeIn"> 
+           <div class="marT30">
+              <h2 class="slide_heading">Mapping Group Domains</h2>
+              <div class="border_contaner_large marT60 top_only">
+                    <ul class="nav nav-tabs mapping">
+                  <li class="active Existing_map"><a data-toggle="tab" href="#single_domain"><span class="icon_con"></span><span>Existing Mapping</span></a></li>
+                  <li class="new_map"><a data-toggle="tab" href="#multiple_domain"><span class="icon_con"></span><span>New Mapping</span></a></li>
+                </ul>
+                    <div class="tab-content">
+                  <div id="single_domain" class="tab-pane fade in active">
+                        <div class="row">
+                      <div class="col-md-5  col-xs-12">
+                            <div class="col-md-10 custom_spaceing">
+                          <div class="form-group">
+                                <label>Mapping Group Name</label>
+                                <div class="buttons_contaner">
+                              <select name="drp_grp" id ="drp_grp" class="form-control" onchange="get_grp_data();">
+                              
+                              </select> 
+                            </div>
+                              </div>
+                          <div class="form-group" id="map_div" style="display: none;" >
+                                <label>Mapped Description</label>
+                                <p class="form-control-static" id="bind_grp_description"> </p>
+                              </div>
+
+                              <div class="form-group" id="map_bli" style="display: none;" >
+                                  <label>Mapped BLi</label>
+                                  <p class="form-control-static" id="bind_grp__bli_description"> </p>
+                                </div>
+                        </div>
+                          </div>
+                      <div class="col-md-7 col-xs-12">
+                            <div class="fixed_table_container" id="div_tbl_frm_frnt" style="display:none;">
+                              <div class="header_background"></div>
+                              <div class="fixed_table_container_inner"  >
+								<table class="custom_table gray_table" >
+                                <thead>
+                              <tr>
+                                    <th> <div class="th-inner">Field test</div></th>
+                                    <th><div class="th-inner">Name</div></th>
+                                    <th><div class="th-inner">Action</div></th>
+                                  </tr>
+                            </thead>
+                                <tbody id ="tbody_grp_name_front">
+                              
+                             
+                            </tbody>
+                              </table>
+                            </div>
+                        </div>
+                          </div>
+                  
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- <input type="button" name="next" class="next action-button" value="Save"   />   -->
+                  
+                    </div>
+                  <div id="multiple_domain" class="tab-pane fade">
+                        <div class="row">
+                      <div class="col-md-5 col-xs-12">
+                            <div class="col-md-10">
+                
+                 <div class="form-group">
+             
+                       <label>Mapping Group Name</label>
+                
+                       <input type="text" class="form-control" id="txt_grp_name">
+                    </div>
+                          <div class="form-group">
+                                <label>Mapping Description</label>
+                                <textarea class="form-control custom_height_textarea" id="txt_grp_desc"></textarea>
+                              </div>
+
+                              <div class="form-group">
+                                <label>BLI </label>
+                                <div class="buttons_contaner"> 
+                              <select name="drp_bli" id ="drp_bli" class="form-control" > 
+                                
+                              </select> 
+                             </div>
+                              </div>
+
+                        </div>
+                          </div>
+                      <div class="col-md-7 col-xs-12">
+                            
+						
+						  <div class="fixed_table_container">
+                              <div class="header_background"></div>
+                              <div class="fixed_table_container_inner"  >
+								<table class="custom_table gray_table"  id ="tbl_main_grp">
+                                <thead>
+                              <tr>
+                                    <th> 
+									<div class="th-inner"> 
+									
+									  
+									
+									
+
+									<div class="checkbox checkbox-primary"  style="display:inline-block;">
+									
+									<input type="checkbox" id="chk_sel" onchange="Selct_All_lbl();"> 
+									<label for="chk_sel" style="font-weight:bold;"> Field</label>
+									</div>
+									
+									<input type="text"  placeholder="Search" id="txt_ser_main" style="width:150px;"> 
+									
+									</div>
+									
+									</th>
+                                    <th><div class="th-inner">Name</div></th> 
+                                   
+                                  </tr>
+                            </thead>
+                                <tbody id ="tbody_save_table">
+                              
+                             
+                            </tbody>
+                              </table>
+                            </div>
+                        </div>
+						
+						
+						
+						
+						  <a href="#" class="selected_Hotels"><span id="span_total_count_hotel">0</span>
+                            Item Selected</a>
+						
+                          </div>
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                    <input type="button" name="next" class="next action-button" value="Save"  onclick="Save_grp_detail();" />
+                      </div>
+                </div>
+                  </div>
+            </div> 
+          
+        </div>
+          </form>
+    </div>
+      </div>
+</div>
+  </section>
+<!-- Modal  Popup-->
+<div id="selectvalidations" class="modal fade" role="dialog">
+    <div class="modal-dialog"> 
+  
+  <!-- Modal content-->
+  <div class="bgnone modal-content">
+        <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+        <div class="modal-body">
+      <h2>Select Validations</h2>
+      <div class="row">
+            <div class="col-sm-6">
+          <div class="svpopupbtn"><a href="javascript:void()"><b>1</b></a></div>
+        </div>
+            <div class="col-sm-6">
+          <div class="selected svpopupbtn"><a href="javascript:void()"><b>2</b></a></div>
+        </div>
+            <div class="col-sm-6">
+          <div class="svpopupbtn"><a href="javascript:void()"><b>3</b></a></div>
+        </div>
+            <div class="col-sm-6">
+          <div class="svpopupbtn"><a href="javascript:void()"><b>4</b></a></div>
+        </div>
+          </div>
+      <div class="row">
+            <div class="col-sm-12">
+          <input type="button" name="next" class="next action-button" value="Submit" onclick="getSelected();" >
+        </div>
+          </div>
+    </div>
+      </div>
+</div>
+  </div>
+
+
+{% endblock %}
+   
+{% block footer %}
+<script>
+  f_Bind_grp_mapp_detail=  "{% url 'f_Bind_grp_mapp_detail' %}";
+  f_Save_grp_detail=  "{% url 'f_Save_grp_detail' %}";
+  f_get_grp_mapp_detail=  "{% url 'f_get_grp_mapp_detail' %}";
+  f_delete_grp_mapp_detail=  "{% url 'f_delete_grp_mapp_detail' %}";
+  
+</script>
+<script src="/static/hotel/js/custom.js"></script>
+<script src="/static/hotel/js/app/Mapping_group_domain_js.js"></script>
+<script>
+	$(".svpopupbtn a").click(function () { 
+      $('.svpopupbtn').removeClass("selected");
+      $(this).parent().addClass('selected')
+    });
+    
+
+</script>
+
+{% endblock %}

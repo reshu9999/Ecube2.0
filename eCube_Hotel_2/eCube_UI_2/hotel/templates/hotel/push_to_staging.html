@@ -1,0 +1,216 @@
+{% extends 'hotel/base.html' %}
+{% block header %}
+<style>
+  #hotel_match_unmatch2 > tbody > tr td {
+    padding: 3px 10px!important
+  }
+  #hotel_match_unmatch2 .checkbox.checkbox-inline {
+    margin-top: 5px;
+}
+#hotel_match_unmatch2 thead {
+  opacity: 0;
+}
+
+  </style>
+
+ 
+{% endblock %}
+{% block content %}
+<section class="body_contaner no_sidebar">
+  <div class="container_content">
+    <div class="inner_content_contaner">
+      <div class="clearfix"></div>
+      <div class="white_bg marT30 multibatch_download common_div  clearfix">
+        <div class="col-md-12">
+          <h3 class="slide_heading border_heading pushtostaging_icon">Push Report to Staging</h3>
+        </div>
+        <div class="clearfix">
+          <div class="col-sm-12">
+            <div class="col-sm-4 col-md-3">
+              <div class="row">
+                <div class="col-sm-12 col-md-10">
+                  <div class="form-group multi_select_contaner">
+                    <label for="suppliers">Request</label>
+                    <select class="multiselect_box form-control"  id="drp_req" onchange ="Get_sup_name_by_request();">
+                     
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row marT20">
+                <div class="col-sm-12 col-md-10 ">
+                  <div class="form-group radio_selection clearfix" id="div_radio_first">
+                    <label for="matching_status">Do You Require PNF Stopper ?</label>
+                    <div class="radio radio-primary checkbox-inline pull-left">
+                      <input id="pnf_yes" type="radio" value="1" name="pnfstop" checked>
+                      <label for="pnf_yes"> Yes </label>
+                    </div>
+                    <div class="radio radio-primary checkbox-inline pull-left">
+                      <input id="pnf_no" type="radio" value="1" name="pnfstop" >
+                      <label for="pnf_no"> No </label>
+                    </div>
+                  </div>
+				
+                  <div class="form-group radio_selection " id="div_radio_Second">
+                    <label for="matching_status">Set Client Priority</label>
+                    <div class="radio radio-primary checkbox-inline pull-left" style="margin-right: 5px;">
+                      <input id="htls_bed_pr_yes" type="radio" value="1" name="pnfstop1" >
+                      <label for="htls_bed_pr_yes"> Yes </label>
+                    </div>
+                    <div class="radio radio-primary checkbox-inline pull-left">
+                      <input id="htls_bed_pr_no" type="radio" value="0" name="pnfstop1" checked>
+                      <label for="htls_bed_pr_no"> No </label>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-md-3 form-group ">
+              <label for="suppliers">List of supplier exist in Batch</label>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="addhotel_checkbox_contaner">
+                   <div class="" id ="div_append_sup">
+                   
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 marT10"> <a href="#" class="selected_Hotels"><span id ="span_id_div_batch">0</span> Supplier  Selected</a> </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-md-3 form-group " >
+              <label for="suppliers2">List of supplier to be excluded for save page URL</label>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="addhotel_checkbox_contaner" id="div_sup_sec">
+                    
+                  </div>
+                </div>
+                <div class="col-md-12 marT10"> <a href="#" class="selected_Hotels"><span id="span_id_sup_sec">0</span> Supplier Selected</a> </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-3 marT10">
+            	<div class="custom_btn marT50">
+                  <button class="btn btn_reset" onclick="frm_reset();"> Reset </button>
+
+                    <button class="btn btn_search" onclick="Pust_to_staging();"> Push to Staging </button>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix">
+          
+        </div>
+        <div class="clearfix"> &nbsp; </div>
+      </div>
+      <div class="clearfix"> &nbsp; </div>
+      <div class="table-responsive marT30   hotel_match_table" style="display: block;" id="divtable">
+        <a href="javascript:void(0);" class="refresh_page" onclick="refresh_grid();"> Refresh </a>
+        <div class="custom_table_heading clearfix">
+          <div class="pull-left">
+            <h3> Today’s Report List</h3>
+           
+          </div>
+ 
+       
+        </div>
+        
+        <table id="hotel_match_unmatch2" class="display nowrap custom_table" style="width:100%">
+          <thead>
+            <tr>
+            
+              <th width="">Request ID	</th>
+              <th width="">Request</th>
+              <!-- <th width="">Dip  Bag Dynamic ID</th> -->
+              <th width="">Report Status</th>
+              <th width="">Report Type</th>
+              <th width="">Report Time</th>
+              <th width="">Report Start Time</th>
+              <th width="">Report End Time</th>
+              <th width="">Prioritize</th>
+              <th width="">Client Priority</th>
+               
+            </tr>
+          </thead>
+          <tbody id="tbody_grid">
+          </tbody>
+        </table>
+        <div class="col-md-12   col-sm-12 text-center stop_selection_btn">
+          <input type="button" name="" class="save_request_button float_none" value="Stop Selected" onclick="Save_stopped_selected();">
+          
+        </div>
+      </div>
+    </div>
+   
+    <div class="clearfix"> &nbsp; </div>
+  </div>
+ 
+</section>
+{% endblock %}
+  
+{% block footer %}
+<script>
+  Bind_request_and_batch_name = "{% url 'Bind_request_and_batch_name' %}";
+  Push_tostg_db_save = "{% url 'Push_tostg_db_save' %}";
+  Db_push_to_stag_prio_update ="{% url 'Db_push_to_stag_prio_update' %}";
+  Db_push_stag_stopped ="{% url 'Db_push_stag_stopped' %}";
+  Bind_request_and_sup_name_by_request_id = "{% url 'Bind_request_and_sup_name_by_request_id' %}";
+  Bind_grid_push_to_Stagging = "{% url 'Bind_grid_push_to_Stagging' %}";
+</script>
+<script type="text/javascript" charset="utf8" src="/static/hotel/js/jquery.dataTables.min_main_fixed.js"></script>
+<script src="/static/hotel/js/app/Push_to_staging_js.js"></script> 
+<script src="/static/hotel/js/custom.js"></script> 
+<script>
+$('ul.multiselect-container.dropdown-menu').perfectScrollbar();	
+$(document).ready(function() {
+	$(".excel_upload_btn").click(function(){    
+    $(this).toggleClass("active");
+	$(".excelupload_view").toggleClass("active") 
+});
+	
+ $(".close_excel").click(function(){    
+    $(".excelupload_view").removeClass("active"); 
+	$(".excel_upload_btn").removeClass("active");  
+});
+	
+    var table = $('#hotel_match_unmatch2').DataTable( {
+      "sPaginationType": "full_numbers",
+		"bFilter": true,
+		"bInfo": false,
+		"bPaginate": true,
+        scrollX:        true,
+        scrollCollapse: true,
+        paging:         true,
+        aaSorting :[],
+        fixedColumns:   {
+            leftColumns: 0,
+            rightColumns: 1
+        }, 
+	});
+	
+	$('.dataTables_scrollBody').perfectScrollbar();
+
+$('.dataTables_scrollBody,.addhotel_checkbox_contaner').perfectScrollbar();
+});	
+	
+$(".round_btn").click(function(){
+	debugger;
+	$(".round_btn").children().removeClass("active"); 
+	$(this).children().addClass("active"); 
+});
+$(".upload_hotel_trigger").click(function(){
+	 $(".upload_hotel_contaner").slideDown(); 
+});	
+$(".choose_file ").click(function(){
+	 $(".upload_hotel_contaner").slideUp(); 
+});	
+		
+$(document).mouseup(function (e){var container = $(".upload_hotel_contaner");if (!container.is(e.target) && container.has(e.target).length ===0){container.slideUp();}}); 
+	
+///Activate Scrllbar	
+$(".addhotel_checkbox_contaner").mouseenter(function(){ 
+$('*').perfectScrollbar('update');
+});
+</script>
+{% endblock %}

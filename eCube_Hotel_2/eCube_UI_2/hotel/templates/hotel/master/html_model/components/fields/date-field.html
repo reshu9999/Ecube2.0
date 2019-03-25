@@ -1,0 +1,11 @@
+<div class="col-md-4">
+    <div class="form-group">
+        <label class="">{{ display_name|title }}</label>
+        {% if readonly %}
+        <br><span>{{ input_val }}</span>
+        {% else %}
+        <input class="text_field dates_control datepick" id="{{ field_name }}__id" type="text"
+               name="{{ field_name }}" value="{{ input_val }}">
+        {% endif %}
+    </div>
+</div>

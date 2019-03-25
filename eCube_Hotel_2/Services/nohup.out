@@ -1,0 +1,48 @@
+[2018-12-06 21:05:06 +0530] [15540] [INFO] Starting gunicorn 19.8.1
+[2018-12-06 21:05:06 +0530] [15540] [INFO] Listening at: http://0.0.0.0:8001 (15540)
+[2018-12-06 21:05:06 +0530] [15540] [INFO] Using worker: sync
+[2018-12-06 21:05:06 +0530] [15543] [INFO] Booting worker with pid: 15543
+[2018-12-06 21:05:06 +0530] [15544] [INFO] Booting worker with pid: 15544
+[2018-12-06 21:05:06 +0530] [15546] [INFO] Booting worker with pid: 15546
+[2018-12-07 14:48:36 +0530] [15540] [CRITICAL] WORKER TIMEOUT (pid:15543)
+[2018-12-07 14:48:36 +0530] [15543] [INFO] Worker exiting (pid: 15543)
+Could not load config
+Expecting value: line 1 column 1 (char 0)
+[2018-12-07 14:48:36 +0530] [10397] [INFO] Booting worker with pid: 10397
+[2018-12-07 15:03:23 +0530] [10826] [INFO] Starting gunicorn 19.8.1
+[2018-12-07 15:03:23 +0530] [10826] [INFO] Listening at: http://0.0.0.0:8001 (10826)
+[2018-12-07 15:03:23 +0530] [10826] [INFO] Using worker: sync
+[2018-12-07 15:03:23 +0530] [10829] [INFO] Booting worker with pid: 10829
+[2018-12-07 15:03:23 +0530] [10830] [INFO] Booting worker with pid: 10830
+[2018-12-07 15:03:23 +0530] [10831] [INFO] Booting worker with pid: 10831
+[2018-12-07 20:57:58 +0530] [17469] [INFO] Starting gunicorn 19.8.1
+[2018-12-07 20:57:58 +0530] [17469] [INFO] Listening at: http://0.0.0.0:8001 (17469)
+[2018-12-07 20:57:58 +0530] [17469] [INFO] Using worker: sync
+[2018-12-07 20:57:58 +0530] [17472] [INFO] Booting worker with pid: 17472
+[2018-12-07 20:57:58 +0530] [17473] [INFO] Booting worker with pid: 17473
+[2018-12-07 20:57:58 +0530] [17474] [INFO] Booting worker with pid: 17474
+[2018-12-10 14:27:07 +0530] [6780] [INFO] Starting gunicorn 19.8.1
+[2018-12-10 14:27:07 +0530] [6780] [INFO] Listening at: http://0.0.0.0:8001 (6780)
+[2018-12-10 14:27:07 +0530] [6780] [INFO] Using worker: sync
+[2018-12-10 14:27:07 +0530] [6783] [INFO] Booting worker with pid: 6783
+[2018-12-10 14:27:07 +0530] [6784] [INFO] Booting worker with pid: 6784
+[2018-12-10 14:27:07 +0530] [6786] [INFO] Booting worker with pid: 6786
+[2018-12-20 18:40:47 +0530] [7426] [INFO] Starting gunicorn 19.8.1
+[2018-12-20 18:40:47 +0530] [7426] [INFO] Listening at: http://0.0.0.0:8001 (7426)
+[2018-12-20 18:40:47 +0530] [7426] [INFO] Using worker: sync
+[2018-12-20 18:40:47 +0530] [7429] [INFO] Booting worker with pid: 7429
+[2018-12-20 20:40:18 +0530] [7426] [INFO] Handling signal: hup
+[2018-12-20 20:40:18 +0530] [7426] [INFO] Hang up: Master
+[2018-12-20 20:40:18 +0530] [12672] [INFO] Booting worker with pid: 12672
+[2018-12-20 20:45:42 +0530] [12765] [INFO] Starting gunicorn 19.8.1
+[2018-12-20 20:45:42 +0530] [12765] [ERROR] Connection in use: ('0.0.0.0', 8002)
+[2018-12-20 20:45:42 +0530] [12765] [ERROR] Retrying in 1 second.
+[2018-12-20 20:45:43 +0530] [12765] [ERROR] Connection in use: ('0.0.0.0', 8002)
+[2018-12-20 20:45:43 +0530] [12765] [ERROR] Retrying in 1 second.
+[2018-12-20 20:45:44 +0530] [12765] [ERROR] Connection in use: ('0.0.0.0', 8002)
+[2018-12-20 20:45:44 +0530] [12765] [ERROR] Retrying in 1 second.
+[2018-12-20 20:45:45 +0530] [12765] [ERROR] Connection in use: ('0.0.0.0', 8002)
+[2018-12-20 20:45:45 +0530] [12765] [ERROR] Retrying in 1 second.
+[2018-12-20 20:45:46 +0530] [12765] [ERROR] Connection in use: ('0.0.0.0', 8002)
+[2018-12-20 20:45:46 +0530] [12765] [ERROR] Retrying in 1 second.
+[2018-12-20 20:45:47 +0530] [12765] [ERROR] Can't connect to ('0.0.0.0', 8002)

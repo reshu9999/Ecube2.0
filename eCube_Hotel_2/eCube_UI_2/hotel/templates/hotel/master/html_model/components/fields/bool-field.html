@@ -1,0 +1,16 @@
+<div class="col-md-4">
+    <div class="form-group">
+        <label class="">{{ display_name|title }}</label>
+        {% if readonly %}
+        <br><span>{{ input_val }}</span>
+        {% else %}
+        <div class="clearfix"></div>
+        <div class="checkbox_contaner_area">
+            <div class="checkbox checkbox-default">
+                <input id="{{ field_name }}__id" type="checkbox" name="{{ field_name }}" value=1>
+                <label for="{{ field_name }}__id">{{ display_name|title }}</label>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>

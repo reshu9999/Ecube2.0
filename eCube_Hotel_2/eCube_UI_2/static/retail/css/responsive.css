@@ -1,0 +1,358 @@
+
+@media only screen and (max-width: 1300px) {
+	
+	ul.lsiting_tabs:after{width: 44%;}	
+
+}
+
+@media only screen and (max-width: 1260px) {
+	ul.lsiting_tabs:after{width: 42%;}	
+	ul.lsiting_tabs:before{left: 0;}
+}
+
+
+@media only screen and (max-width: 1253px) {
+	.heading_text{width: 30%;}
+	.tabs_contaner { width: 70%;}
+	ul.lsiting_tabs:after {width: 30%;}
+	.navbar-nav > li > a{padding-left: 5px;font-size: 13px;}
+	
+}
+
+
+@media only screen and (max-width: 1150px) {
+	.recent_batch_body{padding-left: 5%;}
+	.top_half{padding-left: 0;}
+	.status{font-size: 13px;}
+	.progresbar_contaner .progress{width: 55%;}
+	.nav > li > a{padding: 10px 5px;}
+	.contaner_login{width: 55%;}
+	.text_area_login h2{font-size: 35px;}
+	
+	
+}
+@media only screen and (max-width: 991px) {a.add_url {top: 33px}}
+@media only screen and (max-width: 990px) {
+	.ribbons{display: none;}
+	.border_contaner{display: table; width: 100%;}
+	.batch_info li{width: 25%;}
+	a.add_url {top: 33px}
+	.custom_ddmenu:before{display: none;}
+	.custom_ddmenu li a, .custom_ddmenu li a:hover{background: #fff;}
+}
+@media only screen and (max-width: 980px) {
+	.navbar-header{width: auto;}
+	.intm_list li { width: 49%; display: inline-block;}
+	.item_info { border-radius: 5px 5px 0 0; height: 155px; left: -15px;}
+	.item_info:after{display: none;}
+	.col-md-6.padR0 { padding-right: 15px !important;}
+	
+	.text_area_login{ width: 30%}
+	.contaner_login{width: 70%;}	
+	.text_area_login h2,
+	.text_area_login p{display: none}
+	.fileupload_sec,
+	.new_map_sec{width: 95%; margin: 10px 0;}
+}
+@media only screen and (max-width: 920px) {
+	.border_contaner_large .nav-tabs > li a .icon_con{width: 85px;}
+	.step_5.border_contaner_large .nav-tabs > li.active.now_tab a .icon_con{object-position: 35px -55px}
+	.step_5.border_contaner_large .nav-tabs > li.now_tab a .icon_con{padding: 35px 17px;}
+}
+
+@media only screen and (max-width: 870px) {
+	.view_all {  background: url(../images/arrow.png) no-repeat 100% center;}
+	.batch_info li { width: 30%;}
+	.batch_info li{padding: 3%;}
+	.batch_info {  padding: 0 0 0% 4%;}
+	.custom_margin { margin-top: 20px;}
+	.lsiting_tabs:before,
+	.lsiting_tabs:after{display: none;}
+	.border_contaner { border-top: 4px solid #aa80c5;  border-radius: 20px;}
+	.recent_batch { width: 30%; margin: 2% 1.5%;}
+	.span.btn_shape{display: block; float: left;}
+	.multidomain_show label,
+	label.text_label{display: block;}
+	.domain_urls span{margin: 3px;}
+	ul.months li a{min-width: 60px;}
+	.col-5th{width: 50%;}
+	.btn_contaner_req.col-5th{width: 100%;}
+	.searh_buttnon { width: 100%; margin-bottom: 30px; left: 0; padding: 10px;}
+	
+}
+
+
+@media only screen and (max-width: 768px) {
+	.border_contaner:before{display: none;}
+	.batch_info li{padding: 2%; width: 33%}
+	.heading_text{font-size: 26px;}
+	.recent_batch { width: 40%; margin: 2% 6%;}
+	.lsiting_tabs{top: -10px; position: relative} 
+	.container_content{padding-left: 0;}
+	.sidebar_contaner {z-index: 99;}
+	.border_text{border: none;}
+	.border_contaner_large .nav-tabs > li { margin-bottom: 10px;}
+	.arrow_text {border-bottom: 1px solid #ccc;}
+	.text_area_login{position: absolute;}
+	.text_area_login a img{background: rgba(255,255,255,.5); padding: 0;}
+	.contaner_login{width: 80%;}	
+	 
+	
+}
+
+@media only screen and (max-width: 767px) {
+	#progressbar li{width: 20%;}	
+	#progressbar li:before,#progressbar li.current.active:before  {left: 50%; position: absolute; margin-left: -17px; top: 11px;}
+	#progressbar span { right: 0px; top: 25px; width: 100%; text-align: center;}
+	#progressbar li.active.current span { top: 25px;}
+	#progressbar li:after { width: 100%; height: 2px; top: 24px; right: 50%;}
+	.template_btn a{margin-right: 1%;}
+	.border_top_small{border-top: 1px solid #ccc; padding: 10px 0 ; margin: 10px 0;}
+	.navbar-nav {margin-left: 15px;}
+	.checkbox_contaner.with_text_contaner{width: 100%}
+}
+
+
+
+
+@media only screen and (max-width: 750px) {
+	.recent_batch { width: 40%; margin: 2% 4%;}
+	button.ghost_white_btn{width: 80%;}
+	a.vs-prev.arrow_to_up { top: 0;z-index: 99;}
+	.contaner_login{width:100%;}
+	.text_area_login{z-index: 9999;}
+}
+
+@media only screen and (max-width: 660px) {
+	.filter_bodyarea {float: none;display: block;margin: 0 auto;width: 220px;}
+	.grid_excel_export {float: none; margin: 0 auto; width: 70%;}
+
+	ul.tags_contaner{top: 55px;}
+	.table-responsive.custom_responsive_table{top: 65px;}
+	.view_grid_contaner{display: none;}
+	
+	
+}
+@media only screen and (max-width: 640px) {
+	.lsiting_tabs li:before{display: none;}
+	.lsiting_tabs li{height: 42px; padding-top: 13px;}
+	.custom_margin{margin-top: 10px;}
+	.heading_text{width: 100%; top: -15px; position: relative;border-bottom: 2px solid #aa80c5; padding-bottom: 5px;}
+	.heading_text span{display: inline-block;}
+	.lsiting_tabs{padding-left: 0; text-align: center;top: -10px; position: relative} 
+	.lsiting_tabs li{float: none; display: inline-block}
+	.batch_info li { padding: 1.5%; width: 50%;}
+	.tabs_contaner{width: 100%}
+	.heading_text.full_line:after{display: none}
+	.recent_batch { width: 45%; margin: 2% 2.5%;}
+	.grid_excel_export {float: none; margin: 0 auto; width: 90%;}
+	.contaner_login {background: none;}
+	 
+}
+
+@media only screen and (max-width: 540px) {
+	.recent_batch { width: 80%; margin: 5% 12%;}
+	.grid_excel_export {width: 100%;}
+	.view_grid_contaner {width: 100%;float: none; display: block;clear: both; border: none;}
+	.view_grid_contaner .view_grid:after{display: none;}
+	.view_grid_contaner{display: none;}
+	.border_contaner_large .nav-tabs > li a { padding: 1%;}
+	#msform input.previous.action-button, .previous_action_button,#msform input.previous_action_button, #msform input.next.action-button { width: 44%; float: left; padding-left: 0px; padding-right: 0; text-align: center; background: none; background-color: #a268c8; color: #fff; margin: 2% 1%; font-size: 14px}
+	.large_font_contaner{ padding: 2%;}
+	.large_font_contaner span.larg_font{font-size: 40px;}
+	input.action_button_submit { background: #a268c8; width: 50%; padding: 13px 0; text-align: center;    margin: 5px;}
+	input.previous_action_button { background: #b3a7a7; border-color: #b3a7a7;}
+	#msform input.previous.action-button { background: #a4a4a4; border-color: #a4a4a4; font-size: 15px;}
+	.contaner_login{width: 100%; background-position: right 0;}	
+	.col-5th{width: 100%;}
+	
+}
+@media only screen and (max-width: 420px) {
+	.batch_info li { padding: 3%; width: 100%;}
+	.text_cintaner h3{float: left; padding-left:15%;}
+	.text_cintaner span{padding: 12px; float: left;}
+	.lsiting_tabs li { min-width: 18px;  width: 24%;}
+	
+	.recent_batch { width: 80%; margin: 5% 8%;}
+	.border_contaner_large .nav-tabs > li a span{font-size: 13px;}
+	
+	
+}
+
+
+@media only screen and (max-width: 380px) {
+		.text_cintaner h3{float: left; padding-left:5%;}
+	.text_cintaner span{padding: 12px 5px; float: left;}
+	.template_btn a{width: 80%; margin: 10px 0 ; float: left; display: block;}
+	
+	
+}
+
+
+/************************************Login**************************************/
+
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+.loginborderbox {width: 82%;}
+.wrapperloginboxright  { width:85%;top: 50px; left:2%;}
+.loginformbg { width:100%;}
+.loginborderbox { top:52%;}
+.loginbtmleftimg { bottom:5%;}
+.loginbtmleftimg img { width: 71%;}
+	
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+.loginborderbox { width: 81%; height:auto;}
+.wrapperloginboxright { position:absolute; top:5%; left:0; right:0;}
+.loginboxrelative { position:absolute;top: 85%;}
+.loginformbg { width:100%;margin-top:40%;}
+.loginbtmleftimg ,.loginborderbox { display:none;}
+.loginboxrelative { top:5%; position:relative;    left: 5%;}
+	#msform input.form-control.small_textbox{width: 100%;}
+	div#div2 { padding: 0;}
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1365px) {
+.loginborderbox {left: 7.5%; }
+ 
+ 
+}
+
+
+@media only screen and (min-width: 1366px) and (max-width: 1599px) {
+ 	
+}
+
+@media only screen and (min-width: 1600px) {
+.loginbtmleftimg { left: 6%;}
+ 
+}
+
+
+
+
+
+/*Create request step 3 css start*/
+
+
+
+
+
+@media only screen and (max-width: 553px) {
+
+#mgd ul.nav-horizontal:after { width: 19.6%; right: -25px;}	
+#ExistingMapping, #NewMapping { padding-left: 28px;}
+}
+
+@media only screen and (max-width: 600px) {
+
+#mgd ul.nav-horizontal:before { width: 10.5%;}
+
+}
+
+
+
+@media only screen and (max-width: 992px) {
+#mgd ul.nav-horizontal:after {width: 49.6%;}
+#mgd ul.nav-horizontal:before { width: 11.5%;}
+#ExistingMapping .col-sm-4 { width: 100%;}	
+#mgd table.dataTable { position: static;}
+#mgd input,#mgd textarea { width: 100%;}
+}
+
+
+
+@media only screen and (max-width: 1590px) {
+	#mgd .nav-horizontal ul { background-color: #fff;z-index: 9;}
+#mgd .nav-horizontal li{z-index: 9;background: #fff;}
+}
+
+
+@media only screen and (min-width: 413px) and (max-width: 460px) {
+	#mgd .nav > li > a { padding: 0;}
+	#mgd .template_btn a { margin-right: 5px;padding: 7px 4px;}
+}
+
+@media only screen and (min-width: 461px) and (max-width: 498px) {
+	#mgd .nav > li > a { padding: 10px;}
+	#mgd .template_btn a { margin-right: 10px;padding: 7px 10px;}
+}
+
+@media only screen and (min-width: 993px) {
+	
+	#mgd  .col-sm-4 { width: 40%;}
+	#mgd  .col-sm-8 { width: 60%;}
+}
+@media only screen and (min-width: 993px) and (max-width: 1100px) {
+	#mgd .template_btn a {margin-right:8px;}
+	#mgd input,#mgd textarea { width: 100%;}
+}
+
+
+@media only screen and (max-width: 767px) {
+	#sns .titlenumber { font-size: 38px;text-align: left;}
+	#sns .titletxt {    float: right;width: 105px;font-size: 20px;line-height: 18px; bottom: 22px; }
+	#sns .schedulefortxt { padding-top: 0;padding-bottom: 20px;}
+	#sns  #Monthly .monthbox { width: 100%;}
+}
+
+@media only screen and (max-width: 1400px) { 
+	#sns .schedulefortxt { line-height: 25px;width: 130px;    margin-bottom: 20px;}
+#sns .scheduleforbox .col-sm-11	    {width: 75%;  padding-left: 0;padding-right: 0;}
+	#sns .nav-horizontal.batchdetails li, #sns .nav-horizontal.schedulebatchdetails li { margin-right: 10px;margin-bottom: 30px; margin-left: 15px;}
+
+}
+
+@media only screen and (max-width: 1075px) {
+	#sns  #Monthly .col-sm-4  { padding-left: 0; padding-right: 0; }
+	
+}
+/*END Create request step 3 css*/
+
+
+
+/*------------------Added By V-------------------*/ 
+@media (max-width:1200px) {
+	.box_view .file_upload_tabs .nav > li{    margin-right: 25px;}
+}
+@media (max-width:1100px) {
+	.clickable_action a {   padding:7px 0px; min-width:76px;   margin: 5px 2px;  }
+}
+
+@media (min-width:768px) and  (max-width:992px) {
+	ul.pos_status_list li {     padding: 9px 5px;     font-size: 12px; }
+	.pos_status_list .label_value { margin: 0 4px;}
+	.actionable_btn a { margin: 0 2px;}
+	li.actionable_btn { position: relative; top: 4px;}
+}
+@media (max-width:767px) {
+	.row-eq-height { display: block;}
+	[class*="custom_gap"] { margin: 20px 3px; }
+	.pos_status { float: none; display: block; margin-top:10px; border-radius:0; border-top:1px solid #EEF;}
+	li.actionable_btn { position:absolute; top:11px; right:12px; background:#eee; border-radius:0; padding:13px!important;}
+	ul.pos_status_list { display: table; width: 100%; margin-top: 10px; }
+	ul.pos_status_list li { display: table-cell;     text-align: center; padding: 9px 5px; }
+	ul.pos_status_list li:nth-child(4) { border: none;}
+	.pos_body { margin-top: 10px;}	
+	.pos_inside_list { position:relative; top:10px; margin:10px -15px 21px;}
+}
+@media (max-width:480px) { 
+	.pos_status_list .label_value { display: block;}
+	 ul.pos_status_list li { font-size:12px; }
+}
+/*------------------End By V-------------------*/ 
+
+
+
+
+
+
+
+
+
+
+
+
+

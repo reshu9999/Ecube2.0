@@ -1,0 +1,330 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+
+{% block header %}
+<script src="{% static '/hotel/js/modernizr.min.js' %}"></script>
+<title>eCube 2.0</title>
+<style type="text/css">
+    div#divchoosebli {
+        background-color: transparent; 
+        margin: 0 -15px;
+        padding: 0;
+    }
+
+    div#divchoosebli label {
+        border: none;  
+        font-size: 22px;
+        background-color: transparent;
+        color: #fff;
+        border-bottom: 2px solid #fff;
+        padding-bottom: 3px;
+        line-height: initial;
+        height: auto;
+        margin: auto;
+        text-align: center;
+        float: none;
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+    }
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+<body id="loginbg">
+<div class="container-fluid" >
+<span class="loginribbons animated slideInDown delay-3"> <img src="/static/images/login_leftribbons.png" alt=""> </span>
+<div class="loginbtmbg">&nbsp;</div>
+
+
+<div class="loginboxrelative">
+<!--Login Left box content-->
+<div class="loginborderbox animated fadeInUp delay-2" >
+<div class="loginboxcontent">
+<h1> Data harvesting activities for Hotel domain. </h1>
+<div class="clearfix">&nbsp;</div>
+<p class="logintxt">An user interface, has been exclusively designed for scheduling and reporting of
+data harvesting activities conducted at various websites for Hotel domain.</p>
+	<p class="logintxt">   It allows scheduling of various types data that is harvested from different
+	         websites. This data, which is an output of this tool can be further used by
+	       the end user for analytics &amp decision making. Reporting feature helps
+	       user for better future planning related to Pricing &amp Promotions.</p> </div>
+</div>
+<!--END Login Left box content-->
+<div class="wrapperloginboxright pull-right  animated slideInUp">
+<div class="loginformbg">
+<div class="row loginboxcontspacer">
+<div class="col-sm-12 text-center"><img src="/static/images/loginecube_logo.png" alt=""/></div>
+<div class="col-sm-12">
+  <div id="login" class="login animated fadeIn" >
+    <div class="login-form">
+            <div id="divchoosebli" class="username-row row animated bounceIn  delay-1" style="display: none">
+                    <label for="choose_bli">Select BLI</label>
+                   
+                    </label>
+                  </div>
+
+      <div id="divusername"  class="username-row row animated bounceIn  delay-1"  style="display:block">
+        <label for="username_input">
+        <svg version="1.1" class="user-icon" x="0px" y="0px"
+        viewBox="-255 347 100 100" xml:space="preserve" height="36px" width="30px">
+          <path class="user-path" d="
+          M-203.7,350.3c-6.8,0-12.4,6.2-12.4,13.8c0,4.5,2.4,8.6,5.4,11.1c0,0,2.2,1.6,1.9,3.7c-0.2,1.3-1.7,2.8-2.4,2.8c-0.7,0-6.2,0-6.2,0
+          c-6.8,0-12.3,5.6-12.3,12.3v2.9v14.6c0,0.8,0.7,1.5,1.5,1.5h10.5h1h13.1h13.1h1h10.6c0.8,0,1.5-0.7,1.5-1.5v-14.6v-2.9
+          c0-6.8-5.6-12.3-12.3-12.3c0,0-5.5,0-6.2,0c-0.8,0-2.3-1.6-2.4-2.8c-0.4-2.1,1.9-3.7,1.9-3.7c2.9-2.5,5.4-6.5,5.4-11.1
+          C-191.3,356.5-196.9,350.3-203.7,forgotpass350.3L-203.7,350.3z"/>
+        </svg>
+        </label>
+        <input type="text" id="txtUsername" name="txtUsername" class="username-input" placeholder="Username">
+      </div>
+      <div class="password-row row animated  bounceIn  delay-2" id="div_password">
+        <label for="password_input">
+        <svg version="1.1" class="password-icon" x="0px" y="0px"
+        viewBox="-255 347 100 100" height="36px" width="30px">
+          <path class="key-path" d="M-191.5,347.8c-11.9,0-21.6,9.7-21.6,21.6c0,4,1.1,7.8,3.1,11.1l-26.5,26.2l-0.9,10h10.6l3.8-5.7l6.1-1.1
+          l1.6-6.7l7.1-0.3l0.6-7.2l7.2-6.6c2.8,1.3,5.8,2,9.1,2c11.9,0,21.6-9.7,21.6-21.6C-169.9,357.4-179.6,347.8-191.5,347.8z"/>
+        </svg>
+        </label>
+             <input type="password" id="txtPassword" name="txtPassword" class="password-input input"  placeholder="Password"/>
+      </div>
+      <div class="username-row row animated bounceIn  delay-1" id="bli_div">
+      </div>
+    
+    </div>
+    <div class="call-to-action animated bounceIn delay-3">
+
+      <p class="pull-left loginforgotpassword" id="forgotpass"><a href="#">Forgot Password ? </a> </p>  <p class="pull-right">
+      <button id="login-button" type="button" onclick="validateDetails()">LogIn</button></p>
+    </div>
+  </div>
+
+  <div id="Forgot_pw" class="login animated fadeIn " style="display: none">
+    <div class="login-form">
+     <div class="username-row row animated bounceIn  delay-1">
+        <input type="text" id="txtUserID" class="username-input" placeholder="Enter Username">
+      </div>
+      	<!--<div class="gap  animated bounceIn  delay-3"><span>OR</span></div>-->
+       <div class="username-row row animated bounceIn  delay-2">
+        <input type="email" id="txtEmailID" class="username-input" placeholder="Enter Email">
+      </div>
+	  </div>
+
+      <p class="pull-left backto_login"><a href="#">Back to login ? </a> </p>  <p class="pull-right">
+    <button id="btnReset" type="button" onclick="forgotPassword()">Reset</button></p>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+</div>
+
+<!--<span class="loginbtmrightimg"> <img src="images/loginbtmrightimg.png" alt=""> </span>
+<span class="loginbtmleftimg animated slideInLeft"> <img src="/static/images/loginleftimg.png" alt=""> </span>-->
+</div>
+{% endblock %}
+
+
+{% block footer %}
+<script>
+    $(document).ready(function(e){
+        $("#bli_div").addClass("hide")
+    })
+    var input=document.getElementById("txtPassword");
+    input.addEventListener("keyup",function(event){
+        event.preventDefault();
+        if(event.keyCode===13){
+            $("#login-button").click();
+        }
+    });
+
+    var inputE=document.getElementById("txtEmailID");
+    inputE.addEventListener("keyup",function(event){
+        event.preventDefault();
+        if(event.keyCode===13){
+            $("#btnReset").click();
+        }
+    });
+forgotpass
+$(document ).ready(function() {
+
+	$(".loginforgotpassword").click(function () {
+		 $("#Forgot_pw").show();
+		 $("#login").hide();
+	});
+
+	$(".backto_login").click(function () {
+		 $("#Forgot_pw").hide();
+		 $("#login").show();
+	});
+});
+
+    function validateDetails() {
+        if ($("#txtUsername").val() == "" || $("#txtUsername").val() == null) {
+            alert("Enter User Name")
+            return false;
+        }
+        if ($("#txtPassword").val() == "" || $("#txtPassword").val() == null) {
+            alert("Enter Password")
+            return false;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'check_login_and_get_bli' %}",
+            data: { 'UserName': $("#txtUsername").val(), 'Password': $("#txtPassword").val() },
+            datatype: 'json',
+            contenyType: 'application/json',
+            success: function (data) {
+                if (data.status == 'Success') {
+
+                    if (data.mul_bli) {
+
+                        $("#divusername").hide()
+                        $("#divchoosebli").show()
+                        $("#forgotpass").hide()
+                        $("#bli_div1").removeClass("hide")
+                        $("#bli_div").removeClass("hide")
+                        $("#bli_div").html(data.Message)
+                        $("#login-button").attr('onclick', 'validateLoginDetails()')
+                        $("#div_password").addClass("hide")
+
+                    }
+                    else {
+                        //$("#bli_id").val(data.Message);
+                        validateLoginDetails_without_param(data.Message)
+                    }
+                }
+                else {
+                    alert("Invalid username or password")
+                    return false;
+                }
+
+            },
+            error: function (xhr, errorType, exception) {
+                alert(exception);
+            }
+        });
+
+    }
+
+    function validateLoginDetails(){
+        debugger;
+        if($("#txtUsername").val()=="" || $("#txtUsername").val()==null ){
+            alert("Enter username")
+            return false;
+            
+        }
+        if($("#bli_id").val()=="" || $("#bli_id").val()==null ){
+            alert("Bli ID is required")
+            return false;
+        }
+
+        $.ajax({
+            type:'POST',
+            url: "{% url 'do_login' %}",
+            data:{'UserName':$("#txtUsername").val(),'Password':$("#txtPassword").val(), 'BLI_ID': $("#bli_id").val()},
+            datatype:'json',
+            contenyType: 'application/json',
+            success: function(data){
+                if(data.status=='Success'){
+                  window.location.href= POST_LOGIN_URL;
+                }
+                else{
+                    alert('You are not a valid user !!!!!');
+                   // alert(data.result);
+                }
+
+            },
+            error:function(xhr, errorType, exception){
+                alert("Something went wrong. Please contact administrator")
+                return false;
+            }
+        });
+
+    }
+
+
+    function validateLoginDetails_without_param(id){
+        debugger;
+        if($("#txtUsername").val()=="" || $("#txtUsername").val()==null ){
+            alert("Enter username")
+            return false;
+        }
+
+        $.ajax({
+            type:'POST',
+            url: "{% url 'do_login' %}",
+            data:{'UserName':$("#txtUsername").val(),'Password':$("#txtPassword").val(), 'BLI_ID': id},
+            datatype:'json',
+            contenyType: 'application/json',
+            success: function(data){
+                if(data.status=='Success'){
+                  window.location.href= POST_LOGIN_URL;
+                }
+                else{
+                    alert('You are not a valid user !!!!!');
+                }
+
+            },
+            error:function(xhr, errorType, exception){
+                alert("Something went wrong. Please contact administrator")
+                return false;
+            }
+        });
+
+    }
+
+    function forgotPassword(){
+        if($("#txtUserID").val()=="" || $("#txtUserID").val()==null ){
+            alert("Enter User Id");
+            return;
+        }
+        if($("#txtEmailID").val()=="" || $("#txtEmailID").val()==null ){
+            alert("Enter email Id");
+            return;
+        }
+        else if (validateEmail($("#txtEmailID").val()) == false) {
+                alert("Enter valid email Id");
+                return;
+        }
+
+        var model = {"UserID": $("#txtUserID").val(),"EmailID": $("#txtEmailID").val()}
+    
+            $.ajax({
+                type:'POST',
+                url: "{% url 'login_forgot_password' %}",
+                data:model,
+                dataType:'json',
+                success: function(data){
+                    if(data.MSG_TYPE==2)
+                    {
+                        alert(data.Message)
+                    }
+                    else
+                    {
+                        alert(data.Message)
+                    }
+                },
+                error:function(xhr, errorType, exception){
+                    alert(exception);
+                }
+            });
+      
+    }
+
+function validateEmail(sEmail) {
+            var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (filter.test(sEmail)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+</script>
+
+{% endblock %}

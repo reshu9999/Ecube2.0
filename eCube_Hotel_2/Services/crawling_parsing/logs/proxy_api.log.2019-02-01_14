@@ -1,0 +1,13 @@
+2019-02-01 14:47:14,906|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-01 14:47:14,909|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-01 14:47:14,909|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-01 14:47:14,923|proxy_api|INFO| |domain:Booking|Proxy Returned
+2019-02-01 15:07:24,091|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-01 15:07:24,091|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-01 15:07:24,104|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-01 15:07:25,682|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-01 15:07:25,682|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-01 15:07:25,693|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-01 16:17:43,568|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-01 16:17:43,568|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-01 16:17:43,580|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned

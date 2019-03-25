@@ -1,0 +1,2028 @@
+{% extends 'hotel/base.html' %} {% block header %}
+<link rel="stylesheet" href="/static/hotel/css/perfect-scrollbar.css">
+<link rel="stylesheet" href="/static/hotel/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/static/hotel/css/jquery.tagsinput.css" />
+<link href="/static/hotel/css/MonthPicker.min.css" rel="stylesheet" type="text/css" />
+<link href="/static/hotel/css/jquery.multiselect.css" rel="stylesheet" />
+<link rel="stylesheet" href="/static/hotel/css/font-awesome.css"> 
+<style>
+.form-group.radio_selection.clearfix {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+}
+</style>
+{% endblock %} {% block content %}
+<section class="body_contaner no_sidebar">
+    <div class="container_content">
+        <div class="inner_content_contaner">
+            <div class="clearfix"></div>
+            <div class="white_bg marT30 content_area1 clearfix">
+                <!-- multistep form -->
+                <form id="msform">
+                    <!-- progressbar -->
+                     
+                    <!-- fieldsets -->
+                    <div class="col-md-12 col-sm-12 col-xs-12 slides_contaner animated fadeIn">
+                        <fieldset>
+                            <div class="marT30">
+                                <h2 class="slide_heading">Schedule &amp; Submit</h2>
+                                <div class="border_contaner_large marT50 step_5">
+                                    <div class="large_font_contaner">
+                                        <span id="span_req_id" class="larg_font">{{ request.session.requestid }}</span>
+                                        <span class="small_font">Request
+                                            <br> Created
+                                        </span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-12 marT20">
+                                            <div class="col-md-2">
+                                                <div class="arrow_text marT20"> SCHEDULE
+                                                    <br> FOR
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-10 ">
+                                                <ul class="nav nav-tabs reset">
+                                                        {%if not schedule_type%}
+                                                    <li id="liNow" class="now_tab active">
+                                                        <a data-toggle="tab" href="#Now">
+                                                            <span class="icon_con">Now</span>
+                                                        </a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li id="liNow" class="now_tab">
+                                                            <a data-toggle="tab" href="#Now">
+                                                                <span class="icon_con">Now</span>
+                                                            </a>
+                                                        </li>
+                                                    {%endif%}
+                                                    
+
+                                                        {%if schedule_type == 'Daily'%}
+                                                    <li id="liDaily" class="Daily active">
+                                                        <a data-toggle="tab" href="#Daily">
+                                                            <span class="icon_con"> Daily</span>
+                                                        </a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li id="liDaily" class="Daily">
+                                                            <a data-toggle="tab" href="#Daily">
+                                                                <span class="icon_con"> Daily</span>
+                                                            </a>
+                                                        </li>
+                                                    {%endif%}
+                                                    
+                                                        {%if schedule_type == 'Weekly'%}
+                                                    <li id="liWeekly" class="Weekly active">
+                                                        <a data-toggle="tab" href="#Weekly">
+                                                            <span class="icon_con"> Weekly</span>
+                                                        </a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li id="liWeekly" class="Weekly">
+                                                            <a data-toggle="tab" href="#Weekly">
+                                                                <span class="icon_con"> Weekly</span>
+                                                            </a>
+                                                        </li>
+                                                    {%endif%}
+                                                    
+                                                        {%if schedule_type == 'Monthly'%}
+                                                    <li id="liMonthly" class="Monthly active">
+                                                        <a data-toggle="tab" href="#Monthly">
+                                                            <span class="icon_con"> Monthly</span>
+                                                        </a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li id="liMonthly" class="Monthly">
+                                                            <a data-toggle="tab" href="#Monthly">
+                                                                <span class="icon_con"> Monthly</span>
+                                                            </a>
+                                                        </li>
+                                                    {%endif%}
+                                                   
+                                                        {%if schedule_type == 'Once' %}
+                                                    <li id="liOneTime" class="one_time active">
+                                                        <a data-toggle="tab" href="#One_Time">
+                                                            <span class="icon_con">Once</span>
+                                                        </a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li id="liOneTime" class="one_time">
+                                                            <a data-toggle="tab" href="#One_Time">
+                                                                <span class="icon_con">Once</span>
+                                                            </a>
+                                                        </li>
+                                                    {%endif%}
+                                                    
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div id="Now" class="tab-pane in  animated fadeIn {% if not schedule_type %}active{% endif %}">
+                                                        <div class="col-md-12 marT20">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                <div class="col-md-1">
+                                                                        <img src="/static/hotel/images/hand_left_03.png" alt="">
+                                                                </div>
+                                                                    <div class="col-md-11">
+                                                                           
+                                                                        <h2 class="text_now">
+                                                                            Your request will schedule for
+                                                                            <br>immediate execution.
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="typeScheduler" />
+                                                    <div id="Daily" class="tab-pane  animated fadeIn {% if schedule_type == 'Daily' %}active{% endif %}">
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-9 marT20">
+                                                                    <h3>Date &amp Time</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-md-5 padR0">
+                                                                            <label class="label_5">From</label>
+                                                                            <input type="text" class="form-control datepick" id="txtD_StartDate" name="txtStartDate" {% if start_date %}value="{{ start_date|date:'m/d/Y' }}"{% else %}placeholder="MM/DD/YY"{% endif %}>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <label class="label_5">To</label>
+                                                                            <input type="text" class="form-control datepick" id="txtD_EndDate" name="txtEndDate" {% if end_date %}value="{{ end_date|date:'m/d/Y' }}"{% else %}placeholder="MM/DD/YY"{% endif %}>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="marT30">Scheduled task at</h3>
+                                                                    <div class="row">
+                                                                            {% if times %}
+                                                                            {% for tm in times %}
+
+                                                                            <div id="id_contaner2">
+                                                                                <div class="col-md-3 padR0">
+                                                                                    <label class="label_5">Time</label>
+                                                                                    <input type="text" class="form-control timepck" id="txtD_ScheduleTime" name="txtSchedulTime" value="{{ tm }}">
+                                                                                </div>
+                                                                            </div>
+                                                                            {% endfor %}
+                                                                            {% else %}
+                                                                        <div id="id_contaner2">
+                                                                            <div class="col-md-3 padR0">
+                                                                                <label class="label_5">Time</label>
+                                                                                <input type="text" class="form-control timepck" id="txtD_ScheduleTime" name="txtSchedulTime" placeholder="HH:MM:SS">
+                                                                            </div>
+                                                                        </div>
+                                                                        {% endif %}
+                                                                        <div class="col-md-3 marT10">
+                                                                            <label class="col-md-12">&nbsp;</label>
+
+                                                                            <button class="pull-left add_domoain" id="add_row2">
+                                                                                <span> +</span>Add
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div id="Weekly" class="tab-pane  animated fadeIn {% if schedule_type == 'Weekly' %}active{% endif %}">
+                                                            <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-9">
+                                                                    <h3 class="marT20">Date &amp Time</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-md-5 padR0">
+                                                                            <label class="label_5">From</label>
+                                                                            <input type="text" class="form-control datepick" id="txtW_StartDate" name="txtW_StartDate" {% if start_date %}value="{{ start_date|date:'m/d/Y' }}"{% else %}placeholder="MM/DD/YY"{% endif %}>
+                                                                            <span id="span_txtD_StartDate" class="small error" style="display:none">Please select date</span>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <label class="label_5">To</label>
+                                                                            <input type="text" id="txtW_EndDate" name="txtW_EndDate" class="form-control datepick" {% if end_date %}value="{{ end_date|date:'m/d/Y' }}"{% else %}placeholder="MM/DD/YY"{% endif %}>
+                                                                            <span id="span_txtW_EndDate" class="small error" style="display:none">Please select date</span>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <label class="label_5">Week Days</label>
+                                                                            <input type="text" id="txtW_WeekDays" name="txtW_WeekDays" class="field_show_week form-control" {% if days %}value="{{ days }}"{% endif %}>
+                                                                            <div class="days_contaner_week" style="display: none">
+                                                                                <div class="header_contaner">
+
+                                                                                    <span class="summary_musicians_week"></span>
+                                                                                    <a href="javascript:void(0)" class="clear_dates">Clear all
+                                                                                    </a>
+                                                                                    <a href="#" class="close_date_week">
+                                                                                        <img src="/static/hotel/images/close_date.png" alt="close"> </a>
+                                                                                </div>
+                                                                                <div class="body_conatenr">
+                                                                                    <ul class="checkboxlist_week">
+                                                                                        <li>
+                                                                                            <div class="checkbox checkbox-primary">
+                                                                                                <input id="sun" type="checkbox" value="Sun">
+                                                                                                <label for="sun">
+                                                                                                    Sun </label>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <div class="checkbox checkbox-primary">
+                                                                                                <input id="Mon" type="checkbox" value="Mon">
+                                                                                                <label for="Mon">
+                                                                                                    Mon </label>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <div class="checkbox checkbox-primary">
+                                                                                                <input id="Tue" type="checkbox" value="Tue">
+                                                                                                <label for="Tue">
+                                                                                                    Tue </label>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <div class="checkbox checkbox-primary">
+                                                                                                <input id="Wed" type="checkbox" value="Wed">
+                                                                                                <label for="Wed">
+                                                                                                    Wed </label>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <div class="checkbox checkbox-primary">
+                                                                                                <input id="Thu" type="checkbox" value="Thu">
+                                                                                                <label for="Thu">
+                                                                                                    Thu </label>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <div class="checkbox checkbox-primary">
+                                                                                                <input id="Fri" type="checkbox" value="Fri">
+                                                                                                <label for="Fri">
+                                                                                                    Fri </label>
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <div class="checkbox checkbox-primary">
+                                                                                                <input id="Sat" type="checkbox" value="Sat">
+                                                                                                <label for="Sat">
+                                                                                                    Sat </label>
+                                                                                            </div>
+                                                                                        </li>
+
+
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <label class="label_5">on every week</label>
+                                                                            <select id="id_week_number" name="week_number" class="form-control">
+                                                                            <option value="">Please select</option>
+                                                                            <option value="1" {% if frequency == '1' %} selected {% endif %}>1</option>
+									    <option value="2" {% if frequency == '2' %} selected {% endif %}>2</option>
+									    <option value="3" {% if frequency == '3' %} selected {% endif %}>3</option>
+									    <option value="4" {% if frequency == '4' %} selected {% endif %}>4</option>
+								            <option value="5" {% if frequency == '5' %} selected {% endif %}>5</option>
+									    </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="marT30">Scheduled task at</h3>
+                                                                    <div class="row">
+                                                                            {% if times %}
+                                                                            {% for tm in times %}
+                                                                            <div id="time_for_weekly">
+                                                                                <div class="col-md-3 padR0">
+                                                                                    <label class="label_5">Time</label>
+                                                                                    <input type="text" class="form-control timepck" id="txtWeekly_time" name="txtWeekly_time" value="{{ tm }}">
+                                                                                </div>
+                                                                            </div>
+                                                                            {% endfor %}
+                                                                            {% else %}
+                                                                            <div id="time_for_weekly">
+                                                                                <div class="col-md-3 padR0">
+                                                                                    <label class="label_5">Time</label>
+                                                                                    <input type="text" class="form-control timepck" id="txtWeekly_time" name="txtWeekly_time" placeholder="HH:MM:SS">
+                                                                                </div>
+                                                                            </div>
+                                                                            {% endif %}
+                                                                        <div class="col-md-3 marT10">
+                                                                            <label class="col-md-12">&nbsp;</label>
+                                                                            <button class="pull-left add_domoain" id="weekadd">
+                                                                                <span> +</span>Add
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="Monthly" class="tab-pane  animated fadeIn {% if schedule_type == 'Monthly' %}active{% endif %}">
+                                                            <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-9">
+                                                                    <h3 class="marT20">Date &amp Time</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-md-3 padR0">
+                                                                            <label class="label_5">From</label>
+                                                                            <input class="form-control datepick" id="txtM_StartDate" name="txtM_StartDate" type="text" {% if start_date %}value="{{ start_date|date:'m/d/Y' }}"{% else %}placeholder="MM/DD/YY"{% endif %}>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <label class="label_5">To</label>
+                                                                            <input class="form-control datepick" id="txtM_EndDate" name="txtM_EndDate" type="text" {% if end_date %}value="{{ end_date|date:'m/d/Y' }}"{% else %}placeholder="MM/DD/YY"{% endif %}>
+                                                                        </div>
+<div class="row">
+<div class="col-md-12"> 
+  <div class="row">
+  <div class="col-md-4">
+<div class="col-md-12">
+<div class="form-group radio_selection clearfix" id="">
+                     
+                    <div class="radio radio-primary checkbox-inline pull-left">
+                      <input id="id_radio_days" type="radio" value="1" name="pnfstop" checked="">
+                      <label for="id_radio_days">   </label>
+                    </div>
+                   
+                  </div>
+
+                                                                            <label class="label_5">Days</label>
+                                                                            <div class="select_contaner">
+                                                                                    <input type="text" id="txtM_Days" name="txtM_Days" class="field_show form-control" {% if days %}value="{{ days }}"{% endif %}>
+                                                                                    <div class="days_contaner" style="display: none">
+                                                                                    <div class="header_contaner">
+
+                                                                                        <span class="summary_musicians"></span>
+                                                                                        <a href="javascript:void(0)" class="clear_dates">Clear all
+                                                                                        </a>
+                                                                                        <a href="#" class="close_date">
+                                                                                            <img src="/static/hotel/images/close_date.png" alt="close"> </a>
+                                                                                    </div>
+                                                                                    <div class="body_conatenr">
+                                                                                        <ul class="checkboxlist_list">
+
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day1" type="checkbox" value="1">
+                                                                                                    <label for="day1">
+                                                                                                        1 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day2" type="checkbox" value="2">
+                                                                                                    <label for="day2">
+                                                                                                        2 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day3" type="checkbox" value="3">
+                                                                                                    <label for="day3">
+                                                                                                        3 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day4" type="checkbox" value="4">
+                                                                                                    <label for="day4">
+                                                                                                        4 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day5" type="checkbox" value="5">
+                                                                                                    <label for="day5">
+                                                                                                        5 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day6" type="checkbox" value="6">
+                                                                                                    <label for="day6">
+                                                                                                        6 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day7" type="checkbox" value="7">
+                                                                                                    <label for="day7">
+                                                                                                        7 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day8" type="checkbox" value="8">
+                                                                                                    <label for="day8">
+                                                                                                        8 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day9" type="checkbox" value="9">
+                                                                                                    <label for="day9">
+                                                                                                        9 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day10" type="checkbox" value="10">
+                                                                                                    <label for="day10">
+                                                                                                        10 </label>
+                                                                                                </div>
+                                                                                            </li>
+
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day11" type="checkbox" value="11">
+                                                                                                    <label for="day11">
+                                                                                                        11 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day12" type="checkbox" value="12">
+                                                                                                    <label for="day12">
+                                                                                                        12 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day13" type="checkbox" value="13">
+                                                                                                    <label for="day13">
+                                                                                                        13 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day14" type="checkbox" value="14">
+                                                                                                    <label for="day14">
+                                                                                                        14 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day15" type="checkbox" value="15">
+                                                                                                    <label for="day15">
+                                                                                                        15 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day16" type="checkbox" value="16">
+                                                                                                    <label for="day16">
+                                                                                                        16 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day17" type="checkbox" value="17">
+                                                                                                    <label for="day17">
+                                                                                                        17 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day18" type="checkbox" value="18">
+                                                                                                    <label for="day18">18 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day19" type="checkbox" value="19">
+                                                                                                    <label for="day19">
+                                                                                                        19 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day20" type="checkbox" value="20">
+                                                                                                    <label for="day20">
+                                                                                                        20 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day21" type="checkbox" value="21">
+                                                                                                    <label for="day21">
+                                                                                                        21 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day22" type="checkbox" value="22">
+                                                                                                    <label for="day22">
+                                                                                                        22 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day23" type="checkbox" value="23">
+                                                                                                    <label for="day23">
+                                                                                                        23 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day24" type="checkbox" value="24">
+                                                                                                    <label for="day24">
+                                                                                                        24 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day25" type="checkbox" value="25">
+                                                                                                    <label for="day25">
+                                                                                                        25 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day26" type="checkbox" value="26">
+                                                                                                    <label for="day26">
+                                                                                                        26 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day27" type="checkbox" value="27">
+                                                                                                    <label for="day27">
+                                                                                                        27 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day28" type="checkbox" value="28">
+                                                                                                    <label for="day28">
+                                                                                                        28 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day29" type="checkbox" value="29">
+                                                                                                    <label for="day29">
+                                                                                                        29 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day30" type="checkbox" value="30">
+                                                                                                    <label for="day30">
+                                                                                                        30 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="day31" type="checkbox" value="31">
+                                                                                                    <label for="day31">
+                                                                                                        31 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <!-- <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="dayLast" type="checkbox" value="Last">
+                                                                                                    <label for="dayLast">
+                                                                                                        Last </label>
+                                                                                                </div>
+                                                                                            </li> -->
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>                                                                               
+                                                                            </div>
+ </div>	
+
+									
+		
+</div>  
+  
+
+
+
+<div class="col-md-6">
+<div>
+<div class="form-group radio_selection clearfix" id="">
+                     
+                    <div class="radio radio-primary checkbox-inline pull-left">
+                      <input id="id_radio_week" type="radio" value="2" name="pnfstop"  >
+                      <label for="id_radio_week">   </label>
+                    </div>
+                   
+                  </div>
+<label class="label_5">The</label>
+ </div>
+<div class="row">
+<div class="col-md-6">
+	      <select id="id_week_of_month" name="week_of_month" class="form-control">
+		<option value="">Please select</option>
+		<option value="1" {% if week_of_month == '1' %} selected {% endif %}>1</option>
+		<option value="2" {% if week_of_month == '2' %} selected {% endif %}>2</option>
+		<option value="3" {% if week_of_month == '3' %} selected {% endif %}>3</option>
+		<option value="4" {% if week_of_month == '4' %} selected {% endif %}>4</option>
+		<option value="5" {% if week_of_month == '5' %} selected {% endif %}>5</option>
+		</select>
+   </div>
+
+
+<div class="col-md-6">
+		<select id="id_day_of_week" name="day_of_week" class="form-control">
+		<option value="">Please select</option>
+		<option value="Monday" {% if day_of_week == '1' %} selected {% endif %}>Monday</option>
+		<option value="Tuesday" {% if day_of_week == '2' %} selected {% endif %}>Tuesday</option>
+		<option value="Wednesday" {% if day_of_week == '3' %} selected {% endif %}>Wednesday</option>
+		<option value="Thursday" {% if day_of_week == '4' %} selected {% endif %}>Thursday</option>
+		<option value="Friday" {% if day_of_week == '5' %} selected {% endif %}>Friday</option>
+		<option value="Saturday" {% if day_of_week == '6' %} selected {% endif %}>Saturday</option>
+		<option value="Sunday" {% if day_of_week == '0' %} selected {% endif %}>Sunday</option>
+	</select>
+</div>
+</div>
+</div>
+ </div>  
+<!--<div class="col-md-4">-->
+    <!--<label class="label_5">Of Every Month (s)</label>-->
+    <!--<input class="form-control" id="id_every_month" name="every_month" type="text" {% if every_month %}value="{{ every_month }}"{% endif %}>-->
+ <!--</div>	-->
+    <div class="row">
+      <div class="col-md-4">
+<div class="col-md-12">
+
+
+
+                                                                      <label class="label_5">Of Every Month (s)</label>
+                                                                            <div class="select_contaner">
+                                                                                    <!--<input type="text" id="txtM_Days" name="txtM_Days" class="field_show form-control" {% if days %}value="{{ days }}"{% endif %}>-->
+                                                                                <input class="field_show_month form-control" id="id_every_month" name="every_month" type="text" {% if every_month %}value="{{ every_month }}"{% endif %}>
+                                                                                    <div class="days_contaner_month" style="display: none">
+                                                                                    <div class="header_contaner_month">
+
+                                                                                        <span class="summary_musicians_month"></span>
+                                                                                        <a href="javascript:void(0)" class="clear_dates">Clear all
+                                                                                        </a>
+                                                                                        <a href="#" class="close_date">
+                                                                                            <img src="/static/hotel/images/close_date.png" alt="close"> </a>
+                                                                                    </div>
+                                                                                    <div class="body_conatenr">
+                                                                                        <ul class="checkboxlist_list_month">
+
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month1" type="checkbox" value="1">
+                                                                                                    <label for="month1">
+                                                                                                        1 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month2" type="checkbox" value="2">
+                                                                                                    <label for="month2">
+                                                                                                        2 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month3" type="checkbox" value="3">
+                                                                                                    <label for="month3">
+                                                                                                        3 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month4" type="checkbox" value="4">
+                                                                                                    <label for="month4">
+                                                                                                        4 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month5" type="checkbox" value="5">
+                                                                                                    <label for="month5">
+                                                                                                        5 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month6" type="checkbox" value="6">
+                                                                                                    <label for="month6">
+                                                                                                        6 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month7" type="checkbox" value="7">
+                                                                                                    <label for="month7">
+                                                                                                        7 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month8" type="checkbox" value="8">
+                                                                                                    <label for="month8">
+                                                                                                        8 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month9" type="checkbox" value="9">
+                                                                                                    <label for="month9">
+                                                                                                        9 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month10" type="checkbox" value="10">
+                                                                                                    <label for="month10">
+                                                                                                        10 </label>
+                                                                                                </div>
+                                                                                            </li>
+
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month11" type="checkbox" value="11">
+                                                                                                    <label for="month11">
+                                                                                                        11 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="checkbox checkbox-primary">
+                                                                                                    <input id="month12" type="checkbox" value="12">
+                                                                                                    <label for="month12">
+                                                                                                        12 </label>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                                                                                                                  </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+ </div>
+
+
+
+</div>
+
+</div>
+ </div>
+
+ </div>
+
+
+                                                                    </div>                                                                    
+                                                                    <h3 class="marT30">Scheduled task at</h3>
+                                                                    <div class="row">
+                                                                            {% if times %}
+                                                                            {% for tm in times %}
+                                                                            <div id="time_for_month">
+                                                                                <div class="col-md-3 padR0">
+                                                                                    <label class="label_5">Time</label>
+                                                                                    <input type="text" id="txtM_Time" name="txtM_Time" class="form-control timepck" value="{{ tm }}">
+                                                                                </div>
+                                                                            </div>
+                                                                            {% endfor %}
+                                                                            {% else %}
+                                                                            <div id="time_for_month">
+                                                                                <div class="col-md-3 padR0">
+                                                                                    <label class="label_5">Time</label>
+                                                                                    <input type="text" id="txtM_Time" name="txtM_Time" class="form-control timepck" placeholder="HH:MM:SS">
+                                                                                </div>
+                                                                            </div>
+                                                                            {% endif %}
+                                                                        <div class="col-md-3 marT10">
+                                                                            <label class="col-md-12">&nbsp;</label>
+                                                                            <button class="pull-left add_domoain" id="monthadd">
+                                                                                <span> +</span>Add
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="One_Time" class="tab-pane  animated fadeIn {% if schedule_type == 'Once' %}active{% endif %}">
+                                                            <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-8">
+                                                                    <h3 class="marT20">Date &amp Time</h3>
+                                                                    <div class="row">
+                                                                        <div class="col-md-5 ">
+                                                                            <label class="label_5">Date</label>
+                                                                            <input type="text" name="txtDate" class="form-control datepick" {% if start_date %}value="{{ start_date|date:'m/d/Y' }}"{% else %}placeholder="MM/DD/YY"{% endif %}>
+                                                                        </div>
+                                                                        {% if times %}
+                                                                        {% for tm in times %}
+                                                                        <div class="col-md-5 border_left_purple">
+                                                                            <label class="label_5">Time</label>
+                                                                            <input type="text" name="txtTime" class="form-control timepck" value="{{ tm }}">
+                                                                        </div>
+                                                                        {% endfor %}
+                                                                        {% else %}
+                                                                        <div class="col-md-5 border_left_purple">
+                                                                            <label class="label_5">Time</label>
+                                                                            <input type="text" name="txtTime" class="form-control timepck" placeholder="HH:MM:SS">
+                                                                        </div>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!--<div class="col-md-12 marT30 border_dashed">-->
+                                                        <!--<div class="box_emailer">-->
+                                                            <!--<label class="label_new">Send a copy of report via</label>-->
+                                                            <!--<ul class="send_copy marT10">-->
+                                                                <!--<li class="send_email">-->
+                                                                    <!--<a href="javascript:void(0);">-->
+                                                                        <!--<span>Email</span>-->
+                                                                    <!--</a>-->
+                                                                <!--</li>-->
+                                                                <!---->
+                                                            <!--</ul>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+
+                                                    <!--<div class="col-md-12 marT30 border_dashed" id ="div_email" style="display: none;">-->
+                                                        <!--<div class="box_emailer">-->
+                                                            <!--<label class="label_new">Email ID added in system</label>-->
+                                                            <!--<ul class="send_copy marT10">-->
+                                                                <!--<li class="send_email" style="list-style: 20px;">-->
+                                                                    <!--<p >Email: &nbsp;&nbsp;<label id="span_email">  </label> </p> -->
+                                                                    <!--<p >Email CC : &nbsp;&nbsp;<label id="span_email_cc">  </label> </p> -->
+                                                                <!--</li>-->
+                                                            <!--</ul>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                     
+                                    </div>
+                                </div>
+                                <div class="text-center schedular_footer_btn">
+                                <input type="button" name="previous" class="previous action-button" value="Previous" onclick="return redirect()" />
+                                <input type="button" name="submit" id="btnSubmit" class="next action-button" value="Submit" />
+                            </div>
+                        </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id = "scheduleReqId" value="{{ request.session.requestid }}" />
+</section>
+
+
+<!-- for send report  popup start --> 
+<div class="send_report_modal"> 
+    <div class="send_report_body clearfix">
+    <button type="button" class="close"  >×</button>
+        <h2> Email </h2>
+            <div class="body_padding">
+        <p class="send_report_para"> Use ' , ' seprator for multiple email ID's	</p>
+        <div class=" ">
+             <div class="form-group">
+                                    <label> To Email <span class="red">*</span></label>
+                                    <input id = "btnemail" type="text" class="form-control" placeholder="To Email">
+                            
+                                <span id="spanemail" class="small error" style="display:none">Should not be blanked</span>
+                                <span id="spanemail1" class="small error" style="display:none">Not a valid mail or not "," separated</span>
+                            </div>
+
+        </div>
+        <div class=" ">
+             <div class="form-group">
+                                    <label> CC Email  </label>
+                                    <input id= "btncc" type="text" class="form-control" placeholder="CC Email">
+                               
+                                <span id="spancc" class="small error" style="display:none">Not a valid mail or not "," separated</span>
+                            </div>  
+        </div>
+        
+        
+        </div>
+        <div class="text-center footer_report">
+                    <input type="button" name="" class="cancel_btn" value="Cancel" id = "btncancel">
+                    <input type="button" name="" class="validate_btn" value="Validate" id = "btnvalidate">
+                </div>
+    </div> 
+</div>
+<!-- for send report  popup start--> 
+
+
+
+
+
+
+
+{% endblock %} {% block footer %}
+<script>
+    f_get_email_by_req_id = "{% url 'f_get_email_by_req_id' %}";
+</script>
+<script type="text/javascript">
+    var timearr = [];
+
+
+    $("#id_radio_week").click(function(e){
+        $("#id_week_of_month").removeAttr("disabled");
+        $("#id_day_of_week").removeAttr("disabled");
+        $("#txtM_Days").attr("disabled", "disabled");  
+    });
+
+    $("#id_radio_days").click(function(e){
+        $("#id_week_of_month").attr("disabled", "disabled");
+        $("#id_day_of_week").attr("disabled", "disabled");
+        $("#txtM_Days").removeAttr("disabled");  
+    });
+
+		
+    $("#btnemail").change(function (e) {
+        if ($(this).val() == '0') {
+            $("#btnemail").addClass('error_field')
+            $("#spanemail").css("display", "block")
+        }
+        else {
+            $("#spanemail").css("display", "none")
+            $("#btnemail").removeClass('error_field')
+        }
+    })
+    
+    $("#btnemail").change(function (e) {
+        if ($(this).val() == '0') {
+            $("#btnemail").addClass('error_field')
+            $("#spanemail1").css("display", "block")
+        }
+        else {
+            $("#spanemail1").css("display", "none")
+            $("#btnemail").removeClass('error_field')
+        }
+    })
+    
+    $("#btncc").change(function (e) {
+        if ($(this).val() == '0') {
+            $("#btncc").addClass('error_field')
+            $("#spancc").css("display", "block")
+        }
+        else {
+            $("#spancc").css("display", "none")
+            $("#btncc").removeClass('error_field')
+        }
+    });
+    
+    
+
+
+$('.send_report_body button.close').click(function () { 
+        $(".send_report_modal").slideUp('fast');
+        //document.getElementById('btnemail').value = '';
+       // document.getElementById('btncc').value = '';
+});  
+ 
+
+$(".send_email a").click(function() {
+    $(".send_report_modal").slideDown('fast');
+    //document.getElementById('btnemail').value = '';
+    //document.getElementById('btncc').value = '';
+    $("#spancc").css('display','none');
+		$("#btnemail").removeClass('error_field');
+        $(".small.error").css('display','none');
+        $("#btncc").removeClass('error_field');
+    $("#spanemail1").css('display','none');
+});	
+
+$("#btncancel").click(function (e){
+    //document.getElementById('btnemail').value = ''
+    //document.getElementById('btncc').value = ''
+    $("#spancc").css('display','none');
+        $("#btnemail").removeClass('error_field');
+        $("#btncc").removeClass('error_field');
+		$(".small.error").css('display','none');
+    $("#spanemail1").css('display','none');
+  })
+
+
+    $("#btnvalidate").click(function (e) {
+        var email = document.getElementById('btnemail').value
+        var cc = document.getElementById('btncc').value
+        var scheduleReqId = document.getElementById('scheduleReqId').value;
+        var emailDetails = {}
+       ;
+        if (email == '') {
+            $("#btnemail").addClass('error_field')
+            $("#spanemail").css('display', 'block')
+            return false;
+        }
+        else {
+            var result = validateMultipleEmailsCommaSeparated(document.getElementById('btnemail'), ",");
+            if (result == false) {
+                return false;
+            }
+            else {
+                $('.send_report_modal').slideUp('500');
+            }
+        }
+        if (cc == '') {
+           
+        }
+        else {
+            var result = validateMultipleEmailsCommaSeparated1(document.getElementById('btncc'), ",");
+
+            if (result == false) {
+                
+                $(".send_report_modal").slideDown('fast');
+                return false;
+            }
+            else {
+                $('.send_report_modal').slideUp('500');
+            }
+        }
+        emailDetails = {
+            'email': email,
+            'cc': cc,
+            'scheduleReqId': scheduleReqId,
+        }
+        $.ajax({
+
+            url: '{% url "emailSave" %}',
+            type: 'POST',
+            data: { emailDetails: JSON.stringify(emailDetails) },
+            success: function (data) {
+                Display_msg_hotel("Email Saved Successfully", 1)
+                get_email();
+            },
+            error: function () {
+            }
+        })
+    })
+
+
+  function validateEmail(field) {
+    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/;
+    return (regex.test(field)) ? true : false;
+}
+
+function validateMultipleEmailsCommaSeparated(emailcntl, seperator) {
+    var value = emailcntl.value;
+    var bool_val = true;
+    if (value != '') {
+        var result = value.split(seperator);
+        for (var i = 0; i < result.length; i++) {
+            if (result[i] != '') {
+                if (!validateEmail(result[i])) {
+                    emailcntl.focus();
+                    $("#btn").addClass('error_field')
+                    $("#spanemail1").css('display','block')
+                   
+                    return false;
+                    //alert('Please check, `' + result[i] + '` email addresses not valid!');
+                    
+                }
+                // alert(result[i]);
+            }
+        }
+        for (var i = 0; i < result.length; i++) {
+            var temp = result[i];
+            for (var j = i+1; j < result.length; j++)
+            {
+                    if (temp.toUpperCase() ==result[j].toUpperCase())
+                    {
+                        $("#btn").addClass('error_field')
+                        alert( temp +" is duplicate email id");
+                        bool_val = false;
+                    }
+
+            }
+        }
+    }
+    return bool_val;
+}
+    function validateMultipleEmailsCommaSeparated1(emailcntl, seperator) {
+        var value = emailcntl.value;
+        var bool_val = true;
+        if (value != '') {
+            var result = value.split(seperator);
+            for (var i = 0; i < result.length; i++) {
+                if (result[i] != '') {
+                    if (!validateEmail(result[i])) {
+                        emailcntl.focus();
+                        $("#btncc").addClass('error_field')
+
+                        $("#spancc").css('display', 'block')
+
+                        return false;
+
+                    }
+                }
+            }
+
+            for (var i = 0; i < result.length; i++) {
+                var temp = result[i];
+
+                for (var j = i + 1; j < result.length; j++) {
+                    if (temp.toUpperCase() == result[j].toUpperCase()) {
+                        $("#btncc").addClass('error_field')
+                        alert(temp + " is duplicate CC email id");
+                        bool_val = false;
+                        break;
+                    }
+
+                }
+            }
+        }
+       return bool_val;
+    }
+
+ 
+</script>
+<script type="text/javascript" src="/static/hotel/js/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="/static/hotel/js/MonthPicker.min.js"></script>
+<!-- jQuery easing plugin -->
+
+<script type="text/javascript">
+    var date = new Date();
+    var year = date.getFullYear(); //get year
+    var month = date.getMonth(); //get month
+
+    $('.datepick').datepicker({
+        minDate: '0',
+        //autoclose:true
+    });
+    function redirect() {
+        var referrer = document.referrer;
+        window.location.href = referrer
+    }
+    $('.timepck').timepicker({});
+    $(document).ready(function () {
+
+
+        $('.monthpick').MonthPicker({
+            Button: false,
+            MonthFormat: 'M, y',
+            changeMonth: false,
+        });
+
+        //---------------------------------
+        $checks = $(".checkboxlist_list input[type=checkbox]");
+        $checks.on('change', function () {
+            var string = $checks.filter(":checked").map(function (i, v) {
+                return this.value;
+            }).get().join(", ");
+            //alert(string);
+            $(".summary_musicians").html(string);
+            $('.field_show').val(string);
+        });
+
+        $checks_month = $(".checkboxlist_list_month input[type=checkbox]");
+        $checks_month.on('change', function () {
+            var string = $checks_month.filter(":checked").map(function (i, v) {
+                return this.value;
+            }).get().join(", ");
+            //alert(string);
+            $(".summary_musicians_month").html(string);
+            $('.field_show_month').val(string);
+        });
+
+        $(".clear_dates").click(function (e) {
+            $(".checkboxlist_list input[type=checkbox]").prop("checked", false);
+            $(".field_show").prop('value', '');
+            $(".summary_musicians").html(' ');
+
+            $(".checkboxlist_week input[type=checkbox]").prop("checked", false);
+            $(".field_show_week").prop('value', '');
+            $(".summary_musicians_week").html(' ');
+
+            $(".checkboxlist_list_month input[type=checkbox]").prop("checked", false);
+            $(".field_show_month").prop('value', '');
+            $(".summary_musicians_month").html(' ');
+        });
+
+
+        $("input.field_show").click(function (e) {
+            $(".days_contaner").slideToggle();
+              $(".days_contaner_month").hide();
+        });
+         $("input.field_show_month").click(function (e) {
+            $(".days_contaner_month").slideToggle();
+              $(".days_contaner").hide();
+        });
+        $(".close_date").click(function (e) {
+            $(".days_contaner, .days_contaner_month").slideUp();
+        });
+        //-------------------------------
+
+        //---------------------------------
+        $checks2 = $(".checkboxlist_week input[type=checkbox]");
+        $checks2.on('change', function () {
+            var strings = $checks2.filter(":checked").map(function (i, v) {
+                return this.value;
+            }).get().join(", ");
+            //alert(string);
+            $(".summary_musicians_week").html(strings);
+            $('.field_show_week').val(strings);
+        });
+
+        $(".clear_dates_week").click(function (e) {
+            $(".checkboxlist_week input[type=checkbox]").prop("checked", false);
+            $(".field_show_week").prop('value', '');
+            $(".summary_musicians_week").html(' ');
+        });
+
+
+        $("input.field_show_week ").click(function (e) {
+            $(".days_contaner_week").slideToggle();
+        });
+        $(".close_date_week").click(function (e) {
+            $(".days_contaner_week").slideUp();
+        });
+        //-------------------------------
+        //hide if click outside
+        $(document).mouseup(function (e) {
+            var container = $(".days_contaner,.days_contaner_week");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                container.slideUp();
+            }
+        });
+    });
+    $(function () {
+        $('select[multiple].active.3col').multiselect({
+            columns: 5,
+            placeholder: 'Select Days',
+            search: false,
+            searchOptions: {
+                'default': 'Select Days'
+            },
+            width: 350,
+            selectAll: false
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".alert_types").hide();
+        $(".Daily,.Weekly,.Monthly ").on("click", function () {
+            $(".alert_types").show();
+        });
+        $(".now_tab,.one_time ").on("click", function () {
+            $(".alert_types").hide();
+        });
+        get_email();
+
+        fill_month_day();
+
+
+    });
+
+    function fill_month_day(){
+        <!--var sch_type = {{ schedule_type|safe }};-->
+        <!--if (sch_type === 'Monthly'){-->
+            $(".summary_musicians").html({{ triggerDay|safe }});
+            $(".summary_musicians_month").html({{ frequency|safe }});
+        <!--}-->
+    }
+    
+    function get_email() {
+            var req_ID = $('#span_req_id').text();
+            var model = { req_ID: req_ID }
+            $.ajax({
+                url: f_get_email_by_req_id,
+                type: 'POST',
+                data: model,
+                dataType: 'json',
+                success: function (data) {
+                    debugger;
+                   if (data.req_master_email.email.trim()!=="" || data.req_master_email.email_cc.trim()!=="")
+                   {
+                       $('#div_email').show();
+                       $('#span_email').text(data.req_master_email.email);
+                       $('#span_email_cc').text(data.req_master_email.email_cc);
+                       $('#btnemail').val(data.req_master_email.email);
+                       $('#btncc').val(data.req_master_email.email_cc);
+                   }
+                },
+                error: function (xhr, errorType, exception) {
+                    alert(exception)
+                }
+            });
+        }
+    var alertActive = 0;
+    var ddlalertType = null;
+    // var textamoutsOrUnits = $("#txtamountOrUnits").val();
+    var ddlconversions = null;
+    var ddlattributes = null;
+
+    function set_flag(val) {
+        if (val == "Yes") {
+            $('#div_alert_type').show();
+            $('#div_Values').show();
+            $('#ddlprice_Attributes').show();
+            $('#ddlprice_Conversions').show();
+            ddlalertType = ddlalert_Type.options[ddlalert_Type.selectedIndex].value;
+            ddlconversions = ddlprice_Conversions.options[ddlprice_Conversions.selectedIndex].value;
+            ddlattributes = ddlprice_Attributes.options[ddlprice_Attributes.selectedIndex].value;
+            alertActive = 1;
+        } else if (val == "No") {
+            $('#div_alert_type').hide();
+            $('#div_Values').hide();
+            $('#ddlprice_Attributes').hide();
+            $('#ddlprice_Conversions').hide();
+            $('#ddlstock_Attributes').hide();
+            $('#ddlstock_Conversions').hide();
+            alertActive = 0;
+        }
+    }
+
+
+    $("#ddlalert_Type").change(function () {
+        if (ddlalert_Type.options[ddlalert_Type.selectedIndex].value == "PriceChange") {
+            $('#ddlprice_Attributes').show();
+            $('#ddlprice_Conversions').show();
+            $('#ddlstock_Attributes').hide();
+            $('#ddlstock_Conversions').hide();
+            ddlalertType = ddlalert_Type.options[ddlalert_Type.selectedIndex].value;
+            ddlconversions = ddlprice_Conversions.options[ddlprice_Conversions.selectedIndex].value;
+            ddlattributes = ddlprice_Attributes.options[ddlprice_Attributes.selectedIndex].value;
+        } else if (ddlalert_Type.options[ddlalert_Type.selectedIndex].value == "StockChange") {
+            $('#ddlprice_Attributes').hide()
+            $('#ddlprice_Conversions').hide();
+            $('#ddlstock_Attributes').show();
+            $('#ddlstock_Conversions').show();
+            ddlalertType = ddlalert_Type.options[ddlalert_Type.selectedIndex].value;
+            ddlconversions = ddlstock_Conversions.options[ddlstock_Conversions.selectedIndex].value;
+            ddlattributes = ddlstock_Attributes.options[ddlstock_Attributes.selectedIndex].value;
+        }
+    });
+
+
+    $('.btn-toggle').click(function () {
+        $(this).find('.btn').toggleClass('active');
+        if ($(this).find('.btn-primary').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-primary');
+        }
+        if ($(this).find('.btn-danger').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-danger');
+        }
+        if ($(this).find('.btn-success').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-success');
+        }
+        if ($(this).find('.btn-info').size() > 0) {
+            $(this).find('.btn').toggleClass('btn-info');
+        }
+        $(this).find('.btn').toggleClass('btn-default');
+
+        if ($(".no_active").hasClass("active")) {
+
+            $(this).addClass('red');
+        } else {
+            $(this).removeClass('red');
+        }
+    });
+
+    var setNulldatemessage = "Please select date"
+    var setdateErrorMessage = "From date must be less than to date"
+    var commonSuccessMessage = "Scheduler started successfully"
+    var commonErrorMessage = "Scheduler did not start. Please contact administrator."
+    var schedulartype = null
+    var setNulltimemessage = "Please set time"
+    var timearr;
+    $(".reset li").click(function () {
+        $("input.form-control").val("")
+        if ($("li").find('active')) {
+            timearr = []
+            schedulartype =$(this).find("span").text();
+           
+            $("[name='typeScheduler']").val($(this).find("span").text());
+        }
+
+    });
+
+
+    $("#btnSubmit").click(function (e) {
+        schedulartype = $('li.active').text().trim();
+        var now = new Date();
+        if ($("#liNow").attr('class') == 'now_tab active') {
+            SchedularType("Now", model)
+        } else if ($("#liDaily").attr('class') == 'Daily active') {
+           
+            var txtD_StartDate = document.getElementById("txtD_StartDate")
+            var txtD_EndDate = document.getElementById("txtD_EndDate")
+            if (txtD_StartDate.value == null || txtD_StartDate.value == "") {
+                message = "Please set start date"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                txtD_StartDate.focus()
+                return false;
+            } else if (txtD_EndDate.value == null || txtD_EndDate.value == "") {
+                message = "Please set end date"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                txtD_EndDate.focus()
+                return false;
+            }
+
+            var s_date = new Date(txtD_StartDate.value)
+            var e_date = new Date(txtD_EndDate.value)
+            if (s_date > e_date) {
+                message = setdateErrorMessage
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+
+                txtD_StartDate.focus()
+                return false;
+
+            }
+
+            var txtScheduleTimeElement = $("[name='txtSchedulTime']");
+
+            var timearr = NullTimeCheck(txtScheduleTimeElement, setNulltimemessage)
+            for (var i=0; i < timearr.length; i++) {
+                var s_datetime = new Date(txtD_StartDate.value + " " + timearr[i]);
+                var e_datetime = new Date(txtD_EndDate.value + " " + timearr[i]);
+                if (s_datetime < now | e_datetime < now){
+                    Display_msg_hotel("Request can't scheduled for past datetime.", 0)
+                    return false;
+                }
+            }
+            if (timearr.length > 0) {
+                if (TimeDifference(timearr, s_date)) {
+                    var model = null
+                    if (alertActive == 0) {
+                        model = {
+                            "txtStartDate": txtD_StartDate.value,
+                            "txtEndDate": txtD_EndDate.value,
+                            "txtSchedulTime": timearr
+
+                        }
+                    } else if (alertActive == 1) {
+                        model = {
+                            "txtStartDate": txtD_StartDate.value,
+                            "txtEndDate": txtD_EndDate.value,
+                            "txtSchedulTime": timearr,
+                            "togglealertActive": alertActive,
+                            "ddlalertType": ddlalertType,
+                            "txtamoutOrUnit": $("#txtamountOrUnits").val(),
+                            "ddlconversions": ddlconversions,
+                            "ddlattribute": ddlattributes
+                        }
+                    }
+
+                    SchedularType(schedulartype, model)
+                }
+                else {
+                    return false;
+                }
+            }
+            else { return false }
+
+
+
+        } else if ($("#liWeekly").attr('class') == 'Weekly active') {
+
+            var txtW_StartDate = document.getElementById('txtW_StartDate')
+            var txtW_EndDate = document.getElementById('txtW_EndDate')
+            var txtW_WeekDays = document.getElementById('txtW_WeekDays')
+            var week_number = document.getElementById('id_week_number')
+
+
+            if (txtW_StartDate.value == null || txtW_StartDate.value == "") {
+                message = "Please set start date"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                txtW_StartDate.focus()
+                return false;
+            } else if (txtW_EndDate.value == null || txtW_EndDate.value == "") {
+                message = "Please set end date"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                txtW_EndDate.focus()
+                return false;
+            }
+
+            var txtW_StartDate = document.getElementById('txtW_StartDate')
+            var txtW_EndDate = document.getElementById('txtW_EndDate')
+            var s_date = new Date(txtW_StartDate.value)
+            var e_date = new Date(txtW_EndDate.value)
+            if (s_date >= e_date) {
+                message = "To date must be greater than From date"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                txtW_StartDate.focus()
+                return false;
+            } else if (txtW_WeekDays.value == null || txtW_WeekDays.value == "") {
+                message = "Please set week days"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                txtW_WeekDays.focus()
+                return false;
+            }
+            var txtScheduleTimeElement = $("[name='txtWeekly_time']");
+            var timearr = NullTimeCheck(txtScheduleTimeElement, setNulltimemessage)
+
+            for (var i=0; i < timearr.length; i++) {
+                var s_datetime = new Date(txtW_StartDate.value + " " + timearr[i]);
+                var e_datetime = new Date(txtW_EndDate.value + " " + timearr[i]);
+                if (s_datetime < now | e_datetime < now){
+                    Display_msg_hotel("Request can't scheduled for past datetime.", 0)
+                    return false;
+                }
+            }
+
+            if (timearr.length > 0) {
+                if (TimeDifference(timearr, s_date)) {
+                    var model = null
+                    if (alertActive == 0) {
+                        var model = {
+                            "txtW_StartDate": txtW_StartDate.value,
+                            "txtW_EndDate": txtW_EndDate.value,
+                            "txtW_WeekDays": txtW_WeekDays.value,
+                            "week_number": week_number.value,
+                            "txtSchedulTime": timearr
+                        }
+                    } else if (alertActive == 1) {
+                        model = {
+                            "txtW_StartDate": txtW_StartDate.value,
+                            "txtW_EndDate": txtW_EndDate.value,
+                            "txtW_WeekDays": txtW_WeekDays.value,
+                            "week_number": week_number.value,
+                            "txtSchedulTime": timearr,
+                            "togglealertActive": alertActive,
+                            "ddlalertType": ddlalertType,
+                            "txtamoutOrUnit": $("#txtamountOrUnits").val(),
+                            "ddlconversions": ddlconversions,
+                            "ddlattribute": ddlattributes
+                        }
+                    }
+                    SchedularType(schedulartype, model)
+                } else {
+                    return false;
+                }
+            } else {
+                return false
+            }
+
+
+        } else if ($("#liMonthly").attr('class') == 'Monthly active') {
+
+
+            if ($("#txtM_StartDate").val() == null || $("#txtM_StartDate").val() == "") {
+                message = "Please set start date"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                $("#txtM_StartDate").focus()
+                return false;
+            }
+
+            if ($("#txtM_EndDate").val() == null || $("#txtM_EndDate").val() == "") {
+                message = "Please set end date"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                $("#txtM_EndDate").focus()
+                return false;
+            }
+
+            var txtM_StartDate = document.getElementById('txtM_StartDate')
+            var txtM_EndDate = document.getElementById('txtM_EndDate')
+            
+            var week_of_month = document.getElementById('id_week_of_month')
+            var day_of_week = document.getElementById('id_day_of_week')
+            var every_month = document.getElementById('id_every_month')
+            var month_day = document.getElementById('txtM_Days')
+
+            if (week_of_month.value != ""){
+                 if (day_of_week.value == "") {
+                    Display_msg_hotel("Please select day of week", 0)
+                    return false;
+                  }
+		  //else if (every_month.value == "") {
+                  //  Display_msg_hotel("Please Enter month", 0)
+                  //  return false;
+                  //}
+             }
+      
+             if (day_of_week.value != ""){
+                 if (week_of_month.value == "") {
+                    Display_msg_hotel("Please select week of month", 0)
+                    return false;
+                  }
+		//else if (every_month.value == "") {
+                //    Display_msg_hotel("Please Enter month", 0)
+                //    return false;
+                //  }
+             }
+
+             //if (month_day.value != ""){
+             //    if (every_month.value == "") {
+             //       Display_msg_hotel("Please Enter month", 0)
+             //       return false;
+             //     }
+             //}
+
+             if (every_month.value != ""){
+                 if ((week_of_month.value == "" && day_of_week.value == "") && (month_day.value == "")) {
+                    Display_msg_hotel("Please select week of month, day of week or day of month", 0)
+                    return false;
+                  }
+             }
+ 
+             if ((week_of_month.value == "" && day_of_week.value == "") && (month_day.value == "") && (every_month.value == "")) {
+                 Display_msg_hotel("Please select Days or week of month, day of week or day of month", 0)
+                 return false;
+             }             
+
+            var s_date = new Date("01 ," + txtM_StartDate.value)
+            var e_date = new Date("01 ," + txtM_EndDate.value)
+
+            if (s_date > e_date) {
+                message = "To date must be greater than From date"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                $("#txtM_EndDate").focus()
+                txtM_StartDate.focus()
+                return false;
+            }
+            if ($("#txtM_Days").val() != null || $("#txtM_Days").val() != "") {
+                var days = $("#txtM_Days").val().split(',')
+                var flag = 0;
+                var flag1 = 1;
+                var flag2 = 2;
+                for (var i = 0; i < days.length; i++) {
+                    if (days[i].trim() == "30") {
+                        flag = 1
+                    }
+                    if (days[i].trim() == "31") {
+                        flag1 = 2
+                    }
+                    if (days[i].trim() == "Last") {
+                        flag2 = 3
+                    }
+                    if ((flag == 1 && flag2 == 3)) {
+                        message = "Select either Last or 30"
+                        Display_msg_hotel(message, 0)
+                        $("#a_msg_cancel").click(function (e) {
+                            $(".error_popup").hide()
+                            $(".box_overlay").hide()
+                        })
+
+                        return false;
+                    } else if ((flag1 == 2 && flag2 == 3)) {
+                        message = "Select either Last or 31"
+                        Display_msg_hotel(message, 0)
+                        $("#a_msg_cancel").click(function (e) {
+                            $(".error_popup").hide()
+                            $(".box_overlay").hide()
+                        })
+                        return false;
+                    }
+
+                }
+            }
+
+            var txtScheduleTimeElement = $("[name='txtM_Time']")
+            var timearr = NullTimeCheck(txtScheduleTimeElement, setNulltimemessage)
+
+            for (var i=0; i < timearr.length; i++) {
+                var s_datetime = new Date(txtM_StartDate.value + " " + timearr[i]);
+                var e_datetime = new Date(txtM_EndDate.value + " " + timearr[i]);
+                if (s_datetime < now | e_datetime < now){
+                    Display_msg_hotel("Request can't scheduled for past datetime.", 0)
+                    return false;
+                }
+            }
+
+
+            if (timearr.length > 0) {
+                if (TimeDifference(timearr, s_date)) {
+                    var model = null
+                    if (alertActive == 0) {
+                        var model = {
+                            "txtM_StartDate": $("#txtM_StartDate").val(),
+                            "txtM_EndDate": $("#txtM_EndDate").val(),
+                            "txtM_Days": $("#txtM_Days").val(),
+                            "txtSchedulTime": timearr,
+                            "week_of_month": week_of_month.value,
+                            "day_of_week": day_of_week.value,
+                            "frequency": every_month.value                            
+                        }
+                    } else if (alertActive == 1) {
+                        model = {
+                            "txtM_StartDate": $("#txtM_StartDate").val(),
+                            "txtM_EndDate": $("#txtM_EndDate").val(),
+                            "txtM_Days": $("#txtM_Days").val(),
+                            "txtSchedulTime": timearr,
+                            "togglealertActive": alertActive,
+                            "ddlalertType": ddlalertType,
+                            "txtamoutOrUnit": $("#txtamountOrUnits").val(),
+                            "ddlconversions": ddlconversions,
+                            "ddlattribute": ddlattributes,
+                            "week_of_month": week_of_month.value,
+                            "day_of_week": day_of_week.value,
+                            "frequency": every_month.value
+                        }
+                    }
+                    SchedularType(schedulartype, model)
+                } else {
+                    return false;
+                }
+            } else {
+                return false
+            }
+
+
+        } else if ($("#liOneTime").attr('class') == 'one_time active') {
+            if ($("input[name='txtDate']").val() == null || $("input[name='txtDate']").val() == "") {
+                message = "Please set date"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                $("input[name='txtDate']").focus()
+                return false;
+            } else if ($("input[name='txtTime']").val() == null || $("input[name='txtTime']").val() == "") {
+                message = "Please set time"
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                $("input[name='txtTime']").focus()
+                return false;
+            }
+            var model = {
+                "txtDate": $("input[name='txtDate']").val(),
+                "txtTime": $("input[name='txtTime']").val()
+            }
+
+            var txtDate =  $("input[name='txtDate']").val();
+            var txtTime =  $("input[name='txtTime']").val();
+
+            var s_datetime = new Date(txtDate + " " + txtTime);
+            if (s_datetime < now){
+                Display_msg_hotel("Request can't scheduled for past datetime.", 0)
+                return false;
+            }
+
+            SchedularType(schedulartype, model)
+        }
+    });
+
+    //Checks Time difference and pops up message if time difference is less than 6 hours
+    function TimeDifference(TimeArray, startdate) {
+        if (TimeArray.length > 1) {
+            for (var i = 0; i < TimeArray.length - 1; i++) {
+                var time1 = TimeArray[i].split(":")
+                var time2 = TimeArray[i + 1].split(":")
+
+                var dt1 = startdate.setHours(time1[0], time1[1])
+                var dt2 = startdate.setHours(time2[0], time2[1])
+
+                var dt_diff = Math.abs(dt1 - dt2)
+                var hours = dt_diff / 3600000 //Conversion of milliseconds to hours
+
+                if (hours < 6) {
+                    message = "Time interval must be minimum 6 hours"
+                    Display_msg_hotel(message, 0)
+                    $("#a_msg_cancel").click(function (e) {
+                        $(".error_popup").hide()
+                        $(".box_overlay").hide()
+                    })
+                    return false
+                }
+            }
+            return true
+        }
+        else {
+            return true
+        }
+
+    }
+
+    //Returns array of time if not set then display message Please set time
+    function NullTimeCheck(ScheduleTimeElement) {
+
+        var timearr = []
+        var txtScheduleTimeCount = ScheduleTimeElement.length;
+
+        for (i = 0; i < txtScheduleTimeCount; i++) {
+            message = setNulltimemessage
+            var value = ScheduleTimeElement[i].value;
+            if (value == "" || value == null) {
+                ScheduleTimeElement[i].focus()
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                })
+                timearr = []
+                return timearr
+            } else {
+                timearr.push(value)
+            }
+        }
+        return timearr;
+    }
+
+    //Gets the type of Schedule ("Now, Daily, Montly or once") with the model
+    function SchedularType(schedulartype1, model) {  
+       // alert(schedulartype1);
+        $("#btnSubmit").attr('disabled','disabled');
+        $.ajax({
+            url: "{% url 'add_request_scheduler' %}",
+            type: "POST",
+            data: {
+                "SchedularType": schedulartype1,
+                "ScheduleData": JSON.stringify(model)
+            },
+            success: function (data) {
+                if (data.flag == "1") {
+                    message = commonSuccessMessage
+                    Display_msg_hotel(message, 1)
+                    $("#a_msg_success").click(function (e) {
+                        $(this).attr('href', '{% url "hotel_request_management_index" %}')
+                    });
+
+                }
+                else if(data.flag == "0"){
+                    Display_msg_hotel("This Request is already Sechduled", 1);
+                    return false
+
+                } else {
+                    message = commonErrorMessage
+                    Display_msg_hotel(message, 0)
+                    $("#a_msg_cancel").click(function (e) {
+                        $(".error_popup").hide()
+                        $(".box_overlay").hide()
+                    });
+                    return false;
+                }
+            },
+            error: function () {
+                message = commonErrorMessage
+                Display_msg_hotel(message, 0)
+                $("#a_msg_cancel").click(function (e) {
+                    $(".error_popup").hide()
+                    $(".box_overlay").hide()
+                });
+                return false;
+            }
+        })
+    }
+    ///Weekly Change functionality for setting days
+
+    $("#txtW_EndDate").change(function (event) {
+        var days = {
+            0: "Sun",
+            1: "Mon",
+            2: "Tue",
+            3: "Wed",
+            4: "Thu",
+            5: "Fri",
+            6: "Sat"
+        }
+        var Fromdate = new Date($("#txtW_StartDate").val())
+        var Enddate = new Date($(this).val())
+
+        //Reset all checkbox
+        $(".checkboxlist_week").find("[type='checkbox']").each(function () {
+            $(this).attr("disabled", false)
+            $(this).attr("checked", false)
+
+        })
+        //
+        if (Fromdate <= Enddate) {
+            while (Fromdate <= Enddate) {
+                delete days[Fromdate.getDay()]
+                var newDate = Fromdate.setDate(Fromdate.getDate() + 1);
+                Fromdate = new Date(newDate)
+            }
+        }
+        for (var day in days) {
+            $(".checkboxlist_week").find("[type='checkbox']").each(function (index, value) {
+                if ($(value).val().trim() == days[day].trim()) {
+                    $(value).val(days[day]).attr("disabled", true)
+                }
+
+            })
+        }
+    });
+
+    $("#txtW_StartDate").change(function (event) {
+
+        var days = {
+            0: "Sun",
+            1: "Mon",
+            2: "Tue",
+            3: "Wed",
+            4: "Thu",
+            5: "Fri",
+            6: "Sat"
+        }
+        var Fromdate = new Date($(this).val())
+        var Enddate = new Date($("#txtW_EndDate").val())
+        //Reset all checkbox
+        $(".checkboxlist_week").find("[type='checkbox']").each(function (value) {
+            $(this).attr("disabled", false)
+            $(this).attr("checked", false)
+
+        })
+
+        if (Fromdate <= Enddate) {
+            while (Fromdate <= Enddate) {
+                delete days[Fromdate.getDay()]
+                var newDate = Fromdate.setDate(Fromdate.getDate() + 1);
+                Fromdate = new Date(newDate)
+            }
+        }
+        //if weekday is present
+        for (var day in days) {
+            $(".checkboxlist_week").find("[type='checkbox']").each(function (index, value) {
+                if ($(value).val().trim() == days[day].trim()) {
+                    $(value).val(days[day]).attr("disabled", true)
+                }
+            })
+        }
+
+    });
+</script>
+<!-- Add Rows textbox -->
+<script>
+    //Clone and Remove Form Fields
+    $('#add_row2').on('click', function (e) {
+
+        if (timecounterid <= 6) {
+            $('#id_contaner2').append(
+                '<div class="col-md-3 padR0"><label class="label_5">Time</label><input type="text" name="txtSchedulTime' +
+                '" class="form-control timepck" placeholder="HH:MM:SS"><div class="remove data_remove">X</div></div>'
+            );
+            $('.timepck').timepicker({});
+            timecounterid += 2;
+            $('[data-toggle="tooltip"]').tooltip();
+
+            return false; //prevent form submission
+        } else {
+            return false;
+        }
+    });
+
+    $('#weekadd').on('click', function () {
+        if (weekcounterid <= 6) {
+            $('#time_for_weekly').append(
+                '<div class="col-md-3 padR0"><label class="label_5">Time</label><input type="text" id="txtWeekly_time' +
+                weekcounterid + '" name="txtWeekly_time' +
+                '" class="form-control timepck" placeholder="HH:MM:SS"><div class="remove data_remove">X</div></div>'
+            );
+            $('.timepck').timepicker({});
+            weekcounterid += 2;
+
+            $('[data-toggle="tooltip"]').tooltip();
+            return false; //prevent form submission
+        } else {
+            return false;
+        }
+
+    });
+
+    $('#monthadd').on('click', function () {
+        if (monthcounterid <= 6) {
+            $('#time_for_month').append(
+                '<div class="col-md-3 padR0"><label class="label_5">Time</label><input type="text" id="txtM_Time' +
+                monthcounterid + '" name="txtM_Time' +
+                '" class="form-control timepck" placeholder="HH:MM:SS"><div class="remove data_remove">X</div></div>'
+            );
+            $('.timepck').timepicker({});
+            monthcounterid += 2;
+
+            $('[data-toggle="tooltip"]').tooltip();
+            return false; //prevent form submission
+        } else {
+            return false;
+        }
+
+    });
+</script> {% endblock %}

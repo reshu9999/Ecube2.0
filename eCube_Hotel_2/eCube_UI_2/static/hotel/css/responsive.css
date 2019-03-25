@@ -1,0 +1,786 @@
+  
+
+
+.sidebar_contaner .clearfix .col-md-6 {
+	padding:0 5px;  
+}
+.sidebar_contaner .clearfix .col-md-6 a { 
+	text-decoration:none; 
+	max-width: 110px; 
+	text-transform: uppercase; 
+}
+.sidebar_contaner .clearfix   input[type=submit] {
+	width: 100%;
+	max-width: 100%;
+	margin-left:-2px;  
+
+
+} 
+												
+												
+
+.stop_selection_btn {
+	position: absolute;
+	left: 0;
+    right: 0;
+}
+
+
+
+.sidebar_contaner a.reset_btn { float: left; display: block; text-align: center; width: 100%; padding: 13px; margin: 7px 0 0;
+color: #a267c8; }
+.sidebar_contaner a.reset_btn, .sidebar_contaner .search_btn { float: none; border-radius: 50px; width: auto; box-shadow: none;
+padding: 10px 20px; text-transform: uppercase;font-size: 15px;margin: 10px 0;}
+.add_user_popup_modal .action_button_submit {
+background: #a267c8; width: auto;  padding:13px 35px; min-width: 65px; text-align: center; }
+.add_user_popup_modal { width: 100%; }
+a.close_btn_click.active, a.close_btn_click.active .actionable_btn i.fa {
+	background: #d9534f!important;
+}	
+/* Loader start */
+
+.loader_div {
+    position: fixed;
+    background: rgba(250,250,250,.9);
+    top: 0;
+    bottom: 0;
+    left: 0;
+	right: 0;
+	z-index: 99;
+} 
+
+#loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 75px;
+	height: 75px;
+	margin: auto;  
+  }
+  #loader:before, #loader:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-width: 9.375px;
+	border-style: solid;
+	border-color: #a267c8;
+	border-radius: 100%;
+  }
+  #loader:before {
+	opacity: 0.5;
+  }
+  #loader:after {
+	border-color: #a267c8 transparent transparent;
+	animation: spin 500ms linear infinite;
+  }
+  
+  @keyframes spin {
+	to {
+	  transform: rotate(360deg);
+	}
+  }
+  
+
+/* Loader end */
+.text_now {
+	padding: 0;
+	margin: 0;
+}
+.schedular_footer_btn { text-align:center; }
+.schedular_footer_btn input { float: none!important; }
+.content_area1 {
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 3px rgba(0,0,0,.2);
+	position: relative;
+	margin-bottom: 30px;
+}
+a.paginate_button.current {
+	background: #41a7da;
+	color: #fff!important;
+}
+
+.custom_btn .btn_reset, .custom_btn .btn_search {
+	text-transform: uppercase; font-size: 13px;
+	padding: 3px 10px 2px!important;
+
+}
+.form-group.multi_select_contaner .searh_buttnon {
+	text-transform: uppercase; 
+	padding:8px 15px!important; font-size: 13px;
+
+}
+#multiple_domain input.next.action-button {
+	background: #a267c8; padding:13px 35px;
+}
+
+.upload_hotel_trigger { 
+    background: #3cafe7;
+    color: #fff!important;
+    font-size: 13px;
+	padding: 4px 10px;
+	text-decoration: none!important;
+	border-radius: 50px;
+}
+.master_upload_view {
+    max-width: 380px; 
+    top: 50px;
+    left: auto!important;
+    right: 17%!important;
+}
+
+.white_bg.marT30.multibatch_download.common_div.keyword_rules.clearfix .save_request_button, .white_bg.marT30.multibatch_download.common_div.keyword_rules.clearfix .update_request_button {
+	margin: 10px 6px;
+}
+.paging_full_numbers a.paginate_active { 
+	width:auto; min-width: 21px;
+}
+
+ 
+/*---------------------------*/
+#msform fieldset { width:100%; }
+.border_contaner_large.step_5 { width:100%!important; }
+
+	@media only screen and (max-width: 1300px) {    
+	    ul.lsiting_tabs:after{width: 44%;}
+	    .loginborderbox { width: 50%; left: 5%; }
+	    .loginboxcontent { width: 100%; padding: 0; }
+	    .loginborderbox h1 { padding:25px 25px 10px 25px; line-height: 36px; }
+	    .logintxt { padding:5px 25px; }
+	}
+
+@media only screen and (max-width: 1300px) {	
+	ul.lsiting_tabs:after{width: 44%;}	
+}
+
+@media only screen and (max-width: 1260px) {
+	ul.lsiting_tabs:after{width: 42%;}	
+	ul.lsiting_tabs:before{left: 0;}
+}
+
+
+@media only screen and (max-width: 1253px) {
+	.heading_text{width: 30%;}
+	.tabs_contaner { width: 70%;}
+	ul.lsiting_tabs:after {width: 30%;}
+	.navbar-nav > li > a{padding-left: 5px;font-size: 13px;}
+	
+}
+
+
+@media only screen and (max-width: 1150px) {
+	.recent_batch_body{padding-left: 5%;}
+	.top_half{padding-left: 0;}
+	.status{font-size: 13px;}
+	.progresbar_contaner .progress{width: 55%;}
+	.nav > li > a{padding: 10px 5px;}
+	.contaner_login{width: 55%;}
+	.text_area_login h2{font-size: 35px;}
+	
+	
+}
+@media only screen and (max-width: 991px) {a.add_url {top: 33px}}
+@media only screen and (max-width: 990px) {
+	.ribbons{display: none;}
+	.border_contaner{display: table; width: 100%;}
+	.batch_info li{width: 25%;}
+	a.add_url {top: 33px}
+	.custom_ddmenu:before{display: none;}
+	.custom_ddmenu li a, .custom_ddmenu li a:hover{background: #fff;}
+}
+@media only screen and (max-width: 980px) {
+	.navbar-header{width: auto;}
+	.intm_list li { width: 49%; display: inline-block;}
+	.item_info { border-radius: 5px 5px 0 0; height: 155px; left: -15px;}
+	.item_info:after{display: none;}
+	.col-md-6.padR0 { padding-right: 15px !important;}
+	
+	.text_area_login{ width: 30%}
+	.contaner_login{width: 70%;}	
+	.text_area_login h2,
+	.text_area_login p{display: none}
+	.fileupload_sec,
+	.new_map_sec{width: 95%; margin: 10px 0;}
+}
+@media only screen and (max-width: 920px) {
+	.border_contaner_large .nav-tabs > li a .icon_con{width: 85px;}
+	.step_5.border_contaner_large .nav-tabs > li.active.now_tab a .icon_con{object-position: 35px -55px}
+	.step_5.border_contaner_large .nav-tabs > li.now_tab a .icon_con{padding: 35px 17px;}
+}
+
+@media only screen and (max-width: 870px) {
+	.view_all {  background: url(../images/arrow.png) no-repeat 100% center;}
+	.batch_info li { width: 30%;}
+	.batch_info li{padding: 3%;}
+	.batch_info {  padding: 0 0 0% 4%;}
+	.custom_margin { margin-top: 20px;}
+	.lsiting_tabs:before,
+	.lsiting_tabs:after{display: none;}
+	.border_contaner { border-top: 4px solid #aa80c5;  border-radius: 20px;}
+	.recent_batch { width: 30%; margin: 2% 1.5%;}
+	.span.btn_shape{display: block; float: left;}
+	.multidomain_show label,
+	label.text_label{display: block;}
+	.domain_urls span{margin: 3px;}
+	ul.months li a{min-width: 60px;}
+	.col-5th{width: 50%;}
+	.btn_contaner_req.col-5th{width: 100%;}
+	.searh_buttnon { width: 100%; margin-bottom: 30px; left: 0; padding: 10px;}
+	
+}
+
+
+@media only screen and (max-width: 768px) {
+	.box_view .file_upload_tabs .nav > li { margin-right: 0;}
+	.border_contaner:before{display: none;}
+	.batch_info li{padding: 2%; width: 33%}
+	.heading_text{font-size: 26px;}
+	.recent_batch { width: 40%; margin: 2% 6%;}
+	.lsiting_tabs{top: -10px; position: relative} 
+	.container_content{padding-left: 0;}
+	.sidebar_contaner {z-index: 99;}
+	.border_text{border: none;}
+	.border_contaner_large .nav-tabs > li { margin-bottom: 10px;}
+	.arrow_text {border-bottom: 1px solid #ccc;}
+	.text_area_login{position: absolute;}
+	.text_area_login a img{background: rgba(255,255,255,.5); padding: 0;}
+	.contaner_login{width: 80%;}	
+	 
+	
+}
+
+@media only screen and (max-width: 767px) {
+	#progressbar li{width: 20%;}	
+	#progressbar li:before,#progressbar li.current.active:before  {left: 50%; position: absolute; margin-left: -17px; top: 11px;}
+	#progressbar span { right: 0px; top: 25px; width: 100%; text-align: center;}
+	#progressbar li.active.current span { top: 25px;}
+	#progressbar li:after { width: 100%; height: 2px; top: 24px; right: 50%; left: -50%;}
+	.template_btn a{margin-right: 1%;}
+	.border_top_small{border-top: 1px solid #ccc; padding: 10px 0 ; margin: 10px 0;}
+	.navbar-nav {margin-left: 15px;}
+	.checkbox_contaner.with_text_contaner{width: 100%}
+}
+
+
+
+
+@media only screen and (max-width: 750px) {
+	.recent_batch { width: 40%; margin: 2% 4%;}
+	button.ghost_white_btn{width: 80%;}
+	a.vs-prev.arrow_to_up { top: 0;z-index: 99;}
+	.contaner_login{width:100%;}
+	.text_area_login{z-index: 9999;}
+}
+
+@media only screen and (max-width: 660px) {
+	.filter_bodyarea {float: none;display: block;margin: 0 auto;width: 220px;}
+	.grid_excel_export {float: none; margin: 0 auto; width: 70%;}
+
+	ul.tags_contaner{top: 55px;}
+	.table-responsive.custom_responsive_table{top: 65px;}
+	.view_grid_contaner{display: none;}
+	
+	
+}
+@media only screen and (max-width: 640px) {
+	.lsiting_tabs li:before{display: none;}
+	.lsiting_tabs li{height: 42px; padding-top: 13px;}
+	.custom_margin{margin-top: 10px;}
+	.heading_text{width: 100%; top: -15px; position: relative;border-bottom: 2px solid #aa80c5; padding-bottom: 5px;}
+	.heading_text span{display: inline-block;}
+	.lsiting_tabs{padding-left: 0; text-align: center;top: -10px; position: relative} 
+	.lsiting_tabs li{float: none; display: inline-block}
+	.batch_info li { padding: 1.5%; width: 50%;}
+	.tabs_contaner{width: 100%}
+	.heading_text.full_line:after{display: none}
+	.recent_batch { width: 45%; margin: 2% 2.5%;}
+	.grid_excel_export {float: none; margin: 0 auto; width: 90%;}
+	.contaner_login {background: none;}
+	 
+}
+
+@media only screen and (max-width: 540px) {
+	.recent_batch { width: 80%; margin: 5% 12%;}
+	.grid_excel_export {width: 100%;}
+	.view_grid_contaner {width: 100%;float: none; display: block;clear: both; border: none;}
+	.view_grid_contaner .view_grid:after{display: none;}
+	.view_grid_contaner{display: none;}
+	.border_contaner_large .nav-tabs > li a { padding: 1%;}
+	#msform input.previous.action-button, .previous_action_button,#msform input.previous_action_button, #msform input.next.action-button { width: 44%; float: left; padding-left: 0px; padding-right: 0; text-align: center; background: none; background-color: #a268c8; color: #fff; margin: 2% 1%; font-size: 14px}
+	.large_font_contaner{ padding: 2%;}
+	.large_font_contaner span.larg_font{font-size: 40px;}
+	input.action_button_submit { background: #a268c8; width: 50%; padding: 13px 0; text-align: center;    margin: 5px;}
+	input.previous_action_button { background: #b3a7a7; border-color: #b3a7a7;}
+	#msform input.previous.action-button { background: #a4a4a4; border-color: #a4a4a4; font-size: 15px;}
+	.contaner_login{width: 100%; background-position: right 0;}	
+	.col-5th{width: 100%;}
+	
+}
+@media only screen and (max-width: 420px) {
+	.batch_info li { padding: 3%; width: 100%;}
+	.text_cintaner h3{float: left; padding-left:15%;}
+	.text_cintaner span{padding: 12px; float: left;}
+	.lsiting_tabs li { min-width: 18px;  width: 24%;}
+	
+	.recent_batch { width: 80%; margin: 5% 8%;}
+	.border_contaner_large .nav-tabs > li a span{font-size: 13px;}
+	
+	
+}
+
+
+@media only screen and (max-width: 380px) {
+		.text_cintaner h3{float: left; padding-left:5%;}
+	.text_cintaner span{padding: 12px 5px; float: left;}
+	.template_btn a{width: 80%; margin: 10px 0 ; float: left; display: block;}
+	
+	
+}
+
+
+/************************************Login**************************************/
+
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+/* .loginborderbox {width: 82%;}
+.wrapperloginboxright  { width:85%;top: 50px; left:2%;}
+.loginformbg { width:100%;}
+.loginborderbox { top:52%;}
+.loginbtmleftimg { bottom:5%;}
+.loginbtmleftimg img { width: 71%;} */
+	
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+.loginborderbox { width: 81%; height:auto;}
+.wrapperloginboxright { position:absolute; top:5%; left:0; right:0;}
+.loginboxrelative { position:absolute;top: 85%;}
+.loginformbg { width:100%;margin-top:40%;}
+.loginbtmleftimg ,.loginborderbox { display:none;}
+.loginboxrelative { top:5%; position:relative;    left: 5%;}
+	#msform input.form-control.small_textbox{width: 100%;}
+	div#div2 { padding: 0;}
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1365px) {
+.loginborderbox {left: 7.5%; }
+ 
+ 
+}
+
+
+@media only screen and (min-width: 1366px) and (max-width: 1599px) {
+ 	
+}
+
+@media only screen and (min-width: 1600px) {
+.loginbtmleftimg { left: 6%;}
+ 
+}
+
+
+
+
+
+/*Create request step 3 css start*/
+
+
+
+
+
+@media only screen and (max-width: 553px) {
+
+#mgd ul.nav-horizontal:after { width: 19.6%; right: -25px;}	
+#ExistingMapping, #NewMapping { padding-left: 28px;}
+}
+
+@media only screen and (max-width: 600px) {
+
+#mgd ul.nav-horizontal:before { width: 10.5%;}
+
+}
+
+
+
+@media only screen and (max-width: 992px) {
+#mgd ul.nav-horizontal:after {width: 49.6%;}
+#mgd ul.nav-horizontal:before { width: 11.5%;}
+#ExistingMapping .col-sm-4 { width: 100%;}	
+#mgd table.dataTable { position: static;}
+#mgd input,#mgd textarea { width: 100%;}
+}
+
+
+
+@media only screen and (max-width: 1590px) {
+	#mgd .nav-horizontal ul { background-color: #fff;z-index: 9;}
+#mgd .nav-horizontal li{z-index: 9;background: #fff;}
+}
+
+
+@media only screen and (min-width: 413px) and (max-width: 460px) {
+	#mgd .nav > li > a { padding: 0;}
+	#mgd .template_btn a { margin-right: 5px;padding: 7px 4px;}
+}
+
+@media only screen and (min-width: 461px) and (max-width: 498px) {
+	#mgd .nav > li > a { padding: 10px;}
+	#mgd .template_btn a { margin-right: 10px;padding: 7px 10px;}
+}
+
+@media only screen and (min-width: 993px) {
+	
+	#mgd  .col-sm-4 { width: 40%;}
+	#mgd  .col-sm-8 { width: 60%;}
+}
+@media only screen and (min-width: 993px) and (max-width: 1100px) {
+	#mgd .template_btn a {margin-right:8px;}
+	#mgd input,#mgd textarea { width: 100%;}
+}
+
+
+@media only screen and (max-width: 767px) {
+	#sns .titlenumber { font-size: 38px;text-align: left;}
+	#sns .titletxt {    float: right;width: 105px;font-size: 20px;line-height: 18px; bottom: 22px; }
+	#sns .schedulefortxt { padding-top: 0;padding-bottom: 20px;}
+	#sns  #Monthly .monthbox { width: 100%;}
+}
+
+@media only screen and (max-width: 1400px) { 
+	#sns .schedulefortxt { line-height: 25px;width: 130px;    margin-bottom: 20px;}
+#sns .scheduleforbox .col-sm-11	    {width: 75%;  padding-left: 0;padding-right: 0;}
+	#sns .nav-horizontal.batchdetails li, #sns .nav-horizontal.schedulebatchdetails li { margin-right: 10px;margin-bottom: 30px; margin-left: 15px;}
+
+}
+
+@media only screen and (max-width: 1075px) {
+	#sns  #Monthly .col-sm-4  { padding-left: 0; padding-right: 0; }
+	
+}
+/*END Create request step 3 css*/
+
+
+
+/*------------------Added By V-------------------*/ 
+
+@media (max-width:1366px) {
+.common_div .excelupload_view { left: -150px;}
+.excelupload_view.active { width: 410px;}
+.white_bg.marT30.multibatch_download .col-md-12 .col-5th { display:inline-block;  width:auto; min-width:23%; float: none;}
+.white_bg.marT30.multibatch_download .col-md-12 .col-5th.btn_contaner_req .searh_buttnon{ left:0; }
+	.navbar-header { width: auto;}
+
+}
+
+
+@media (min-width:993px) and  (max-width:1345px) { 
+#by_airport_code .col-md-6.specific_hotel_show {padding-left: 0;     position: relative;}
+	
+#by_airport_code .buttons_contaner.clickable_action a.all_hotel.scraping_btn { min-width:inherit;     padding: 7px;}
+#by_airport_code .buttons_contaner.clickable_action a.specific_hotel.scraping_btn {min-width:inherit;     padding: 7px;}
+.buttons_contaner.clickable_action a.all_hotel.scraping_btn { min-width:inherit;     padding: 7px;}
+.buttons_contaner.clickable_action a.specific_hotel.scraping_btn {min-width:inherit;     padding: 7px;}
+
+.keyword_rules  .col-sm-12.col-md-11.col-md-offset-2 .col-sm-5, .keyword_rules .col-sm-5.bulk_show1 .col-sm-12.col-md-11.col-md-offset-2 .col-sm-5  {   padding-right: 0;     padding-left: 5px;}
+.keyword_rules  .col-sm-5.bulk_show .col-sm-12.col-md-11.col-md-offset-2, .keyword_rules  .col-sm-5.bulk_show1 .col-sm-12.col-md-11.col-md-offset-2 {   padding-right: 0;}
+.keyword_rules  .col-sm-5.bulk_show, .keyword_rules  .col-sm-5.bulk_show1 { padding-right: 0; margin-left:0;} 
+.keyword_rules  .col-sm-5.bulk_show1 .custom_btn.marT20.text-center.col-sm-7.col-md-7 { padding: 0; }	
+ .clearfix.manaully_show .col-sm-3 .col-sm-12.col-md-11.col-md-offset-2 { padding-right: 0;}
+.clearfix.manaully_show .col-sm-3 .col-sm-12.col-md-11.col-md-offset-2 	.custom_btn button.btn { min-width:85px; }
+
+}
+
+@media (min-width:993px) and  (max-width:1280px) { 
+#by_airport_code .col-md-6.specific_hotel_show, .col-md-6.specific_hotel_show {padding-left: 0;  top:27px;    position: relative;}
+	.white_bg.marT30.multibatch_download.common_div.clearfix .col-sm-6.col-md-3 { padding-right: 0;}
+	.white_bg.marT30.multibatch_download.common_div.clearfix .col-sm-6.col-md-3 .custom_btn button.btn { min-width: 95px;}
+	.white_bg.marT30.multibatch_download.common_div.clearfix .col-sm-6.col-md-3 .col-sm-12.col-md-10.col-md-offset-1 {  padding-right: 0;}
+
+}
+
+@media (max-width:1200px) {
+	.box_view .file_upload_tabs .nav > li{    margin-right: 25px; display: table-cell; float: none;}
+	/*Push Report to Staging Start*/
+	.common_div .col-md-12 .addhotel_checkbox_contaner .col-md-6.col-sm-12 { width: 100%;}
+	.common_div .custom_btn button.btn { margin: 5px 0px;}
+	.common_div .row.marT20 .col-sm-12.col-md-10 { width: 100%; }
+	.common_div .col-md-3.marT10 .custom_btn.marT50 { margin: 0; text-align: center;}
+	/*Push Report to Staging End*/
+	
+	.white_bg.marT30.multibatch_download .col-md-12 .col-5th { display:inline-block;  width:auto; min-width:23%; float: none;}
+	.white_bg.marT30.multibatch_download .col-md-12 .col-5th.btn_contaner_req .searh_buttnon{ left:0; }
+	a.upload_hotel_trigger { font-size: 13px; }
+	.box_view .file_upload_tabs .nav > li { margin-right: 0; }
+
+}
+
+
+@media (max-width:1100px) {
+	.clickable_action a {   padding:7px 0px; min-width:76px;   margin: 5px 2px;  }
+	 .excelupload_view.active { right: -130px; width: 380px; }
+	.choose_file, .error_log, .success_msg {     width: 145px; font-size: 13px;}
+	.error_log { padding-left: 20px;}	
+	.choose_file { padding-right: 20px;}
+	.excelupload_heading h3 { font-weight: normal; font-size: 16px;}
+	
+}
+@media (min-width:768px) and  (max-width:1199px) {
+	 .white_bg.marT30.multibatch_download.common_div.keyword_rules.clearfix .custom_btn.marT10.text-center.col-sm-7.col-md-7 {   width: 100%; }
+	 .white_bg.marT30.multibatch_download.common_div.keyword_rules.clearfix .custom_btn.marT10 > div{ display: none; }
+	.counter { width: 60px; }
+	.counter a { width: 15px;  }
+	.qty {width: 27px!important;}
+}
+@media   (max-width:872px) { 
+	.white_bg.marT30.multibatch_download .col-md-12 .col-5th.btn_contaner_req { width: 100%; text-align: center;}
+	.white_bg.marT30.multibatch_download .col-md-12 .col-5th.btn_contaner_req label { display: none;}
+	.white_bg.marT30.multibatch_download .col-md-12 .col-5th.btn_contaner_req .searh_buttnon{ display:inline-block; width: auto; min-width: 130px; padding: 5px 25px; margin-bottom:10px; }  
+	.white_bg.marT30.multibatch_download .col-md-12 .col-5th.btn_contaner_req .form-group.multi_select_contaner { margin: 0;}
+	.white_bg.marT30.multibatch_download .col-md-12 .col-5th { width: 32%;     padding-right: 0;}
+	
+	
+}
+
+@media (min-width:768px) and  (max-width:992px) {
+	.keyword_rules  .col-sm-12.col-md-11.col-md-offset-2 .col-sm-5  {   padding-right: 0;     padding-left: 5px;}
+.keyword_rules  .col-sm-5.bulk_show .col-sm-12.col-md-11.col-md-offset-2 {   padding-right: 0;}
+.keyword_rules  .col-sm-5.bulk_show { padding-right: 0; margin-left:0;} 
+	
+	
+	.white_bg.marT30.multibatch_download.common_div.clearfix .col-sm-6 {   padding: 0;}
+	.white_bg.marT30.multibatch_download.common_div.clearfix .col-sm-6 .custom_btn button.btn{ min-width: 86px; }
+	#by_airport_code .buttons_contaner.clickable_action a.all_hotel.scraping_btn { min-width:inherit;     padding: 7px;}
+    #by_airport_code .buttons_contaner.clickable_action a.specific_hotel.scraping_btn {min-width:inherit;     padding: 7px;}
+	  .buttons_contaner.clickable_action a.all_hotel.scraping_btn { min-width:inherit;     padding: 7px;}
+  .buttons_contaner.clickable_action a.specific_hotel.scraping_btn {min-width:inherit;     padding: 7px;}
+ 
+	.white_bg.marT30.multibatch_download .col-md-12 .col-5th.btn_contaner_req .searh_buttnon{ margin-bottom: 10px; }
+	.white_bg.marT30.multibatch_download .col-md-12 .col-5th {   min-width:22%;  }
+	ul.pos_status_list li {     padding: 9px 5px;     font-size: 12px; }
+	.pos_status_list .label_value { margin: 0 4px;}
+	.actionable_btn a { margin: 0 2px;}
+	li.actionable_btn { position: relative; top: 4px;}
+	.inner_content_contaner { float: none;}
+	.multibatch_download {  box-shadow: 0px 0px 8px rgba(0,0,0,.1);}
+	.addcity_popuop_body .pull-right.col-md-7.padR0 { width: 100%; padding: 5px 0; }
+	.addcity_popuop_body .pull-right.col-md-7.padR0 .add_hotels.pull-left.col-md-5 { float: left; padding: 0;}
+	.addcity_popuop_body .pull-right.col-md-7.padR0 .col-md-7.padR0 { float: right;}
+	
+	.white_bg.marT30.multibatch_download.common_div.clearfix .marT70.clearfix { margin-top: 10px;}
+	.white_bg.marT30.multibatch_download.common_div.keyword_rules.clearfix .col-sm-12.col-md-11.col-md-offset-2  .col-sm-7.pad0 { width: 100%;}
+	.white_bg.marT30.multibatch_download.common_div.keyword_rules.clearfix .col-sm-12.col-md-11.col-md-offset-2 .col-sm-5 { width: 100%; padding: 0;} 
+	.white_bg.marT30.multibatch_download.common_div.keyword_rules.clearfix .custom_btn.marT20.text-center.col-sm-7.col-md-7 { width: 100%;}
+	.white_bg.marT30.multibatch_download.common_div.keyword_rules.clearfix .col-sm-8.col-md-6.col-md-offset-1 .col-sm-5.download_container.text-left {  padding-right: 0;}
+	.col-sm-4.custom_gap {
+
+	}
+	#by_airport_code .col-md-6.specific_hotel_show { width: 100%;}
+	
+	
+/*-----------Reatil Sidebar Start Here-------*/	
+	.sidebar_contaner {  z-index: 99;}
+	section.body_contaner.Sidebar_close .container_content:before { display: none;}
+	section.body_contaner .container_content:before { content:''; position:fixed; height:100%; background:rgba(0,0,0,.5); left:0; right:0; bottom:0; top:0; z-index:9;}	
+	.request_mngt_tbl table{ width: 1200px;}
+	section.body_contaner .container_content { padding-left:0;}
+   .table-responsive {border: none; }
+/*-----------Reatil Sidebar End Here-------*/	
+	
+}
+
+@media (max-width:767px) {
+	.addcity_popuop_body .pull-right.col-md-7.padR0 { width: 100%; padding: 5px 0; }
+	.addcity_popuop_body .pull-right.col-md-7.padR0 .add_hotels.pull-left.col-md-5 { width: 48%;     display: inline-block;}
+	.add_hotels.pull-left.col-md-5 .upload_hotel_contaner { left:0px;}
+	.add_hotels.pull-left.col-md-5 .upload_hotel_contaner:before { left: 46px; right: auto;}
+	.addcity_popuop_body .pull-right.col-md-7.padR0 .col-md-7.padR0 {  width: 48%;     display: inline-block;  }
+	#by_airport_code .buttons_contaner.clickable_action a { min-width:85px;  font-size: 11px;  }
+	#by_airport_code .col-md-6.padR0, #by_airport_code  .col-md-6.specific_hotel_show { width:49%; display: inline-block; vertical-align: middle; float:left;}  
+	#by_airport_code  .col-md-6.specific_hotel_show { position: relative; top:25px;}
+	 .buttons_contaner.clickable_action a { min-width:85px;  font-size: 11px;  }
+	 .col-md-6.padR0,  .col-md-6.specific_hotel_show { width: 48%; display: inline-block; vertical-align: middle;}
+	
+	.excelupload_view.active { right: 0px; width:100%; }
+	.excelupload_view:before { right: 58px; left: auto;}
+ 	.col-sm-4.custom_gap  { max-width: 420px; margin: 0 auto 30px;} 
+	.pos_content {  margin-bottom: 10px;   max-width: 420px;  margin: 20px auto;}
+	.box_view .file_upload_tabs .nav > li { margin-right: 0;}
+	.inner_content_contaner { float: none;}
+	.row-eq-height { display: block;}
+	[class*="custom_gap"] { margin: 20px 3px; }
+	.pos_status { float: none; display: block; margin-top:10px; border-radius:0; border-top:1px solid #EEF;}
+	li.actionable_btn { position:absolute; top:11px; right:12px;  border-radius:0; padding:13px 0!important;}
+	
+	li.actionable_btn a { padding: 13px; margin: 0;}
+	li.actionable_btn a:first-child { border-right: 1px solid #eee; padding-right: 10px;}
+	ul.pos_status_list { display: table; width: 100%; margin-top: 10px; }
+	ul.pos_status_list li { display: table-cell;     text-align: center; padding: 9px 5px; }
+	ul.pos_status_list li:nth-child(4) { border: none;}
+	.pos_body { margin-top: 10px;}	
+	.pos_inside_list { position:relative; top:10px; margin:10px -15px 21px;}
+	.multibatch_download {  box-shadow: 0px 0px 8px rgba(0,0,0,.1);}
+	
+	/*Push Report to Staging Start*/
+	.common_div .col-sm-4 .row.marT20 { margin-top: 0; margin-bottom:20px;}
+	.common_div .col-md-12.marT10 a.selected_Hotels { margin-bottom: 10px;}
+	.common_div .col-md-3.marT10 .custom_btn.marT50 { margin: 0; text-align: center;}
+	.table-responsive.marT30.hotel_match_table, .table-responsive.marT70.ematch_table, .table-responsive.marT60.hotel_match_table {  border: none;}
+	.hotel_match_table .paging_full_numbers { margin: 0; }
+	.common_div .custom_btn button.btn { margin: 5px 5px;}
+	/*Push Report to Staging End*/
+	
+	.table-responsive.marT20 { border: none;}
+	
+	 .white_bg.marT30.multibatch_download.common_div.clearfix .marT70.clearfix { margin-top: 10px;}
+	.white_bg.marT30.multibatch_download.common_div.clearfix .col-sm-6 .custom_btn.marT10 {  text-align: center;  margin: 0;}
+	.col-sm-12.col-md-10.col-md-offset-1 .custom_btn.marT10{  text-align: center;  margin: 0;}
+	
+	.keyword_rules .col-sm-4 { max-width: 100%;}
+	 
+    .col-sm-3.show_hotel_type {  max-width: 100%;}
+	.keyword_rules .upload_file { width: 50%; }
+	.col-sm-3.manaully_show { max-width: 100%; width: auto;}
+	.keyword_rules .col-sm-3 { max-width: 100%;}
+	 .white_bg.marT30.multibatch_download.common_div.keyword_rules.clearfix .custom_btn.marT10 { margin: 0; text-align:center;}
+	 .white_bg.marT30.multibatch_download.common_div.keyword_rules.clearfix .custom_btn.marT10 > div{ display: none; }
+	
+     /*------------ Lead Time Upload Start-----------*/
+	.col-sm-8.col-md-6.col-md-offset-1 .col-sm-7.pad0 { display: inline-block;}
+	.col-sm-8.col-md-6.col-md-offset-1 .col-sm-7.pad0 span.upload.upload_file { width: 100%; }
+	.col-sm-5.download_container.text-left { display: inline-block; vertical-align: middle;}
+	 /*------------ Lead Time Upload End-----------*/
+	
+	
+	
+/*-----------Reatil Sidebar Start Here Request management-------*/	
+	.sidebar_contaner {  z-index: 99;}
+	section.body_contaner.Sidebar_close .container_content:before { display: none;}
+	section.body_contaner .container_content:before { content:''; position:fixed; height:100%; background:rgba(0,0,0,.5); left:0; right:0; bottom:0; top:0; z-index:9;}	
+	.request_mngt_tbl table{ width: 1200px;}
+	section.body_contaner .container_content { padding-left:0;}
+	.table-responsive {border: none; }
+	
+	.filter_bodyarea { width: 100%; display: table;}
+	.filter_bodyarea li { display: table-cell; vertical-align: middle; float: none;}
+	.filter_bodyarea li a input { min-width: 65px; padding: 45px 10px 0 10px; width: 100%;}
+	.filter_bodyarea li:last-child {  border: none; border-left: 1px solid #eee; margin-left: -1px; display: inline-block;}	
+	a.refresh_page { margin-left: 3px; position: relative;  top: 23px; left: 2%;}
+	.request_mngt_tbl { top:0; padding-top:10px; }
+/*-----------Reatil Sidebar End Here-------*/	
+	
+	
+	
+	
+}
+@media (max-width:580px) {  
+	.white_bg.marT30.multibatch_download .col-md-12 .col-5th { width: 100%;     padding-right:15px;}
+	.common_div .excelupload_view {left: -216px;     width: 432px; top:65px; }
+	#by_airport_code .buttons_contaner.clickable_action a { margin: 5px 0;}
+/*	.excelupload_view:before { left: auto; right: 145px;}*/
+	.col-md-12.marT10.col-sm-12.text-center input.previous_action_button.float_none {   width: 110px;   color: #a267c8; border: 1px solid #a267c8; background-color: transparent;    padding: 12px 18px;}
+	.col-md-12.marT10.col-sm-12.text-center .save_request_button { font-size: 14px;     padding: 12px 18px; }
+}
+@media (max-width:480px) { 
+	#by_airport_code .col-md-6.padR0, #by_airport_code  .col-md-6.specific_hotel_show { display: block; width: 100%;}
+	#by_airport_code .buttons_contaner.clickable_action a { margin: 5px 0 5px 5px;}
+		#by_airport_code  .col-md-6.specific_hotel_show { position: relative; top:0px;}
+	.pos_status_list .label_value { display: block;}
+	 ul.pos_status_list li { font-size:12px; }
+	.addcity_popuop_body { padding: 10px 0; }
+	.addcity_popuop_body .pull-right.col-md-7.padR0 { width: 100%; padding: 5px 0; }
+	.addcity_popuop_body .pull-right.col-md-7.padR0 .add_hotels.pull-left.col-md-5 { float: left; padding: 0;}
+	.addcity_popuop_body .pull-right.col-md-7.padR0 .col-md-7.padR0 { float: right;}
+	.common_div .excelupload_view { left:-135px;  min-width:270px; width:100%;  top:65px; }
+	.slide_heading { font-size: 16px;}
+	.excelupload_heading h3 { font-size: 15px;}
+	.excelupload_view:before { left: auto;     right: 65px;}
+	#schedule_batch .clearfix.marT20 { text-align: center;}
+	#schedule_batch .clearfix.marT20 .pull-right, #schedule_batch .clearfix.marT20 .pull-left{ float: none!important; display: inline-block; margin: 5px; }
+	.upload_hotel_contaner { left: -15px;  min-width: 275px; width:100%;}
+	.upload_hotel_contaner:before { left: 50px; right:auto;}
+	
+	  /*------------ Lead Time Upload Start-----------*/
+	.col-sm-8.col-md-6.col-md-offset-1 .col-sm-7.pad0 { display:inline-block; width:100%;}
+	.col-sm-5.download_container.text-left { padding: 10px 0;     width: 100%;}
+	.custom_btn.marT20.text-center.col-sm-7.col-md-7 { margin:0 -15px; padding: 0;}
+	  /*------------ Lead Time Upload End-----------*/
+	.keyword_rules .upload_file { width: 100%; margin-bottom: 10px; }
+}
+
+@media (max-width:380px) {
+.add_hotels.pull-left.col-md-5 .upload_hotel_contaner { left: -15px; }
+	
+	/*-----------Reatil request management Start Here Request management-------*/	
+.filter_bodyarea li a { font-size: 11px; }
+.filter_bodyarea li  {  border: none!important; width: 21%;  }	
+li.All_text { border-right:none;}
+.filter_bodyarea li a input { width: auto; min-width: inherit;     padding: 45px 0px 0 0px;}
+.filter_bodyarea li a:before { width: 34px; }
+	
+.filter_bodyarea li.completed a:before { background-position:8px 6px!important;}
+.filter_bodyarea li.completed:hover a:after {   width:32px;} 
+.filter_bodyarea li.completed:hover a:before, .filter_bodyarea li.active_tabs.completed a:before  {  
+ 	background-position:8px -22px!important;  }
+.filter_bodyarea li.active_tabs.completed a:after  { width:32px;}
+	
+.filter_bodyarea li.not_scheduled a:before { background-position:8px 6px!important;}
+.filter_bodyarea li.not_scheduled:hover a:after {   width:32px;} 
+.filter_bodyarea li.not_scheduled:hover a:before, .filter_bodyarea li.active_tabs.not_scheduled a:before  {  
+ 	background-position:8px -22px!important;  }
+.filter_bodyarea li.active_tabs.not_scheduled a:after  { width:32px;}
+
+
+.filter_bodyarea li.in_queue a:before { background-position:-35px 7px!important;}
+.filter_bodyarea li.in_queue:hover a:before { background-position:-35px -21px!important;}
+.filter_bodyarea li.in_queue:hover a:after {  width:32px;} 
+.filter_bodyarea li.in_queue:hover a:before, .filter_bodyarea li.active_tabs.in_queue a:before  {  
+ 	background-position:-35px -21px!important;  }
+.filter_bodyarea li.active_tabs.in_queue a:after  { opacity:1; width:32px;}
+
+
+
+.filter_bodyarea li.running a:before { background-position:-73px 7px!important;}
+.filter_bodyarea li.running:hover a:before { background-position:-73px -21px!important;}
+.filter_bodyarea li.running:hover a:after { width:32px;} 
+.filter_bodyarea li.running:hover a:before, .filter_bodyarea li.active_tabs.running a:before  {  background-position:-73px -21px!important; }
+.filter_bodyarea li.active_tabs.running a:after  {  width:32px;}
+
+
+
+
+.filter_bodyarea li.not_started a:before { background-position:-110px 7px!important;}
+.filter_bodyarea li.not_started:hover a:before { background-position:-110px -21px!important;}
+.filter_bodyarea li.not_started:hover a:after { width:32px;} 
+.filter_bodyarea li.not_started:hover a:before, .filter_bodyarea li.active_tabs.not_started a:before  { background-position:-110px -21px!important; }
+.filter_bodyarea li.active_tabs.not_started a:after  {  width:32px;}
+
+
+.filter_bodyarea li.All_text a:before { background-position:-148px 7px!important;}
+.filter_bodyarea li.All_text:hover a:before { background-position:-148px -21px!important;}
+.filter_bodyarea li.All_text:hover a:after { width:32px;} 
+.filter_bodyarea li.All_text:hover a:before, .filter_bodyarea li.active_tabs.All_text a:before  { 	background-position:-148px -21px!important; }
+.filter_bodyarea li.active_tabs.All_text a:after  {  width:32px;}
+
+	/*-----------Reatil request management Start Here Request management-------*/		
+	
+}
+/*------------------End By V-------------------*/ 
+
+
+
+
+
+
+
+
+
+
+
+
+

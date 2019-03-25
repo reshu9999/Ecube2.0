@@ -1,0 +1,889 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+
+
+
+{% block header %}
+{% endblock %} 
+
+
+{% block content %}
+<style>
+  #hnscu_div { overflow-x:hidden; }
+  #hnscu_filter label, #hnscu_filter label {
+    font-size: 13px;
+    font-weight: normal;
+}
+#hnscu_filter input, #hnscu_filter select {
+    border: 1px solid #ccc;
+    position: relative;
+    left: 5px;
+    border-radius: 3px;
+    padding: 4px;
+}
+
+  #hnscu_wrapper {
+    margin: 10px 0 0;
+}
+.keyword_rules .btn {
+  padding: 2px 10px;
+  border-radius: 30px;
+  min-width: 80px;
+  margin-top: 10px;
+}
+
+</style>
+
+
+{% if msg %}
+    <script type="text/javascript">
+    alert("{{ msg }}",1);
+    </script>
+{% endif %}
+
+<section class="body_contaner no_sidebar">
+  <div class="container_content">
+    <div class="inner_content_contaner">
+      <div class="clearfix"></div>
+      <div class="white_bg marT30 multibatch_download common_div keyword_rules clearfix">
+        <div class="col-md-12">
+          <h3 class="slide_heading border_heading keyword_icon"> Keyword / Rule </h3>
+        </div>
+          <div class="marT70 clearfix">
+        	<div class="col-sm-12">
+				<div class="col-sm-4"> 
+					<div class="form-group radio_selection">
+					  <label for="hotel_type">Select Hotel Type</label>
+					  <div class="radio radio-primary">
+                      <input id="01" type="radio" name="POS" checked onchange="hide_show_grid('1');">
+                      <label for="01">Hotel Standardization</label>
+                      </div>
+                      
+                        <div class="radio radio-primary">
+                      <input id="02" type="radio" name="POS" onchange="hide_show_grid('2');">
+                      <label for="02">Hotel name special char upload</label>
+                      </div>
+					</div> 
+				</div>
+       	
+       			<div class="col-sm-3 show_hotel_type" style="display: none;">
+					<div class="form-group multi_select_contaner">
+					  <label for="hotel_type"> &nbsp; </label>
+					     <div class="buttons_contaner clickable_action"> 
+								 <a  class="excel_upload_btn add_manually_click active" href="javascript:void(0);"> Add Manually </a> 
+								 <a  class="excel_upload_btn bulk_upload_click" href="javascript:void(0);"> Bulk Upload </a>
+								</div>  
+					</div>
+        	  </div>
+        	  
+        	  <div class="col-sm-3 single_and_bulk_show" style="display: none;">
+					<div class="form-group multi_select_contaner">
+					  <label for="hotel_type">  &nbsp; </label>
+					     <div class="buttons_contaner clickable_action"> 
+								 <a  class="excel_upload_btn single_keyword_click active" href="javascript:void(0);"> Single Keyword </a> 
+								 <a  class="excel_upload_btn bulk_upload_click1" href="javascript:void(0);"> Bulk Upload </a>
+								</div>  
+					</div>
+        	  </div>
+        	  
+        	  <div class="col-sm-5 bulk_show" style="display: none;">
+        	   <div class="row">
+        	     <div class="col-sm-12 col-md-11 col-md-offset-2">
+                 <!-- Hotel Standardization upload change done by Shrikant 08-May-2018 18:00 -->
+                 <form id="HotelStanFileUpload" action="{%url 'Keyword_n_rule' %}" method="post" enctype="multipart/form-data" 
+                 onsubmit="return valHotelStandUpload();">
+                 {% csrf_token %}
+					<div class="form-group">
+            <label for="room_type_match">Keyword Bulk Upload (CSV Format)</label>
+            <div class="col-sm-7 pad0">
+					  <span class="upload upload_file">
+                              <input type="file" id="HotelStanFile" name="HotelStanFile" >
+                              <img src="/static/hotel/images/upload_file.png" alt="">
+                              <p> Drag File to upload </p>
+                              <span class="file_type"></span> </span>
+                            </div>
+                      <div class="col-sm-5">      
+                              <!-- <a href="javascript:void(0);" class="download_template"> Download Template </a> -->
+                              <a href="{%static 'hotel/samples/hotelStandBulkUpl.csv' %}" class="download_template"> Download Template </a>
+                            </div>  
+					</div>
+					
+					<div class="custom_btn marT10   text-center col-sm-7 col-md-7"> 
+               
+              <!-- <button class="btn btn_search"> Upload </button>  -->
+              <input type="reset" class="btn btn_reset" value="reset" id="myFunction1" >
+
+               <input type="submit" value="Upload" class="btn btn_search">
+              </div>
+              </form>
+				  </div>
+        	  </div>
+        	  </div>
+
+        	 <form name="HotelSpecialCharFrm" action="{%url 'Keyword_n_rule' %}" method="post" enctype="multipart/form-data" 
+             onsubmit="return valHotelSplCharUpl()" > {% csrf_token %}
+        	  
+        	  <div class="col-sm-5 bulk_show1" style="display: none;">
+        	   <div class="row">
+        	     <div class="col-sm-12 col-md-11 col-md-offset-2">
+			   	   	<div class="form-group">
+					  <label for="room_type_match">Keyword Bulk Upload (CSV Format only) </label>
+				          <div class="col-sm-7 pad0">
+				          	    <span class="upload upload_file">
+                              <input type="file" id="SpecialCharFileUpld" name="SpecialCharFileUpld">
+                              <img src="/static/hotel/images/upload_file.png" alt="">
+                              <p> Drag File to upload </p>
+                              <span class="file_type"></span> </span>
+				          	
+				          </div>
+					      
+                              <div class="col-sm-5">
+                              <a href="{% static '/hotel/samples/hotelSpecialCharBulkUpl.csv' %}" class="download_template"> Download Template </a> 
+                               <a href="{%url 'download_hotel_splchar' %}" class="download_template download_data"> Download Data </a>
+                               </div>
+				     	</div>
+					
+				   	 <div class="custom_btn  marT20 text-center col-sm-7 col-md-7"> 
+               
+               <!--
+              <button class="btn btn_search"> Upload </button>  
+              -->
+              <input type="reset" class="btn btn_reset" value="Reset" id="myFunction"/>
+
+              <input type="submit" value="Upload" class="btn btn_search"/>
+              </div>
+				    </div>
+        	  </div>
+        	  </div>
+              </form>
+        	  
+             <!-- Hotel Standardization Add change done by Shrikant 08-May-2018 20:00 -->
+        	 <form name="HotelStandManAdd" action="{%url 'Keyword_n_rule' %}" method="post" enctype="multipart/form-data" onsubmit="return valHotelStandAdd()" >
+              {% csrf_token %}
+
+        	  <div class="col-sm-3 manaully_show" style="display: none;">
+        	   <div class="row">
+        	     <div class="col-sm-12 col-md-11 col-md-offset-1">
+					<div class="form-group multi_select_contaner">
+					  <label for="room_type">Room Type</label>
+					    <input type="text" id = 'txtroomtype' name='txtroomtype' class="form-control" />
+					</div>
+				  </div>
+        	  </div>
+        	  </div>
+        	  
+        	       <div class="col-sm-3 manaully_show" style="display: none;">
+        	   <div class="row">
+        	     <div class="col-sm-12 col-md-11 col-md-offset-2">
+					<div class="form-group multi_select_contaner">
+					  <label for="room_type_match">Room Type Match</label>
+					    <input type="text" id = 'txtroomtypeMatch' name='txtroomtypeMatch' class="form-control" />
+					</div>
+				  </div>
+        	  </div>
+        	  </div>
+       	
+        	</div>
+        </div>
+          <div class="clearfix manaully_show" style="display: none;">
+        <div class="col-sm-12">
+         <div class="col-sm-3">
+         	<div class="row">
+           <div class="col-sm-10 col-md-8">
+            <div class="form-group multi_select_contaner">
+            <!-- commented by Shrikant as User ID is not allowed to enter....
+              <label for="user_id">User Id</label>
+              <input type="text" class="form-control" />
+              -->
+            </div>
+           </div>
+          </div>
+         	
+         </div>
+          
+           <div class="col-sm-2">
+         	<div class="row">
+           <div class="col-sm-12 col-md-11">
+            <div class="form-group multi_select_contaner">
+              <label for="priority">Priority</label>
+             <input type="text" name='txtpriority' class="form-control" id = 'txtpriority' />
+            </div>
+           </div>
+          </div> 
+         </div>
+          
+          
+           <div class="col-sm-2">
+         	<div class="row">
+           <div class="col-sm-12 col-md-11 col-md-offset-1">
+            <div class="form-group multi_select_contaner">
+              <label for="rule_type">Rule Type</label>
+             <input type="text" id = 'txtruletype' name='txtruletype' class="form-control" />
+            </div>
+           </div>
+          </div> 
+         </div>
+
+            <div class="col-sm-2">
+         	<div class="row">
+           <div class="col-sm-12 col-md-11 col-md-offset-1">
+            <div class="form-group multi_select_contaner">
+              <label for="active">Active</label>
+             <input type="checkbox" id = 'txtactive' name='txtactive' class="form-control" />
+            </div>
+           </div>
+          </div>
+         </div>
+           
+          <div class="col-sm-2">
+              	<div class="row">
+           <div class="col-sm-12 col-md-11 col-md-offset-2">
+            <div class="custom_btn marT10">
+              <div> &nbsp; </div>
+          
+              <input id="resetbtn" type="reset" value="Reset" class="btn btn_reset" > 
+              
+              <input id="addbtn" type='submit' class='btn btn_search' value='Add'>
+              </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </form>
+
+             <!-- Hotel Name Special Char Add change done by Shrikant 08-May-2018 20:00 -->
+             <form id="HotelSpecialCharAdd" action="{%url 'Keyword_n_rule' %}" method="post" enctype="multipart/form-data"
+             onsubmit="return valHotelSpcCharUpload()"> {% csrf_token %}
+      		
+      		<div class="clearfix marT10 single_keyword_show" style="display: none;">
+        <div class="col-sm-12">
+         <div class="col-sm-3">
+         	<div class="row">
+           <div class="col-sm-10 col-md-8">
+            <div class="form-group multi_select_contaner">
+              <label for="special_chars">Special Chars</label>
+              <input type="text" id="txtSpecialChar" name="txtSpecialChar" class="form-control" />
+            </div>
+           </div>
+          </div>
+         	
+         </div>
+          
+           <div class="col-sm-3">
+         	<div class="row">
+           <div class="col-sm-12 col-md-11">
+            <div class="form-group multi_select_contaner">
+              <label for="replace_chars">Replace Chars</label>
+             <input type="text" id="txtReplaceSepChar" name="txtReplaceSepChar" class="form-control" />
+            </div>
+           </div>
+          </div> 
+         </div>
+          
+          
+           <div class="col-sm-3">
+         	<div class="row">
+           <div class="col-sm-12 col-md-11 col-md-offset-1">
+           <div class="form-group radio_selection">
+					  <label for="is_active">Is Active</label>
+					  <div class="radio radio-primary">
+                      <input id="active" type="radio" name="POS1" value="1" checked>
+                      <label for="active"> Active </label>
+                      </div>
+                      
+                        <div class="radio radio-primary">
+                      <input id="in_active" type="radio" name="POS1" value="0" >
+                      <label for="in_active"> In Active </label>
+                      </div>
+					</div> 
+           </div>
+          </div> 
+         </div>
+         </form>
+           
+          <div class="col-sm-3">
+              	<div class="row">
+           <div class="col-sm-12 col-md-11 col-md-offset-2">
+            <div class="custom_btn marT10">
+              <div> &nbsp; </div>
+              <input type="reset" class="btn btn_reset" value="Reset">
+             
+              <input type="submit" value="Save" class="btn btn_search">
+              </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="clearfix"> &nbsp; </div>
+        </div>
+      <div class="clearfix"></div>
+       <div class="table-responsive marT70  ematch_table" id="hs_div" >
+       <div class="custom_table_heading clearfix">
+       	<div class="pull-left"> <h3> Search Result </h3> </div>
+       	<div class="pull-right"> <a href="#" onclick="downlodExcel_standard()"> Download Excel </a> </div>
+       </div>
+        <table id="datavalidation" class="display nowrap custom_table" style="width:100%">
+                <thead>
+                        <tr>
+                          <th width="15%">Room Type</th>
+                          <th width="20%">Room Type Match </th>
+                          <th width="20%">User Name</th>
+                          <th width="20%">Priority</th>
+                          <th width="">Rule Type</th>
+                          <th width="">Status</th>
+                        </tr>
+                      </thead>
+          <tbody>
+                {% for item in keywordList %}
+                <tr> 
+                    <td>{{ item.roomtype }}</td>
+                    
+                    <td>{{ item.roomtypematch }}</td>
+
+                    <td>{{ item.created_by }}</td>
+                    <td>{{ item.priority }}</td>
+                    <td>{{ item.ruletype }}</td>
+                    <td>{{ item.active }}</td>
+                </tr>
+                {% endfor %}
+          </tbody>
+        </table>
+     
+      </div>
+
+      <div class="table-responsive marT70  ematch_table" id="hnscu_div" style="display: none;" >
+        <div class="custom_table_heading clearfix">
+          <div class="pull-left"> <h3> Search Result </h3> </div>
+          <div class="pull-right"> <a href="#" onclick="downlodExcel()"> Download Excel </a> </div>
+        </div>
+        <table id="hnscu" class="display nowrap custom_table" style="width:100%;">
+          <thead>
+                  <tr>
+                    <th width=" ">Special Chars</th>
+                    <th width=" ">Replace Chars </th> 
+                    <th width=""> Status </th>
+                  </tr>
+                </thead>
+    <tbody>
+         {% if SpecialCharData %} 
+         {% for rec in SpecialCharData %}
+          <tr> 
+              <td>{{ rec.0 }}</td>
+              <td>{{ rec.1 }}</td>
+              <td>{{ rec.2 }}</td> 
+          </tr>
+         {% endfor %}
+        {% endif %}
+       
+    </tbody>
+  </table>
+      
+       </div>
+
+    </div>
+    <div class="clearfix"></div>
+   
+  </div>
+  
+  <!-- /*******************************************/--> 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog addcity_popuop"> 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="header_addcity">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4>Add City/Beach Group</h4>
+          </div>
+          <div class="addcity_popuop_body">
+            <div class="form-inline">
+              <div class="form-group">
+                <label for="email">Create Group for </label>
+                <div class="buttons_selection">
+                  <div class="round_btn city_group"><span class="active">City Group</span></div>
+                  <div class="round_btn batch_group"><span class="">Beach Group</span> </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Select Country</label>
+                  <select class="form-control" >
+                    <option>Select option</option>
+                    <option>India</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Select City</label>
+                  <select class="form-control" >
+                    <option>Select option</option>
+                    <option>Chandigarh</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>&nbsp;</label>
+                  <input type="button" class="btn seaech_btn_purple" value="Search">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 marT10">
+                <h5 class="add_hotel_heading border_right_lightgray">Add Hotels</h5>
+                <div class="checkbox checkbox-primary check_all">
+                  <input id="checkbox3" type="checkbox">
+                  <label for="checkbox3">Select All</label>
+                </div>
+                <div class="pull-right col-md-7 padR0">
+                 <div class="add_hotels pull-left col-md-5">
+                 	<a href="javascript:void(0);" class="upload_hotel_trigger">Upload Hotels</a>
+                 	<div class="upload_hotel_contaner" style="display: none">
+                 		<div class="upload_hotel_header">
+                 			<h3>Upload Hotel</h3>
+                 			<a href="javascript:void(0);" class="download_excel ">Download Template</a>
+                 		</div>
+                 		<div class="uplaod_body">
+                 			
+                 		
+                 			<div class="form-group "> 
+                            <span class="upload upload_file">
+                            <input type="file">
+                            <img src="/static/hotel/images/upload_file.png" alt="">
+                            <p>  Click here to upload  </p>
+                            <span class="file_type"></span> </span> </div>
+                            
+                            <div class=" ">  
+     			 <input type="button" name="" class="choose_file float_none" value="Upload File">
+    </div>
+                            
+                 		</div>
+                 	</div>
+                 </div>
+                 <div class="col-md-7 padR0">
+                  <input type="text" class="form-control searchhotel pull-left " placeholder="Search">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="addhotel_checkbox_contaner">
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="1" type="checkbox">
+                      <label for="1"><span>CityNorth</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="2" type="checkbox">
+                      <label for="2"><span>Cochise Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="4" type="checkbox">
+                      <label for="4"><span>La Posada Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="3" type="checkbox">
+                      <label for="3"><span>Ox Bow Inn</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="5" type="checkbox">
+                      <label for="5"><span>Crescent Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="6" type="checkbox">
+                      <label for="6"><span>Ahwahnee Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="7" type="checkbox">
+                      <label for="7"><span>Apple Farm Inn</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="8" type="checkbox">
+                      <label for="8"><span>Hacienda Hot Springs</span></label>
+                    </div>
+                  </div> 
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="9" type="checkbox">
+                      <label for="9"><span>Hayes Mansion</span></label>
+                    </div>
+                  </div>
+                   <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="11" type="checkbox">
+                      <label for="11"><span>CityNorth</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="12" type="checkbox">
+                      <label for="12"><span>Cochise Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="14" type="checkbox">
+                      <label for="14"><span>La Posada Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="13" type="checkbox">
+                      <label for="13"><span>Ox Bow Inn</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="15" type="checkbox">
+                      <label for="15"><span>Crescent Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="16" type="checkbox">
+                      <label for="16"><span>Ahwahnee Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="17" type="checkbox">
+                      <label for="17"><span>Apple Farm Inn</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="18" type="checkbox">
+                      <label for="18"><span>Hacienda Hot Springs</span></label>
+                    </div>
+                  </div> 
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="19" type="checkbox">
+						<label for="19"><span>Hayes Mansion</span></label>
+                    </div>
+                  </div>
+                   <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="21" type="checkbox">
+                      <label for="21"><span>CityNorth</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="22" type="checkbox">
+                      <label for="22"><span>Cochise Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="24" type="checkbox">
+                      <label for="24"><span>La Posada Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="23" type="checkbox">
+                      <label for="23"><span>Ox Bow Inn</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="25" type="checkbox">
+                      <label for="25"><span>Crescent Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="26" type="checkbox">
+                      <label for="26"><span>Ahwahnee Hotel</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="27" type="checkbox">
+                      <label for="27"><span>Apple Farm Inn</span></label>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="28" type="checkbox">
+                      <label for="28"><span>Hacienda Hot Springs</span></label>
+                    </div>
+                  </div> 
+                  <div class="col-md-3">
+                    <div class="checkbox checkbox-primary checkItem">
+                      <input id="29" type="checkbox">
+                      <label for="29"><span>Hayes Mansion</span></label>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              
+              <div class="col-md-12 marT10">
+              	<a href="#" class="selected_Hotels"><span>15</span> Hotel Selected</a>
+              	
+              	<div class="pull-right col-md-6">
+					<div class="row">
+					<div class="col-md-7 padR0">
+						<input type="text" class="form-control pull-left" placeholder="Add Group Name">
+					</div>
+					<div class="col-md-5 padR0">
+					<input type="button" class="Add_Group pull-right" value="Add Group">
+					</div>
+					</div>
+              	</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %} 
+{% block footer %}
+<script src="/static/hotel/js/validate_forms.js"></script>
+
+<script>
+  
+
+   function downlodExcel_standard()
+   {
+    var req_text =$($('#datavalidation_filter').find('input[type="text"]')[0]).val().trim()
+    
+        var model = {txt_val: req_text}
+        $.ajax({
+          url: "{% url 'search_export_data_csv_standard' %}",
+          type: 'POST',
+          data: model,
+          dataType: 'json',
+          success: function (data) {
+            window.location.href=data.path;
+          },
+          error: function (xhr, errorType, exception) {
+              alert(exception)
+          }
+      });    
+   }
+    function downlodExcel(){
+      var req_text =$($('#hnscu_filter').find('input[type="text"]')[0]).val().trim()
+        var model = {txt_val: req_text}
+        $.ajax({
+          url: "{% url 'search_export_data_csv' %}",
+          type: 'POST',
+          data: model,
+          dataType: 'json',
+          success: function (data) {
+            window.location.href=data.path;
+          },
+          error: function (xhr, errorType, exception) {
+              alert(exception)
+          }
+      });    
+      
+    }
+
+    $("#myFunction").click(function (e) {
+      $('.file_type').text('');
+      $('.file_type').css('opacity','0');
+        })
+        $("#myFunction1").click(function (e) {
+          $('.file_type').text('');
+          $('.file_type').css('opacity','0');
+            })
+  
+	$('ul.multiselect-container.dropdown-menu').perfectScrollbar();	
+$(document).ready(function() {
+	
+	
+    var table = $('#datavalidation').DataTable( {
+      "sPaginationType": "full_numbers",
+		"bFilter": true,
+		"bInfo": false,
+		"bPaginate": true,
+       	//scrollX:        true,
+      	//scrollCollapse: true,
+        paging:         true,
+        //fixedColumns:   { leftColumns: 0, rightColumns: 1  }, 
+  });
+  
+
+    var table = $('#hnscu').DataTable( {
+      "sPaginationType": "full_numbers",
+		"bFilter": true,
+		"bInfo": false,
+		"bPaginate": true,
+       	//scrollX:        true,
+      	//scrollCollapse: true,
+        paging:         true,
+        //fixedColumns:   { leftColumns: 0, rightColumns: 1  }, 
+  });
+  
+$('.dataTables_scrollBody,.addhotel_checkbox_contaner').perfectScrollbar();
+});	
+	
+$(".round_btn").click(function(){
+	debugger;
+	$(".round_btn").children().removeClass("active"); 
+	$(this).children().addClass("active"); 
+});
+$(".upload_hotel_trigger").click(function(){
+	 $(".upload_hotel_contaner").slideDown(); 
+});	
+$(".choose_file ").click(function(){
+	 $(".upload_hotel_contaner").slideUp(); 
+});	
+		
+$(document).mouseup(function (e){var container = $(".upload_hotel_contaner");if (!container.is(e.target) && container.has(e.target).length ===0){container.slideUp();}}); 
+	
+///Activate Scrllbar	
+$(".addhotel_checkbox_contaner").mouseenter(function(){ 
+$('*').perfectScrollbar('update');
+});
+
+function hide_show_grid(id)
+  {
+    if(id == '1') {
+      $('.show_hotel_type').show();  
+      // $('.manaully_show').show();
+      $('.bulk_show').hide();
+      $('.single_and_bulk_show').hide();
+      $('.add_manually_click').removeClass('active'); 	
+      $('.bulk_show1').hide();  
+      $('.single_keyword_show').hide();  
+      $('.bulk_upload_click1').removeClass('active');
+      $('.single_keyword_click ').removeClass('active');
+      $('#hs_div').show();
+      $('#hnscu_div').hide();
+      $('#01').prop('checked',true);
+      $('#02').prop('checked',false);
+    }
+    else  if (id == '2'){ 
+      $('.manaully_show').hide();
+      $('.bulk_show').hide();
+      $('.show_hotel_type').hide();  
+        $('.manaully_show').hide();
+        $('.bulk_show').hide();
+        $('.bulk_upload_click').removeClass('active'); 
+        $('.single_and_bulk_show').show(); 
+        $('#hs_div').hide();
+        $('#hnscu_div').show();
+        $('#01').prop('checked',false);
+      $('#02').prop('checked',true);
+    }
+  }
+
+$(document).ready(function() {  
+$('.bulk_upload_click1').removeClass('active');
+$('.bulk_upload_click').removeClass('active'); 
+$('.add_manually_click').removeClass('active'); 	
+$('.single_keyword_click').removeClass('active');
+$('.single_and_bulk_show').hide();		
+$('.bulk_show1').hide();	
+$('.single_keyword_show').hide();
+$('.manaully_show').hide();	
+hide_show_grid('{{ grid_type }}');
+
+	
+		
+  $('a.add_manually_click').click(function(){	
+	$('.bulk_upload_click').removeClass('active'); 
+	$('.manaully_show').show();
+	$('.bulk_show').hide();
+	$('.add_manually_click').addClass('active');
+	$('.bulk_upload_click').removeClass('active');
+  });
+
+ //otherTab is the class for the tabs other tha
+  $('.bulk_upload_click').removeClass('active');
+    $('.bulk_show').hide();
+	$('a.bulk_upload_click').click(function(){
+    $('.bulk_show').show();
+	$('.manaully_show').hide();
+	$('.add_manually_click').removeClass('active');
+	$('.bulk_upload_click').addClass('active');
+ });
+	
+ $('a.single_keyword_click').click(function(){	
+	$('.bulk_upload_click1').removeClass('active');  
+	$('.bulk_show1').hide();
+	$('.single_keyword_show').show();
+	$('.single_keyword_click').addClass('active');
+	$('.bulk_upload_click1').removeClass('active');
+  });
+
+ //otherTab is the class for the tabs other tha
+
+	$('a.bulk_upload_click1').click(function(){ 
+	$('.bulk_show1').show();  
+	$('.single_keyword_show').hide();
+	$('.single_keyword_click').removeClass('active'); 
+	$('.bulk_upload_click1').addClass('active');
+ });
+	
+});
+
+
+ 
+function download_Excel()
+{
+  var keywordlist = '{{keywordList}}'
+  
+  $.ajax({
+            url:'{% url "Keyword_n_rule" %}',
+            type:"POST",
+            data:{'keywordlist':keywordlist,'operation': 'download'},
+            success:function (data) {
+               alert ('Success download')
+                
+                }
+                
+            
+        })
+            
+
+}
+$("#btnSaveRule").click(function (e) {
+  debugger
+  var roomtype = document.getElementById('txtroomtype').value
+  var roomytypeMatch = document.getElementById('txtroomtypeMatch').value
+  var ruletype = document.getElementById('txtruletype').value
+  var priority = document.getElementById('txtpriority').value
+  $.ajax({
+            url:'{% url "insertRule" %}',
+            type:"POST",
+            data:{'roomtype': roomtype,'roomytypeMatch': roomytypeMatch,'ruletype':ruletype,'priority':priority },
+            success:function (data) {
+               alert ('Success download')
+                
+                }
+                
+            
+        })
+            
+})
+</script>
+
+{% endblock %}
+
+

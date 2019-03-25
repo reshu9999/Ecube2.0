@@ -1,0 +1,12 @@
+<div class="col-md-4">
+    <div class="form-group">
+        <label class="">{{ display_name|title }}</label>
+        {% if readonly %}
+        <br><span>{{ input_val }}</span>
+        {% else %}
+        <label class="">{{ display_name|title }}</label>
+        <textarea class="form-control" name="{{ field_name }}"
+                  id="{{ field_name }}__id">{{ input_val }}</textarea>
+        {% endif %}
+    </div>
+</div>

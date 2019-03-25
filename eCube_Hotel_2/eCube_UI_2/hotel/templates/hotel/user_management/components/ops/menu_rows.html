@@ -1,0 +1,31 @@
+{% load user_management %}
+<div class="row">
+    <div class="col-md-12">
+        {% for dropdown in OPS_DATA %} 
+        <div class="col-md-3 col-sm-4 pad0 {{ dropdown.name|snake_case }}__parent">
+            {% include 'hotel/user_management/components/ops/menu_access.html' with name=dropdown.name %}
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {% endif %}
+        <div id="{{ dropdown.name|snake_case }}__child" style="display: none;" class="module_access child_checkbox">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for dd_item in dropdown.list %}
+                    <div class="col-md-3 col-sm-4 pad0">
+                        {% include 'hotel/user_management/components/ops/menu_access.html' with name=dd_item.name  %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+

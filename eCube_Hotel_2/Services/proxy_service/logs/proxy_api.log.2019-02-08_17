@@ -1,0 +1,120 @@
+2019-02-08 17:27:14,043|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 17:27:14,044|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 17:27:14,053|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 17:53:17,696|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 17:53:17,697|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 17:53:17,706|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 18:05:08,380|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-08 18:05:08,381|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-08 18:05:08,391|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-08 18:05:10,218|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-08 18:05:10,219|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-08 18:05:10,229|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-08 18:14:08,413|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-08 18:14:08,413|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-08 18:14:08,425|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-08 18:14:08,767|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-08 18:14:08,768|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-08 18:14:08,778|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-08 18:20:33,844|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-08 18:20:33,844|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-08 18:20:33,854|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-08 18:20:34,825|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-08 18:20:34,826|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-08 18:20:34,835|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-08 18:20:45,415|proxy_api|INFO| |domain:Expediahotel|tag:Detail|Request Received
+2019-02-08 18:20:45,415|proxy_api|INFO| |domain:Expediahotel|tag:Detail|Getting Proxy Details
+2019-02-08 18:20:45,425|proxy_api|INFO| |domain:Expediahotel|tag:Detail|Proxy Returned
+2019-02-08 18:54:43,286|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-08 18:54:43,286|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-08 18:54:43,299|proxy_api|INFO| |domain:Booking|Proxy Returned
+2019-02-08 18:56:11,275|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-08 18:56:11,275|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-08 18:56:11,285|proxy_api|INFO| |domain:Booking|Proxy Returned
+2019-02-08 19:00:42,389|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-08 19:00:42,389|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-08 19:00:42,399|proxy_api|INFO| |domain:Booking|Proxy Returned
+2019-02-08 19:07:54,110|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-08 19:07:54,111|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-08 19:07:54,121|proxy_api|INFO| |domain:Booking|Proxy Returned
+2019-02-08 19:08:54,941|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-08 19:08:54,942|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-08 19:08:54,953|proxy_api|INFO| |domain:Booking|Proxy Returned
+2019-02-08 19:10:13,720|proxy_api|INFO| |domain:Thomas Cook DE|Request Received
+2019-02-08 19:10:13,720|proxy_api|INFO| |domain:Thomas Cook DE|Getting Proxy Details
+2019-02-08 19:10:13,731|proxy_api|INFO| |domain:Thomas Cook DE|Proxy Returned
+2019-02-08 19:10:13,732|proxy_api|INFO| |domain:Thomas Cook DE|Request Received
+2019-02-08 19:10:13,732|proxy_api|INFO| |domain:Thomas Cook DE|Getting Proxy Details
+2019-02-08 19:10:13,740|proxy_api|INFO| |domain:Thomas Cook DE|Proxy Returned
+2019-02-08 19:10:13,745|proxy_api|INFO| |domain:Thomas Cook DE|Request Received
+2019-02-08 19:10:13,745|proxy_api|INFO| |domain:Thomas Cook DE|Getting Proxy Details
+2019-02-08 19:10:13,753|proxy_api|INFO| |domain:Thomas Cook DE|Proxy Returned
+2019-02-08 19:10:13,756|proxy_api|INFO| |domain:Thomas Cook DE|Request Received
+2019-02-08 19:10:13,756|proxy_api|INFO| |domain:Thomas Cook DE|Getting Proxy Details
+2019-02-08 19:10:13,764|proxy_api|INFO| |domain:Thomas Cook DE|Proxy Returned
+2019-02-08 19:10:13,770|proxy_api|INFO| |domain:Thomas Cook DE|Request Received
+2019-02-08 19:10:13,770|proxy_api|INFO| |domain:Thomas Cook DE|Getting Proxy Details
+2019-02-08 19:10:13,778|proxy_api|INFO| |domain:Thomas Cook DE|Proxy Returned
+2019-02-08 19:10:53,885|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:10:53,886|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:10:53,895|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:11:13,948|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:11:13,948|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:11:13,960|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:14:09,348|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-08 19:14:09,348|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-08 19:14:09,360|proxy_api|INFO| |domain:Booking|Proxy Returned
+2019-02-08 19:22:56,488|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:22:56,489|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:22:56,504|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:23:11,332|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:23:11,333|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:23:11,345|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:23:15,667|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:23:15,668|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:23:15,679|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:23:21,011|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:23:21,012|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:23:21,027|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:23:27,355|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:23:27,355|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:23:27,368|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:23:34,720|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:23:34,720|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:23:34,733|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:23:38,077|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:23:38,077|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:23:38,089|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:23:42,344|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:23:42,344|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:23:42,356|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:23:47,734|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:23:47,734|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:23:47,747|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:23:54,231|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:23:54,231|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:23:54,242|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:24:01,580|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:24:01,581|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:24:01,594|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:24:04,937|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:24:04,937|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:24:04,948|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:24:09,307|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:24:09,307|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:24:09,319|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:24:14,692|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:24:14,692|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:24:14,704|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:24:20,985|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:24:20,985|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:24:20,997|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:24:28,508|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-08 19:24:28,508|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-08 19:24:28,520|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-08 19:25:55,529|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-08 19:25:55,530|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-08 19:25:55,543|proxy_api|INFO| |domain:Booking|Proxy Returned
+2019-02-08 19:25:55,550|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-08 19:25:55,550|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-08 19:25:55,560|proxy_api|INFO| |domain:Booking|Proxy Returned

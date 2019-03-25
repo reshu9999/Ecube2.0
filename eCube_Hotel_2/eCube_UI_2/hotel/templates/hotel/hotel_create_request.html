@@ -1,0 +1,3163 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+
+{% block header %}
+<style>
+  input#gnBtn {
+    width: 60px;
+    border-radius: 26px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    text-align: center;
+  }
+  #btn_error {
+    width: 150px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 19px;
+}
+  input#gnBtndate {
+    background-image: none !important;
+    width: 89px !important;
+    border-radius: 50px;
+    text-align: center;
+  }
+
+  input#gnBtn1 {
+    width: 60px;
+    border-radius: 26px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    text-align: center;
+  }
+
+  input#gnBtn2 {
+    width: 60px;
+    border-radius: 26px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    text-align: center;
+  }
+
+  input#gnBtn3 {
+    width: 60px;
+    border-radius: 26px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    text-align: center;
+  }
+
+  span.addnow {
+    border: 1px solid #c183ff;
+    color: #323232;
+    font-size: 13px;
+    padding: 6px 8px;
+    border-radius: 35px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  input#gnBtndays {
+    width: 60px;
+    border-radius: 26px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    text-align: center;
+  }
+
+  input#gnBtnAdWeeks {
+    width: 60px;
+    border-radius: 26px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    text-align: center;
+  }
+  li.multiselect-item.multiselect-all { display:block!important; }
+  li.multiselect-item.multiselect-all .multiselect-all { display:block!important; }
+  /*ul.multiselect-container.dropdown-menu li {display:block!important; }*/
+
+  .pos_content.updated_record:after {
+    content: 'Updated';
+    position: relative;
+    top: -8px;
+    right: 0;
+    font-size: 11px;
+    padding: 5px 10px;
+    background: #5cb85c;
+    color: #fff;
+    border-radius: 30px;
+    left: 0;
+    margin: auto;
+    width: 83px;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
+a.sp_download {
+  display:inline-block;
+  font-size: 12px;
+  margin-bottom:25px;
+}
+.download_text {   white-space: nowrap; float:none!important;}
+.download_text a {
+
+    margin: 0 1px!important;
+    float: none !important;
+    white-space: nowrap;
+}
+a.sp_download.inline{  display:inline-block!important; }
+.disabled{
+    pointer-events:none;
+    opacity:1.5;
+}
+/*----------*/
+.labelinput, .labelinput:focus { 
+	border: none; 
+	outline: none; 
+}
+
+.tagLabel { 
+	margin: 0 4px 4px 0; 
+	font-size: 100%;
+}
+
+.closelabel {
+    color: white !important;
+    background: #a267c8;
+    border-radius: 100px;
+    height: 13px;
+    width: 13px;
+    display: inline-block;
+    text-decoration: none !important;
+    font-size: 11px;
+    margin-left: 5px;
+}
+.badge {
+  background: #c183ff; padding-right: 3px;
+}
+.box_view .form-control.tags{
+  height: auto;
+}
+.download_text {
+
+    position: relative;
+    top: 23px;
+    float: right;
+    background: #fcfcfce6;
+
+}
+.box_view .form-group .download_text a.sp_download {
+    margin: 5px 10px; display:block;
+}
+</style>
+{% endblock %}
+{% block content %}
+<section class="request_section clearfix">
+  <form id="myForm">
+    <div class="row-eq-height">
+        <div class="col-sm-4 custom_gap">
+          <div class="box_view clearfix">
+            <div class="file_upload_tabs">
+              <div class="main_heading clearfix">
+                <h3 class="pull-left">Request Profile</h3>
+                <div class="pull-right">
+                  <a class="request_btn add_manually_btn active" id="drpAddMan" href="javascript:void(0);"> Add Manually </a>
+                  <a class="request_btn excel_upload_btn" id="drpExcel" href="javascript:void(0);"> Excel Upload </a>
+                </div>
+              </div>
+              <form id="msform">
+                <div class="tab-content">
+        
+                  <!-- bhushan Gaud end -->
+                  <div class="excelupload_view fade in">
+                    <span class="close_excel"> X </span>
+                    <div class="excelupload_heading">
+                      <h3> Schedule &amp; Upload Request </h3>
+                      <a href="{% url 'hotel_batch_input_upload_template_hotel' %}"> Download template </a>
+                    </div>
+                    <div class="box_view clearfix">
+                      <div class="file_upload_tabs">
+        
+                        <div class="tab-content">
+                          <div id="schedule_batch" class="tab-pane fade in active">
+                            <div class="row">
+                              <div class="">
+                                <div class="">
+                                  <div class="form-group ">
+                                    <span class="upload upload_file">
+                                      <input type="file" id="input_file_excel">
+                                      <img src="{% static 'hotel/images/upload_file.png' %}" alt="">
+                                      <p> Select File to upload </p>
+                                      <span class="file_type"></span>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="clearfix marT20">
+                                <div class="pull-left">
+                                  <input type="button" onclick="upload_batch_input_hotel();" class="choose_file float_none" value="Upload File">
+                                </div>
+        
+                                <div class="pull-right">
+                                  <a  class="error_log float_none" href="javascript:void(0);"
+                                  id="btn_error" style="display: none;">Error Log</a>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="upload_batch" class="tab-pane fade">
+                            <div class="row">
+                              <div class="">
+                                <div class="">
+                                  <div class="form-group ">
+                                    <span class="upload upload_file">
+                                      <input type="file">
+                                      <img src="{% static 'hotel/images/upload_file.png' %}" alt="">
+                                      <p> Drag File to upload </p>
+                                      <span class="file_type"></span>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class=" ">
+                                <input type="button" name="" class="choose_file float_none" value="Upload File">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+        
+                  </div>
+        
+                  <div class="row manually_added">
+                    <div class="col-md-6">
+                      <div class="form-group required">
+                        <label>Request Name</label>
+                        <input type="text" id="txtRequestName" name="txtRequestName" class="form-control" placeholder="Add Request Name">
+                        <span id="spanrequestname" class="small error" style="display:none">Please set request name</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group required">
+                        <label>Request Description</label>
+                        <input type="text" id="txtRequestDesc" name="txtRequestDesc" class="form-control" placeholder="Add Request Description">
+                        <span id="spanrequestdescr" class="small error" style="display:none">Please set request description</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <form id="msform">
+                      <div class="">
+                        <div class="col-md-6 batch_list_div">
+                          <div class="form-group">
+                            <label>Batch List</label>
+                            <select class="form-control" id="batch_selector">> {% for item in batch_items %} {% if item.id == selected_request_id %}
+                              <option value="{{ item.id }}" selected>{{ item.title }}</option>
+                              {% else %}
+                              <option value="{{ item.id }}">{{ item.title }}</option>
+                              {% endif %} {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6" style="display:none">
+                          <div class="form-group">
+                            <label class="btn-block">PNF Auto Attempts</label>
+                            <span class="counter">
+                              <a id="minus1" href="javascript:void(0);" class="minus"> - </a>
+                              <input id="qty1" type="text" value="1" class="qty" />
+                              <a id="add1" href="javascript:void(0);" class="plus"> + </a>
+                            </span>
+                            <span class="p_not_found">(Product Not Found)</span>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="row">
+                    <div class="">
+        
+                      <div class="col-md-6">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="btn-block">Adults</label>
+                              <span class="counter">
+                                <a id="" href="javascript:void(0);" class="minus"> - </a>
+                                <input id="txtAdultCount" type="text" value="1" class="qty" />
+                                <a id="" href="javascript:void(0);" class="plus"> + </a>
+                              </span>
+                              <span id="spanAdultCount" class="small error" style="display:none">Adults Should not be Zero</span>
+        
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group pull-right">
+                              <label class="btn-block">Children</label>
+                              <span class="counter">
+                                <a id="" href="javascript:void(0);" class="minus"> - </a>
+                                <input id="txtChildrenCount" type="text" value="0" class="qty" />
+                                <a id="" href="javascript:void(0);" class="plus"> + </a>
+                              </span>
+                              <span id="spanChildrenCount" class="small error" style="display:none">Children Should not be Zero</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6" >
+                        <!-- <div class="form-group">
+                          <label> Report Format Type </label>
+                          <select class="form-control" id="drpreporttype">
+                            <option value = "0">Select Option</option>
+                            <option value = "1">HB</option>
+                            <option value = "2">HBA</option>
+                            
+                          </select>
+      
+                        <span id="spanreport" class="small error" style="display:none">Please select report format type</span>
+                      </div> -->
+                      </div>
+            
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    <div class="col-sm-4 custom_gap">
+        <div class="box_view clearfix">
+            <div class="main_heading clearfix">
+                <h3 class="pull-left">Destination Information</h3>
+            </div>
+            <div class="col-md-12">
+              
+                <div class="row">
+                  
+                    <div class="marT10">
+                      
+                        <div class="col-md-6">
+                            <div class="form-group required">
+                                <label>Destination Country </label>
+                                <select id="drpCountries" class=" form-control">
+                                    <option value="0">Select Option</option>
+                                    {% for key, value in countries.items %}
+                                    <option value={{ key }}>{{ value }}</option>
+                                    {% endfor %}
+                                </select>
+                            <span id="spandestinationcountry" class="small error" style="display:none">Please select destination country</span>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group required">
+                                <label>Destination City</label>
+                                <select id="drpCities" class=" form-control">
+                                    <option value="0">Select Option</option>
+                                </select>
+                            <span id="spandestinationcity" class="small error" style="display:none">Please select destination city</span>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="hdn_hotel_req_id"/>
+                <input type="hidden" id="all_hotels"/>
+                <input type="hidden" id="hotel_session"/>
+                <input type="hidden" id="batch_key"/>
+                <input type="hidden" id="hdn_url1" value = "{% url 'hotel_create_request' %}"/>
+                <input type="hidden" id="hdn_url2" value = "{% url 'hotel_delete_request' %}"/>
+                <input type="hidden" id="hdn_url3" value = "{% url 'hotel_delete_request_all' %}"/>
+
+                <div class="row">
+                    <div class="marT10">
+                        <div class="col-md-6 padR0">
+                            <div class="form-group required">
+                                <label>Scraping Option</label>
+                                <div id="divHotelCrawlMode" class="buttons_contaner clickable_action">
+                                    <a data-crawl_mode="1" id="AllHotel" class="all_hotel scraping_btn"
+                                       href="javascript:void(0)">All Hotel / City</a>
+                                    <a data-crawl_mode="2" id="SpecificHotel" class="specific_hotel scraping_btn"
+                                       href="javascript:void(0)">Specific Hotel</a>
+                                </div>
+                                <span id="spanChooseHotelType" class="small error" style="display:none"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 specific_hotel_show" style="display: none;">
+                            <div class="form-group ">
+                  <span class="upload upload_file">
+                    <input id="hotel_file_upload" type="file">
+                    <img src="{% static 'hotel/images/upload_file.png' %}" alt="">
+                    <p> Upload File </p>
+                    <span class="file_type" id = "fileType" style="display:block"></span>
+                  </span>
+                               <div class="download_text">
+                                   <a id="error_log" href="javascript:void();" class="sp_download" style="color:red; display: none"> Error Log</a>
+                                   <a href="{% url 'hotel_typedownload' %}" class="sp_download inline"> Download template </a>
+                                   <a href="{% url 'master_hotel' %}" class="sp_download inline" target="_blank"> Go to hotel</a>
+                               </div>
+                           
+                            <span id="spanhotel" class="small error" style="display:none"/>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="marT10">
+                        <!--<div class="col-md-6 hotel_selection">-->
+                            <!--<div class="form-group multi_select_contaner required">-->
+                                <!--<label>Hotel</label>-->
+                                <!--<select id="drpHotel" class="multiselect_box form-control" multiple="multiple">-->
+
+                                <!--</select>-->
+                                <!--<span id="spanHotel" class="small error" style="display:none">Please select Hotel</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        {% comment %} <div class="col-md-6">
+                            <div class="form-group multi_select_contaner">
+                                <label>Room Type</label>
+                                <select id="drpRoomType" class="multiselect_box form-control" multiple="multiple">
+                                    {% for key, value in roomtypes.items %}
+                                    <option value={{ key }}>{{ value }}</option>
+                                    {% endfor %}
+                                </select> 
+                        <span id="spanRoomType" class="small error" style="display:none">Please select room type</span>
+                      
+                      </div>
+                        </div> {% endcomment %}
+
+                        
+
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="marT10">
+                <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="roomtype">Room Type</label>
+                          <div class="form-control tags" id="tags" onkeydown="chk_char();">
+                            <input type="text" class="labelinput">
+                            <input type="hidden" id ="hdn_txt_room_type" value="" name="result">
+                          </div>
+                        </div> 
+                </div>
+              </div>
+              </div>
+                <div class="row">
+                    <div class="marT10">
+                        <div class="col-md-6">
+                            <div class="form-group multi_select_contaner">
+                                <label>Board Type</label>
+                                <select id="drpBoardType" class="multiselect_box form-control" multiple="multiple">
+                                    {% for key, value in boardtypes.items %}
+                                    <option value={{ key }}>{{ value }}</option>
+                                    {% endfor %}
+                                </select>
+                                <span id="spanBoardType" class="small error"
+                                  style="display:none">Please select board type</span>
+                            </div>
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group multi_select_contaner">
+                                <label>Star Rating</label>
+
+                                <select id="drpStarRating" class="multiselect_box form-control" multiple="multiple">
+                                    {% for key, value in starratings.items %}
+                                    <option value={{ key }}>{{ value }}</option>
+                                    {% endfor %}
+                                </select>
+                                <span id="spanStarRatings" class="small error"
+                                  style="display:none">Please select room type</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+              
+              <div class="row">
+                
+                  <div class="marT10">  
+          <div class="col-md-6">
+              <div class="form-group required">
+                  <label>Point of Sale</label>
+                  <select class="form-control" id="drppointofsale">
+                      <option value="0">Select Option</option>
+                      {% for key, value in pointofsales.items %}
+                      <option value={{ key }}>{{ value }}</option>
+                      {% endfor %}
+                  </select>
+                 <span id="spanpos" class="small error"
+                  style="display:none">Please select point of sale</span>
+              </div>
+             
+          </div>
+        </div>
+      </div>
+    </div>
+
+        </div>
+    </div>
+     <div class="col-sm-4 custom_gap">
+        <div class="box_view clearfix">
+            <div class="file_upload_tabs">
+                <ul class="nav nav-tabs custom_tab" id="tab_selector">
+                    <li id="ls_daterangedays" class="icons date_range_icon active">
+                        <a data-toggle="tab" href="#date_range"> Date
+                            <br> Range </a>
+                    </li>
+                    <li id="ls_advancedays" class="icons advance_days_icon">
+                        <a data-toggle="tab" href="#advance_days"> Advance
+                            <br> Days </a>
+                    </li>
+                    <li id="ls_checkindays" class="icons check_in_icon">
+                        <a data-toggle="tab" href="#check_in"> Multiple
+                            <br> Check-In Dates </a>
+                    </li>
+                    <li id="ls_advanceweekdays" class="icons advance_weeks_icon">
+                        <a data-toggle="tab" href="#advance_weeks"> Advance
+                            <br> Weeks </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="date_range" class="tab-pane fade in active">
+                        <div class="row">
+                            <div class="marT10">
+                                <div id="select_supplier1" class="col-md-6">
+                                    <div class="form-group multi_select_contaner required">
+                                        <label>Select Suppliers </label>
+                                        <select id="drpsuppliers" class="multiselect_box form-control"
+                                                multiple="multiple">
+                                            {% for key in suppliers %}
+                                            <option value={{ key.id }}>{{ key.Name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    
+                                    <span id="spanSuppliersDateRange" class="small error" style="display:none">Please select suppliers</span>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="marT10">
+                                <div class="col-md-6">
+                                    <div class="form-group required">
+                                        <label> From </label>
+                                        <input id="txtDateRangeFrom" type="text" class="form-control    dates_control"
+                                               placeholder="MM/DD/YY" readonly="readonly">
+                                   
+                                    <span id="spanDateRangeFrom" class="small error" style="display:none">Please select From Date</span>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group required">
+                                        <label> To </label>
+                                        <input id="txtDateRangeTo" type="text" class="form-control dates_control"
+                                               placeholder="MM/DD/YY" readonly="readonly">
+                                   
+                                    <span id="spanDateRangeTo" class="small error" style="display:none">Please select To Date</span>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset_border">
+                            <div class="row">
+                                <div class="fieldset_body">
+                                    <h4>Week Days </h4>
+                                    <div class="col-md-12">
+                                      <div id="divWeekDays" class="clickable_action week_days_div">
+                                        <a name='a_weekdays' class="active_day days_btn" href="javascript:void(0);"> Monday </a>
+                                        <a name='a_weekdays' class="days_btn" href="javascript:void(0);"> Tuesday </a>
+                                        <a name='a_weekdays' class="days_btn" href="javascript:void(0);"> Wednesday </a>
+                                        <a name='a_weekdays' class="days_btn" href="javascript:void(0);"> Thursday </a>
+                                        <a name='a_weekdays' class="days_btn" href="javascript:void(0);"> Friday </a>
+                                        <a name='a_weekdays' class="days_btn" href="javascript:void(0);"> Saturday </a>
+                                        <a name='a_weekdays' class="days_btn" href="javascript:void(0);"> Sunday </a>
+                                      
+                                        <span id="spanWeekDays" class="small error" style="display:none">Please select week days</span>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset_border no_of_days">
+                            <div class="row">
+                                <div class="fieldset_body">
+                                    <h4> Number of nights</h4>
+                                    <div class="col-md-12">
+                                        <div id="divrowDateRange" class="clickable_action">
+                                          <a name="noOfNights1" class="count_days count_days_selected" href="javascript:void(0);"> 1 </a>
+                                          <a name="noOfNights1" class="count_days" href="javascript:void(0);"> 2 </a>
+                                          <a name="noOfNights1" class="count_days" href="javascript:void(0);"> 3 </a>
+                                          <a name="noOfNights1" class="count_days" href="javascript:void(0);"> 4 </a>
+                                          <a name="noOfNights1" class="count_days" href="javascript:void(0);"> 5 </a>
+                                          <a name="noOfNights1" class="count_days" href="javascript:void(0);"> 6 </a>
+                                          
+                                            <a class="add_event" onclick="generateRow()" id="add_nof"
+                                               href="javascript:void(0);"> + Add </a>
+                                            <a class="remove_event" onclick="removeFunction()" id="remove_nof"
+                                               href="javascript:void(0);"> - Remove </a>
+                                               <div class="clickable_action append_div">
+                                                  <span class="nof_extra_values" id="get_values"></span>
+                                                  <span id="spannights"></span>
+                                              </div>
+                                        <span id="spandaterangenights" class="small error" style="display:none"></span>
+                                      </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="advance_days" class="tab-pane fade">
+                        <div class="row">
+                            <div class="marT10">
+                                <div id="select_supplier2" class="col-md-6">
+                                    <div class="form-group multi_select_contaner required">
+                                        <label> Select Suppliers</label>
+                                        <select id="drpsuppliers1" class="multiselect_box form-control"
+                                                multiple="multiple">
+                                            {% for key in suppliers %}
+                                            <option value={{ key.id }}>{{ key.Name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    
+                                    <span id="spanadvancesuppliers" class="small error" style="display:none">Please select suppliers</span>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset_border advance_day">
+                            <div class="row">
+                                <div class="fieldset_body">
+                                    <h4>Advance Days </h4>
+                                    <div class="col-md-12">
+                                        <div id="divAdvanceDays" class="clickable_action">
+                                          <a name="AdvanceDays" class="active_day days_btn" href="javascript:void(0);">1</a>
+                                          <a name="AdvanceDays" class="days_btn" href="javascript:void(0);">3</a>
+                                          <a name="AdvanceDays" class="days_btn" href="javascript:void(0);">7</a>
+                                          <a name="AdvanceDays" class="days_btn" href="javascript:void(0);">14</a>
+                                            
+                                            <a class="add_event" onclick="generateRowdays()" id="add_advance_days"
+                                               href="javascript:void(0);"> + Add </a>
+                                            <a class="remove_event" onclick="removeFunctiondays()"
+                                               id="remove_advance_days" href="javascript:void(0);"> - Remove </a>
+                                               <div class="clickable_action append_div">
+                                                  <span class="nof_extra_days" id="get_values_advancedays"></span>
+                                                  <span id="spanadvancedays"></span>
+                                              </div>
+                                        <span id="spanadvancedayserror" class="small error" style="display:none"></span>
+                                      </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset_border no_of_days">
+                            <div class="row">
+                                <div class="fieldset_body">
+                                    <h4> Number of nights</h4>
+                                    <div class="col-md-12">
+                                        <div id="divrowDateRange1" class="clickable_action">
+                                          <a name="noOfNights2" class="count_days count_days_selected" href="javascript:void(0);"> 1 </a>
+                                          <a name="noOfNights2" class="count_days" href="javascript:void(0);"> 2 </a>
+                                          <a name="noOfNights2" class="count_days" href="javascript:void(0);"> 3 </a>
+                                          <a name="noOfNights2" class="count_days" href="javascript:void(0);"> 4 </a>
+                                          <a name="noOfNights2" class="count_days" href="javascript:void(0);"> 5 </a>
+                                          <a name="noOfNights2" class="count_days" href="javascript:void(0);"> 6 </a>
+                                          
+                                            <a class="add_event" onclick="generateRow1()" id="add_nof1"
+                                               href="javascript:void(0);"> + Add </a>
+                                            <a class="remove_event" onclick="removeFunction1()" id="remove_nof1"
+                                               href="javascript:void(0);"> - Remove </a>
+                                               <div class="clickable_action append_div">
+                                                  <span class="nof_extra_values" id="get_values1"></span>
+                                                  <span id="spannights1"></span>
+                                              </div>
+                                       
+                                        <span id="spanadvancenightsserror" class="small error"
+                                              style="display:none"></span>
+                                            </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="check_in" class="tab-pane fade">
+                        <div class="row">
+                            <div class="marT10">
+                                <div id="select_supplier3" class="col-md-6">
+                                    <div class="form-group multi_select_contaner required">
+                                        <label>Select Suppliers </label>
+                                        <select id="drpsuppliers2" class="multiselect_box form-control"
+                                                multiple="multiple">
+                                            {% for key in suppliers %}
+                                            <option value={{ key.id }}>{{ key.Name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                 
+                                    <span id="spanSuppliersCheckInDateserror" class="small error" style="display:none">Please select suppliers</span>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset_border start_date">
+                            <div class="row">
+                                <div class="fieldset_body">
+                                    <h4>Start Date </h4>
+                                    <div class="col-md-12">
+                                        <div id="divStartDate" class="clickable_action append_div"
+                                             style="display: block">
+                        <span>
+                          <input type='text' name='txtstartdate' class='form-control dates_control'
+                                 placeholder='Select date' id='gnBtndate' readonly="readonly">
+                        </span>
+                                            <!-- <span id="multi_check_in_save" class='addnow'>save</span> -->
+                                            <span id="get_date_values"></span>
+                                            <span id="get_date"></span>
+                                            <a class="add_event add_event_date addnow" onclick="generatedate()" id="btndate"
+                                               href="javascript:void(0);"> + Add </a>
+                                            <a class="remove_event remove_event_date" onclick="removedatFunction()"
+                                               href="javascript:void(0);">
+                                                - Remove </a>
+                                      
+                                        <span id="spanstartdateerror" class="small error" style="display:none"></span>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset_border no_of_days">
+                            <div class="row">
+                                <div class="fieldset_body">
+                                    <h4> Number of nights</h4>
+                                    <div class="col-md-12">
+                                        <div id="divstartnights" class="clickable_action">
+                                          <a name="noOfNights3" class="count_days count_days_selected" href="javascript:void(0);"> 1 </a>
+                                          <a name="noOfNights3" class="count_days" href="javascript:void(0);"> 2 </a>
+                                          <a name="noOfNights3" class="count_days" href="javascript:void(0);"> 3 </a>
+                                          <a name="noOfNights3" class="count_days" href="javascript:void(0);"> 4 </a>
+                                          <a name="noOfNights3" class="count_days" href="javascript:void(0);"> 5 </a>
+                                          <a name="noOfNights3" class="count_days" href="javascript:void(0);"> 6 </a>
+                                          
+                                            <a class="add_event" onclick="generateRow2()" id="add_nof2"
+                                               href="javascript:void(0);"> + Add </a>
+                                            <a class="remove_event" onclick="removeFunction2()" id="remove_nof2"
+                                               href="javascript:void(0);"> - Remove </a>
+                                               <div class="clickable_action append_div">
+                                                  <span class="nof_extra_values" id="get_values2"></span>
+                                                  <span id="spannights2"></span>
+                                              </div>
+                                        <span id="spanstartnightserror" class="small error" style="display:none"></span>
+                                      </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="advance_weeks" class="tab-pane fade">
+                        <div class="row">
+                            <div class="marT10">
+                                <div id="select_supplier4" class="col-md-6">
+                                    <div class="form-group multi_select_contaner required">
+                                        <label>Select Suppliers</label>
+                                        <select id="drpsuppliers3" class="multiselect_box form-control"
+                                                multiple="multiple">
+                                            {% for key in suppliers %}
+                                            <option value={{ key.id }}>{{ key.Name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                   
+                                    <span id="spanSuppliersAdvWeekserror" class="small error" style="display:none">Please select suppliers</span>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fieldset_border advance_week">
+                            <div class="row">
+                                <div class="fieldset_body">
+                                    <h4>Advance Weeks </h4>
+                                    <div class="col-md-12">
+                                        <div id='divAdvanceWeeks' class="clickable_action">
+                                          <a name = "AdvanceWeeks" class="active_day days_btn" href="javascript:void(0);">1</a>
+                                          <a name = "AdvanceWeeks" class="days_btn" href="javascript:void(0);">2</a>
+                                          <a name = "AdvanceWeeks" class="days_btn" href="javascript:void(0);">3</a>
+                                          <a name = "AdvanceWeeks" class="days_btn" href="javascript:void(0);">4</a>
+                                          <a class="add_event" onclick="generateRowAdvanceWeeks()"
+                                               id="add_advance_days1" href="javascript:void(0);"> + Add </a>
+                                            <a class="remove_event" onclick="removeFunctionAdvanceWeeks()"
+                                               id="remove_advance_days1" href="javascript:void(0);"> - Remove </a>
+                                               <div class="clickable_action append_div">
+                                                  <span class="nof_extra_days" id="get_values_advanceweeks"></span>
+                                                  <span id="spanadvanceweeks"></span>
+                                              </div>
+                                        <span id="spanadvanceweekerror" class="small error" style="display:none"></span>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fieldset_border no_of_days">
+                            <div class="row">
+                                <div class="fieldset_body">
+                                    <h4> Number of nights</h4>
+                                    <div class="col-md-12">
+                                        <div id="divAdvanceWeekNights" class="clickable_action">
+                                          <a name="noOfNights4" class="count_days count_days_selected" href="javascript:void(0);"> 1 </a>
+                                          <a name="noOfNights4" class="count_days" href="javascript:void(0);"> 2 </a>
+                                          <a name="noOfNights4" class="count_days" href="javascript:void(0);"> 3 </a>
+                                          <a name="noOfNights4" class="count_days" href="javascript:void(0);"> 4 </a>
+                                          <a name="noOfNights4" class="count_days" href="javascript:void(0);"> 5 </a>
+                                          <a name="noOfNights4" class="count_days" href="javascript:void(0);"> 6 </a>
+                                         
+                                            <a class="add_event" onclick="generateRow3()" id="add_nof3"
+                                               href="javascript:void(0);"> + Add </a>
+                                            <a class="remove_event" onclick="removeFunction3()" id="remove_nof3"
+                                               href="javascript:void(0);"> - Remove </a>
+                                               <div class="clickable_action append_div">
+                                                  <span id="get_values3"></span>
+                                                  <span class="nof_extra_values" id="spannights3"></span>
+                                              </div>
+                                        <span id="spanadvweeknightserror" class="small error"
+                                              style="display:none"></span>
+                                            </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="col-md-12 marT10 col-sm-12 text-center">
+        <input type="button" name="" id="btnResett" onclick="resetFunction()"  class="previous_action_button float_none" value="Reset">
+        <input type="button" name="" id="btnSaveRequest" class="save_request_button float_none" value="Add Request">
+        <input type="button" name="" id = "btnUpdateRequest" class="update_request_button float_none" value="Update Request" style="display:none;" >
+    </div>
+    </form>
+</section>
+
+
+<section class="pos_section clearfix">
+    {% if data_list_count %}
+   <div class="text-right" style="font-size:14px; margin:0 0 10px;"> Total Inputs: {{ data_list_count }}
+
+    <a href="javascript:void(0)" style="color:red; display:inline-block; margin:0 0 0 10px" id="delete_all_{{data.id}}" onclick="delet_req_func({{request.session.requestid}})"> <i class="fa fa-trash"></i> Delete All</a>
+       </div>
+    {% endif %}
+    {% for data in hidden_data_list %}
+    <div class="pos_content">
+      
+        {% if forloop.counter0 == 0 %}
+        {% include 'hotel/components/short_view.html' with data=data.0 opened=True %}
+        {% else %}
+        {% include 'hotel/components/short_view.html' with data=data.0 %}
+        {% endif %}
+
+    </div>
+    {% endfor %}
+
+    {% for data in show_data_list %}
+    <div class="pos_content show_more_data">
+
+        {% include 'hotel/components/short_view.html' with data=data.0 %}
+  
+    </div>
+    {% endfor %}
+
+     {% if flag == 1 and data_list|length > 3 %}
+    <button class="view_more" id="btnshow_hide" {%if show_data_list %}style="display:block" {%endif%}> + Show More</button>
+    {% endif %} {% if flag == 1 %}
+    <br clear="all" />
+    <div class="col-md-12   text-center button_download">
+      <input type="button" name="" id="start_schedule" class="start_schedule_button float_none" value="Start Schedule">
+    </div>
+    {% endif %}
+        
+</section>
+
+
+<div class="send_report_modal">
+    <div class="send_report_body clearfix">
+        <button type="button" class="close">x</button>
+        <h2> Email </h2>
+        <div class="body_padding">
+            <p class="send_report_para"> Use ' , ' seprator for multiple email ID's </p>
+            <div class=" ">
+                <div class="form-group">
+                    <label> To Email <span class="red">*</span></label>
+                    <input id="btnemail" type="text" class="form-control" placeholder="To Email">
+                
+                <span id="spanemail" class="small error" style="display:none">Should not be blanked</span>
+              </div>
+               <span id="spanemail1" class="small error"
+                      style="display:none">Not a valid mail or not "," separated</span>
+
+
+            </div>
+            <div class=" ">
+                <div class="form-group">
+                    <label> CC Email </label>
+                    <input id="btncc" type="text" class="form-control" placeholder="CC Email">
+                </div>
+                <span id="spancc" class="small error" style="display:none">Not a valid mail or not "," separated</span>
+
+            </div>
+
+
+        </div>
+        <div class="text-center footer_report">
+            <input type="button" name="" class="cancel_btn" value="Cancel" id="btncancel">
+            <input type="button" name="" class="validate_btn" value="Validate" id="btnvalidate">
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+
+
+
+        <script type="text/javascript">
+                $("#start_schedule").click(function (e) {
+            window.location.href = '{% url "add_request_scheduler" %}' + "{{ request.session.requestid }}"
+
+                                });
+</script>
+<script>
+		function resetFunction() {
+      var requestname = $("#txtRequestName").val()
+        var requestdesc = $("#txtRequestDesc").val()
+        document.getElementById("myForm").reset();
+        if ("{{ request.session.requestid }}"){
+          $("#txtRequestName").val(requestname)
+          $("#txtRequestDesc").val(requestdesc)
+        }
+    //    .count_days_selected.count_days
+        
+        
+        $('.specific_hotel_show').css('display','none');   
+        $('.file_type').text('');
+        $('.file_type').css('opacity','0');
+        $('#AllHotel').removeClass('active');
+        $('#SpecificHotel').removeClass('active')
+        $('.small.error').css('display','none');
+        $('.form-control.error_field').removeClass('error_field');
+        $('.multiselect_box').multiselect('deselectAll', true);
+        $('.multiselect_box').multiselect('updateButtonText');
+        var countdate = document.getElementsByClassName('count_days')
+        for(var i =1; i< countdate.length;i++){
+          removedatFunction();
+        }
+        generatedate();
+
+        var weekdays = document.getElementsByName('a_weekdays')
+			for(var i =1; i< weekdays.length;i++){
+				$(weekdays[i]).removeClass('active_day')
+			}
+			var weekdays1 = document.getElementsByName('a_weekdays1')
+			for(var i =1; i< weekdays1.length;i++){
+				$(weekdays1[i]).removeClass('active_day')
+			
+			}
+			var noOfNights1 = document.getElementsByName('noOfNights1')
+			for(var i =1; i< noOfNights1.length;i++){
+        $(noOfNights1[i]).removeClass('count_days_selected')
+        removeFunction();
+			
+			}
+			var noOfNights2 = document.getElementsByName('noOfNights2')
+			for(var i =1; i< noOfNights2.length;i++){
+				$(noOfNights2[i]).removeClass('count_days_selected')
+        removeFunction1();
+			}
+			var noOfNights3 = document.getElementsByName('noOfNights3')
+			for(var i =1; i< noOfNights3.length;i++){
+        $(noOfNights3[i]).removeClass('count_days_selected')
+        removeFunction2();
+			
+			}
+			var noOfNights4 = document.getElementsByName('noOfNights4')
+			for(var i =1; i< noOfNights4.length;i++){
+				$(noOfNights4[i]).removeClass('count_days_selected')
+        removeFunction3();
+			}
+			var AdvanceDays = document.getElementsByName('AdvanceDays')
+			for(var i =1; i< AdvanceDays.length;i++){
+        $(AdvanceDays[i]).removeClass('active_day')
+        removeFunctiondays()
+			}
+			var AdvanceWeeks = document.getElementsByName('AdvanceWeeks')
+			for(var i =1; i< AdvanceWeeks.length;i++){
+        $(AdvanceWeeks[i]).removeClass('active_day')
+        removeFunctionAdvanceWeeks()
+			}
+		}
+		</script>
+<script src="{% static 'hotel/js/app/batch_input_upload_hotel.js' %}"></script>
+
+<!-- jQuery easing plugin -->
+<script>
+
+  {% if json_string %}
+  sub_request_json = JSON.parse("{{json_string | escapejs}}")
+  {% endif %}
+  HOTEL_BATCH_INPUT_UPLOAD_URL = "{% url 'hotel_batch_input_upload_hotel' %}";
+  CREATE_REQUEST_URL = "{% url 'hotel_create_request' %}";
+  REQUEST_TYPE = 'HOTEL';
+  REQUEST_ID ='{{ request.session.requestid }}';
+  hotel_all_bind_hotels = "{% url 'hotel_all_bind_hotels' %}"
+  {% if request.session.requestid %}
+    sub_request_json = []
+    requestname = "{{request.session.request_title | escapejs}}";
+    requestdesc = "{{request.session.request_description | escapejs}}";
+    $("#txtRequestName").val(requestname)
+    $("#txtRequestDesc").val(requestdesc)
+    $('#txtRequestName').attr('readonly', true);
+    $('#txtRequestDesc').attr('readonly', true);
+  {% endif %}
+
+</script>
+
+<script src="{% static 'hotel/js/app/create_request.js' %}" type="text/javascript"></script>
+<script type='text/javascript'>
+  $('.send_report_body button.close').click(function () { 
+    $(".send_report_modal").slideUp('fast');
+});  
+ 
+
+$("#send_report").click(function() {
+   if($(this).is(":checked")) {
+       $(".send_report_modal").slideDown('fast');
+   } else {
+       $(".send_report_modal").slideUp('fast');
+   }
+});	
+
+
+$('.dates_control').datepicker({
+  minDate: '0',
+});
+$( document ).ready(function() {
+  //Multiselct Dropdown
+
+  $('.multiselect_box').multiselect({
+    includeSelectAllOption: true,
+    buttonWidth: 250,
+    enableFiltering: true,
+    enableCaseInsensitiveFiltering: true
+
+  });
+  $('.multiselect_box').perfectScrollbar();
+  $('ul.multiselect-container.dropdown-menu').perfectScrollbar();	
+  
+
+
+$('.addhotel_checkbox_contaner').perfectScrollbar();
+	/*-------add manually and excel upload Start-----------*/
+	$(".batch_list_div").hide();
+$(".excel_upload_btn").click(function(){
+	$(".request_btn").removeClass("active");
+    $(this).addClass("active");
+	$(".excelupload_view").toggleClass("active")
+});
+
+
+
+$(".add_manually_btn").click(function(){
+   $(".excelupload_view").removeClass("active");
+	$(".request_btn").removeClass("active");
+    $(this).addClass("active");
+	$(".batch_list_div").hide();
+	$(".manually_added").show();
+
+});
+
+$("span.close_excel").click(function(){
+   $(".excelupload_view").removeClass("active");
+	$(".excel_upload_btn").removeClass("active");
+  $(".manually_added").hide();
+  $(".add_manually_btn").click();
+ 
+
+});
+
+ 
+$('.pos_section').click(function () {
+     $(".excelupload_view").removeClass("active");
+  	$(".excel_upload_btn").removeClass("active");
+ });
+
+
+
+ /*-------add manually and excel upload End-----------*/
+
+/*-----------------------close and open--------------------*/ 
+$('.edit_btn_click').click(function () {  
+	$('.save_request_button').toggleClass("active");
+	$('.update_request_button').toggleClass("active");
+ 
+	
+	$('.pos_section').toggleClass("active");
+	$(this).closest('.edit_btn_click').toggleClass("active");
+	$(this).closest('li').find('.close_btn_click').addClass('active');
+	
+	
+	$('.pos_content').toggleClass("active");
+	$(this).closest('.pos_content').toggleClass("border");
+  	$(this).closest('.pos_content').removeClass("active"); 
+	$("html, body").animate({
+            scrollTop: 0
+        }, 700);
+        return false;
+	
+ });	
+
+	
+$('.close_btn_click').click(function () {  
+	$('.save_request_button').removeClass("active");
+	$('.update_request_button').removeClass("active");
+ 
+	
+	$('.pos_section').removeClass("active");
+	$(this).closest('li').find('.edit_btn_click').removeClass("active");
+	$(this).closest('li').find('.close_btn_click').removeClass('active');
+	
+	
+	$('.pos_content').removeClass("active");
+	$(this).closest('.pos_content').removeClass("border");
+  	$(this).closest('.pos_content').removeClass("active"); 
+	$("html, body").animate({
+            scrollTop: 0
+        }, 700);
+        return false;
+	
+ });
+
+
+$(".specific_hotel_show").hide();
+$(".all_hotel").click(function(){
+
+  $('#select_supplier1').attr("style", "display:block;");
+  $('#select_supplier2').attr("style", "display:block;");
+  $('#select_supplier3').attr("style", "display:block;");
+  $('#select_supplier4').attr("style", "display:block;");
+
+  if($("#drpCities").val() == '0')
+  {
+    $(".all_hotel").removeClass("active");
+    $("#spandestinationcity").css("display","block")
+  
+    return false;
+  }
+  $(".hotel_selection").hide();
+
+
+  $("#spandestinationcity").css("display","none")
+  list_hotels = []
+  $("#drpHotel > option").each(function() {
+    list_hotels.push(this.value)
+    
+  })
+  console.log(list_hotels)
+  $("#drpHotel").val(list_hotels)
+  $("#drpHotel").multiselect('refresh')
+  
+  $("#drpHotel").multiselect("disable");
+  
+  $("#spanChooseHotelType").css("display","none")
+
+  $("ul li .multiselect-item filter").addClass('active')
+  $("ul li .multiselect-item multiselect-all").addClass('active')
+	$(".scraping_btn").removeClass("active");
+    $(this).addClass("active");
+   $(".specific_hotel_show").fadeOut("fast");
+   var all_hotel = true
+   $('#all_hotels').val('');
+   $('#all_hotels').val(all_hotel);
+});
+
+$(".specific_hotel").click(function(){
+
+  $('#select_supplier1').attr("style", "display:none;");
+  $('#select_supplier2').attr("style", "display:none;");
+  $('#select_supplier3').attr("style", "display:none;");
+  $('#select_supplier4').attr("style", "display:none;");
+
+  <!--if ($("#hotel_file_upload")[0].files[0] == undefined){-->
+    <!--console.log("Atleast a file is required to upload.")-->
+  <!--}-->
+
+  if($("#drpCities").val() == '0')
+  {
+    $(".specific_hotel_show").removeClass("active");
+    $("#spandestinationcity").css("display","block")
+    return false;
+  }
+  $(".hotel_selection").show();
+
+  $("#spanChooseHotelType").css("display","none")
+  $("#spandestinationcity").css("display","none")
+	$(".scraping_btn").removeClass("active");
+    $(this).addClass("active");
+   $(".specific_hotel_show").fadeIn("fast");
+   $("#drpHotel").multiselect("enable");
+   $('#all_hotels').val('');
+});
+
+	/* ----------Scraping Option End----------------*/
+
+/* ----------Week days Start----------------*/
+$(".days_btn").click(function(){
+   $(this).toggleClass("active_day");
+});
+
+/* ----------Week days End----------------*/
+
+/* ----------Count days Start----------------*/	
+//	$(".count_days").click(function(){ 
+  $(document).on('click','.count_days',function(){
+    $(this).toggleClass("count_days_selected");
+ });	 
+/* ----------Count days End----------------*/
+
+/* ------------ qty plus and minus start-----------*/
+	$(function () {
+    $('.plus').on('click',function(){
+        var $qty=$(this).closest('.counter').find('.qty');
+        var currentVal = parseInt($qty.val());
+        if (!isNaN(currentVal)) {
+            $qty.val(currentVal + 1);
+        }
+    });
+    $('.minus').on('click',function(){
+        var $qty=$(this).closest('.counter').find('.qty');
+        var currentVal = parseInt($qty.val());
+        if (!isNaN(currentVal) && currentVal > 0) {
+            $qty.val(currentVal - 1);
+        }
+    });
+});
+
+/* ------------ qty plus and minus End-----------*/
+
+	$('.checkbox').change(function(){
+      var inputValue = $(this).children('input[type="checkbox"]').attr("value");
+
+      if(($(this).children('input[type="checkbox"]').prop("checked"))== true)
+      {
+        $("." + inputValue).show();
+      }
+      else
+      {
+        $("." + inputValue).hide();
+      }
+    });
+
+	  var div_1_site = $('#div_chk_box').find("input:checkbox");
+	  $.each(div_1_site, function (p, item) {
+
+      var inputValue = $(item).attr("value");
+      if(($(item).prop("checked"))== true)
+      {
+        $("." + inputValue).show();
+      }
+		  else
+      {
+       $("." + inputValue).hide();
+      }
+    });
+
+	var div_1_site = $('#div_chk_box').find("input:checkbox");
+	$.each(div_1_site, function (p, item) {
+		    var inputValue = $(item).attr("value");
+			if(($(item).prop("checked"))== true)
+		{
+		$("." + inputValue).show();
+
+		}
+		else
+		{
+		$("." + inputValue).hide();
+		}
+        });
+
+
+
+$(".edit_trigger").click(function(){
+		$(this).hide();
+		$(this).next(".cancel_trigger").fadeIn();
+		$(this).prev(".save_btn").fadeIn();
+		$(this).closest(".header_boxes").next(".bli_body").children(".bars_contaner_outer").hide();
+		$(this).closest(".header_boxes").next(".bli_body").children(".text_contaner_outer").fadeIn();
+	});
+$(".cancel_trigger").click(function(){
+
+		$(this).hide();
+		$(this).closest(".button_contaner").children(".save_btn").hide();
+		$(this).prev(".edit_trigger").fadeIn();
+		$(this).closest(".header_boxes").next(".bli_body").children(".bars_contaner_outer").fadeIn();
+		$(this).closest(".header_boxes").next(".bli_body").children(".text_contaner_outer").hide();
+	});
+
+		 $(".show_more_data").hide();
+	 $("button.view_more").click(function(){
+        $(".show_more_data").slideToggle();
+    });
+
+			$('button.view_more').click(function(){
+		var $this = $(this);
+		$this.toggleClass('button.view_more');
+		if($this.hasClass('button.view_more')){
+			$this.text('- Show Less');
+		} else {
+			$this.text('+ Show More');
+		}
+	});
+
+});
+
+
+</script>
+<script type='text/javascript'>
+
+
+
+	$('.close').on ( 'click',function () {
+
+	if ( $('.pos_list li').length > 1 ) {
+		$(this).parent("a").parent("li").remove();
+	 }
+		else{
+		 $(this).parent("a").parent("li").remove('');
+          }
+	});
+
+
+
+
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////**************
+
+$( document ).ready(function() {
+  $('.dates_control').datepicker({
+       minDate: '0',
+  });	
+$('.addhotel_checkbox_contaner').perfectScrollbar();
+	});
+$(".round_btn").click(function(){
+
+	$(".round_btn").children().removeClass("active");
+	$(this).children().addClass("active");
+});
+$(".upload_hotel_trigger").click(function(){
+	 $(".upload_hotel_contaner").show();
+});
+$(".choose_file ").click(function(){
+	 $(".upload_hotel_contaner").hide();
+});
+
+$(document).mouseup(function (e){var container = $(".upload_hotel_contaner");if (!container.is(e.target) && container.has(e.target).length ===0){container.hide();}}); 
+	
+///Activate Scrllbar
+$(".addhotel_checkbox_contaner").mouseenter(function(){
+  $('*').perfectScrollbar('update');
+});
+
+
+</script>
+<script type="text/javascript">
+  $("#btncancel").click(function (e){
+    document.getElementById('btnemail').value = ''
+    document.getElementById('btncc').value = ''
+    $("#spancc").css('display','none');
+		$("#btnemail").removeClass('error_field');
+		$(".small.error").css('display','none');
+    $("#spanemail1").css('display','none');
+  })
+
+
+  $("#btnvalidate").click(function (e){
+    var email =   document.getElementById('btnemail').value
+    var cc =   document.getElementById('btncc').value
+
+
+    if (email == ''){
+      $("#btnemail").addClass('error_field')
+			$("#spanemail").css('display','block')
+			return false;
+    }
+    else {
+      var result = validateMultipleEmailsCommaSeparated(document.getElementById('btnemail'),",")
+      if(result == false){
+
+      }
+      else{
+      $('.send_report_modal').slideUp('500');
+      }
+         }
+   if (cc == ''){
+
+   }
+   else{
+    validateMultipleEmailsCommaSeparated1(document.getElementById('btncc'),",")
+   }    
+  })
+
+
+  function validateEmail(field) {
+    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/;
+    return (regex.test(field)) ? true : false;
+}
+
+function validateMultipleEmailsCommaSeparated(emailcntl, seperator) {
+    var value = emailcntl.value;
+    if (value != '') {
+        var result = value.split(seperator);
+        for (var i = 0; i < result.length; i++) {
+            if (result[i] != '') {
+                if (!validateEmail(result[i])) {
+                    emailcntl.focus();
+                    $("#btn").addClass('error_field')
+                    $("#spanemail1").css('display','block')
+                   
+                    return false;
+                    //alert('Please check, `' + result[i] + '` email addresses not valid!');
+                    
+                }
+            }
+        }
+    }
+    return true;
+}
+function validateMultipleEmailsCommaSeparated1(emailcntl, seperator) {
+  var value = emailcntl.value;
+  if (value != '') {
+      var result = value.split(seperator);
+      for (var i = 0; i < result.length; i++) {
+          if (result[i] != '') {
+              if (!validateEmail(result[i])) {
+                  emailcntl.focus();
+                  $("#btncc").addClass('error_field')
+                 
+                  $("#spancc").css('display','block')
+
+                  return false;
+                  //alert('Please check, `' + result[i] + '` email addresses not valid!');
+                  
+              }
+          }
+      }
+  }
+  return true;
+}
+
+  $("#btnSaveRequest,#btnUpdateRequest").click(function (e) {
+    //$('.pos_content.border').addClass('updated_record')
+    var hotel_req_id = $('#hdn_hotel_req_id').val()
+
+   
+    var daterangemodel = {}
+    var BookingPeriod = null
+    var requestname = $("#txtRequestName").val()
+    var requestdesc = $("#txtRequestDesc").val()
+    var all_hotel_val = $("#all_hotels").val()
+   // alert(all_hotel_val)
+
+    if (requestname == null || requestname == "") {
+    
+      $("#txtRequestName").addClass('error_field')
+      $("#spanrequestname").css('display','block')
+      return false;
+    }
+    if (requestdesc == null || requestdesc == "") {
+      $("#txtRequestDesc").addClass('error_field')
+      $("#spanrequestdescr").css('display','block')
+      return false;
+    }
+
+    var AdultCount = $("#txtAdultCount").val()
+    if (AdultCount == null || AdultCount == 0)
+    {
+      $("#txtAdultCount").addClass('error_field')
+      $("#spanAdultCount").css('display','block')
+      return false;
+    }
+    else{
+      
+      $("#txtAdultCount").removeClass('error_field')
+      $("#spanAdultCount").css('display','none')
+    }
+    var ChildrenCount = $("#txtChildrenCount").val()
+   // if (ChildrenCount == null || ChildrenCount == 0)
+   // {
+   //   $("#txtChildrenCount").addClass('error_field')
+   //   $("#spanChildrenCount").css('display','block')
+   //   return false;
+   // }
+   // else{
+   //   $("#txtChildrenCount").removeClass('error_field')
+   //   $("#spanChildrenCount").css('display','none')
+   // }
+
+
+    var countries = $("#drpCountries").val()
+
+    if (countries == 0) {
+      $("#drpCountries").addClass('error_field')
+      $("#spandestinationcountry").css('display','block')
+      return false
+    }
+
+    var cities = $("#drpCities").val()
+    if (cities == 0) {
+      $("#drpCities").addClass('error_field')
+      $("#spandestinationcity").css('display','block') 
+      return false
+    }
+
+    var crawlmode = null
+    if ($("#divHotelCrawlMode")[0].children[0].className == "all_hotel scraping_btn active") {
+      crawlmode = 1 //All Hotel
+    } else if ($("#divHotelCrawlMode")[0].children[1].className == "specific_hotel scraping_btn active") {
+      crawlmode = 2 //SpecificBookingPeriod
+    } 
+    else {
+      $("#spanChooseHotelType").css("display","block")
+      $("#spanChooseHotelType").text('Please select scraping option : All Hotel or Specific')
+        //Display_msg_hotel("Please select scraping option : All Hotel or Specific", 2)
+        //$("#a_msg_cancel").click(function(e)
+       // {
+        //  $('#hotel_file_upload').focus();
+        //})
+      return false;
+    }
+
+    <!--var Hotel = $("#drpHotel").val()-->
+
+    <!--if (Hotel == 0 || Hotel == null || Hotel == undefined) {-->
+        <!--Display_msg_hotel("Please select Hotel", 2)-->
+        <!--$("#a_msg_cancel").click(function(e)-->
+        <!--{-->
+          <!--$('#drpHotel').focus();-->
+        <!--})-->
+      <!--return false;-->
+    <!--}-->
+   // var RoomType = $("#drpRoomType").val()
+
+    var span_tag = $('#tags').find('span');
+    if ($('#hdn_txt_room_type').val().length <  140) {
+      if (span_tag.length >= 0 && span_tag.length < 11) {
+        var RoomType=$('#hdn_txt_room_type').val();
+      }
+      else {
+        alert('room type can not be more than 10 !!');
+        return false;
+      }
+    }
+    else {
+      alert('total word count not greater than 140 !!!')
+      return false;
+    }
+ 
+
+   
+   //var RoomType = $("#drpRoomType").val()
+
+    var BoardType = $("#drpBoardType").val()
+
+    var StarRating = $("#drpStarRating").val()
+    var pointofsale = $("#drppointofsale").val()
+
+    if (pointofsale == 0) {
+      $("#drppointofsale").addClass('error_field')
+      $("#spanpos").css('display','block')
+      return false;
+    }
+
+    var Suppliers = null
+
+    if ($("#ls_daterangedays").attr("class") == "active icons date_range_icon" || $("#ls_daterangedays").attr("class") == "icons date_range_icon active") //Date Range
+    {
+      if ($("#AllHotel").hasClass('active')){
+          Suppliers = $("#drpsuppliers").val()
+          if (Suppliers == 0 || Suppliers == null) {
+            $("#drpsuppliers").addClass('error_field')
+            $("#spanSuppliersDateRange").css('display','block')
+            return false;
+          }
+      }
+
+      if ($("#txtDateRangeFrom").val() == "") {
+        $("#txtDateRangeFrom").addClass('error_field')
+        $("#spanDateRangeFrom").css('display','block') 
+        return false
+      }
+      if ($("#txtDateRangeTo").val() == "") {
+        $("#txtDateRangeTo").addClass('error_field')
+        $("#spanDateRangeTo").css('display','block') 
+        return false
+      }
+      Fromdate = $("#txtDateRangeFrom").val()
+      ToDate = $("#txtDateRangeTo").val()
+      var startdate = Fromdate
+      var enddate = ToDate
+      if(Date(startdate) > Date(enddate)) {
+      
+        $("#spanDateRangeTo").css("display","block")
+        $("#spanDateRangeTo").text("To Date cannot be less than from date")
+        //Display_msg_hotel("To Date cannot be less than from date",2)
+        return false
+      } 
+      $("#spanDateRangeFrom").text("")
+      var flag = 0
+      var dict_weekdays = {}
+      var list_weekdays = []
+     
+      $("#divWeekDays a").each(function (index, value) {
+        if ($(value).attr('class') == 'days_btn active_day' || $(value).attr('class') == 'active_day days_btn') {
+          flag = 1
+          list_weekdays.push(value.innerHTML.toString().trim())
+         
+          $("#divWeekDays").removeClass('error_field')
+          $("#spanWeekDays").css("display","none")
+        }
+      })
+      if (flag == 0) {
+        
+        $("#divWeekDays").addClass('error_field')
+        $("#spanWeekDays").css("display","block")
+       // Display_msg_hotel("Please choose weekdays", 2)
+        return false
+      }
+      var notlistedays = []
+      var selecteddates = getDayOfWeek(Fromdate, ToDate, list_weekdays) //From and to Date
+
+      for (var i = 0; i < list_weekdays.length; i++) {
+        var flag = false
+        for (var j = 0; j < selecteddates.length; j++) {
+          if (list_weekdays[i] == selecteddates[j]) {
+            flag = true
+          }
+        }
+        if (flag == false) {
+          notlistedays.push(list_weekdays[i])
+        }
+      }
+
+      if (notlistedays.length > 0) {
+        if (notlistedays == 1) {
+          $("#spanWeekDays").css('display','block')
+          $("#spanWeekDays").text("Selected day " + notlistedays + " do not belong in the given date range")
+          //Display_msg_hotel("Selected day " + notlistedays + " do not belong in the given date range", 2)
+          
+          return false
+        }
+        else {
+          $("#spanWeekDays").css('display','block')
+          $("#spanWeekDays").text("Selected day " + notlistedays + " does not belong in the given date range")
+          //Display_msg_hotel("Selected days " + notlistedays + " does not belong in the given date range", 2)
+          return false
+        }
+      }
+      dict_weekdays['CheckInDates'] = list_weekdays
+      var flag_get_value = 0
+      var days_flag = 0
+      var dict_number_nights = {}
+      var list_number_nights = []
+      $("#get_values a").each(function (index, value) {
+        if (index >= 0) {
+          if ($(value).attr('class') == 'count_days_selected count_days') {
+            flag_get_value = 1
+            list_number_nights.push(value.innerHTML.toString().trim())
+          }
+        }
+      })
+
+
+      $("#divrowDateRange a").each(function (index, value) {
+        if ($(value).attr('class') == 'count_days count_days_selected') {
+          days_flag = 1
+          list_number_nights.push(value.innerHTML.toString().trim())
+        }
+      })
+      if (flag_get_value == 0) {
+        if (days_flag == 0) {
+           $("#spandaterangenights").css('display',"block")
+           $("#spandaterangenights").text("Please choose number of nights");
+         // Display_msg_hotel("Please choose number of nights", 2)
+          return false
+        }
+      }
+      dict_number_nights['CheckOutDates'] = list_number_nights
+      daterangemodel = {
+        'fromdate': Fromdate,
+        'todate': ToDate,
+        'BookingPeriod': 1,
+        'suppliers': Suppliers,
+        'CheckIndates': dict_weekdays,
+        'CheckOutDates': dict_number_nights
+      }
+    }
+    else if ($("#ls_advancedays").attr('class') == "icons advance_days_icon active" || $("#ls_advancedays").attr('class') == "active icons advance_days_icon") //Advance Days
+    {
+      if ($("#AllHotel").hasClass('active')){
+          Suppliers = $("#drpsuppliers1").val()
+          if (Suppliers == 0 || Suppliers == null) {
+            $("#drpsuppliers1").addClass('error_field')
+            $("#spanadvancesuppliers").css('display','block')
+          //  Display_msg_hotel("Please select suppliers", 2)
+           // $("#a_msg_cancel").click(function(e)
+           // {
+            //  $('#drpsuppliers1').focus();
+            //})
+            return false;
+          }
+      }
+
+      flag = 0
+      dict_advancedays = {}
+      var list_advancedays = []
+      $("#divAdvanceDays a").each(function (index, value) {
+        if ($(value).attr('class') == 'count_days_selected count_days' || $(value).attr('class') == 'count_days count_days_selected' || $(value).attr('class') == 'days_btn active_day' || $(value).attr('class') == 'active_day days_btn') {
+          flag = 1
+          list_advancedays.push(value.innerHTML.toString().trim())
+        }
+      })
+      if (flag == 0) {
+        $("#spanadvancedayserror").css("display","block")
+        $("#spanadvancedayserror").text("Please choose Advance Days")
+       // Display_msg_hotel("Please choose Advance Days", 2)
+        return false
+      }
+      $("#spanadvancedayserror").text("")
+      dict_advancedays['CheckInDates'] = list_advancedays
+
+      flag = 0
+      var dict_number_nights = {}
+      var list_number_nights = []
+      $("#divrowDateRange1 a").each(function (index, value) {
+        if ($(value).attr('class') == 'count_days count_days_selected' || $(value).attr('class') == 'count_days_selected count_days') {
+          flag = 1
+          list_number_nights.push(value.innerHTML.toString().trim())
+        }
+      })
+      if (flag == 0) {
+        $("#spanadvancenightsserror").css("display","block")
+        $("#spanadvancenightsserror").text("Please choose number of nights")
+       // Display_msg_hotel("Please choose number of nights", 2)
+        return false
+      }
+      
+      dict_number_nights['CheckOutDates'] = list_number_nights
+      daterangemodel = {
+        'CheckInDates': dict_advancedays,
+        'CheckOutDates': dict_number_nights,
+        'BookingPeriod': 2,
+        'suppliers': Suppliers
+      }
+    }
+    else if ($("#ls_checkindays").attr('class') == 'icons check_in_icon active'|| $("#ls_checkindays").attr('class') == 'active icons check_in_icon' ) //Check In Days 
+    {
+      Suppliers = $("#drpsuppliers2").val()
+      if (Suppliers == 0 || Suppliers == null) {
+        $("#drpsuppliers2").addClass('error_field')
+        $("#spanSuppliersCheckInDateserror").css("display","block")
+        //Display_msg_hotel("Please select suppliers", 2)
+        //$("#a_msg_cancel").click(function(e)
+       // {
+       //   $('#drpsuppliers2').focus();
+      //  })
+        return false;
+      }
+
+
+      if (document.getElementsByName('txtstartdate').length > 0) {
+        for (var i = 0; i < document.getElementsByName('txtstartdate').length; i++) {
+          if (document.getElementsByName('txtstartdate')[i].value == "") {
+            $("#spanstartdateerror").css("display","block")
+            $("#spanstartdateerror").text("Please set start date")
+          //  Display_msg_hotel("Please set start date", 2)
+            return false
+          } else {
+            list_advancedays.push(document.getElementsByName('txtstartdate')[i].value)
+            
+          }
+        }
+      }
+      $("#spanstartdateerror").css("display","none")
+      dict_advancedays = {}
+      var list_advancedays = []
+      $("#divStartDate a").each(function (index, value) {
+        if ($(value).attr('class') == 'count_days_selected count_days' || $(value).attr('class') == 'count_days count_days_selected') {
+          flag = 1
+          list_advancedays.push(value.innerHTML.toString().trim())
+        }
+      })
+      if (flag == 0) {
+        $("#spanstartdateerror").css("display","block")
+        $("#spanstartdateerror").text("Please choose Start date")
+        //Display_msg_hotel("Please choose Start date", 2)
+        return false
+      }
+     
+      $("#spanstartdateerror").css("display","none")
+      $("#spanstartdateerror").text("")
+
+      dict_advancedays['CheckInDates'] = list_advancedays
+
+      flag = 0
+      var dict_number_nights = {}
+      var list_number_nights = []
+      $("#divstartnights a").each(function (index, value) {
+        if ($(value).attr('class') == 'count_days count_days_selected' || $(value).attr('class') == 'count_days_selected count_days' ) {
+          flag = 1
+          list_number_nights.push(value.innerHTML.toString().trim())
+        }
+      })
+      if (flag == 0) {
+        $("#spanstartnightserror").css('display','block')
+        $("#spanstartnightserror").text("Please choose number of nights")
+        //Display_msg_hotel("Please choose number of nights", 2)
+        return false
+      }
+      $("#spanstartnightserror").text("")
+      dict_number_nights['CheckOutDates'] = list_number_nights
+
+      daterangemodel = {
+        'CheckInDates': dict_advancedays,
+        'CheckOutDates': dict_number_nights,
+        'BookingPeriod': 3,
+        'suppliers': Suppliers
+      }
+    } 
+    else if ($("#ls_advanceweekdays").attr('class') == 'icons advance_weeks_icon active'||$("#ls_advanceweekdays").attr('class') == 'active icons advance_weeks_icon') //Advance Week Days
+    {
+     
+      Suppliers = $("#drpsuppliers3").val()
+      if (Suppliers == 0 || Suppliers == null) {
+        $("#spanSuppliersAdvWeekserror").addClass("error_field")
+        $("#spanSuppliersAdvWeekserror").css("display","block")
+
+        //Display_msg_hotel("Please select suppliers", 2)
+        //$("#a_msg_cancel").click(function(e)
+        //{
+         // $('#drpsuppliers3').focus();
+        ///})
+        return false;
+      }
+      $("#spanSuppliersAdvWeekserror").css("display","none")
+      flag = 0
+      dict_advancedays = {}
+      var list_advancedays = []
+      $("#divAdvanceWeeks a").each(function (index, value) {
+        if ($(value).attr('class') == 'days_btn active_day' || $(value).attr('class') == 'count_days_selected count_days' || $(value).attr('class') == 'count_days count_days_selected' || $(value).attr('class') == 'active_day days_btn') {
+          flag = 1
+          list_advancedays.push(value.innerHTML.toString().trim())
+        }
+      })
+      if (flag == 0) {
+        //$("#spanadvanceweekerror").css("display","block")
+        //$("#spanadvanceweekerror").text("Please choose Advance Weeks")
+        Display_msg_hotel("Please choose Advance Weeks", 2)
+        return false
+      }
+     
+      $("#spanadvanceweekerror").hide()
+      $("#spanadvanceweekerror").text("")
+      dict_advancedays['CheckInDates'] = list_advancedays
+
+   
+
+      flag = 0
+      var dict_number_nights = {}
+      var list_number_nights = []
+      $("#divAdvanceWeekNights a").each(function (index, value) {
+        if ($(value).attr('class') == 'count_days count_days_selected' || $(value).attr('class') == 'count_days_selected count_days') {
+          flag = 1
+          list_number_nights.push(value.innerHTML.toString().trim())
+        }
+      })
+      if (flag == 0) {
+        $("#spanadvweeknightserror").css("display","block")
+        $("#spanadvweeknightserror").text("Please choose number of nights")
+       // Display_msg_hotel("Please choose number of nights", 2)
+        return false
+      }
+
+      dict_number_nights['CheckOutDates'] = list_number_nights
+
+      daterangemodel = {
+     
+        'CheckInDates': dict_advancedays,
+        'CheckOutDates': dict_number_nights,
+        'BookingPeriod': 4,
+        'suppliers': Suppliers
+      }
+    }
+
+    upload_file = $("#hotel_file_upload")[0].files[0]
+    if ($("#SpecificHotel").hasClass('active')){
+        if (upload_file == undefined){
+            Display_msg_hotel("Upload File is required", 2)
+            return false
+        }
+    }
+
+    var dic_hotel_pairs = {}
+    var dic_hotel = {}
+    var list_dict_hotel = []
+
+    var requestprofilemodel = {
+      'requestname': requestname,
+      'requestdesc': requestdesc,
+      'all_hotel_val': all_hotel_val,
+      'pos': pointofsale,
+      'adults': AdultCount,
+      'children': ChildrenCount,
+      'hotel_req_id' : hotel_req_id,  
+    }
+
+    var destinationmodel = {
+      'country': countries,
+      'city': cities,
+      'crawlmode': crawlmode,
+      <!--'hotels': Hotel,-->
+      'roomtype': RoomType,
+      'boardtype': BoardType,
+      'starrating': StarRating
+    }
+
+
+    console.log(requestprofilemodel)
+	console.log(destinationmodel)
+    console.log(daterangemodel)
+
+    var formdata = new FormData();
+    formdata.append("upload_file", upload_file);
+    formdata.append("requestmodel", JSON.stringify(requestprofilemodel));
+    formdata.append("destinationmodel", JSON.stringify(destinationmodel));
+    formdata.append("daterangemodel", JSON.stringify(daterangemodel));
+
+    $.ajax({
+      url: '{% url "hotel_save_request" %}',
+      type: 'POST',
+      data: formdata,
+      datatype: "json",
+      contentType: false,
+      processData: false,
+      success: function (data) {
+        request_id = data.request_id;
+        if (data.flag == "0") {
+          Display_msg_hotel("Request created successfully", 1);
+          $("#a_msg_success").click(function (e) {
+            $(this).attr('href', '{% url "hotel_create_request" %}'+ request_id)
+        });
+         // window.location.href = '{% url "hotel_create_request" %}' + request_id;
+        
+        } 
+        else{
+          Display_msg_hotel("Request Updated successfully", 1);
+          $("#a_msg_success").click(function (e) {
+            $(this).attr('href', '{% url "hotel_create_request" %}'+ request_id)
+        });
+         // window.location.href = '{% url "hotel_create_request" %}' + request_id;  
+         
+        }
+      },
+      
+
+
+      error: function (xhr, errorType, exception) {
+        Display_msg_hotel("Something went wrong.Please contact administrator", 0)
+        $("#a_msg_cancel").click(function (e) {
+          $(".error_popup").hide()
+          $(".box_overlay").hide()
+      });
+        console.log(xhr, errorType, exception)
+      }
+    })
+  })
+
+  function getDayOfWeek(fromdate, todate, list_weekdays) {
+    var list_Days = []
+    var startdate = new Date(fromdate)
+    var enddate = new Date(todate)
+    while (startdate <= enddate) {
+      var dayOfWeek = startdate.getDay();
+      list_Days.push(isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
+        'Saturday'
+      ][dayOfWeek])
+      startdate = startdate.setDate(startdate.getDate() + 1);
+      startdate = new Date(startdate)
+    }
+    return list_Days
+  }
+
+  $("#drpCountries").change(function (e) {
+
+    $.ajax({
+
+      url: '{% url "hotel_bind_cities" %}',
+      type: 'POST',
+      data: {
+        "CountryId": JSON.stringify($(this).val())
+      },
+      success: function (data) {
+        $("#drpCities").empty()
+        $('#drpCities').append($('<option></option>').val("0").html("Select Option"))
+        if (data.cities == "") {
+          Display_msg_hotel("City not found in selected country. Please contact administrator", 2)
+          return false;
+        } else {
+          for (var cityid in data.cities) {
+            $('#drpCities').append($('<option></option>').val(data.cities[cityid].id).html(data.cities[cityid]
+              .name))
+          }
+
+        }
+      },
+      error: function (xhr, errorType, exception) {
+        Display_msg_hotel("Something went wrong.Please contact administrator", 2)
+        console.log(xhr, errorType, exception)
+      }
+    })
+  })
+
+
+  $("#drpCities").change(function (e) {
+
+
+    $.ajax({
+      url: '{% url "hotel_bind_hotels" %}',
+      type: 'POST',
+      data: {
+        "CityId": JSON.stringify($(this).val())
+      },
+      success: function (data) {
+        
+        if(data.Hotels == "")
+        {
+		  var p = window.location.href;
+          var t  = p.split('/')
+			if (t.length<5)
+		  {
+			Display_msg_hotel("No Hotels found in the current city. Please contact administrator", 2);
+		  }
+          $("#drpHotel").empty()
+          $("#drpHotel").attr("class", "multiselect_box form-control")
+          $('#drpHotel').multiselect('rebuild');
+          return false
+        }
+        else
+        {       
+          $("#drpHotel").empty()
+          $("#drpHotel").attr("class", "multiselect_box form-control")
+          for (var hotels in data.Hotels) {
+          
+            $('#drpHotel').append($('<option></option>').val(data.Hotels[hotels].id).html(data.Hotels[hotels].name))
+          }
+      }
+       $('#drpHotel').multiselect('rebuild');
+      },
+      error: function (xhr, errorType, exception) {
+        Display_msg_hotel("Something went wrong.Please contact administrator", 2)
+        console.log(xhr, errorType, exception)
+      }
+    })
+  })
+
+
+  $("#hotel_file_upload").on('change', function () {
+    $("#spanhotel").css("display","none")
+    var formdata = new FormData();
+    var countries = $('#drpCountries').val();
+    var cities = $('#drpCities').val();
+    if (countries.trim()==''){
+      Display_msg_hotel("Country is required.", 2)
+    }
+    if (cities.trim()==''){
+      Display_msg_hotel("City is required.", 2)
+    }
+    formdata.append(this.files[0].name, this.files[0]);
+    formdata.append('countries', countries);
+    formdata.append('cities', cities);
+    $.ajax({
+      url: ' {% url "hotels_specific_upload" %}',
+      type: 'POST',
+      data: formdata,
+      datatype: "json",
+      contentType: false,
+      processData: false,
+      success: function (data) {
+       
+        if (data.msgType == 1) {
+          Display_msg_hotel(data.message, 2)
+          $('.file_type').text('');
+					$('.file_type').css('opacity','0');
+					$('#SpecificHotel').removeClass('active')
+					$('.specific_hotel_show').css('display','none'); 
+          return false;
+        } else if (data.msgType == 2) {
+          Display_msg_hotel(data.message, 2)
+          $('.file_type').text('');
+					$('.file_type').css('opacity','0');
+					<!--$('#SpecificHotel').removeClass('active')-->
+					<!--$('.specific_hotel_show').css('display','none');-->
+					$('#error_log').show();
+                    $('#error_log').attr("href", data.path);
+
+          return false;
+        } else {
+          list_hotels = []
+          for (var i in data.hotels) {
+            $("#drpHotel > option").each(function () {
+              if (this.text == data.hotels[i]) {
+                list_hotels.push(this.value)
+              }
+            });
+            $("#drpHotel").val(list_hotels)
+          }
+          $("#drpHotel").multiselect('refresh')
+        }
+
+      },
+      error: function (xhr, errorType, exception) {
+        Display_msg_hotel("Something went wrong.Please contact administrator", 2)
+        console.log(xhr, errorType, exception)
+      }
+    })
+  });
+
+</script>
+
+<!-- Get Values -->
+
+<!--  Date Range Tabs number of nights-->
+<script type="text/javascript">
+  //number of nights date range
+  var daterange_added_value = [];
+  function generateRow() {
+    if (!document.getElementById("gnBtn")) {
+      var d = document.getElementById("spannights");
+      d.innerHTML = ''
+      d.innerHTML += "<span><input type='number' name='' min='7' id='gnBtn'></span>";
+      var d = document.getElementById("btn");
+      $('.append_div').css({
+        "display": "inline-block"
+      });
+    }
+  }
+
+  function GetVAlue() {
+    var flag = true
+    var d = document.getElementById("gnBtn").value;
+    if ($('#gnBtn').val() == "") { } else {
+      list_main = []
+      $("#divrowDateRange a").each(function (index, value) {
+        if (index >= 0) {
+          if (parseInt(d) == parseInt($(value).text())) {
+            $("#spandaterangenights").css("display","block")
+            $("#spandaterangenights").text("Already added")
+//            Display_msg_hotel("Already Added", 2)
+            flag = false
+            return false
+          }
+        }
+      })
+
+      if (flag == true) {
+      
+        daterange_added_value.push(d);
+        showRecord();
+        document.getElementById("gnBtn").remove();
+      }
+    }
+  }
+
+  function showRecord() {
+    var d = document.getElementById("get_values");
+    d.innerHTML = "";
+    if (daterange_added_value.length > 0) {
+      for (var i = 0; i < daterange_added_value.length; i++) {
+        d.innerHTML +=
+          "<a href='javascript:void(0);' class='count_days_selected count_days' name='noOfNights1' name='gn_value' id='gn_value_" + i +
+          " '>" + daterange_added_value[i] + "</a>";
+      }
+    }
+  }
+
+  function removeFunction() {
+    daterange_added_value.splice(daterange_added_value.length - 1, 1)
+    showRecord()
+  }
+
+  $(document).ready(function (e) {
+
+    $(document).on('blur', '#gnBtn', function () {
+      GetVAlue();
+      $("#spandaterangenights").css("display","none");
+      $("#spandaterangenights").text("");
+    });
+  })
+
+
+
+  $(document).on('blur', '#divWeekDays a', function () { 
+  
+    $("#divWeekDays a").each(function (index, value) {
+      if ($(value).attr('class') == 'days_btn active_day' || $(value).attr('class') == 'active_day days_btn') {
+        flag = 1
+        $("#divWeekDays").removeClass('error_field')
+        $("#spanWeekDays").css("display","none")
+      }
+    })
+    if (flag == 0) {
+      
+      $("#divWeekDays").addClass('error_field')
+      $("#spanWeekDays").css("display","block")
+      // Display_msg_hotel("Please choose weekdays", 2)
+      return false
+    }
+    
+  });
+
+
+  $(document).on('blur', '#divrowDateRange a', function () {
+    $("#divrowDateRange a").each(function (index, value) {
+      if ($(value).attr('class') == 'count_days count_days_selected' || $(value).attr('class') == 'count_days_selected count_days') {
+        flag = 1
+        $("#divrowDateRange").removeClass('error_field')
+        $("#spandaterangenights").css("display","none")
+      }
+    })
+    if (flag == 0) {
+      $("#divrowDateRange").addClass('error_field')
+      $("#spandaterangenights").css("display","block")
+      // Display_msg_hotel("Please choose weekdays", 2)
+      return false
+    }
+  })
+
+  
+  // Advance Days   
+  var added_value_advancedays = [];
+
+  function generateRowdays() {
+    if (!document.getElementById("gnBtndays")) {
+      var d = document.getElementById("spanadvancedays");
+      d.innerHTML += "<span><input type='number' name='' min='2' id='gnBtndays'></span>";
+      var d = document.getElementById("btn");
+      $('.append_div').css({
+        "display": "inline-block"
+      });
+    }
+  }
+
+
+  function GetVAluedays() {
+    var flag = true
+    var d = document.getElementById("gnBtndays").value;
+    if ($('#gnBtndays').val() == "") { } else {
+      list_main = []
+      $("#divAdvanceDays a").each(function (index, value) {
+        if (index >= 0) {
+          if (parseInt(d) == parseInt($(value).text())) {
+            
+            //Display_msg_hotel("Already Added", 2)
+            flag = false
+            return false
+          }
+        }
+      })
+
+      if (flag == true) {
+        added_value_advancedays.push(d);
+        showRecorddays();
+        document.getElementById("gnBtndays").remove();
+      }
+    }
+  }
+
+
+  function showRecorddays() {
+    var d = document.getElementById("get_values_advancedays");
+    d.innerHTML = "";
+
+    for (var i = 0; i < added_value_advancedays.length; i++) {
+      d.innerHTML += "<a href='javascript:void(0);' name='AdvanceDays' class='count_days_selected count_days' id='gn_value_" + i + " '>" +
+        added_value_advancedays[i] + "</a>";
+
+    }
+  }
+
+  function removeFunctiondays() {
+    added_value_advancedays.splice(added_value_advancedays.length - 1, 1)
+    showRecorddays()
+  }
+
+
+
+  $(document).on('blur', '#divAdvanceDays a', function () {
+    $("#divAdvanceDays a").each(function (index, value) {
+      if ($(value).attr('class') == 'days_btn active_day' || $(value).attr('class') == 'active_day days_btn') {
+        flag = 1
+        $("#divAdvanceDays").removeClass('error_field')
+        $("#spanadvancedayserror").css("display","none")
+      }
+    })
+    if (flag == 0) {
+      
+      $("#divAdvanceDays").addClass('error_field')
+      $("#spanadvancedayserror").css("display","block")
+      // Display_msg_hotel("Please choose weekdays", 2)
+      return false
+    }
+    
+  });
+
+  $(document).on('blur', '#divrowDateRange1 a', function () {
+    $("#divrowDateRange1 a").each(function (index, value) {
+      if ($(value).attr('class') == 'count_days count_days_selected' || $(value).attr('class') == 'count_days_selected count_days') {
+        flag = 1
+        $("#divrowDateRange1").removeClass('error_field')
+        $("#spanadvancenightsserror").css("display","none")
+      }
+    })
+    if (flag == 0) {
+      
+      $("#divrowDateRange1").addClass('error_field')
+      $("#spanadvancenightsserror").css("display","block")
+      // Display_msg_hotel("Please choose weekdays", 2)
+      return false
+    }
+    
+  });
+
+
+  
+  $(document).ready(function (e) {
+
+    $(document).on('blur', '#gnBtndays', function () {
+      GetVAluedays();
+  
+    });
+  })
+
+
+  //advance night days
+  var advancedays_value_nights = [];
+
+  function generateRow1() {
+     
+    if (!document.getElementById("gnBtn1")) {
+      var d = document.getElementById("spannights1");
+      d.innerHTML += "<span><input type='number' name='' min='7' id='gnBtn1'></span>";
+      var d = document.getElementById("btn");
+      $('.append_div').css({
+        "display": "inline-block"
+      });
+    }
+  }
+
+  function GetVAlue1() {
+    var flag = true
+    var d = document.getElementById("gnBtn1").value;
+    if ($('#gnBtn1').val() == "") { } else {
+      list_main = []
+      $("#divrowDateRange1 a").each(function (index, value) {
+        if (index >= 0) {
+          if (parseInt(d) == parseInt($(value).text())) {
+           // Display_msg_hotel("Already Added", 2)
+            flag = false
+          }
+
+        }
+      })
+      if (flag == true) {
+        advancedays_value_nights.push(d);
+        showRecord1();
+        document.getElementById("gnBtn1").remove();
+      }
+    }
+  }
+
+  function showRecord1() {
+    var d = document.getElementById("get_values1");
+    d.innerHTML = "";
+
+    for (var i = 0; i < advancedays_value_nights.length; i++) {
+      d.innerHTML += "<a href='javascript:void(0);' class='count_days_selected count_days' name='noOfNights2' id='gn_value_" + i + " '>" +
+        advancedays_value_nights[i] + "</a>";
+
+    }
+  }
+
+  function removeFunction1() {
+    advancedays_value_nights.splice(advancedays_value_nights.length - 1, 1)
+    showRecord1()
+  }
+  $(document).ready(function (e) {
+   
+    
+
+    $(document).on('blur', '#gnBtn1', function () {
+      GetVAlue1();
+    });
+
+  })
+
+
+  //Multiple Check In Dates 
+  var multi_nights_added_value = [];
+
+  function generateRow2() {
+   
+    if (!document.getElementById("gnBtn2")) {
+      console.log('gnBtn2 not found')
+      var d = document.getElementById("spannights2");
+      d.innerHTML += "<span><input type='number' min='7' name='' id='gnBtn2'></span>";
+      var d = document.getElementById("btn");
+      $('.append_div').css({
+        "display": "inline-block"
+      });
+    }
+  }
+
+
+
+  function GetVAlue2() {
+
+    var flag = true
+    var d = document.getElementById("gnBtn2").value;
+    if ($('#gnBtn2').val() == "") { } else {
+      $("#spanstartdateerror").css('display',"none")
+      list_main = []
+      $("#divstartnights a").each(function (index, value) {
+        if (index >= 0) {
+          if (parseInt(d) == parseInt($(value).text())) {
+            //Display_msg_hotel("Already Added", 2)
+            flag = false
+          }
+        }
+      })
+
+      if (flag) {
+        multi_nights_added_value.push(d);
+        showRecord2();
+        document.getElementById("gnBtn2").remove();
+      }
+    }
+  }
+
+  function showRecord2() {
+    var d = document.getElementById("get_values2");
+    d.innerHTML = "";
+
+    for (var i = 0; i < multi_nights_added_value.length; i++) {
+      d.innerHTML += "<a href='javascript:void(0);' name='noOfNights3' class='count_days_selected count_days' id='gn_value_" + i + " '>" +
+        multi_nights_added_value[i] + "</a>";
+
+    }
+  }
+
+  function removeFunction2() {
+    multi_nights_added_value.splice(multi_nights_added_value.length - 1, 1)
+    showRecord2()
+  }
+
+  $(document).ready(function (e) {
+      $(document).on('blur', '#gnBtn2', function () { 
+        GetVAlue2(); 
+    })
+  })
+
+
+  $(document).on('blur', '#divstartnights a', function () {
+    $("#divstartnights a").each(function (index, value) {
+      if ($(value).attr('class') == 'count_days count_days_selected' || $(value).attr('class') == 'count_days_selected count_days') {
+        flag = 1
+        $("#divstartnights").removeClass('error_field')
+        $("#spanstartnightserror").css("display","none")
+      }
+    })
+    if (flag == 0) {
+      $("#divstartnights").addClass('error_field')
+      $("#spanstartnightserror").css("display","block")
+      // Display_msg_hotel("Please choose weekdays", 2)
+      return false
+    }
+  })
+
+  //Advance Weeks
+
+  var advance_weeks_added_value = [];
+
+  function generateRowAdvanceWeeks() {
+    if (!document.getElementById("gnBtnAdWeeks")) {
+      var d = document.getElementById("spanadvanceweeks");
+      d.innerHTML += "<span><input type='number' min='1' name='' id='gnBtnAdWeeks'></span>";
+      var d = document.getElementById("btn");
+      $('.append_div').css({
+        "display": "inline-block"
+      });
+    }
+  }
+
+  function GetVAlueAdvanceWeeks() {
+    var flag = true
+    var d = document.getElementById("gnBtnAdWeeks").value;
+    if ($('#gnBtnAdWeeks').val() == "") { } else {
+      list_main = []
+      $("#divAdvanceWeeks a").each(function (index, value) {
+        if (index >= 0) {
+          if (parseInt(d) == parseInt($(value).text())) {
+           // Display_msg_hotel("Already Added", 2)
+            flag = false
+          }
+        }
+      })
+      if (flag == true) {
+        advance_weeks_added_value.push(d);
+        showRecordAdvanceWeeks();
+        document.getElementById("gnBtnAdWeeks").remove();
+      }
+    }
+  }
+
+  function showRecordAdvanceWeeks() {
+    var d = document.getElementById("get_values_advanceweeks");
+    d.innerHTML = "";
+
+    for (var i = 0; i < advance_weeks_added_value.length; i++) {
+      d.innerHTML += "<a href='javascript:void(0);' class='count_days_selected count_days' name = 'AdvanceWeeks' id='gn_value_" + i + " '>" +
+        advance_weeks_added_value[i] + "</a>";
+
+    }
+  }
+
+  function removeFunctionAdvanceWeeks() {
+    advance_weeks_added_value.splice(advance_weeks_added_value.length - 1, 1)
+    showRecordAdvanceWeeks()
+  }
+  $(document).ready(function (e) {
+
+    $(document).on('blur', '#gnBtnAdWeeks', function () {
+      GetVAlueAdvanceWeeks();
+    });
+
+  })
+
+  var advance_weeks_nights = [];
+
+  function generateRow3() {
+
+    if (!document.getElementById("gnBtn3")) {
+      var d = document.getElementById("spannights3");
+      d.innerHTML += "<span><input type='number' min=7 name='' id='gnBtn3'></span>";
+      var d = document.getElementById("btn");
+      $('.append_div').css({
+        "display": "inline-block"
+      });
+    }
+  }
+
+  function GetVAlue3() {
+    var flag = true
+    var d = document.getElementById("gnBtn3").value;
+    if ($('#gnBtn3').val() == "") { } else {
+      $("#spanstartnightserror").css("display","none")
+      $("#spanstartnightserror").text("")
+      list_main = []
+      $("#divAdvanceWeekNights a").each(function (index, value) {
+        if (index >= 0) {
+          if (parseInt(d) == parseInt($(value).text())) {
+            $("#spanstartnightserror").css("display","block")
+            $("#spanstartnightserror").text("Already Added")
+            //Display_msg_hotel("Already Added", 2)
+            flag = false
+          }
+        }
+      })
+
+      if (flag == true) {
+        advance_weeks_nights.push(d);
+        showRecord3();
+        document.getElementById("gnBtn3").remove();
+      }
+    }
+  }
+
+  function showRecord3() {
+    var d = document.getElementById("get_values3");
+    d.innerHTML = "";
+
+    for (var i = 0; i < advance_weeks_nights.length; i++) {
+      d.innerHTML +=
+        "<a href='javascript:void(0);' class='count_days_selected count_days' value='1' name='noOfNights4' class='qty' id='gn_value_" + i +
+        " '>" + advance_weeks_nights[i] + "</a>";
+    }
+  }
+
+  function removeFunction3() {
+    advance_weeks_nights.splice(advance_weeks_nights.length - 1, 1)
+    showRecord3();
+  }
+  $(document).ready(function (e) {
+
+    $(document).on('blur', '#gnBtn3', function () {
+      GetVAlue3();
+    });
+  })
+
+  $(document).on('blur', '#divAdvanceWeeks', function () {
+    var flag =0
+    $("#divAdvanceWeeks a").each(function (index, value) {
+      if ($(value).attr('class') == 'days_btn active_day' || $(value).attr('class') == 'active_day days_btn') {
+        flag = 1
+      //  list_advancedays.push(value.innerHTML.toString().trim())
+      $("#spanadvanceweekerror").css("display","none")
+      $("#spanadvanceweekerror").text("")
+      }
+    })
+    if (flag == 0) {
+      $("#spanadvanceweekerror").css("display","block")
+      $("#spanadvanceweekerror").text("Please choose Advance Weeks")
+      //Display_msg_hotel("Please choose Advance Weeks", 2)
+      return false
+    }
+  });
+
+
+  $(document).on('blur', '#divAdvanceWeekNights', function () {
+    var flag =0
+    $("#divAdvanceWeekNights a").each(function (index, value) {
+      if ($(value).attr('class') == 'count_days count_days_selected' || $(value).attr('class') == 'count_days_selected count_days') {
+        flag = 1
+        $("#spanadvweeknightserror").css("display","none")
+        $("#spanadvweeknightserror").text("")
+      //  list_advancedays.push(value.innerHTML.toString().trim())
+      }
+    })
+    if (flag == 0) {
+      $("#spanadvweeknightserror").css("display","block")
+      $("#spanadvweeknightserror").text("Please choose Advance Weeks")
+      //Display_msg_hotel("Please choose Advance Weeks", 2)
+      return false
+    }
+
+  });
+
+
+</script>
+
+<!-- Multiple Check in Dates  -->
+<script type="text/javascript">
+  //Date Function
+  var added_value_date = [];
+
+  function generatedate() {
+    if (!document.getElementById("gnBtndate")) {
+      var d = document.getElementById("get_date")  
+       document.getElementById('get_values1').innerHTML = '';
+      d.innerHTML +=
+        "<span><input type='text' name='txtstartdate' class='form-control dates_control' placeholder='Select date' id='gnBtndate'></span>";
+      //onblur='GetVAluedate()'
+      var d = document.getElementById("btn");
+      $('.append_div').show();
+      $('.dates_control').datepicker({
+        dateFormat: 'mm/dd/yy',
+        minDate: '0',
+      });
+    }
+  }
+
+  function GetVAluedate() {
+    var d = document.getElementById("gnBtndate").value;
+    //var d = $( "#gnBtndate" ).datepicker( "getDate" );
+    var flag = true
+    var d = $("#gnBtndate").val();
+    if (d === '') {
+      $("#spanstartdateerror").css("display","block")
+      $("#spanstartdateerror").text("Input can not be left blank")
+      //Display_msg_hotel('Input can not be left blank', 2)
+    //  $(".addnow").show();
+    } else {
+      $("#spanstartdateerror").css('display','none')
+      $("#spanstartdateerror").text('')
+      $("#get_date_values a").each(function(index,value){
+   
+        var newval = new Date(d)
+        var oldval = new Date(value.innerHTML.toString())
+       
+          if(d == value.innerHTML.toString())
+          {
+            flag = false;
+          }
+      })
+     
+      if(flag == true)
+      {
+        added_value_date.push(d);
+        showRecorddate();
+        document.getElementById("gnBtndate").remove();
+       // $('.addnow').remove();
+      }
+    }
+  }
+
+  function removedatFunction() {
+
+      var item_remove = $($("#get_date_values a").not('.count_days_selected'));
+      
+      $(item_remove).each(function (index, item) {
+        var itrm_rem = $(item).text();
+        added_value_date = jQuery.grep(added_value_date, function (value) {
+          return value != itrm_rem;
+        });
+      });
+      if (item_remove.length==0)
+      {
+        added_value_date.splice(added_value_date.length - 1, 1);
+      }
+      
+      showRecorddate();
+    }
+
+  function showRecorddate() {
+    var d = document.getElementById("get_date_values");
+    d.innerHTML = "";
+
+    for (var i = 0; i < added_value_date.length; i++) {
+      d.innerHTML += "<a href='javascript:void(0);' class='count_days_selected count_days' id='gn_value_" + i + " '>" +
+        added_value_date[i] + "</a>";
+
+    }
+  }
+
+  $(document).ready(function () {
+
+    $(document).on('click', '.addnow', function () {
+   
+      $(".add_event_date").show();
+      //$('.addnow').show()
+      GetVAluedate();
+    });
+
+    Bind_country_name();
+
+  });
+
+  $(document).on('click', '.add_event_date', function () {
+
+  });
+
+  //Tab Reset Control
+  
+  $("#ls_daterangedays").click(function (e) {
+    document.getElementById('get_values').innerHTML = ''
+		var weekdays = document.getElementsByName('a_weekdays')
+		for(var i =1; i< weekdays.length;i++){
+			$(weekdays[i]).removeClass('active_day')
+		}
+		 daterange_added_value = []
+	})
+	$("#ls_advancedays").click(function (e) {
+	  document.getElementById('get_values_advancedays').innerHTML = ''
+	  document.getElementById('get_values1').innerHTML = ''
+	  added_value_advancedays = []
+    advancedays_value_nights = []
+    var AdvanceDays = document.getElementsByName('AdvanceDays')
+    for(var i =1; i< AdvanceDays.length;i++){
+      $(AdvanceDays[i]).removeClass('active_day')
+      removeFunctiondays()
+    }
+	})
+	$("#ls_checkindays").click(function (e) {
+   
+	  document.getElementById('get_values2').innerHTML = ''
+	  document.getElementById('get_date_values').innerHTML = ''
+	  multi_nights_added_value = []
+    var countdate = document.getElementsByClassName('count_days')
+    
+    for(var i =1; i< countdate.length;i++){
+     
+      removedatFunction();
+    }
+    generatedate();
+  })
+  $("#ls_advanceweekdays").click(function (e) {
+    document.getElementById('get_values_advanceweeks').innerHTML = ''
+    document.getElementById('get_values3').innerHTML = ''
+    advance_weeks_added_value = []
+    advance_weeks_nights = []
+    var AdvanceWeeks = document.getElementsByName('AdvanceWeeks')
+    for(var i =1; i< AdvanceWeeks.length;i++){
+      $(AdvanceWeeks[i]).removeClass('active_day')
+      removeFunctionAdvanceWeeks()
+    }
+  })
+  //
+
+  //Reset Controls
+  $("#btnReset").click(function (e) {
+
+    $(":input[type=text]").val('')
+    $("#drpCountries").val('0')
+    $('#drpCities').val('0')
+    $('#AllHotel').removeClass('active')
+    $('#SpecificHotel').removeClass('active')
+    //MultiSelect Drop 
+    // $('#txtAdultCount').val('1')
+    $('#txtAdultCount').val('0')
+   // $('#txtChildrenCount').val('1')
+    $('#txtChildrenCount').val('0')
+    $("#drppointofsale").val('0')
+    $('#drpHotel').empty() 
+    $('#drpHotel').multiselect('rebuild') 
+   
+
+    
+    document.getElementById('get_values').innerHTML = ''
+    daterange_added_value = []
+    document.getElementById('get_values_advancedays').innerHTML = ''
+    document.getElementById('get_values1').innerHTML = ''
+    added_value_advancedays = []
+    advancedays_value_nights = []
+    document.getElementById('get_values2').innerHTML = ''
+    document.getElementById('get_date_values').innerHTML = ''
+    multi_nights_added_value = []
+    document.getElementById('get_values_advanceweeks').innerHTML = ''
+    document.getElementById('get_values3').innerHTML = ''
+    advance_weeks_added_value = []
+    advance_weeks_nights = []
+
+
+  })
+ $("#txtRequestName").change(function(e){
+   if($(this).val() == "")
+   {
+      $("#spanrequestname").css("display","block")
+   }
+   else
+   {
+    $("#spanrequestname").css("display","none")
+    $("#txtRequestName").removeClass('error_field')
+   }
+ })
+
+ $("#txtRequestDesc").change(function(e){
+  if($(this).val() == "")
+  {
+     $("#spanrequestdescr").css("display","block")
+  }
+  else
+  {
+   $("#spanrequestdescr").css("display","none")
+   $("#txtRequestDesc").removeClass('error_field')
+  }
+})
+
+
+//$("#drpreporttype").change(function(e){
+ // if($(this).val() == '0')
+//  {
+ //   $("#drpreporttype").addClass('error_field')
+//    $("#spanreport").css("display","block")
+//  }
+//  else
+//  {
+  //  $("#spanreport").css("display","none")
+ //   $("#drpreporttype").removeClass('error_field')
+ // }
+ // })
+
+  $("#btnemail").change(function (e) {
+    if ($(this).val() == '0') {
+      $("#btnemail").addClass('error_field')
+      $("#spanemail").css("display", "block")
+    }
+    else {
+      $("#spanemail").css("display", "none")
+      $("#btnemail").removeClass('error_field')
+    }
+  })
+
+  $("#btnemail").change(function (e) {
+    if ($(this).val() == '0') {
+      $("#btnemail").addClass('error_field')
+      $("#spanemail1").css("display", "block")
+    }
+    else {
+      $("#spanemail1").css("display", "none")
+      $("#btnemail").removeClass('error_field')
+    }
+  })
+
+  $("#btncc").change(function (e) {
+    if ($(this).val() == '0') {
+      $("#btncc").addClass('error_field')
+      $("#spancc").css("display", "block")
+    }
+    else {
+      $("#spancc").css("display", "none")
+      $("#btncc").removeClass('error_field')
+    }
+  })
+
+$("#drpCountries").change(function(e)
+{
+  if($(this).val() == '0')
+  {
+    $("#drpCountries").addClass('error_field')
+    $("#spandestinationcountry").css("display","block")
+  }
+  else
+  {
+    $("#spandestinationcountry").css("display","none")
+    $("#drpCountries").removeClass('error_field')
+  }
+})
+
+$("#drpCities").change(function(e)
+{
+  if($(this).val() == '0')
+  {
+    $("#drpCities").addClass('error_field')
+    $("#spandestinationcity").css("display","block")
+  }
+  else
+  {
+    $("#spandestinationcity").css("display","none")
+    $("#drpCities").removeClass('error_field')
+  }
+})
+
+$("#drpRoomType").change(function(e)
+{
+  if($(this).val() == '0')
+  {
+    $("#drpRoomType").addClass('error_field')
+    $("#spanRoomType").css("display","block")
+  }
+  else
+  {
+    $("#spanRoomType").css("display","none")
+    $("#drpRoomType").removeClass('error_field')
+  }
+})
+
+
+$("#drpBoardType").change(function(e)
+{
+  if($(this).val() == '0')
+  {
+    $("#drpBoardType").addClass('error_field')
+    $("#spanBoardType").css("display","block")
+  }
+  else
+  {
+    $("#spanBoardType").css("display","none")
+    $("#drpBoardType").removeClass('error_field')
+  }
+})
+
+
+$("#drpStarRating").change(function(e)
+{
+  if($(this).val() == '0')
+  {
+    $("#drpStarRating").addClass('error_field')
+    $("#spanStarRatings").css("display","block")
+  }
+  else
+  {
+    $("#spanStarRatings").css("display","none")
+    $("#spanStarRatings").removeClass('error_field')
+  }
+})
+$("#drppointofsale").change(function(e){
+  if($(this).val() == '0')
+  {
+    $("#drppointofsale").addClass('error_field')
+    $("#spanpos").css("display","block")
+  }
+  else
+  {
+    $("#spanpos").css("display","none")
+    $("#drppointofsale").removeClass('error_field')
+  }
+})
+
+$("#drpsuppliers").change(function(e)
+{
+  if($(this).val() == '0')
+  {
+    $("#drpsuppliers").addClass('error_field')
+    $("#spanSuppliersDateRange").css("display","block")
+  }
+  else
+  {
+    $("#spanSuppliersDateRange").css("display","none")
+    $("#spanSuppliersDateRange").removeClass('error_field')
+  }
+})
+
+$("#drpsuppliers1").change(function(e)
+{
+  if($(this).val() == '0')
+  {
+    $("#drpsuppliers1").addClass('error_field')
+    $("#spanadvancesuppliers").css("display","block")
+  }
+  else
+  {
+    $("#spanadvancesuppliers").css("display","none")
+    $("#spanadvancesuppliers").removeClass('error_field')
+  }
+})
+
+$("#drpsuppliers2").change(function(e)
+{
+  if($(this).val() == '0')
+  {
+    $("#drpsuppliers2").addClass('error_field')
+    $("#spanSuppliersCheckInDateserror").css("display","block")
+  }
+  else
+  {
+    $("#spanSuppliersCheckInDateserror").css("display","none")
+    $("#spanSuppliersCheckInDateserror").removeClass('error_field')
+  }
+})
+
+
+$("#drpsuppliers3").change(function(e)
+{
+  if($(this).val() == '0')
+  {
+    $("#drpsuppliers3").addClass('error_field')
+    $("#spanSuppliersAdvWeekserror").css("display","block")
+  }
+  else
+  {
+    $("#spanSuppliersAdvWeekserror").css("display","none")
+    $("#spanSuppliersAdvWeekserror").removeClass('error_field')
+  }
+})
+
+$("#txtDateRangeFrom").change(function(e){
+  if($(this).val() == "")
+  {
+     $("#spanDateRangeFrom").css("display","block")
+  }
+  else
+  {
+    $("#txtDateRangeFrom").removeClass('error_field')
+   $("#spanDateRangeFrom").css("display","none")
+  }
+})
+
+$("#txtDateRangeTo").change(function(e){
+  if($(this).val() == "")
+  {
+     $("#spanDateRangeTo").css("display","block")
+  }
+  else
+  {
+    $("#txtDateRangeTo").removeClass('error_field')
+   $("#spanDateRangeTo").css("display","none")
+  }
+})
+
+
+function Bind_country_name(){
+    $.ajax({
+        url: "{% url 'Bind_Country_name' %}",
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            $('#drp_man_grp_type').empty();
+            $('#drp_man_grp_type').append($('<option></option>').val('0').html('Select option'));
+            $(data.Field_master).each(function (index, item) {
+                $('#drp_man_grp_type').append($('<option></option>').val(item.id).html(item.name));
+            });
+        },
+        error: function (xhr, errorType, exception) {
+            alert(exception)
+        }
+    });
+}
+
+</script>
+<script>
+
+  {% if json_string %}
+  sub_request_json = JSON.parse("{{json_string | escapejs}}")
+  {% endif %}
+  HOTEL_BATCH_INPUT_UPLOAD_URL = "{% url 'hotel_batch_input_upload_hotel' %}";
+
+  $(document).ready(function() {
+    {% if batch_items %}
+    $(".batch_list_div").show();
+    {% endif %}
+  })
+
+</script>
+<script src="{% static 'hotel/js/tagInput.js' %}"></script>
+<script>
+    $(document).ready(function(){
+      
+    $('#tags').tagInput({labelClass:"badge badge-success"});
+    $('#tags2').tagInput({labelClass:"badge badge-warning"});
+    });
+
+    function Edit_Room_type(str) {
+     
+        //var str = 'vik,anil,vijay,Rashmi';
+        var arr = str.split(',');
+        if (arr.length > 0) {
+          var count = 0;
+          $('#tags').empty();
+          $(arr).each(function (index, item) {
+            count = (index + 1);
+            var room_type = '<span class="badge badge-success tagLabel" data-badge="' + count + '">' + item + ' <a href="#" data-badge="' + count + '" aria-label="close" class="closelabel">×</a></span>';
+            $('#tags').append(room_type);
+          });
+         $('#tags').append('<input class="labelinput" type="text">');
+         $('#tags').append('<input id="hdn_txt_room_type" value="' + str + '" name="result" type="hidden">');
+         $('#tags').tagInput({labelClass:"badge badge-success"});
+         $(arr).each(function (index, item) {
+             $('#tags').find('span')[0].remove()
+          });
+       
+        }
+       
+      }
+
+    function chk_char()
+    {
+       var span_tag = $('#tags').find('span');
+       if (span_tag.length>9)
+       {
+           $('.labelinput').attr('readonly','readonly');
+       }
+       else{
+        $('.labelinput').attr('readonly',false);
+       }
+    }
+    </script>
+{% endblock %}  

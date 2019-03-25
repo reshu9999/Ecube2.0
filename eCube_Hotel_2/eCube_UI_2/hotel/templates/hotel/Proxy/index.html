@@ -1,0 +1,949 @@
+{% extends 'hotel/base.html' %} {% load static %} {% block header %}
+
+
+<style>
+    .slide_heading {
+        font-size: 14px;
+        font-weight: 600;
+        color: #a267c8;
+        font-family: 'Lato', sans-serif;
+        margin-bottom: 15px;
+        padding: 2px 0px;
+        float: left;
+        margin-left: 18px;
+    }
+
+    .width_50px {
+        width: 50px;
+    }
+
+    .th {
+        background: #eee !important;
+    }
+
+    .add_domain_div {
+        padding: 20px 20px;
+        border-radius: 3px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+        position: relative;
+        border-radius: 5px;
+        background: #fff;
+    }
+
+    .add_domain_div label {
+        font-weight: 500;
+        margin: 5px 0 4px;
+    }
+
+    .add_domain_div .form-control {
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, .1) !important;
+    }
+
+    .add_domain_container {
+        margin-top: 40px;
+    }
+
+    .domain_btn label {
+        display: block;
+    }
+
+
+    .domain_btn button {
+        margin: 0px;
+    }
+
+    .domain_btn button.btn.btn-default {
+        background: #a267c8;
+        border: none;
+        color: #fff;
+        outline: none;
+        padding: 5px 12px;
+    }
+
+    .add_domain_div .upload_file1 {
+        border: 1px solid #ccc;
+        height: 30px;
+        border-radius: 3px;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, .1) !important;
+    }
+
+    .add_domain_div .upload_file1 p {
+        top: auto;
+        font-size: 13px;
+        color: #999;
+        line-height: 30px;
+        text-align: justify;
+        padding: 0 10px
+    }
+
+    .add_domain_div .upload_file1 span.file_type {
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        border-radius: 1px;
+        background: #eee;
+        line-height: 26px;
+        text-align: left;
+        color: #000;
+        font-size: 13px;
+        padding: 0 10px;
+    }
+
+    .add_domain_div .upload_file1 img {
+        position: absolute;
+        width: 20px;
+        top: 5px;
+        left: auto;
+        right: 7px;
+        z-index: 9;
+    }
+
+    .multi_select_contaner button.multiselect.dropdown-toggle.btn.btn-default {
+        height: 31px;
+        padding: 4px 10px;
+    }
+
+    .button {
+        background-color: #ddd;
+        border: none;
+        color: black;
+        padding: 6px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0;
+        cursor: pointer;
+        border-radius: 50px;
+        min-width: 65px;
+        border: 1px solid #c7c7c7;
+        background: #e0e0e0;
+        transition: .3s;
+    }
+
+    button.mappped {
+        background: #a7a7a7;
+    }
+
+    .button.unmappped {
+        opacity: .5;
+    }
+
+    .button:hover {
+        background-color: #a267c8;
+        color: #fff;
+        border: 1px solid #a267c8;
+    }
+
+    .csvupload {
+
+        vertical-align: middle;
+        font-size: 14px;
+        letter-spacing: .5px;
+
+    }
+
+    .csvupload a {
+        color: #5d92d2;
+        font-size: 12px;
+        text-align: right;
+        float: right;
+    }
+
+    .csvupload img {
+        vertical-align: text-bottom;
+        margin-left: 2px;
+        position: relative;
+        opacity: .9;
+    }
+
+    .domain_selection,
+    .vendor_selection {
+        margin: 10px 0;
+        border: 1px dashed #d4d4d4;
+        padding: 20px 0 10px;
+        background: #f1f1f1;
+        padding: 20px 10px;
+        border-radius: 5px;
+    }
+
+    .radio_selection label {
+        display: block;
+    }
+
+    .radio_selection .radio {
+        display: inline-block;
+        width: 40%;
+        margin-left: 0;
+    }
+
+    .domain_selection hr {
+        border-top: 1px dashed #ccc;
+    }
+
+    .domain_btn_call button {
+        margin-left: 10px;
+    }
+
+    /* Loader start */
+
+    .loader_div {
+        position: fixed;
+        background: rgba(250, 250, 250, .9);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+    }
+
+    #loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 75px;
+        height: 75px;
+        margin: auto;
+    }
+
+    #loader:before,
+    #loader:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-width: 9.375px;
+        border-style: solid;
+        border-color: #a267c8;
+        border-radius: 100%;
+    }
+
+    #loader:before {
+        opacity: 0.5;
+    }
+
+    #loader:after {
+        border-color: #a267c8 transparent transparent;
+        animation: spin 500ms linear infinite;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    .alert-dismissible {  
+    position: absolute;
+    display: inline-block;
+    margin: auto;
+    z-index: 999999;
+    top: 16.5%;
+    left: 0;
+    right: 0;
+    width: 300px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+    /* Loader end */
+</style>
+
+{% endblock %} {% block content %}
+<div class="loader_div" style="display: none;">
+    <div id='loader'></div>
+</div>
+<section class="body_contaner no_sidebar">
+    <div class="container_content" style="padding-left:0;">
+        <div class="inner_content_contaner">
+            <div class="add_domain_container clearfix">
+
+                <div class="white_bg add_domain_div">
+                    <div class="row ">
+
+                        <div class="col-sm-4">
+                            <div class="form-group radio_selection">
+
+                                <div class="radio radio-primary">
+                                    <input id="01" type="radio" name="domain" checked="true" value="domain_selection">
+                                    <label for="01">Domain</label>
+                                </div>
+
+                                <div class="radio radio-primary">
+                                    <input id="02" type="radio" name="domain" value="vendor_selection">
+                                    <label for="02">Vendor</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row domain_selection">
+                        <div class="clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group csvupload">
+                                    <label for="">Upload file</label>
+                                    <a href="/static/Excel_Templates/DemoProxyuploadFile.csv"> Download template
+                                        <img src="/static/hotel/images/download_icon.png" /> </a>
+
+                                    <span class="upload upload_file1">
+                                        <input type="file" id="fileField" onchange="setfile(this)" />
+                                        <img src="/static/hotel/images/upload_file.png" />
+                                        <p> Drag File to upload </p>
+                                        <span class="file_type" id="fileId"></span>
+                                    </span>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group multi_select_contaner">
+                                    <label for="cpw">Select Domain to Map Proxies</label>
+                                    <select id="drpDomain" class="multiselect_box form-control">
+                                       <option value="0">Select Option</option>
+                                        {% for key, value in domain.items %}
+                                        <option value={{ key }}>{{ value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-3">
+                                <div class="domain_btn" style="margin-top:-3px;">
+                                    <label> &nbsp; </label>
+                                    <button id="btnNextStep1" type="submit" class="btn btn-default"> Map Proxies </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <h5 class="slide_heading " style="float:none;">Upload CSV File For Proxies Mapping</h5>
+                        <hr>
+                        <div class="clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group multi_select_contaner">
+
+                                    <label for="cpw">Select Domain</label>
+                                    <!--<select id="drpDomain1" class="select_box form-control">-->
+                                    <select id="drpDomain1" class="multiselect_box form-control">
+                                        <option value="0">Select Option</option>
+                                        {% for key, value in domain.items %}
+                                        <option value= {{ key }}>{{ value }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="domain_btn" style="margin-top:-3px;">
+                                    <label> &nbsp; </label>
+                                    <button id="download_proxy" type="submit" class="btn btn-default"> Download Proxy </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <input type="hidden" id="hiddenDrpDomain" />
+                    <input type="hidden" id="hiddenDrpFile" />
+
+
+
+
+                    <div class="row marT30 vendor_selection" style="display:none;">
+                        <div class="col-sm-3">
+                            <div class="form-group multi_select_contaner">
+                                <label for="cpw">Select Vendor</label>
+                                <select id="drpVendor" class="select_box form-control">
+                                    <option value="0">Select Option</option>
+                                    {% for i in vendor %} {% for key , value in i.items %}
+                                    <option value= {{ key }}>{{ value }}</option>
+                                    {% endfor %} {%endfor%}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="domain_btn domain_btn_call">
+                                <label> &nbsp; </label>
+                                <button id="btnUnMapProxy" type="submit" class="btn btn-default"> Un-Map Proxy </button>
+                                <button id="btnUnMapAndDelete" type="submit" class="btn btn-default"> Delete Proxy </button>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-md-12 marT20 ">
+                <div class="table-responsive marT20" style="display:none;" id="table_call1">
+                    <!--<table cellpadding="0" cellspacing="0" border="0" class="dataTable custom_table display nowrap" id="example">-->
+
+                    <table id="datavalidation1" class="display nowrap custom_table" cellspacing="0" width="100%" style="vertical-align: middle">
+                        <thead>
+                            <tr id="ColumnHead">
+
+                                <th width="25%">Domain Name</th>
+
+                                <th width="25%">Mapped Proxy</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="tbl_tbody1">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive marT20" style="display:none;" id="table_call">
+                    <table id="datavalidation" class="display nowrap custom_table" cellspacing="0" width="100%" style="vertical-align: middle">
+                        <thead>
+                            <tr id="ColumnHead">
+
+                                <th width="25%">Vendor Name</th>
+                                <th width="25%">Proxy Count </th>
+                                <th width="25%">Mapped Proxy</th>
+                                <th width="25%">Un Mapped Proxy</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl_tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="text-center"> 
+<div class="alert alert-success alert-dismissible " id="div_suc" style="display:none;">
+    <a href="javascript:void(0)" class="close" onclick="close_popup();" aria-label="close">&times;</a> 
+    <strong id="div_str_suc">Message</strong></br>
+    <p id="div_p_suc" ></p>
+</div>
+</div>
+{% endblock %} {% block footer %}
+
+<script src="/static/hotel/js/custom.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+      $('input:radio[name=domain]').change(function() {
+          if (this.value == 'domain_selection') {
+              $('.domain_selection').show();
+              $('.vendor_selection').hide();
+              $('#table_call').hide();  
+              $('#table_call1').hide();  
+              $('#drpDomain1').val(0)
+              
+              
+          }
+          else if (this.value == 'vendor_selection') {
+            $('.vendor_selection').show();
+            $('.domain_selection').hide();
+            $('#table_call').hide();  
+              $('#table_call1').hide();
+          }
+      });
+  });
+  
+  function Display_msg(str, type) {
+      if (type!=0)
+      {
+            $('#div_suc').removeClass('alert-success');
+            $('#div_suc').removeClass('alert-danger');
+            $('#div_suc').addClass('alert-success');
+      }
+      else{
+          $('#div_suc').removeClass('alert-success');
+          $('#div_suc').removeClass('alert-danger');
+          $('#div_suc').addClass('alert-danger');
+      }
+      $('#div_p_suc').text(str);
+      $('#div_suc').show();
+    }
+  function close_popup()
+  {
+    $('#div_suc').hide();
+  }
+    function setfile(file) {
+            var filename = file.value;
+            $("#hiddenDrpFile").val(filename)
+            var lastIndex = filename.lastIndexOf("\\");
+            if (lastIndex >= 0) {
+                filename = filename.substring(lastIndex + 1);
+                if (filename.split(".")[1] != "csv") {
+                    message = 'Please Upload CSV file Only'
+                    Display_msg(message, 0);
+                    return false;
+                }
+                else {
+                    $(file).siblings(".file_type").text(filename).css("opacity", "1");
+                }
+            }
+        }
+  
+  
+    $("#drpDomain").change(function (e) {
+        var domain = $(this).val()
+        
+        $("#hiddenDrpDomain").val($(this).val())
+      })
+
+      $("#btnNextStep1").click(function (e) {
+        debugger;
+        uploaded_file = document.getElementById('fileField');
+        fileName = $("#hiddenDrpFile").val()
+  
+        if (fileName == "") {
+  
+          message = 'Please Upload csv file'
+          Display_msg(message, 0);
+          return false
+  
+        }
+        formdata = new FormData();
+        var domainId = $("#hiddenDrpDomain").val()
+       
+        if (domainId == "" || domainId == "0") {
+  
+  
+          message = 'Please Select Domain Name'
+          Display_msg(message, 0);
+          
+          return false
+        }
+  
+        url = "{%  url 'upload_proxies' %}";
+        formdata.append('proxies_csv', uploaded_file.files[0]);
+        formdata.append('domainId', domainId);
+  
+        $.ajax({
+          type: 'POST',
+          url: url,
+          data: formdata,
+          datatype: "json",
+          contentType: false,
+          processData: false,
+          beforeSend: function () {
+            $('.loader_div').show();
+          },
+          success: function (data) {
+            if (data.flag == 1) {
+              Display_msg(data.msg, 0);
+             return false;
+            }
+            else {
+              Display_msg(data.msg, 1);
+              domainId
+              var domain_ids = domainId.split(',');
+              $('#drpDomain1').val(domain_ids[0]);
+              $("#drpDomain1").trigger("change");
+              return false;
+            };
+          },
+            complete: function(data) {
+              $('.loader_div').hide();
+            },
+          
+            error: function (e) {
+              message = 'Please upload valid csv file  or please check your input in excel !!!'
+              Display_msg(message, 0);
+              return false;
+  
+            }
+          });
+      })
+
+      $("#download_proxy").click(function (e) {
+        var domainId = $("#drpDomain1").find("option:selected").val()
+        var domainName = $("#drpDomain1").find("option:selected").text()
+
+        if (domainId == "" || domainId == "0") {
+          message = 'Please Select Domain Name'
+          Display_msg(message, 0);
+
+          return false
+        }
+
+        url = "{%  url 'proxy-download' %}";
+        var model = {
+            'domain_id': domainId,
+            'domain_name': domainName
+        }
+
+        $.ajax({
+          type: 'POST',
+          url: url,
+          data: model,
+          datatype: "json",
+          <!--contentType: false,-->
+          <!--processData: false,-->
+          beforeSend: function () {
+            $('.loader_div').show();
+          },
+          success: function (data) {
+            if (data.path == '') {
+              Display_msg(data.msg, 0);
+             return false;
+            }
+            else {
+              window.location.href = data.path;
+              Display_msg(data.msg, 1);
+              return false;
+            };
+          },
+            complete: function(data) {
+              $('.loader_div').hide();
+            },
+
+            error: function (e) {
+              message = 'Something went wrong please try after sometime !!!'
+              Display_msg(message, 0);
+              return false;
+
+            }
+          });
+      })
+    
+    $('#btnUnMapAndDelete').click(function(e){
+        if ($('#drpVendor').val()=='0')
+        {
+            Display_msg("Please select  any vendor name !!!", 0);
+            return false;
+        }
+      var vendor = $("#drpVendor option:selected").text();
+      var things = [];
+      $('#table_call').hide();
+          $.ajax({
+            type: 'POST',
+            url: '{% url "delete_proxies_by_vendor" %}',
+            data:{
+              "requestUnMapped": JSON.stringify(things),
+              "vendorName" : vendor
+            },
+            success: function (data) {
+              
+             if (data.flag == 0){
+              Display_msg(data.msg, 0);
+              return false;
+            }
+              else if (data.flag ==1){
+                Display_msg(data.msg, 1);
+                return false;
+              }
+              
+               
+               
+            },
+      
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+              }
+        });
+    
+    })
+  
+    $('#btnUnMapProxy').click(function(e){
+        if ($('#drpVendor').val()=='0')
+        {
+            Display_msg("Please select any vendor name !!!", 0);
+            return false;
+        }
+      var vendor = $("#drpVendor option:selected").text();
+      var things = [];
+      $('#table_call').hide();
+      var tabledata = $('#datavalidation1').dataTable();
+      jQuery(tabledata.fnGetNodes()).each(function (i, row) {
+          
+        var chk_bx_sel =  $(row).find("td:eq(1)").find('input:checkbox');
+        if ($(chk_bx_sel).prop('checked'))
+        {
+          var value =  $($(row).find("td:eq(0)").find('label')).attr('id');
+          id = value.split('_').pop()
+          things.push(id);
+        }
+        else if(things.length == 0) {
+          message = "Please Select Something to Un-Map";
+          Display_msg(message, 0);
+          return false;
+  
+        }
+       
+  });
+      
+        if(things.length != 0){
+  
+          $.ajax({
+            type: 'POST',
+            url: '{% url "unmapped_proxies_by_vendor" %}',
+            data:{
+              "requestUnMapped": JSON.stringify(things),
+              "vendorName" : vendor
+            },
+            success: function (data) {
+              Bind_grid_main1(data.domainName);
+             
+              
+              $('#table_call1').show();    
+               
+               Display_msg(data.msg, 1);
+               return false;
+            },
+      
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+              }
+        });
+    }
+    else{
+        Display_msg("Please select vendor name !!", 0);
+    }
+       
+    })
+  
+  
+  
+    $("#drpDomain1").change(function (e) {
+        var vendor = $(this).val()
+        $('#table_call1').hide();   
+        url = '{%  url "get_proxies" %}';
+        model = { "proxyId": vendor}
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: model,
+            datatype: "json",
+            success: function (data) {
+             Bind_grid_main(data.proxy);
+              $('#table_call').show();  
+            },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+              }
+        });
+      })   
+  
+      $("#drpVendor").change(function (e) {
+        var vendor = $("#drpVendor option:selected").text();
+        
+        
+        $('#table_call').hide();   
+        url = '{%  url "allMappedProxy" %}';
+        model = { "vendorName": vendor}
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: model,
+            datatype: "json",
+            success: function (data) {
+              Bind_grid_main1(data.domainName);
+             
+              
+              $('#table_call1').show();  
+              
+            },
+  
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+              }
+        });
+      })
+  
+      
+  
+  
+    function select_All() {
+     
+          var tabledata = $('#datavalidation').dataTable();
+          jQuery(tabledata.fnGetNodes()).each(function (i, row) {
+              var lbl_text =  $($(row).find("td:eq(2)").find('label')).text();
+              var chk_bx_sel =  $(row).find("td:eq(2)").find('input:checkbox');
+              if (lbl_text > 0){
+                $(chk_bx_sel).prop('checked',true);
+              }
+              else{
+                $(chk_bx_sel).prop('checked',false);
+              }
+        });
+    
+    }
+    function Bind_grid_main1(data) { 
+      var table = $("#datavalidation1").dataTable();
+      table.fnClearTable();
+      table.fnDraw();
+      table.fnDestroy();
+      var trHTML = '';
+      
+      $.each(data, function (i, item) {
+         
+        trHTML += '<tr id="trid_' + i + '" class = "bind">' +
+              
+          '<td><label id="DomainName_' + item.domain_id + '">' + item.domain_name + '</label></td>' +
+          
+          '<td><input class="select_checkbox" id="' + i + '"  type="checkbox"  ></td>' +
+         
+          
+          '</tr>';
+      });
+  
+      $('#tbl_tbody1').append(trHTML);
+      $('#datavalidation1').dataTable({
+          "sPaginationType": "full_numbers",
+          "bFilter": true,
+          "bInfo": false,
+          "aaSorting": [],
+          "bPaginate": true,
+          paging: true,
+      });
+  }
+   
+  
+      function Bind_grid_main(data) { 
+        var table = $("#datavalidation").dataTable();
+        table.fnClearTable();
+
+        table.fnDraw();
+        table.fnDestroy();
+        var trHTML = '';
+        
+        $.each(data, function (i, item) {
+           
+          trHTML += '<tr id="trid_' + i + '">' +
+           // '<td><input class="select_checkbox" id="' + item.id + '"  type="checkbox"  ></td>' + ' + item.unmapped_count + '
+           '<td><label id="VendorName_' + i + '">' + item.vendor_name + '</label></td>' +
+            '<td><label id="DomainName_' + i + '">' + item.vendor_count + '</label></td>' +
+            '<td><label style ="display:none" id="MappedCount_' + i + '">'+item.mapped_count+'</label>   <button data-toggle="tooltip" title="Click here to Un-Map Proxy" class="button mapped" onclick="return LoadRecord(event)" id="mapped_' + i + '"">'+item.mapped_count+'</button></td>' +
+            '<td><label style ="display:none" id="UnMappedCount_' + i + '">'+item.unmapped_count+'</label>    <button data-toggle="tooltip" title="Click here to Map Proxy" class="button unmapped" onclick="return LoadRecord1(event)" id="unmapped_' + i + '"">'+item.unmapped_count+'</button></td>' +
+            
+            '</tr>';
+        });
+  
+        $('#tbl_tbody').append(trHTML);
+        $('#datavalidation').dataTable({
+            "sPaginationType": "full_numbers",
+            "bFilter": true,
+            "bInfo": false,
+            "aaSorting": [],
+            "bPaginate": true,
+            paging: true,
+        });
+    }
+  
+  
+    function LoadRecord(e) {
+      drpid = $("#drpDomain1").val() 
+      things = []
+      var recordID = e.target.id.split('_').pop();
+      var mappedCount = document.getElementById('MappedCount_' + recordID).innerHTML;
+      if (mappedCount == 0){
+        $('#mapped_'+recordID).prop('disabled', true);
+        
+      }
+      else{
+      var vendorName = document.getElementById('VendorName_' + recordID).innerHTML;
+      things.push(vendorName)
+      
+      $.ajax({
+        type: 'POST',
+        url: '{% url "unmapped_proxies" %}',
+        data:{
+          "requestUnMapped": JSON.stringify(things),
+          "drpid" : drpid
+        },
+        success: function (data) {
+          Bind_grid_main(data.proxy);
+        
+           
+           $('#table_call').show();  
+           
+           Display_msg(data.msg, 1);
+           return false;
+        },
+  
+        error: function (xhr, errorType, exception) {
+            alert(exception)
+          }
+    });
+      }
+    }
+  
+    function LoadRecord1(e) {
+     
+      things = []
+      var recordID = e.target.id.split('_').pop();
+      var unMappedCount = document.getElementById('UnMappedCount_' + recordID).innerHTML;
+      if (unMappedCount == 0){
+        $('#mapped_'+recordID).prop('disabled', true);
+      return false;
+      }
+      else{
+      var vendorName = document.getElementById('VendorName_' + recordID).innerHTML;
+      things.push(vendorName)
+  
+  
+      $.ajax({
+        type: 'POST',
+        url: '{% url "mapped_proxies" %}',
+        data:{
+          "requestMapped": JSON.stringify(things)
+        },
+        success: function (data) {
+          Bind_grid_main(data.proxy);
+                  
+           $('#table_call').show();  
+           
+           $(".domain_btn_call").show();
+           Display_msg(data.msg, 1);
+           return false;
+           
+        },
+  
+        error: function (xhr, errorType, exception) {
+            alert(exception)
+          }
+    }); 
+      }
+    }
+  
+      //Data table Script
+      $('#multibatch_contaner').dataTable({
+          //"scrollX": true,
+          "sPaginationType": "full_numbers",
+          "bFilter": false,
+          "bInfo": false,
+          "bPaginate": true,
+          //"bLengthChange": false,
+          "bAutoWidth": false,
+          "scrollX": false,
+  
+  
+      });
+      
+    
+  
+  
+   ///Multiselct Dropdown
+  $('.multiselect_box').multiselect({
+      includeSelectAllOption: true,
+      buttonWidth: 250,
+      enableFiltering: true,
+      enableCaseInsensitiveFiltering: true
+  });
+  
+      
+  
+  
+  
+  
+   
+  
+       
+  </script> 
+
+{% endblock %}

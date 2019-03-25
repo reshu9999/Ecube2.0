@@ -1,0 +1,879 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="request_section clearfix">
+    <div class="row-eq-height">
+        <div class="col-sm-4 custom_gap">
+            <div class="box_view clearfix">
+                <div class="file_upload_tabs">
+                    <div class="main_heading clearfix">
+                        <h3 class="pull-left"> Request Profile </h3>
+                        <div class="pull-right">
+                            <a class="request_btn add_manually_btn active" href="javascript:void(0);"> Add Manually </a>
+                            <a class="request_btn excel_upload_btn" href="javascript:void(0);"> Excel Upload </a>
+                        </div>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="excelupload_view fade in">
+                            <div class="excelupload_heading">
+                                <h3> Excel Upload </h3>
+                                <a href="javascript:Void();"> Download template </a>
+                            </div>
+
+                            <div class="box_view clearfix">
+                                <div class="file_upload_tabs">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active icons schedule_batch_icon">
+                                            <a data-toggle="tab" href="#schedule_batch">Schedule Batch </a>
+                                        </li>
+                                        <li class="icons upload_batch_icon">
+                                            <a data-toggle="tab" href="#upload_batch"> Schedule &amp; Upload Batch </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="schedule_batch" class="tab-pane fade in active">
+                                            <div class="row">
+                                                <div class="">
+                                                    <div class="">
+                                                        <div class="form-group ">
+                                                            <span class="upload upload_file">
+                                                                <input type="file">
+                                                                <img src="../images/upload_file.png" alt="">
+                                                                <p>  Drag File to upload  </p>
+                                                                <span class="file_type"></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class=" ">
+                                                    <input type="button" name="" class="choose_file float_none"
+                                                           value="Upload File">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="upload_batch" class="tab-pane fade">
+                                            <div class="row">
+                                                <div class="">
+                                                    <div class="">
+                                                        <div class="form-group ">
+                                                            <span class="upload upload_file">
+                                                                <input type="file">
+                                                                <img src="../images/upload_file.png" alt="">
+                                                                <p> Drag File to upload </p>
+                                                                <span class="file_type"></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class=" ">
+                                                    <input type="button" name="" class="choose_file float_none"
+                                                           value="Upload File">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row manually_added">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Batch Name</label>
+                                    <input type="text" class="form-control" placeholder="Add Batch Name">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Batch Description</label>
+                                    <input type="text" class="form-control" placeholder="Add Batch Description">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="">
+                                <div class="col-md-6 batch_list_div">
+                                    <div class="form-group">
+                                        <label>Batch List</label>
+                                        <select class="form-control">
+                                            <option>Select Option</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="btn-block">PNF Auto Attempts</label>
+                                        <span class="counter">
+                                            <a id="minus1" href="javascript:void(0);" class="minus"> - </a>
+                                                <input id="qty1" type="text" value="1" class="qty"/>
+                                            <a id="add1" href="javascript:void(0);" class="plus"> + </a>
+                                        </span>
+                                        <span class="p_not_found">(Product Not Found)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Point of Sale</label>
+                                        <select class="form-control" id="pos_input">
+                                            <option value="--">Select Option</option>
+                                            <option value="BGI">Bulgaria</option>
+                                            <option value="IN">India</option>
+                                            <option value="US">USA</option>
+                                            <option value="UK">UK</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="btn-block">Adults</label>
+                                                <span class="counter">
+                                                    <a href="javascript:void(0);" class="minus"> - </a>
+                                                    <input id="adult_input" type="text" value="1" class="qty"/>
+                                                    <a href="javascript:void(0);" class="plus"> + </a>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group pull-right">
+                                                <label class="btn-block">Children</label>
+                                                <span class="counter">
+                                                    <a href="javascript:void(0);" class="minus"> - </a>
+                                                    <input id="children_input" type="text" value="0" class="qty"/>
+                                                    <a href="javascript:void(0);" class="plus"> + </a>
+												  </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="marT10">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label> City/Beach Group </label>
+                                        <label class="pull-right"> <a href="javascript:void(0);" data-toggle="modal"
+                                                                      data-target="#myModal">
+                                            Manage Group
+                                        </a></label>
+                                        <select class=" form-control">
+                                            <option value="1">Option 1</option>
+                                            <option value="2">Option 2</option>
+                                            <option value="3">Option 3</option>
+                                            <option value="4">Option 4</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group multi_select_contaner">
+                                        <label> Hotels from City/Beach </label>
+                                        <select class="multiselect_box form-control" multiple="multiple">
+                                            <option value="1">Option 1</option>
+                                            <option value="2">Option 2</option>
+                                            <option value="3">Option 3</option>
+                                            <option value="4">Option 4</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                            <option value="">Option 1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4 custom_gap">
+            <div class="box_view clearfix">
+                <div class="file_upload_tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active icons airport_icon"><a data-toggle="tab" href="#by_airport_code">
+                            By Airport codes only
+                        </a></li>
+                        <li class="icons country_icon"><a data-toggle="tab" href="#by_country_code">
+                            By Country/City/Airport code
+                        </a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="by_airport_code" class="tab-pane fade in active">
+                            <div class="fieldset_border">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4> Airport Code </h4>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>From</label>
+                                                <select class="form-control" id="from_airport_code_01_input">
+                                                    <option value="--">Select Option</option>
+                                                    <option value="BGI">Bulgaria</option>
+                                                    <option value="IN">India</option>
+                                                    <option value="US">USA</option>
+                                                    <option value="UK">UK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>To</label>
+                                                <select class="form-control" id="to_airport_code_01_input">
+                                                    <option value="--">Select Option</option>
+                                                    <option value="BGI">Bulgaria</option>
+                                                    <option value="IN">India</option>
+                                                    <option value="US">USA</option>
+                                                    <option value="UK">UK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="marT10">
+
+                                    <div class="col-md-6 padR0">
+                                        <div class="form-group">
+                                            <label>Scraping Option</label>
+                                            <div class="buttons_contaner clickable_action" id="crawl_mode_input">
+                                                <a data-crawl_mode="1" class="all_hotel scraping_btn" href="javascript:void()">All Hotel /
+                                                    City</a>
+                                                <a data-crawl_mode="2" class="specific_hotel scraping_btn" href="javascript:void()">Specific
+                                                    Hotel</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 specific_hotel_show" style="display: none;">
+                                        <div class="form-group ">
+                            <span class="upload upload_file">
+                            <input type="file">
+                            <img src="../images/upload_file.png" alt="">
+                            <p>  Upload File   </p>
+                            <span class="file_type"></span> </span></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="marT10">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group multi_select_contaner">
+                                            <label>Hotel</label>
+                                            <select class="multiselect_box form-control" multiple="multiple"
+                                                    id="hotel_input">
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                                <option value="4">Option 4</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group multi_select_contaner">
+                                            <label>Room Type</label>
+                                            <select class="multiselect_box form-control" multiple="multiple"
+                                                    id="room_type_input">
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                                <option value="4">Option 4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="marT10">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group multi_select_contaner">
+                                            <label>Board Type</label>
+                                            <select class="multiselect_box form-control" multiple="multiple"
+                                                    id="board_type_input">
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                                <option value="4">Option 4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group multi_select_contaner">
+                                            <label>Star Rating</label>
+                                            <select class="multiselect_box form-control" multiple="multiple"
+                                                    id="star_rating_input">
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                                <option value="4">Option 4</option>
+                                                <option value="5">Option 5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="by_country_code" class="tab-pane fade">
+                            <div class="fieldset_border">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4>Country </h4>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>From</label>
+                                                <select class="form-control" id="from_country_input">
+                                                    <option value="--">Select Option</option>
+                                                    <option value="BGI">Bulgaria</option>
+                                                    <option value="IN">India</option>
+                                                    <option value="US">USA</option>
+                                                    <option value="UK">UK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>To</label>
+                                                <select class="form-control" id="to_country_input">
+                                                    <option value="--">Select Option</option>
+                                                    <option value="BGI">Bulgaria</option>
+                                                    <option value="IN">India</option>
+                                                    <option value="US">USA</option>
+                                                    <option value="UK">UK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="fieldset_border">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4> City </h4>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>From</label>
+                                                <select class="form-control">
+                                                    <option>Select Option</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>To</label>
+                                                <select class="form-control">
+                                                    <option>Select Option</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="fieldset_border">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4> Airport </h4>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>From</label>
+                                                <select class="form-control" id="from_airport_code_02_input">
+                                                    <option value="--">Select Option</option>
+                                                    <option value="BGI">Bulgaria</option>
+                                                    <option value="IN">India</option>
+                                                    <option value="US">USA</option>
+                                                    <option value="UK">UK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>To</label>
+                                                <select class="form-control" id="to_airport_code_02_input">
+                                                    <option value="--">Select Option</option>
+                                                    <option value="BGI">Bulgaria</option>
+                                                    <option value="IN">India</option>
+                                                    <option value="US">USA</option>
+                                                    <option value="UK">UK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4 custom_gap">
+            <div class="box_view clearfix">
+                <div class="file_upload_tabs">
+                    <ul class="nav nav-tabs custom_tab">
+                        <li class="active icons date_range_icon"><a data-toggle="tab" href="#date_range"> Date <br>
+                            Range </a></li>
+                        <li class="icons advance_days_icon"><a data-toggle="tab" href="#advance_days"> Advance <br> Days
+                        </a></li>
+                        <li class="icons check_in_icon"><a data-toggle="tab" href="#check_in"> Multiple <br> Check-In
+                            Dates </a></li>
+                        <li class="icons advance_weeks_icon"><a data-toggle="tab" href="#advance_weeks"> Advance <br>
+                            Weeks </a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="date_range" class="tab-pane fade in active">
+
+
+                            <div class="row">
+                                <div class="marT10">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group multi_select_contaner">
+                                            <label>Select Suppliers </label>
+                                            <select class="multiselect_box form-control" multiple="multiple">
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                                <option value="4">Option 4</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="marT10">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label> From </label>
+                                            <input type="text" class="form-control   dates_control"
+                                                   placeholder="DD/MM/YY">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label> To </label>
+                                            <input type="text" class="form-control dates_control"
+                                                   placeholder="DD/MM/YY">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="fieldset_border">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4>Week Days </h4>
+                                        <div class="col-md-12">
+                                            <div class="clickable_action week_days_div">
+                                                <a class="active_day days_btn" href="javascript:void(0);"> Monday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Tuesday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Wednesday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Thursday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Friday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Saturday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Sunday </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="fieldset_border no_of_days">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4> Number of days</h4>
+                                        <div class="col-md-12">
+                                            <div class="clickable_action" id="no_of_nights_01_input">
+                                                {% for i in "123456" %}
+                                                <a data-no_of_nights="{{ i }}" class="count_days" href="javascript:void(0);"> {{ i }} </a>
+                                                {% endfor %}
+                                                <a class="add_event" href="javascript:void(0);"> + Add </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div id="advance_days" class="tab-pane fade">
+                            <div class="row">
+                                <div class="marT10">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group multi_select_contaner">
+                                            <label> Select Suppliers</label>
+                                            <select class="multiselect_box form-control" multiple="multiple">
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                                <option value="4">Option 4</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="fieldset_border advance_day">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4>Advance Days </h4>
+                                        <div class="col-md-12">
+                                            <div class="clickable_action">
+                                                <a class="active_day days_btn" href="javascript:void(0);"> +1 days </a>
+                                                <a class="active_day days_btn" href="javascript:void(0);"> +3 days </a>
+                                                <a class="days_btn" href="javascript:void(0);"> +14 days </a>
+                                                <a class="days_btn" href="javascript:void(0);"> +16 days </a>
+                                                <a class="days_btn" href="javascript:void(0);"> +21 days </a>
+                                                <a class="days_btn" href="javascript:void(0);"> +28 days </a>
+                                                <a class="days_btn" href="javascript:void(0);"> +60 days </a>
+                                                <a class="days_btn" href="javascript:void(0);"> +120 days </a>
+                                                <a href="javascript:void(0);"> + Add </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="fieldset_border no_of_days">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4> Number of days</h4>
+                                        <div class="col-md-12">
+                                            <div class="clickable_action" id="no_of_nights_02_input">
+                                                {% for i in "123456" %}
+                                                <a data-no_of_nights="{{ i }}" class="count_days" href="javascript:void(0);"> {{ i }} </a>
+                                                {% endfor %}
+                                                <a class="add_event" href="javascript:void(0);"> + Add </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div id="check_in" class="tab-pane fade">
+                            <div class="row">
+                                <div class="marT10">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group multi_select_contaner">
+                                            <label>Select Suppliers </label>
+                                            <select class="multiselect_box form-control" multiple="multiple">
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                                <option value="4">Option 4</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="fieldset_border start_date">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4>Start Date </h4>
+                                        <div class="col-md-12">
+                                            <div class="clickable_action">
+                                                <a class="active_day" href="javascript:void(0);"> 03/04/2018 </a>
+                                                <a class="active_day" href="javascript:void(0);"> 05/04/2018 </a>
+                                                <a href="javascript:void(0);"> Select Date </a>
+                                                <a href="javascript:void(0);"> + Add </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="fieldset_border no_of_days">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4> Number of days</h4>
+                                        <div class="col-md-12">
+                                            <div class="clickable_action" id="no_of_nights_03_input">
+                                                {% for i in "123456" %}
+                                                <a data-no_of_nights="{{ i }}" class="count_days" href="javascript:void(0);"> {{ i }} </a>
+                                                {% endfor %}
+                                                <a class="add_event" href="javascript:void(0);"> + Add </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div id="advance_weeks" class="tab-pane fade">
+                            <div class="row">
+                                <div class="marT10">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group multi_select_contaner">
+                                            <label>Select Suppliers</label>
+                                            <select class="multiselect_box form-control" multiple="multiple">
+                                                <option value="1">Option 1</option>
+                                                <option value="2">Option 2</option>
+                                                <option value="3">Option 3</option>
+                                                <option value="4">Option 4</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                                <option value="">Option 1</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="fieldset_border advance_week">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4>Advance Weeks </h4>
+                                        <div class="col-md-12">
+                                            <div class="clickable_action">
+                                                <a class="active_day days_btn" href="javascript:void(0);"> +1 Week </a>
+                                                <a class="active_day days_btn" href="javascript:void(0);"> +2 Week </a>
+                                                <a class="days_btn" href="javascript:void(0);"> +4 Week </a>
+                                                <a href="javascript:void(0);"> + Add </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="fieldset_border">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4>Week Days </h4>
+                                        <div class="col-md-12">
+                                            <div class="clickable_action">
+                                                <a class="active_day days_btn" href="javascript:void(0);"> Monday </a>
+                                                <a class="active_day days_btn" href="javascript:void(0);"> Tuesday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Wednesday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Thursday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Friday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Saturday </a>
+                                                <a class="days_btn" href="javascript:void(0);"> Sunday </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="fieldset_border no_of_days">
+                                <div class="row">
+                                    <div class="fieldset_body">
+                                        <h4> Number of days</h4>
+                                        <div class="col-md-12">
+                                            <div class="clickable_action" id="no_of_nights_04_input">
+                                                {% for i in "123456" %}
+                                                <a data-no_of_nights="{{ i }}" class="count_days" href="javascript:void(0);"> {{ i }} </a>
+                                                {% endfor %}
+                                                <a class="add_event" href="javascript:void(0);"> + Add </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12 marT10 col-sm-12 text-center">
+        <input type="button" name="" class="previous_action_button float_none" value="Reset">
+        <input type="button" name="" class="save_request_button float_none" value="Save Request">
+    </div>
+
+</section>
+
+<section class="pos_section clearfix">
+
+    {% for data in data_list %}
+    <div class="pos_content">
+
+        {% if forloop.counter0 == 0 %}
+        {% include 'hotel/components/short_view.html' with data=data opened=True %}
+        {% else %}
+        {% include 'hotel/components/short_view.html' with data=data %}
+        {% endif %}
+
+    </div>
+    {% endfor %}
+
+    {% for data in hidden_data_list %}
+    <div class="pos_content show_more_data">
+
+        {% if forloop.counter0 == 0 %}
+        {% include 'hotel/components/short_view.html' with data=data opened=True %}
+        {% else %}
+        {% include 'hotel/components/short_view.html' with data=data %}
+        {% endif %}
+
+    </div>
+    {% endfor %}
+
+    <br clear="all"/>
+    <div class="marT50"></div>
+    <button class="view_more"> + Show More</button>
+</section>
+{% endblock %}
+
+{% block footer %}
+<script src="{% static 'hotel/js/app/create_request.js' %}" type="text/javascript"></script>
+<script>
+    sub_request_json = JSON.parse("{{json_string|escapejs}}")
+</script>
+{% endblock %}

@@ -1,0 +1,693 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+
+{% block header %}
+
+<style>
+    .custom_request .header_popup {
+        position: relative;
+        top:40px;
+    }
+.custom_request .header_popup h4{ font-size:initial; line-height:23px;}
+.header_popup h4 strong {
+    display: inline-block;
+    padding: 0 20px;
+    border-left: 1px solid #ddd;
+    color: #666;
+    font-size: 12px;
+}
+.header_popup h4 strong:first-child { border: none;}
+.header_popup h4 strong span{ 
+    font-size: 20px;
+ }
+ div#popup_table_2_wrapper {
+    margin-top: 20px;
+    border-top: 1px solid #bbb;
+    padding: 24px 0;
+}
+.row_Sel_table tr {
+    opacity: .5;
+}
+tr.row_Sel {
+    opacity:1;
+}
+
+.action_items_contaner span.active_visible {
+    background-size: 14px;
+    opacity: .5;
+    pointer-events: none;
+}
+    
+    .action_items_contaner .action_items:hover, .action_items_contaner span.active_visible:hover {
+      background-size:18px!important;
+    }
+    .action_items_contaner.active {
+        display: block;
+        right: -47px;
+        visibility: visible;
+        opacity: 1;
+
+    }
+    .action_items_contaner1:hover  .action_items_contaner {
+      visibility: visible;
+      opacity: 1;
+      display:block;
+    }
+    a.filter_date {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    transition: .3s;
+    background: #a267c8;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    padding: 6px 15px!important;
+    font-size: 12px;
+    letter-spacing: .5px;
+    margin-left: 16px;
+    position: relative;
+    z-index: 9;
+    height: 30px;
+
+   }
+
+	a.filter_date:hover {
+    background: #52abff;
+}
+
+.master_modal .modal-content { border-radius: 4px;  border: none; box-shadow: 0 2px 18px rgba(0,0,0,.2);}
+.master_modal .modal-footer .btn-default { border-radius: 30px;  padding: 4px 19px; background: #f5f5f5;}
+.master_modal {text-align: center; padding: 0!important;}
+.master_modal:before { content: ''; display: inline-block;  height: 100%;  vertical-align: middle;  margin-right: -4px;}
+.master_modal .modal-dialog { display: inline-block; text-align: left; vertical-align: middle;}
+.master_modal .modal-header{ padding: 15px 20px;}
+.master_modal label { margin: 5px 0; font-weight: normal;}
+.modal-open .ui-timepicker-div dl dt {   font-weight: normal!important;  font-size: 14px!important;}
+.master_modal .modal-footer { text-align: center;}
+.master_modal .modal-footer .btn-default{ border-radius:30px; padding:5px 19px; width:100px; background:#a267c8!important; border:1px solid #a267c8!important; color:#fff;}
+.master_modal .modal-dialog button.close {  position: absolute;  right: 17px;  top: 14px;  opacity: .9;  background: #f5f5f5;  border: 1px solid #9e9a9a; transition: .5s; text-shadow: none;  height: 30px;  width: 30px; border-radius: 50px;  padding: 0;  line-height: 0; font-size: 16px;}
+
+.master_modal .modal-dialog button.close:hover{   border: 1px solid #900; color: #900;}
+table.dataTable thead th.remove_sorting {
+background:transparent!important;
+padding:3px 10px!important;
+}
+.master_modal .modal-footer .mb{
+border-radius:5px!important; margin:0 10px;
+}
+
+
+button.btn.btn-default.mb.grey_bg {
+    background: #999!important;
+    border: 1px solid #999!important;
+}
+</style>
+
+{% endblock %}
+{% block content %}
+<section class="body_contaner no_sidebar">
+  <div class="container_content">
+    <div class="inner_content_contaner">
+      <div class="clearfix"></div>
+
+            <!-- Modal content--> 
+                <div class="custom_request">
+                    <div class="col-md-12">
+                        <div class="header_popup">
+                            <h4 class="">
+                                <strong>Request Number:
+                                    <span id="spn_req_id"></span>
+                                </strong>
+                                <strong>Request Name:
+                                    <span id="spn_req_name"></span>
+                                </strong>
+                                <strong>
+                        <a href="javascript:void(0);" class="filter_date" data-toggle="modal" data-target="#calendar_div"  data-backdrop="static">Apply Filters</a>
+                 </strong>
+
+                            </h4>
+                        </div>
+                        <!--<div class="header_popup">-->
+                            <!--<button style="background:blue" type="button">Apply Filters</button>-->
+                        <!--</div>-->
+                        <div class="col-md-12">
+                            <div class="table-responsive custom_responsive_table">
+                                <!--<table cellpadding="0" cellspacing="0" border="0" class="dataTable custom_table display nowrap" id="example">-->
+                                <table id="popup_table" class="display nowrap custom_table" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr class="row_contaner">
+ <th width="15%" class="remove_sorting">
+
+
+									<input type="checkbox" id="chk_sel" onchange="Selct_All_lbl();">
+
+
+
+</th>
+                                            <th width="15%">Competitor Name</th>
+                                            <th width="15%">Country</th>
+                                            <th width="15%">City</th>
+                                            <th width="15%">POS</th>
+                                            <th width="15%">Check in Date</th>
+                                            <th width="15%">Nights</th>
+                                            <th width="15%">Adult</th>
+                                            <th width="15%">Child</th>
+                                            <th width="15%">Hotel Name</th>
+                                            <th width="15%">Status</th>
+                                            <th width="15%">Action</th>
+                                            <th width="15%"> </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbpdy_modelBody">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+<div class="clearfix"> &nbsp; </div>
+  <div class="col-md-12 marT10 col-sm-12 text-center clearfix" >
+        <input type="button" name="" id="btnResett" onclick="reCrawlSelected()" class="save_request_button float_none" value="Re-Crawl" style="margin-right:10px;">
+        <input type="button" name="" id="btnSaveRequest" onclick="reParseSelected()" class="save_request_button float_none" value="Re-Parse">
+
+    </div>
+
+
+
+                        <div class="col-md-12" id="div_2" style="display: none;">
+                            <div class="table-responsive custom_responsive_table">
+                                <!--<table cellpadding="0" cellspacing="0" border="0" class="dataTable custom_table display nowrap" id="example">-->
+                                <table id="popup_table_2" class="display nowrap custom_table" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr class="row_contaner">
+
+                                            <th width="15%">Hotel Name</th>
+                                            <th width="15%">Hotel Index</th>
+                                            <th width="15%">Star</th>
+                                            <th width="15%">Room Type</th>
+                                            <th width="15%">Board Type</th>
+                                            <th width="15%">Price</th>
+                                            <th width="15%">Currency  </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbpdy_modelBody_2">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+       
+        <input type="hidden" id="hdn_req_id" name="req" value="">
+  
+      </div>
+    </div>
+    <div class="clearfix"></div>
+
+
+</section>
+
+<div class="modal fade master_modal" id="calendar_div" role="dialog">
+    <div class="modal-dialog  modal-sm ">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Filter Date</h4>
+        </div>
+
+        <div class="modal-body clearfix">
+            <input type="hidden" id="id_req_run" name="req_run" value="">
+            <input type="hidden" id="id_status" name="status" value="">
+
+              <div id="select_supplier1"  >
+                                    <div class="form-group multi_select_contaner required">
+                                        <label>Select Suppliers </label>
+                                        <select id="drpsuppliers" class="multiselect_box form-control"
+                                                multiple="multiple">
+
+                                            {% for comp in competitors %}
+
+                                            <option value={{ comp.id }}>{{ comp.name }}</option>
+
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                  </div>
+
+          <div class="form-group">
+               <label>Enter Check-in Dates (Multiple comma separated)</label>
+               <input type="text" id="check-in-dates" class="form-control" placeholder="yyyy/mm/dd" style="width: 100%;">
+          </div>
+        </div>
+        <div class="modal-footer clearfix text-center">
+          <button type="button" class="btn btn-default mb"  onclick="filter_data()"> Apply </button>
+            <button type="button" class="btn btn-default mb grey_bg"  onclick="clear_data()"> Clear </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+{% block footer %}
+
+<script>
+    File_download_excel_req_man = "{% url 'File_download_excel_req_man' %}"
+    Pnf_Recrwal = "{% url 'Pnf_Recrwal' %}"
+    Bind_modal = "{% url 'Bind_modal' %}"
+    Bind_Second_modal = "{% url 'Bind_Second_modal' %}"
+    File_download_excel_req_man_mongo  = "{% url 'File_download_excel_req_man_mongo' %}"
+    Sub_Recrwal = "{% url 'Sub_Recrwal' %}"
+    Recrwal = "{% url 'Recrwal' %}"
+</script>
+<script src="/static/hotel/js/custom.js"></script> 
+<script src="/static/hotel/js/moment.js"></script> 
+<script src="{% static 'hotel/js/app/crawlerops.js' %}"></script>
+<script src="{% static 'hotel/js/app/request_management.js' %}"></script>
+<script>
+$('.datepick').datepicker({});
+$(document).ready(function() {
+ $('.multiselect_box').multiselect({
+    includeSelectAllOption: true,
+    buttonWidth: 250,
+    enableFiltering: true,
+    enableCaseInsensitiveFiltering: true
+
+  });
+  $('.multiselect_box').perfectScrollbar();
+  $('ul.multiselect-container.dropdown-menu').perfectScrollbar();
+
+
+
+	var req_runid = getUrlVars()["req_runid"];
+    var req_id = getUrlVars()["req_id"];
+    var req_name = getUrlVars()["req_name"];
+    var status = getUrlVars()["status"];
+    $("#id_req_run").val(req_runid);
+    $("#id_status").val(status);
+    $("#hdn_req_id").val(req_id);
+    geturl(req_runid,req_id,req_name,status)
+});
+
+function filter_data(){
+    var status = $("#id_status").val();
+    var request_id =$("#hdn_req_id").val();
+    var req_runid = $("#id_req_run").val();
+    var suppliers = $("#drpsuppliers").val();
+    var check_in_dates = $("#check-in-dates").val();
+
+    if (check_in_dates != ''){
+        var dates = check_in_dates.split(",");
+        for (i=0;i<dates.length;i++){
+            if (! moment(dates[i], "YYYY/MM/DD", true).isValid()){
+                alert("You have entered invalid check in date.");
+                return false;
+            }
+        }
+    }
+
+    var model = { id: req_runid, suppliers: suppliers, check_in_dates: check_in_dates};
+        $.ajax({
+            url: "{% url 'Bind_modal' %}",
+            type: 'POST',
+            data: model,
+            dataType: 'json',
+            success: function (data) {
+                if (data.path != '') {
+                    Set_Data_sel_grid(data.Req_man, req_runid, request_id, status);
+                    $("#calendar_div").modal('hide');
+                }
+                else
+                {
+                    alert(data.msg)
+                }
+            },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+}
+
+function clear_data(){
+    var suppliers = $("#drpsuppliers").val('');
+    $('.multiselect_box').multiselect('deselectAll', true);
+    $('.multiselect_box').multiselect('updateButtonText');
+    var check_in_dates = $("#check-in-dates").val('');
+}
+
+function Download_psfail_file(field_id, field_type) {
+
+        var model = { field_id: field_id, field_type: field_type };
+        $.ajax({
+            url: "{% url 'download_psfail_excel' %}",
+            type: 'POST',
+            data: model,
+            dataType: 'json',
+            beforeSend: function(){
+                  $('.loader_div').show();
+                },
+            success: function (data) {
+                if (data.path != '') {
+                    window.location.href = data.path;
+                }
+                else
+                {
+                    alert(data.msg)
+                }
+            },
+            complete:function(data){
+                    $('.loader_div').hide();
+              },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+    }
+
+    function Download_pnf_file(field_id, field_type) {
+
+        var model = { field_id: field_id, field_type: field_type };
+        $.ajax({
+            url: "{% url 'download_pnf_excel' %}",
+            type: 'POST',
+            data: model,
+            dataType: 'json',
+            beforeSend: function(){
+                  $('.loader_div').show();
+                },
+            success: function (data) {
+                if (data.path != '') {
+                    window.location.href = data.path;
+                }
+                else
+                {
+                    alert(data.msg)
+                }
+            },
+            complete:function(data){
+                    $('.loader_div').hide();
+              },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+    }
+
+function get_competitors(field_id, field_type) {
+
+        var model = { field_id: field_id, field_type: field_type };
+        $.ajax({
+            url: "{% url 'download_psfail_excel' %}",
+            type: 'POST',
+            data: model,
+            dataType: 'json',
+            beforeSend: function(){
+                  $('.loader_div').show();
+                },
+            success: function (data) {
+                if (data.path != '') {
+                    window.location.href = data.path;
+                }
+                else
+                {
+                    alert(data.msg)
+                }
+            },
+            complete:function(data){
+                    $('.loader_div').hide();
+              },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+    }
+	
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+    function geturl(req_runid, req_id, req_name, status) {
+        var model = { id: req_runid };
+        $.ajax({
+            url: Bind_modal,
+            type: 'POST',
+            data: model,
+            dataType: 'json',
+            success: function (data) {
+             
+                $('#div_2').hide();
+                $('#spn_req_id').text('');
+                $('#spn_req_id').text(req_id);
+                $('#spn_req_name').text('');
+                $('#spn_req_name').text(req_name);
+                Set_Data_sel_grid(data.Req_man, req_runid, req_id, status);
+            },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+    }
+
+    
+    function Set_Data_sel_grid(data, req_runid, req_id, status) {
+        var table = $("#popup_table").dataTable();
+        table.fnClearTable();
+        table.fnDraw();
+        table.fnDestroy();
+        var trHTML = '';
+        var css = 'reparse_job action_items active_visible';
+        if (status.toLowerCase() == "completed") {
+            css = 'reparse_job action_items';
+        }
+        var css_reparse = 'recrawl_job action_items active_visible';
+        if (status.toLowerCase() == "completed") {
+            css_reparse = 'recrawl_job action_items';
+        }
+        $.each(data, function (i, item) {
+            if (item[10] == 'PNF'){
+                div_status = '  <td width="15%"><a href="javascript:void(0);" onclick="Download_pnf_file('+item[0]+','+'2'+')">'+item[10]+'</a></td>';
+            }else if (item[10] == 'ParsingError'){
+                div_status = '  <td width="15%"><a href="javascript:void(0);" onclick="Download_psfail_file('+item[0]+','+'2'+')">'+item[10]+'</a></td>';
+            }else{
+                div_status = '  <td width="15%">' + item[10] + '</td>'
+            }
+
+            trHTML += '<tr class="row_contaner" id="tr_' + item[0] + '">' +
+                '<td> <input id="tbl_main_grp_chk_' + item[0] + '" type="checkbox"  value=' + item[0] + ' >' + '</td>' +
+                '  <td width="15%">' + item[1] + '</td>' +
+                '  <td width="15%">' + item[2] + '</td>' +
+                '  <td width="15%">' + item[3] + '</td>' +
+                '  <td width="15%">' + item[4] + '</td>' +
+                '  <td width="15%">' + item[5] + '</td>' +
+                '  <td width="15%">' + item[6] + '</td>' +
+                '  <td width="15%">' + item[7] + '</td>' +
+                '  <td width="15%">' + item[8] + '</td>' +
+                '  <td width="15%">' + item[9] + '</td>' +
+                div_status +
+                '  <td width="15%"> <div class="action_items_contaner" style="display:inline-block; width:75px!important;"> <span class="' + css + '"   data-toggle="tooltip" title="Reparse" onclick="ClickReparse_by_popup(' + item[0] + ', ' + item[11] + ')"></span> <span  class="' + css_reparse + '" data-toggle="tooltip" title="Recrawl" onclick="ClickRecrawl_by_popup(' + item[0] + ')"></span></div>   </td>' +
+                '  <td width="15%"><a href="javascript:void(0)" id ="a_' + item[0] + '"  onclick ="view_data(' + item[0] + ')" >View Data</a></td>' +
+                '  </tr>'
+        });
+        $('#tbpdy_modelBody').append(trHTML);
+        $('#popup_table').dataTable({
+            "sPaginationType": "full_numbers",
+            "bFilter": true,
+            "bLengthChange": false,
+            "bInfo": false,
+            "bPaginate": true,
+            paging: true,
+        });
+    }
+
+    function view_data(id) {
+		$('#tbpdy_modelBody tr').removeClass("row_Sel");
+		 $('#tr_'+id).addClass('row_Sel');
+		$('#popup_table').addClass('row_Sel_table');
+        if (getUrlVars()["req_runid"] != undefined && getUrlVars()["req_runid"] != '') {
+            var model = { id: id, sec_id: getUrlVars()["req_runid"] };
+            $.ajax({
+                url: Bind_Second_modal,
+                type: 'POST',
+                data: model,
+                dataType: 'json',
+                success: function (data) {
+                    $('#div_2').show();
+                    Set_Data_sel_grid_2(data.Req_man);
+                },
+                error: function (xhr, errorType, exception) {
+                    alert(exception)
+                }
+            });
+        }
+        else {
+            alert("Error on server !!!");
+        }
+    }
+
+    function Set_Data_sel_grid_2(data) {
+        var table = $("#popup_table_2").dataTable();
+        table.fnClearTable();
+        table.fnDraw();
+        table.fnDestroy();
+        var trHTML = '';
+        $.each(data, function (i, item) {
+            trHTML += '<tr class="row_contaner">' +
+                '  <td width="15%">' + item[0] + '</td>' +
+                '  <td width="15%">' + item[1] + '</td>' +
+                '  <td width="15%">' + item[2] + '</td>' +
+                '  <td width="15%">' + item[3] + '</td>' +
+                '  <td width="15%">' + item[4] + '</td>' +
+                '  <td width="15%">' + item[5] + '</td>' +
+                '  <td width="15%">' + item[6] + '</td>' +
+                '  </tr>'
+        });
+        $('#tbpdy_modelBody_2').append(trHTML);
+        $('#popup_table_2').dataTable({
+            "sPaginationType": "full_numbers",
+            "bFilter": true,
+            "bLengthChange": false,
+            "bInfo": false,
+            "bPaginate": true,
+            paging: true,
+        });
+    }
+
+    function Selct_All_lbl() {
+        if ($('#chk_sel').prop('checked')) {
+            debugger;
+            var chk_item = $('#tbpdy_modelBody').find("input:checkbox");
+            $(chk_item).each(function (index, item) {
+                if ($(item).is(':visible')) {
+                    $(item).prop('checked', true);
+                }
+            });
+
+        }
+        else {
+            var chk_item = $('#tbpdy_modelBody').find("input:checkbox");
+            $(chk_item).each(function (index, item) {
+                if ($(item).is(':visible')) {
+                    $(item).prop('checked', false);
+                }
+
+            });
+        }
+        $('#span_total_count_hotel').text($('#tbpdy_modelBody').find("input:checkbox:checked").length)
+    <!---->
+        <!--var chk_item = $('#tbody_save_table').find("input:checkbox:checked");-->
+        <!--$(chk_item).each(function (index, item) {-->
+            <!--var tr = $('#tr_main_' + $(item).attr('id').replace('tbl_main_grp_chk_', ''));-->
+            <!--$('#tbl_main_grp').prepend(tr);-->
+        <!--});-->
+    }
+
+    function getAllSelected(){
+        var chk_item = $('#tbpdy_modelBody').find("input:checkbox:checked");
+        var sub_requests = "";
+        $(chk_item).each(function (index, item) {
+            if (index == 0){
+                sub_requests = item.value;
+            }else{
+                sub_requests = sub_requests + ", " + item.value;
+            }
+        });
+        return sub_requests
+    }
+
+    function reParseSelected(){
+
+        var sub_request_ids = getAllSelected();
+
+        var req_run_id = $('#id_req_run').val();
+        reparse_selected_sub_request(req_run_id, sub_request_ids[i]);
+
+        window.location.href = window.location.href;
+    }
+
+    function reCrawlSelected(){
+        var sub_request_ids = getAllSelected();
+
+        var req_run_id = $('#id_req_run').val()
+        for (i=0;i<sub_request_ids.length;i++){
+            var model = { requId:  $('#spn_req_id').text().trim(), req_run_id: req_run_id ,sub_id:sub_request_ids[i] };
+            $.ajax({
+                url: Sub_Recrwal,
+                type: 'POST',
+                data: model,
+                dataType: 'json',
+                success: function (data) {
+                    alert(data.Req_man);
+                },
+                error: function (xhr, errorType, exception) {
+                    alert(exception)
+                }
+            });
+        }
+        window.location.href = window.location.href;
+    }
+
+
+function ClickReparse_by_popup(sub_id, req_run_id) {
+
+if (confirm('Do you want to reparse  req id = ' + sub_id + '?')) {
+    if (req_run_id != undefined && req_run_id != '') {
+        // alert('reparsed  for req id =' + $('#spn_req_id').text().trim() + ' and req run id =' + getUrlVars()["req_runid"] + ' and sub id =' + sub_id);
+        reparse_sub_request(req_run_id, sub_id);
+    }
+}
+}
+
+
+function ClickRecrawl_by_popup(sub_id) {
+
+if (confirm('Do you want to recrawl  req id = ' + sub_id + '?')) {
+    if (sub_id != undefined && sub_id != '') {
+        // alert('reparsed  for req id =' + $('#spn_req_id').text().trim() + ' and req run id =' + getUrlVars()["req_runid"] + ' and sub id =' + sub_id);
+        recrawl_sub_request(sub_id);
+    }
+}
+}
+
+
+    <!--function ClickRecrawl_by_popup(sub_id) {-->
+
+<!--if (confirm('Do you want to recrawl  req id = ' + sub_id + '?')) {-->
+    <!--if (getUrlVars()["req_runid"] != undefined && getUrlVars()["req_runid"] != '') {-->
+        <!--alert('recrawl  for req id =' + $('#spn_req_id').text().trim() + ' and req run id =' + getUrlVars()["req_runid"] + ' and sub id =' + sub_id);-->
+        <!--var model = { requId:  $('#spn_req_id').text().trim(), req_run_id: getUrlVars()["req_runid"] ,sub_id:sub_id };-->
+        <!--$.ajax({-->
+            <!--url: Sub_Recrwal,-->
+            <!--type: 'POST',-->
+            <!--data: model,-->
+            <!--dataType: 'json',-->
+            <!--success: function (data) {-->
+                <!--alert(data.Req_man);-->
+                <!--window.location.href = window.location.href;-->
+            <!--},-->
+            <!--error: function (xhr, errorType, exception) {-->
+                <!--alert(exception)-->
+            <!--}-->
+        <!--});-->
+    <!--}-->
+<!--}-->
+<!--}-->
+
+
+
+
+
+</script>
+{% endblock %}

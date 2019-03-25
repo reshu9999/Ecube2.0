@@ -1,0 +1,266 @@
+{% extends 'hotel/base.html' %}
+{% block header %}
+    <style>
+    ul.multiselect-container.dropdown-menu.active { display: block; }
+    </style>
+    <link rel="stylesheet" href="/static/hotel/css/responsive.css"/>
+{% endblock %}
+{% block content %}
+    <section class="body_contaner no_sidebar">
+        <div class="container_content">
+            <div class="inner_content_contaner">
+                <div class="clearfix"></div>
+                <div class="white_bg marT30 multibatch_download common_div  clearfix">
+                    <div class="col-md-12">
+                        <h3 class="slide_heading border_heading excel_match_icon">Excel / Ematch Matching</h3>
+                    </div>
+                    <div class="marT70 clearfix">
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <div class="form-group multi_select_contaner">
+                                    <label for="cpw">Primary Supplier</label>
+                                    <span class="suplier_heading"> Hotelopia </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-8">
+                                <div class="form-group radio_selection" id="divradio_btn">
+                                    <label for="match_type">Select Match Type</label>
+                                    <div class="radio radio-primary radio-inline pull-left">
+                                        <input id="exact_match" type="radio" value="1" name="matchtype" checked>
+                                        <label for="exact_match">Exact Match </label>
+                                    </div>
+                                    <div class="radio radio-primary radio-inline pull-left">
+                                        <input id="probable_match" type="radio" value="1" name="matchtype">
+                                        <label for="probable_match">Probable Match </label>
+                                    </div>
+                                    <div class="radio radio-primary radio-inline pull-left">
+                                        <input id="unmatch_data" type="radio" value="1" name="matchtype">
+                                        <label for="unmatch_data"> Unmatch Data </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="marT10">
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="form-group multi_select_contaner required">
+                                            <label for="suppliers">Suppliers</label>
+                                            <!--<select class="multiselect_box form-control" multiple="multiple"-->
+                                                    <!--id="drpCompt" onchange="bind_City_name_sup();">-->
+                                            <!--</select>-->
+                                            <select class="multiselect_box form-control" multiple="multiple"
+                                                    id="drpCompt">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="form-group multi_select_contaner required">
+                                            <label for="country">Country</label>
+                                            <select class="multiselect_box form-control" id="drp_country"
+                                                    onchange="bind_City_name_sup();">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <div class="form-group multi_select_contaner required">
+                                            <label for="city">City</label>
+                                            <select class="multiselect_box form-control" multiple="multiple"
+                                                    id="drp_cities">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-6  ">
+                                <div class="custom_btn marT10">
+                                    <div> &nbsp;</div>
+                                    <button class="btn btn_reset" onclick="reset();"> Reset</button>
+
+                                    <button class="btn btn_search" onclick="Bind_grid_sup_city();"> Search</button>
+                                    <button class="btn btn_download_excel" onclick="download_excel();"> Download Excel</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"> &nbsp;</div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="table-responsive marT70  ematch_table" id="div_exact" style="display: none;">
+                    <div class="custom_table_heading clearfix">
+                        <div class="pull-left"><h3> Search Result </h3></div>
+                        <div class="pull-right"><a href="javascript:void(0);" style="display: none;"> Download Excel </a></div>
+                    </div>
+                    <table id="datavalidation_exact" class="display nowrap custom_table" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th width="">Supplier Name </th>
+                            <th width="">Primary Supplier Hotel Id </th>
+                            <th width="">Primary Supplier Hotel code </th>
+                            <th width="">Primary Supplier Hotel Name </th>
+                            <th width="">Hotel Status </th>
+                            <th width="">Primary Supplier Hotel Address </th>
+                            <th width="">Primary Supplier Hotel Star </th>
+                            <th width="">Primary Supplier Longitude </th>
+                            <th width="">Primary Supplier Latitude </th>
+                            <th width="">Secondary Supplier Hotel Id </th>
+                            <th width="">Secondary Website Hotel Id </th>
+                            <th width="">Secondary Supplier Hotel Name </th>
+                            <th width="">Secondary Supplier Hotel Address </th>
+                            <th width="">Secondary Supplier Hotel Star </th>
+                            <th width="">Longitude </th>
+                            <th width="">Latitude </th>
+                            <th width="">Destination Code </th>
+                            <th width="">City </th>
+                            <th width="">Country </th>
+                            <th width="">Matching Type </th>
+                            <th width="">Addedon </th>
+                            <th width="">Matchedon </th>
+                            <th width="">Last Appearance </th>
+                            <th width="">Primary Supplier Last Appearance </th>
+                            <th width="">Secondary Supplier Zone Name </th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody_selec_grid_second_exact">
+             
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive marT70  ematch_table" id="div_prob" style="display: none;">
+                    <div class="custom_table_heading clearfix">
+                        <div class="pull-left"><h3> Search Result </h3></div>
+                        <div class="pull-right"><a href="javascript:void(0);" style="display: none;"> Download Excel </a></div>
+                    </div>
+                    <table id="datavalidation_prob" class="display nowrap custom_table" style="width:100%">
+                        <thead>
+                        <tr>
+                                                        
+                            <th width="">Secondary Supplier Name </th>
+                            <th width="">Primary Supplier Hotel Id </th>
+                            <th width="">Primary Supplier Hotel code </th>
+                            <th width="">Primary Supplier Hotel Name </th>
+                            <th width="">Primary Supplier Hotel Status </th>
+                            <th width="">Primary Supplier Hotel Address </th>
+                            <th width="">Secondary Supplier Hotel Star </th>
+                            <th width="">Primary Supplier Longitude </th>
+                            <th width="">Primary Supplier Latitude </th>
+                            <th width="">Secondary Supplier Hotel Id </th>
+                            <th width="">Secondary Website Hotel Id </th>
+                            <th width="">Secondary Supplier Hotel Name </th>
+                            <th width="">Secondary Supplier Hotel Address </th>
+                            <th width="">Secondary Supplier Hotel Star </th>
+                            <th width="">Secondary Supplier Longitude </th>
+                            <th width="">Secondary Supplier Latitude </th>
+                            <th width="">Destination Code </th>
+                            <th width="">City </th>
+                            <th width="">Country </th>
+                            <th width="">Matching Type </th>
+                            <th width="">Added On (Secondary Supplier) </th>
+                            <th width="">Matched On </th>
+                            <th width="">Secondary Hotel Last Appearance </th>
+                            <th width="">Primary Hotel Last Appearance </th>
+                            <th width="">Matching Score (%) </th>
+                            <th width="">Primary Matched Exist </th>
+                            <th width="">Secondary Matched Exist  </th>
+                            <th width="">Secondary Supplier Zone Name </th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody id="tbody_selec_grid_second_prob">
+             
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive marT70  ematch_table" id="div_unmatch" style="display: none;">
+                    <div class="custom_table_heading clearfix">
+                        <div class="pull-left"><h3> Search Result </h3></div>
+                        <div class="pull-right"><a href="javascript:void(0);" style="display: none;"> Download Excel </a></div>
+                    </div>
+                    <table id="datavalidation_unmatch" class="display nowrap custom_table" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th width="">SecondarySupplierName</th>
+                            <th width="">PrimarySupplierName</th>
+                            <th width="">PrimaryHotelId</th>
+                            <th width="">PrimaryHotelName</th>
+                            <th width="">HotelStatus</th>
+                            <th width="">PrimaryHotelCode</th>
+                            <th width="">Longitude</th>
+                            <th width="">Latitude</th>
+                            <th width="">City</th>
+                            <th width="">DestinationCode</th>
+                            <th width="">Country</th>
+                            <th width="">PrimaryHotelAddress</th>
+                            <th width="">LastAppearance</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody id="tbody_selec_grid_second_unmatch">
+             
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+
+    </section>
+    {% endblock %}
+
+       
+{% block footer %}
+    <script>
+        Bind_Country_name = "{% url 'Bind_Country_name' %}";
+        Bind_city_name = "{% url 'Bind_city_name' %}";
+        Bind_city_name_by_sup = "{% url 'Bind_city_name_by_sup' %}";
+        SERVICES_IP = SERVICES_IP;
+        DJANGO_BASEURL = DJANGO_BASEURL
+      </script>
+    <script type="text/javascript" charset="utf8" src="/static/hotel/js/app/match_n_match_download.js"></script>
+    <script src="/static/hotel/js/custom.js"></script>
+    <script>
+        $('ul.multiselect-container.dropdown-menu').perfectScrollbar();
+        $(".round_btn").click(function () {
+            debugger;
+            $(".round_btn").children().removeClass("active");
+            $(this).children().addClass("active");
+        });
+        $(".upload_hotel_trigger").click(function () {
+            $(".upload_hotel_contaner").slideDown();
+        });
+        $(".choose_file ").click(function () {
+            $(".upload_hotel_contaner").slideUp();
+        });
+        $(document).mouseup(function (e) {
+            var container = $(".upload_hotel_contaner");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                container.slideUp();
+            }
+        });
+
+        ///Activate Scrllbar
+        $(".addhotel_checkbox_contaner").mouseenter(function () {
+            $('*').perfectScrollbar('update');
+        });
+    </script>
+ {% endblock %}

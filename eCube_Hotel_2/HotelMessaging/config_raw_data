@@ -1,0 +1,53 @@
+{
+    "MONGODB": {
+        "URL": "mongodb://192.168.8.69:27017"
+    },
+    "MONGODB": {
+        "URL": "mongodb://192.168.8.51:27017"
+    },
+    "MONGODB": {
+        "URL": "mongodb://localhost:27017"
+    },
+    "MYSQL": {
+        "DB": "eCube_Centralized_DB",
+        "HOST": "localhost",
+        "PASSWORD": "eclerx#123",
+        "USER": "tech"
+    },
+    "MYSQL": {
+        "DB": "eCube_Centralized_DB",
+        "HOST": "192.168.8.67",
+        "PASSWORD": "eclerx#123",
+        "USER": "tech"
+    },
+    "MYSQL": {
+        "DB": "eCube_Centralized_DB",
+        "HOST": "192.168.8.37",
+        "PASSWORD": "eclerx#123",
+        "USER": "tech"
+    },
+    "MYSQL": {
+        "DB": "eCube_Centralized_DB",
+        "HOST": "192.168.131.23",
+        "PASSWORD": "Eclerx#123",
+        "USER": "tech"
+    },
+    "RABBITMQ": {
+        "HOST": "localhost",
+        "USER": "guest",
+        "PASSWORD": "guest",
+        "PORT": 5672,
+        "PATH": "/"
+    },
+    "REDIS": {
+        "HOST": "localhost",
+        "PORT": 6379
+    },
+    "MEMCACHE": {
+        "HOST": "localhost",
+        "PORT": 11211
+    },
+    "SERVICES": {
+        "SERVICES_IP": "localhost"
+    }
+}

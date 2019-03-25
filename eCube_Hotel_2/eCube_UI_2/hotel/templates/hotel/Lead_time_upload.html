@@ -1,0 +1,153 @@
+{% extends 'hotel/base.html' %}
+
+{% block header %}
+
+{% endblock %}
+{% block content %}
+<section class="body_contaner no_sidebar">
+  <div class="container_content">
+    <div class="inner_content_contaner">
+      <div class="clearfix"></div>
+      <div class="white_bg marT30 multibatch_download common_div keyword_rules clearfix">
+        <div class="col-md-12">
+          <h3 class="slide_heading border_heading leadtime_upload_icon">   Lead Time Upload  </h3>
+        </div>
+        <div class="marT70 clearfix">
+        	<div class="col-sm-12">
+			 
+       	
+       			<div class="col-sm-3" id="divradio_btn">
+					<div class="form-group radio_selection">
+					  <label for="upload_type">Select Upload  Type</label>
+					  <div class="radio radio-primary radio-inline ">
+						<input id="lead_time" type="radio" value="1" name="uploadtype" checked  onchange="Chk_name();">
+						<label for="lead_time"> Lead Time </label>
+					  </div>
+					  <div class="radio radio-primary radio-inline ">
+						<input id="adhock_lead_time" type="radio" value="1" name="uploadtype" onchange="Chk_name();"  >
+						<label for="adhock_lead_time"> Adhoc Lead Time </label>
+					  </div>
+					  
+					</div>
+        	  </div>
+        	  
+        	  <div class="col-sm-6 col-md-6 col-md-offset-1">
+					<div class="form-group">
+					  <label for="room_type_match" id="lbl_text">Lead Time Bulk Upload</label>
+				          <div class="col-sm-7 pad0">
+				          	    <span class="upload upload_file">
+                              <input type="file" id="input_file_excel">
+                              <img src="/static/hotel/images/upload_file.png" alt="">
+                              <p> Drag File to upload </p>
+                              <span class="file_type"></span> </span>
+				          	
+				          </div>
+                              <div class="col-sm-5 download_container text-left">
+                              <a href="javascript:void(0);" class="download_template" onclick="Download_excel_templates();"> Download Template </a> 
+                               <a href="javascript:void(0);" class="download_template download_data" onclick="Download_templet()"> Last Uploaded Template</a>
+                               </div>
+					</div>
+					
+					 <div class="custom_btn  marT20 text-center col-sm-7 col-md-7">  
+              <button class="btn btn_reset" onclick="rest_frm();"> Reset </button>
+              <button class="btn btn_search" onclick="upload_excel();"> Upload </button> 
+              <a class="btn btn_search" href="javascript:void(0)" id ="a_down" style="display: none;"> Download </a> 
+              </div>
+				  </div>
+       	
+        	</div>
+        </div>
+           
+        <div class="clearfix"> &nbsp; </div>
+        </div>
+      <div class="clearfix"></div>
+       <div class="table-responsive marT70  ematch_table" >
+       <div class="custom_table_heading clearfix">
+       	<div class="pull-left"> <h3> Search Result </h3> </div>
+       	<div class="pull-right" style="display: none;"> <a href="javascript:void(0);"> Download Excel </a> </div>
+       </div>
+        <table id="datavalidation" class="display nowrap custom_table" style="width:100%">
+          <thead>
+            <tr>
+              <th width="">Booking date</th>
+              <th width="">Batch Name</th>
+              <th width="">Destination</th>
+              <th width="">Lead time Value</th>
+              <th width="">Event Type Value</th>
+              <th width="">Nights</th>
+              <th width="">NvcrAccountName</th>
+              <th>NvcrPrimarySupplier</th>
+              <th>Checkin Date</th>
+              
+            </tr>
+          </thead>
+          <tbody id="tbl_body_main_grp_list">
+            <!-- <tr>
+              <td>23-Apr-18</td>
+              <td>RM_ORD_US</td>
+              <td>ORD</td>
+              <td>Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) </td>
+              <td>Fixed/Fixed/Fixed/Fixed</td>
+              <td>2</td>
+              <td>-</td>
+              <td>-</td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+   
+  </div>
+  
+  
+</section>
+{% endblock %}
+{% block footer %}
+<script>
+    Fgrid_bind_lead_time = "{% url 'Fgrid_bind_lead_time' %}";
+    File_download_excel_lead_time = "{% url 'File_download_excel_lead_time' %}";
+    File_upload_excel_lead_time = "{% url 'File_upload_excel_lead_time' %}";
+</script>
+
+
+
+<script src="/static/hotel/js/app/Lead_time_upload_js.js"></script>
+<script src="/static/hotel/js/custom.js"></script> 
+<script>
+	$('ul.multiselect-container.dropdown-menu').perfectScrollbar();	
+$(document).ready(function() {
+	
+    var table = $('#datavalidation').DataTable( {
+      "sPaginationType": "full_numbers",
+		"bFilter": true,
+		"bInfo": false,
+		"bPaginate": true,
+       	//scrollX:        true,
+      	//scrollCollapse: true,
+        paging:         true,
+        //fixedColumns:   { leftColumns: 0, rightColumns: 1  }, 
+	});
+$('.dataTables_scrollBody,.addhotel_checkbox_contaner').perfectScrollbar();
+});	
+	
+$(".round_btn").click(function(){
+	debugger;
+	$(".round_btn").children().removeClass("active"); 
+	$(this).children().addClass("active"); 
+});
+$(".upload_hotel_trigger").click(function(){
+	 $(".upload_hotel_contaner").slideDown(); 
+});	
+$(".choose_file ").click(function(){
+	 $(".upload_hotel_contaner").slideUp(); 
+});	
+		
+$(document).mouseup(function (e){var container = $(".upload_hotel_contaner");if (!container.is(e.target) && container.has(e.target).length ===0){container.slideUp();}}); 
+	
+///Activate Scrllbar	
+$(".addhotel_checkbox_contaner").mouseenter(function(){ 
+$('*').perfectScrollbar('update');
+});
+</script>
+{% endblock %}

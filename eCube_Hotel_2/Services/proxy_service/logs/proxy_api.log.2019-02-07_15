@@ -1,0 +1,164 @@
+2019-02-07 15:18:15,982|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 15:18:15,984|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 15:18:15,984|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 15:18:15,997|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 15:18:15,998|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 15:18:15,999|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 15:18:16,011|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 15:18:16,013|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 15:18:16,013|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 15:18:16,026|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 15:18:16,028|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 15:18:16,028|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 15:18:16,040|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 15:18:16,042|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 15:18:16,042|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 15:18:16,052|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 15:18:16,053|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 15:18:16,054|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 15:18:16,070|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 15:18:16,072|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 15:18:16,072|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 15:18:16,088|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 15:18:16,090|proxy_api|INFO| |domain:Expedia|tag:List|Request Received
+2019-02-07 15:18:16,090|proxy_api|INFO| |domain:Expedia|tag:List|Getting Proxy Details
+2019-02-07 15:18:16,102|proxy_api|INFO| |domain:Expedia|Request Received
+2019-02-07 15:18:16,102|proxy_api|INFO| |domain:Expedia|Getting Proxy Details
+2019-02-07 15:18:16,114|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 15:18:16,114|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 15:18:16,125|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 15:18:24,414|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 15:18:24,414|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 15:18:24,423|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 15:18:53,452|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 15:18:53,452|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 15:18:53,463|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 15:19:13,741|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 15:19:13,741|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 15:19:13,753|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 15:19:38,068|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 15:19:38,068|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 15:19:38,079|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 15:20:30,631|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 15:20:30,632|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 15:20:30,643|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 15:21:20,522|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 15:21:20,523|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 15:21:20,536|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 15:23:14,769|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 15:23:14,769|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 15:23:14,781|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 15:26:28,830|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 15:26:28,830|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 15:26:28,843|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 15:27:30,404|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 15:27:30,404|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 15:27:30,417|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 15:28:34,897|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 15:28:34,898|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 15:44:40,076|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 15:44:40,078|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 15:44:40,078|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 15:44:40,089|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 15:44:40,090|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 15:44:40,091|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 15:44:40,099|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 15:44:40,100|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 15:44:40,101|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 15:44:40,109|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 15:44:40,111|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 15:44:40,111|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 15:44:40,128|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 15:44:40,130|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 15:44:40,130|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 15:44:40,138|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 15:44:40,140|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 15:44:40,140|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 15:44:40,148|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 15:44:40,150|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 15:44:40,150|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 15:44:40,158|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 15:44:40,159|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 15:44:40,159|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 15:44:40,167|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 15:50:54,118|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-07 15:50:54,119|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-07 16:03:47,249|proxy_api|INFO| |domain:Booking|Proxy Returned
+2019-02-07 16:03:47,251|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 16:03:47,251|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 16:03:47,262|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 16:03:47,263|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 16:03:47,264|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 16:03:47,273|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 16:03:47,275|proxy_api|INFO| |domain:Booking|Request Received
+2019-02-07 16:03:47,275|proxy_api|INFO| |domain:Booking|Getting Proxy Details
+2019-02-07 16:03:47,284|proxy_api|INFO| |domain:Booking|Proxy Returned
+2019-02-07 16:24:00,982|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 16:24:00,982|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 16:24:00,993|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 16:25:04,601|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 16:25:04,601|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 16:25:04,612|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 16:42:06,949|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 16:42:06,950|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:42:06,962|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 16:42:07,947|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 16:42:07,948|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:42:07,958|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 16:42:09,398|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 16:42:09,398|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:42:09,411|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 16:42:15,547|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 16:42:15,547|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:42:15,558|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 16:42:25,588|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 16:42:25,588|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:42:25,600|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 16:52:06,709|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 16:52:06,710|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 16:52:06,721|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 16:53:42,865|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-07 16:53:42,866|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-07 16:53:42,875|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-07 16:53:46,676|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-07 16:53:46,676|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-07 16:53:46,686|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-07 16:53:55,531|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 16:53:55,531|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:53:55,544|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-07 16:55:36,248|proxy_api|INFO| |domain:Expediahotel|tag:List|Request Received
+2019-02-07 16:55:36,249|proxy_api|INFO| |domain:Expediahotel|tag:List|Getting Proxy Details
+2019-02-07 16:55:36,258|proxy_api|INFO| |domain:Expediahotel|tag:List|Proxy Returned
+2019-02-07 16:56:20,861|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 16:56:20,861|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:56:20,874|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-07 16:56:31,234|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 16:56:31,234|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:56:31,245|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-07 16:56:51,746|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 16:56:51,747|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:56:51,763|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-07 16:56:58,142|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 16:56:58,142|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:56:58,153|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-07 16:57:05,504|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 16:57:05,504|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 16:57:05,515|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-07 17:02:07,460|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 17:02:07,461|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 17:02:07,471|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 17:03:36,505|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 17:03:36,506|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 17:03:36,519|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-07 17:03:46,196|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 17:03:46,196|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 17:03:46,206|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-07 17:03:52,554|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 17:03:52,554|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 17:03:52,566|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-07 17:03:59,110|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 17:03:59,110|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 17:03:59,121|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-07 17:04:06,725|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-07 17:04:06,725|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-07 17:04:06,738|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned

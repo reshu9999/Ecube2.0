@@ -1,0 +1,13 @@
+{
+    "REDIS": {
+        "HOST": "localhost",
+        "PORT": 6379
+    },
+    "MYSQL": {
+        "DB": "eCube_Centralized_DB",
+        "HOST": "10.100.18.85",
+        "PASSWORD": "eclerx#123",
+        "USER": "tech"
+    }
+}
+

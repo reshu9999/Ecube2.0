@@ -1,0 +1,7 @@
+"SpecialChars","ReplaceChars","IsActive"
+"$","$","1"
+"Hotel$@s","$@","1"
+"reso&ts","$","0"
+"Hotel$@s##","$@##","1"
+"day_chk$%","$%","1"
+"hotel$$","$$","1"

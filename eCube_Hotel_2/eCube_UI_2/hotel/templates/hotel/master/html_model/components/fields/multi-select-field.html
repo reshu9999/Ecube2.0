@@ -1,0 +1,15 @@
+<div class="col-md-4">
+    <div class="form-group multi_select_contaner">
+        <label class="">{{ display_name|title }}</label>
+        {% if options %}
+        <select class="multiselect_box form-control" multiple="multiple"
+                id="{{ field_name }}__id" name="{{ field_name }}">
+            {% for option in options %}
+            <option value="{{ option.id }}">{{ option }}</option>
+            {% endfor %}
+        </select>
+        {% else %}
+        <br><span>{{ input_val }}</span>
+        {% endif %}
+    </div>
+</div>

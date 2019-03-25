@@ -1,0 +1,416 @@
+Booking date,Batch Name,Destination,Lead time Value,Event Type Value,Nights,NvcrAccountName,NvcrPrimarySupplier
+8-Oct-18,RM_RIO_UK,RIO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+8-Oct-18,RM_ORD_US,ORD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_NYC_UK,NYC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+8-Oct-18,RM_NYC_US,NYC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+8-Oct-18,RM_MIA_US,MIA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_MCO_UK,MCO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+8-Oct-18,RM_MCO_US,MCO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+8-Oct-18,RM_LVS_UK,LVS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_LVS_US,LVS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_LAX_UK,LAX,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_LAX_US,LAX,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_SAD_US,SAD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_SFO_UK,SFO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_SFO_US,SFO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_MNL_US,MNL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_KIX_UK,KIX,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_ITM_UK,ITM,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_NRT_UK,NRT,Early Booking(+180)/Free Event(08122018-11122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_ADL_AU,ADL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_BNE_AU,BNE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_CNS_AU,CNS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_OOL_AU,OOL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_MLB_AU,MLB,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_MLB_UK,MLB,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_PER_AU,PER,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_SYD_AU,SYD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_SYD_UK,SYD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_AKL_AU,AKL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_ZQN_AU,ZQN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_BAI_UK,BAI,Free Event(08122018-11122018)/Free Event(10042019-13042019)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Free/Free/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_BDO_UK,BDO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_JAV_UK,JAV,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_LGK_UK,LGK,Early Booking(+180)/Free Event(08122018-11122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_KUL_UK,KUL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_PEN_UK,PEN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_SIN_UK,SIN,Early Booking(+180)/Free Event(08122018-11122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_HKG_UK,HKG,Early Booking(+180)/Free Event(08122018-10122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_ICN_UK,ICN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_BH1_SA,BH1,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_BH1_AE,BH1,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_AMM_UK,AMM,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_DOH_AE,DOH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_DOH_UK,DOH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_AUH_UK,AUH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_DXB_AE,DXB,Early Booking(+180)/Free Event(08122018-12122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,4,,
+8-Oct-18,RM_DXB_UK,DXB,Early Booking(+180)/Free Event(08122018-12122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,4,,
+8-Oct-18,RM_PAR_ES,PAR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_PAR_UK,PAR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_PAR_UKTR,PAR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+8-Oct-18,RM_LON_ES,LON,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_LON_UK,LON,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_LON_UKTR,LON,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+8-Oct-18,RM_ORK_UKTR,ORK,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+8-Oct-18,RM_GWY_UKTR,GWY,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+8-Oct-18,RM_DUB_ES,DUB,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_DUB_UKTR,DUB,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+8-Oct-18,RM_ABZ_UKTR,ABZ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+8-Oct-18,RM_BFS_UK,BFS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_BFS_UKTR,BFS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+8-Oct-18,RM_BKP_UK,BKP,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_BKP_UKTR,BKP,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+8-Oct-18,RM_BOU_UK,BOU,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_BOU_UKTR,BOU,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+8-Oct-18,RM_BRI_UKTR,BRI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+8-Oct-18,RM_CIS_UKTR,CIS,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,REVTRUK,Hotelbeds
+8-Oct-18,RM_EDI_UK,EDI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_EDI_UKTR,EDI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+8-Oct-18,RM_GLA_UK,GLA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_GLA_UKTR,GLA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+8-Oct-18,RM_INV_UKTR,INV,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+8-Oct-18,RM_LBA_UKTR,LBA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+8-Oct-18,RM_LPL_UKTR,LPL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+8-Oct-18,RM_MAC_UK,MAC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+8-Oct-18,RM_MAC_UKTR,MAC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+8-Oct-18,RM_NCL_UKTR,NCL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+8-Oct-18,RM_NCL_UK,NCL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+8-Oct-18,RM_QQY_UKTR,QQY,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+8-Oct-18,RM_IBZ_ES,IBZ,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,5,,
+8-Oct-18,RM_IBZ_UKTR,IBZ,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Short Term(+30) ,Fixed/Free/Fixed/Fixed,5,REVTRUK,Hotelbeds
+8-Oct-18,RM_PMI_ES,PMI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+8-Oct-18,RM_PMI_UK,PMI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+8-Oct-18,RM_PMI_UKTR,PMI,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+8-Oct-18,RM_MAH_ES,MAH,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+8-Oct-18,RM_MAH_UKTR,MAH,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Short Term(+30) ,Fixed/Free/Fixed/Fixed,7,REVTRUK,Hotelbeds
+8-Oct-18,RM_FUE_UK,FUE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,6,,
+8-Oct-18,RM_FUE_UKTR,FUE,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,6,REVTRUK,Hotelbeds
+8-Oct-18,RM_LPA_ES,LPA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,6,,
+8-Oct-18,RM_LPA_UK,LPA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,6,,
+8-Oct-18,RM_LPA_UKTR,LPA,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,6,REVTRUK,Hotelbeds
+8-Oct-18,RM_ACE_ES,ACE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+8-Oct-18,RM_ACE_UK,ACE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+8-Oct-18,RM_ACE_UKTR,ACE,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+8-Oct-18,RM_TFS_ES,TFS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,6,,
+8-Oct-18,RM_TFS_UK,TFS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,6,,
+8-Oct-18,RM_TFS_UKTR,TFS,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,6,REVTRUK,Hotelbeds
+8-Oct-18,RM_ATH_ES,ATH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_ATH_UK,ATH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+8-Oct-18,RM_ATH_UKTR,ATH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+8-Oct-18,RM_SAT_UK,SAT,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,,
+8-Oct-18,RM_SAT_UKTR,SAT,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,REVTRUK,Hotelbeds
+8-Oct-18,RM_ATE_UKTR,ATE,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+8-Oct-18,RM_ATE_UK,ATE,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+8-Oct-18,RM_RHO_UK,RHO,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+8-Oct-18,RM_RHO_UKTR,RHO,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+8-Oct-18,RM_MLA_UK,MLA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,5,,
+8-Oct-18,RM_MLA_UKTR,MLA,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,5,REVTRUK,Hotelbeds
+8-Oct-18,LM_RM_ALC_UKTR,ALC,Immediate Arrivals(+3) ,Free,3,REVTRUK,Hotelbeds
+8-Oct-18,LM_RM_BEN_UKTR,BEN,Immediate Arrivals(+3) ,Free,5,REVTRUK,Hotelbeds
+8-Oct-18,RM_IST_ES,IST,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+8-Oct-18,RM_IST_AE,IST,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+8-Oct-18,RM_IST_UK,IST,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+8-Oct-18,RM_IST_UKTR,IST,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,REVTRUK,Hotelbeds
+9-Oct-18,RM_CUN_MX,CUN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+9-Oct-18,RM_PCM_MX,PCM,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+9-Oct-18,RM_CAB_MX,CAB,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_MDF_MX,MDF,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_PVR_MX,PVR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_BOS_US,BOS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_WAS_UK,WAS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_WAS_US,WAS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_ON_UK,ON,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_ON_US,ON,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_DFW_US,DFW,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_KAE_US,KAE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+9-Oct-18,RM_HOU_US,HOU,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_SAA_US,SAA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_SEA_US,SEA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_ATL_US,ATL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_FLL_US,FLL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_MSY_US,MSY,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_MRY_US,MRY,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_PHX_US,PHX,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_HAN_UK,HAN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_SGN_UK,SGN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_BKK_UK,BKK,Early Booking(+180)/Free Event(09122018-11122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_CNX_UK,CNX,Early Booking(+180)/Free Event(09122018-12122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_HHQ_UK,HHQ,Early Booking(+180)/Free Event(09122018-11122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_USM_UK,USM,Early Booking(+180)/Free Event(09122018-14122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,5,,
+9-Oct-18,RM_KBV_UK,KBV,Early Booking(+180)/Free Event(09122018-12122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_PYX_UK,PYX,Early Booking(+180)/Free Event(09122018-11122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_HKT_UK,HKT,Early Booking(+180)/Free Event(09122018-12122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_CAI_DE,CAI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_HRG_UKTR,HRG,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+9-Oct-18,RM_SSH_DE,SSH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+9-Oct-18,RM_NAI_UKTR_1,NAI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+9-Oct-18,RM_MRU_UKTR,MRU,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+9-Oct-18,RM_AGA_UK,AGA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+9-Oct-18,RM_AGA_UKTR,AGA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+9-Oct-18,RM_CAA_ES,CAA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_RAK_UK,RAK,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+9-Oct-18,RM_RAK_UKTR,RAK,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+9-Oct-18,RM_JHG_UK_1,JHG,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_JHG_UKTR_1,JHG,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+9-Oct-18,RM_CPT_UK,CPT,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_CPT_UKTR,CPT,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+9-Oct-18,RM_ZNZ_UKTR,ZNZ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+9-Oct-18,RM_DJE_DE,DJE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+9-Oct-18,RM_HMM_DE,HMM,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+9-Oct-18,RM_BLR_ES,BLR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_DEL_UK,DEL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_GOO_UKTR,GOO,Early Booking(+180)/Free Event(11122018-18122018)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+9-Oct-18,RM_BOM_UK,BOM,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_MV_UK,MV,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+9-Oct-18,RM_MV_UKTR,MV,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+9-Oct-18,RM_TLV_ES,TLV,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_GVA_ES,GVA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_GVA_UK,GVA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_ZRH_ES,ZRH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_PRG_ES,PRG,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_PRG_UK,PRG,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_PRG_UKTR,PRG,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+9-Oct-18,RM_BUD_ES,BUD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_BUD_UK,BUD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_BUD_UKTR,BUD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+9-Oct-18,RM_AAZ_UK,AAZ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+9-Oct-18,RM_AAZ_UKTR,AAZ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,REVTRUK,Hotelbeds
+9-Oct-18,RM_SZG_DE,SZG,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_VIE_ES,VIE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_VIE_UKTR,VIE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+9-Oct-18,RM_BER_DE,BER,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_BER_ES,BER,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_BER_UK,BER,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_BER_UKTR,BER,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+9-Oct-18,RM_CGN_DE,CGN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_DUS_UK,DUS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_FRA_DE,FRA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_FRA_ES,FRA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_HAM_DE,HAM,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_MUC_ES,MUC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_STR_DE,STR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+9-Oct-18,RM_AND_ES,AND,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_AND_UKTR,AND,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+9-Oct-18,RM_BCN_ES,BCN,Early Booking(+180)/Free Event(24022019-27022019)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_BCN_UK,BCN,Early Booking(+180)/Free Event(24022019-27022019)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_BCN_UKTR,BCN,Early Booking(+180)/Free Event(24022019-27022019)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+9-Oct-18,RM_PIR_ES,PIR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_PIR_UKTR,PIR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+9-Oct-18,RM_ROE_ES,ROE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_ROE_UK,ROE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_ROE_UKTR,ROE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+9-Oct-18,LM_RM_ROE_UK,ROE,Immediate Arrivals(+3) ,Free,3,,
+9-Oct-18,RM_MIL_ES,MIL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_MIL_UKTR,MIL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+9-Oct-18,LM_RM_MIL_UK,MIL,Immediate Arrivals(+3) ,Free,2,,
+9-Oct-18,RM_VCE_ES,VCE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_VCE_UK,VCE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_VCE_UKTR,VCE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+9-Oct-18,LM_RM_VCE_UK,VCE,Immediate Arrivals(+3) ,Free,2,,
+9-Oct-18,RM_FAO_ES,FAO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+9-Oct-18,RM_FAO_UK,FAO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+9-Oct-18,RM_FAO_UKTR,FAO,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+9-Oct-18,LM_RM_LIS_UKTR,LIS,Immediate Arrivals(+3) ,Free,3,REVTRUK,Hotelbeds
+9-Oct-18,RM_ALC_ES,ALC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_ALC_UKTR,ALC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+9-Oct-18,RM_BEN_ES,BEN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,5,,
+9-Oct-18,RM_BEN_UKTR,BEN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,5,REVTRUK,Hotelbeds
+9-Oct-18,RM_LLM_ES,LLM,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,,
+9-Oct-18,RM_LLM_UKTR,LLM,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Short Term(+30) ,Fixed/Free/Fixed/Fixed,4,REVTRUK,Hotelbeds
+9-Oct-18,RM_SAL_UK,SAL,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,,
+9-Oct-18,RM_SAL_UKTR,SAL,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Short Term(+30) ,Fixed/Free/Fixed/Fixed,4,REVTRUK,Hotelbeds
+9-Oct-18,RM_STS_ES,STS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+9-Oct-18,RM_STS_UKTR,STS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+9-Oct-18,RM_VLC_ES,VLC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_VLC_UKTR,VLC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+9-Oct-18,RM_AGP_ES,AGP,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,5,,
+9-Oct-18,RM_AGP_UKTR,AGP,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,5,REVTRUK,Hotelbeds
+9-Oct-18,RM_AGP_UK,AGP,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,5,,
+9-Oct-18,RM_MAD_ES,MAD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+9-Oct-18,RM_MAD_UKTR,MAD,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+10-Oct-18,RM_MTN_US,MTN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_MEM_US,MEM,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_MSP_US,MSP,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_NSV_US,NSV,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_PHL_US,PHL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_QC_US,QC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_VA_US,VA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_AUS_US,AUS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_DEN_US,DEN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_MAU_US,MAU,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,5,,
+10-Oct-18,RM_PDX_US,PDX,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_CLE_US,CLE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_DAB_US,DAB,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_FOM_US,FOM,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_JAX_US,JAX,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_PBI_US,PBI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_SAV_US,SAV,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_TPA_US,TPA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_SON_US,SON,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_PSP_US,PSP,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_SAJ_US,SAJ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_PEK_UK,PEK,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_CN1_UK,CN1,Early Booking(+180)/Free Event(16102018-18102018)/Free Event(24102018-26102018)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Free/Fixed/Fixed,2,,
+10-Oct-18,RM_PVG_UK,PVG,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_TPE_HK,TPE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_TPE_UK,TPE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_AVN_ES,AVN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+10-Oct-18,RM_BIQ_ES,BIQ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_BOD_ES,BOD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+10-Oct-18,RM_CAN_UK,CAN,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_CAN_UKTR,CAN,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_CHX_UKTR,CHX,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_TRP_ES,TRP,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_LDE_ES,LDE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_LYS_ES,LYS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+10-Oct-18,RM_MRS_ES,MRS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+10-Oct-18,RM_MPL_ES,MPL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+10-Oct-18,RM_NAN_ES,NAN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+10-Oct-18,RM_NCE_UKTR,NCE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_NCE_UK,NCE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_SXB_ES,SXB,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_TLS_ES,TLS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+10-Oct-18,RM_TUF_ES,TUF,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+10-Oct-18,LM_RM_BCN_UKTR,BCN,Immediate Arrivals(+3) ,Free,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_FLR_ES,FLR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_FLR_UKTR,FLR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_DBV_UK,DBV,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,,
+10-Oct-18,RM_DBV_UKTR,DBV,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,REVTRUK,Hotelbeds
+10-Oct-18,RM_PUY_UK,PUY,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,5,,
+10-Oct-18,RM_PUY_UKTR,PUY,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,5,REVTRUK,Hotelbeds
+10-Oct-18,RM_SPU_UK,SPU,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,,
+10-Oct-18,RM_SPU_UKTR,SPU,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,REVTRUK,Hotelbeds
+10-Oct-18,RM_CNG_UK,CNG,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,1,,
+10-Oct-18,RM_CFU_UK,CFU,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+10-Oct-18,RM_CFU_UKTR,CFU,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_HLK_UK,HLK,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+10-Oct-18,RM_HLK_UKTR,HLK,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_ION_UKTR,ION,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_MKS_UK,MKS,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_MKS_UKTR,MKS,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_PEL_UK,PEL,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_SKI_UK,SKI,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+10-Oct-18,RM_SKI_UKTR,SKI,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_THS_UK,THS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+10-Oct-18,RM_THS_UKTR,THS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+10-Oct-18,RM_ZTE_UK,ZTE,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+10-Oct-18,RM_ZTE_UKTR,ZTE,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_LIS_ES,LIS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_LIS_UKTR,LIS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_OPO_ES,OPO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_OPO_UKTR,OPO,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_PA_UKTR,PA,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_KSS_UK,KSS,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+10-Oct-18,RM_RNP_UK,RNP,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_RNP_UKTR,RNP,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_NAP_UK,NAP,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_NAP_UKTR,NAP,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_NSR_ES,NSR,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,5,,
+10-Oct-18,RM_SIC_ES,SIC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_LEI_ES,LEI,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,,
+10-Oct-18,RM_LEI_UKTR,LEI,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,REVTRUK,Hotelbeds
+10-Oct-18,RM_OVD_ES,OVD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_OVD_UKTR,OVD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+10-Oct-18,RM_LUZ_ES,LUZ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_LUZ_UKTR,LUZ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_GRX_UK,GRX,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_GRX_UKTR,GRX,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+10-Oct-18,RM_MAL_ES,MAL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_MAL_UKTR,MAL,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+10-Oct-18,RM_SVQ_ES,SVQ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_SVQ_UKTR,SVQ,Early Booking(+180)/Immediate Arrivals(+3)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Free/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+10-Oct-18,RM_ANK_ES,ANK,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+10-Oct-18,RM_AYT_UK,AYT,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+10-Oct-18,RM_AYT_UKTR,AYT,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_BJV_UK,BJV,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+10-Oct-18,RM_BJV_UKTR,BJV,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_FET_UKTR,FET,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_IGL_DE,IGL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+10-Oct-18,RM_IGL_UKTR,IGL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+10-Oct-18,RM_ADB_UKTR,ADB,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+10-Oct-18,RM_DLM_UKTR,DLM,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+11-Oct-18,RM_ACA_MX,ACA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_IXT_MX,IXT,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_MER_MX,MER,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_CG_US,CG,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_BF_US,BF,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_NI_US,NI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_OT_US,OT,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_QU_US,QU,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_BC_US,BC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_BUE_UK,BUE,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_CHS_US,CHS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_COI_US,COI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_MYR_US,MYR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_GCN_US,GCN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+11-Oct-18,RM_SLC_US,SLC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_SGU_US,SGU,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_GAN_CR,GAN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_BRU_ES,BRU,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_AMS_ES,AMS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_AMS_UK,AMS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_GDN_DE,GDN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_KRK_ES,KRK,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_WAW_UK,WAW,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_BOJ_UKTR,BOJ,Early Booking(+180)/Last Minute(+7)/Very Early Booking(+270) ,Fixed/Fixed/Very Fixed,7,REVTRUK,Hotelbeds
+11-Oct-18,RM_SOF_UK,SOF,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_SOF_UKTR,SOF,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+11-Oct-18,RM_VAR_UKTR,VAR,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+11-Oct-18,RM_VAR_UK,VAR,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,7,,
+11-Oct-18,RM_CPH_ES,CPH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_CPH_UK,CPH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_CPH_UKTR,CPH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+11-Oct-18,RM_TLL_UK,TLL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_TLL_UKTR,TLL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_HEL_UK,HEL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_HEL_UKTR,HEL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_RIX_UK,RIX,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_OSL_ES,OSL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_OSL_UKTR,OSL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_BUH_UK,BUH,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_MOW_UK,MOW,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_LED_UK,LED,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+11-Oct-18,RM_STO_UK,STO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_STO_UKTR,STO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+11-Oct-18,RM_ARA_ES,ARA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_SAY_ES,SAY,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_BLQ_ES,BLQ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_GOA_ES,GOA,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_LG_UKTR,LG,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+11-Oct-18,RM_RMI_DE,RMI,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+11-Oct-18,RM_TRN_ES,TRN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_VRN_ES,VRN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_SUL_PT,SUL,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,1,,
+11-Oct-18,RM_SUL_UKTR,SUL,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,1,REVTRUK,Hotelbeds
+11-Oct-18,RM_PDL_PT,PDL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,,
+11-Oct-18,RM_PDL_UKTR,PDL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,4,REVTRUK,Hotelbeds
+11-Oct-18,RM_CEN_PT,CEN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,1,,
+11-Oct-18,RM_COS_ES,COS,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,3,,
+11-Oct-18,RM_COS_UKTR,COS,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+11-Oct-18,RM_FNC_UK,FNC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,,
+11-Oct-18,RM_FNC_UKTR,FNC,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,7,REVTRUK,Hotelbeds
+11-Oct-18,RM_SSR_UKTR,SSR,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,5,REVTRUK,Hotelbeds
+11-Oct-18,RM_CAZ_UKTR,CAZ,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,REVTRUK,Hotelbeds
+11-Oct-18,RM_CVA_UKTR,CVA,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+11-Oct-18,RM_GRO_UKTR,GRO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_LMN_UKTR,LMN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,3,REVTRUK,Hotelbeds
+11-Oct-18,RM_ZAZ_ES,ZAZ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_SCQ_ES,SCQ,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_BRG_UKTR,BRG,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_CAD_ES,CAD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_CAD_UKTR,CAD,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_SDR_ES,SDR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_SDR_UKTR,SDR,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_ODB_ES,ODB,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_ODB_UKTR,ODB,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_LUS_ES,LUS,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,,
+11-Oct-18,RM_LUS_UKTR,LUS,Early Booking(+180)/Last Minute(+7)/Short Term(+30) ,Fixed/Fixed/Fixed,4,REVTRUK,Hotelbeds
+11-Oct-18,RM_EAS_UKTR,EAS,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_JEN_UKTR,JEN,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_PNA_ES,PNA,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_VGO_ES,VGO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_SLM_UKTR,SLM,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_TOL_UKTR,TOL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_VLL_UKTR,VLL,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds
+11-Oct-18,RM_BIO_ES,BIO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,,
+11-Oct-18,RM_BIO_UKTR,BIO,Early Booking(+180)/Last Minute(+7)/Medium Term(+93)/Short Term(+30) ,Fixed/Fixed/Fixed/Fixed,2,REVTRUK,Hotelbeds

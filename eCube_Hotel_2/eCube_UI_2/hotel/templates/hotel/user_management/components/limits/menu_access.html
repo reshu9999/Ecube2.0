@@ -1,0 +1,6 @@
+{% load user_management %}
+<!-- Render TextBox-->
+<div class="formgroup">
+    <label for="{{ name }}">{{ name }}</label>
+    <input id="{{ name|snake_case }}" class="form-control" data-child_id="{{ name|snake_case }}__child"   value="0" type="text">
+</div>

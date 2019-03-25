@@ -1,0 +1,43 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+{% block content %}
+
+
+<section class="body_contaner no_sidebar">
+  <div class="container_content">
+    <div class="inner_content_contaner">
+      <div class="clearfix marT20"></div>
+      <div class="col-md-12">
+        <h2 class="pull-left">Manage Master</h2>
+        <br>
+     </div>
+     </br></br></br>
+     <div class="marT20">        
+        <a href="{%url 'master_country'%}">Manage Master:Country</a>
+     </div>
+     <div class="marT20">        
+        <a href="{%url 'master_cities'%}">Manage Master:Cities</a>
+     </div>
+     <div class="marT20">        
+        <a href="{%url 'master_airport'%}">Manage Master:Airport</a>
+     </div>
+     <div class="marT20">        
+        <a href="{%url 'master_board'%}">Manage Master:BoardType</a>
+     </div>
+     <div class="marT20">        
+        <a href="{%url 'master_hotelgrp'%}">Manage Master:HotelGroups</a>
+     </div>
+     <div class="marT20">        
+        <a href="{%url 'master_pos'%}">Manage Master:PointOfSale</a>
+     </div>
+     <div class="marT20">        
+        <a href="{%url 'master_hotel'%}">Manage Master:Hotel</a>
+     </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</section>
+{% endblock %}

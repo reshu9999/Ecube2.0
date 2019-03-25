@@ -1,0 +1,12 @@
+<div class="col-md-4">
+    <div class="form-group">
+        <label class="">{{ display_name|title }}</label>
+        {% if readonly %}
+        <br><span>{{ input_val }}</span>
+        {% else %}
+        <input id="{{ field_name }}__id" type="text" name="{{ field_name }}" value="{{ input_val }}">
+        <span id="{{ field_name }}__error_span"></span>
+        {% endif %}
+    </div>
+</div>
+<!--<h1>LASUN</h1>-->

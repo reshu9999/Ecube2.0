@@ -1,0 +1,5 @@
+{% load user_management %}
+<div class="checkbox checkbox-default">
+    <input id="{{ name|snake_case }}" class="parent_checkbox" data-child_id="{{ name|snake_case }}__child" type="checkbox" value="total_input">
+    <label for="{{ name|snake_case }}">{{ name }}</label>
+</div>  

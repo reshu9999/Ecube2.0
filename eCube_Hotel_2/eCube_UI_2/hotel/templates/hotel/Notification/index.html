@@ -1,0 +1,429 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+{% block header %}
+
+<style>
+    .note-editable ul {
+        padding-left: 05px;
+    }
+
+    .note-editable ul li {
+        list-style: none;
+    }
+
+    .note-editable ol {
+        padding-left: 20px;
+        list-style-type: decimal;
+        list-style-position: inside;
+    }
+
+
+
+
+    .modal.link-dialog.in input#sn-checkbox-open-in-new-window {
+        top: -3px;
+        opacity: 1;
+        height: 16px;
+        width: 16px;
+        left: 2;
+    }
+    .modal.link-dialog.in .checkbox label {display: none;}
+    .modal.link-dialog.in .checkbox label::before {
+        display: none;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<section class="body_contaner">
+    <div class="container-fluid">
+        <div class="col-md-6 marT70">
+            <div class="notification_page_contaner marT30">
+                <div class="header_notification">Create Notifications</div>
+                <div class="notification_body">
+                    <div class="create_notification">
+                        <div class="col-md-12 ">
+                            <label for=" " class="col-md-12">Notification Titile</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" id="notification_title" placeholder=" "
+                                       name="notification_title" maxlength="100">
+                                <input type="text" class="form-control" id="notification_id" placeholder=" "
+                                       name="notification_id" style="visibility:hidden">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for=" " class="col-md-12">Description</label>
+                            <div class="col-md-12">
+                                <div class="summernote" id="notification_descriptions"
+                                     name="notification_descriptions">
+                                <textarea rows="4" cols="50" class="form-control" id="notification_descriptions" 
+                                       name="notification_descriptions"></textarea>
+				</div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 marT10 col-sm-12 ">
+                            <input type="button" name="" class="reset_btn2" onclick="reset();" value="Cancel">
+                            <input type="button" id="saveButton" name="" class="next_btn " value="Save"
+                                   onclick="set_Active(event)">
+                            <input type="button" id="updateButton" name="" class="next_btn " value="Update"
+                                   style="display:none" onclick="Update_Note(event)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 marT70">
+            <div class="table-responsive marT20">
+                <!--<table cellpadding="0" cellspacing="0" border="0" class="dataTable custom_table display nowrap" id="example">-->
+                <table id="tbl_notifications" class="display nowrap custom_table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr class="row_contaner">
+                        <th>Notification Titile</th>
+                        <th>Active</th>
+                        <th>Action</th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="Notifications_tbody">
+                    </tbody>
+                </table>
+                <input type="hidden" id='hdn_btn_status' value="True">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+{% block footer %}
+
+<script>
+     getNotifications = "{% url 'getNotifications' %}";
+     save_update = "{% url 'save_update' %}";
+     getNotificationsById = "{% url 'getNotificationsById' %}";
+     removeNotifications = "{% url 'removeNotifications' %}";
+     updateStatus ="{% url 'updateStatus' %}";
+     
+</script>
+
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+<script src="/static/hotel/js/custom.js"></script>
+<script type="application/javascript">
+    $(document).ready(function () {
+        bind_Table()
+    });
+
+    function setData(data) {
+        var table = $("#tbl_notifications").dataTable();
+        table.fnClearTable();
+        table.fnDraw();
+        table.fnDestroy();
+        var trHTML = '';
+        $.each(data, function (i, item) {
+            var note = "'" + item.id + "'";
+            var noteTitle = "'" + item.title + "'";
+            var btn_val = ''
+            if (item.active == true) {
+                btn_val = '<button class="btn btn-xs no_active btn-default" value="False" onclick="set_flag(this.value,' + note + ',event)">No</button>' +
+                    '<button value="True" class="btn btn-xs  active btn-success" onclick="set_flag(this.value,' + note + ',event)">Yes</button>'
+            }
+            else {
+                btn_val = '<button class="btn btn-xs no_active active btn-success" value="False" onclick="set_flag(this.value,' + note + ',event)">No</button>' +
+                    '<button value="True" class="btn btn-xs btn-default" onclick="set_flag(this.value,' + note + ',event)">Yes</button>'
+            }
+            trHTML += '<tr class="row_contaner" id="tr_' + item.id + '">' +
+                '<td width="75%" ><span class="wraptext">' + item.title + '</span></td>' +
+                '<td width="20%"><div class="btn-group btn-toggle red"> ' + btn_val + '</div></td>' +
+                '<td width="5%"><span class="edit_btn" onclick="EditNote(' + note + ')">Edit</span> ' +
+                '<span class="del_btn" onclick="Delete_Note(' + note + ',' + noteTitle + ',event)">Remove</span>' +
+                '</td>' +
+                '</tr>';
+        });
+        $('#Notifications_tbody').append(trHTML);
+        $("#tbl_notifications").dataTable({
+            "sPaginationType": "full_numbers",
+            "bLengthChange": false,
+            "bFilter": false,
+            "bInfo": false,
+            "bPaginate": true,
+            "bAutoWidth": false,
+            "scrollX": false,
+            "aaSorting": []
+        });
+    }
+
+    function bind_Table() {
+        $.ajax({
+            url: getNotifications,
+            type: 'GET',
+            success: function (data) {
+                setData(data.Grid)
+            },
+            error: function (xhr, errorType, exception) {
+             alert(exception);
+            }
+        });
+    }
+
+    function EditNote(val) {
+       
+        var model = {note_id: val}
+        $.ajax({
+            url: getNotificationsById,
+            type: 'GET',
+            data: model,
+            dataType: 'json',
+            success: function (data) {
+                $(".del_btn").hide();
+                $('#notification_id').val(val);
+                $('.note-editable').empty();
+                $('#notification_title').val(data.Grid[0].title);
+                $('.note-editable').append(data.Grid[0].description);
+                $('#updateButton').show()
+                $('#saveButton').hide()
+            },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+       
+       
+    }
+function reset()
+{
+    window.location.href = window.location.href;
+}
+    function Update_Note(e) {
+        var noteTitle = $('#notification_title').val();
+        var note_description = $('.note-editable').text();
+        if (noteTitle != '') {
+            if (note_description != '') {
+                var maxlen_Description = $('.note-editable').text().length
+                if (maxlen_Description <= 2500) {
+                    if (confirm('Are you sure  to update  ' + noteTitle + '?')) {
+                        var notification_description = $('.note-editable').html();
+                        var val = $('#notification_id').val();
+                        var model = {
+                            Title: noteTitle,
+                            Description: notification_description,
+                            Updated_id:val
+                        }
+                        $.ajax({
+                            url: save_update,
+                            type: 'POST',
+                            data: model,
+                            dataType: 'json',
+                            success: function (data) {
+                                if (data.MSG_TYPE == '1') {
+                                    setData(data.Grid);
+                                    alert('Notification updated successfully!!');
+                                    $('#notification_id').val('');
+                                    $('#notification_title').val('');
+                                    $('.note-editable').empty();
+                                    //window.location = window.location.href;
+                                }
+
+                            },
+                            error: function (xhr, errorType, exception) {
+                                 alert(exception);
+                            }
+                        });
+                    }
+                }
+                else{
+                    alert("text character limit exceeded !!")
+                }
+            }
+            else {
+                e.preventDefault();
+            }
+        }
+        else {
+            alert('Notification title cannot be blanked!!!');
+        }
+    }
+
+    function Delete_Note(val, noteTitle, e) {
+        if (confirm('Are you sure  to delete  ' + noteTitle + '?')) {
+            var model = {
+                id: val
+            }
+            $.ajax({
+                url: removeNotifications,
+                type: 'POST',
+                data: model,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.MSG_TYPE == '1') {
+                        setData(data.Grid)
+                        alert('Notification deleted successfully!!')
+                    }
+                    else{
+                        alert('Error on server !!!');
+                    }
+                },
+                error: function (xhr, errorType, exception) {
+                    alert(exception);
+                }
+            });
+        }
+        else {
+            e.preventDefault();
+        }
+    }
+
+
+    function set_flag(val, noteId, e) {
+        if (val == "True") {
+            Status = "Active"
+        }
+        else {
+            Status = "In-Active"
+        }
+        if (confirm('Are you sure want to ' + Status + ' notification?')) {
+            var model = {
+                id: noteId,
+                active: val
+            }
+            $.ajax({
+                url: updateStatus,
+                type: 'POST',
+                data: model,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.MSG_TYPE == '1') {
+                        setData(data.Grid);
+                        alert("Status updated successfully !!!");
+                    }
+                },
+                error: function (xhr, errorType, exception) {
+                    alert(exception);
+                }
+            });
+        }
+        else {
+            e.stopImmediatePropagation();
+        }
+    }
+
+    function set_Active(e) {
+        var note_description = $('#notification_descriptions').text();
+        var notification_title = $('#notification_title').val();
+        if (notification_title != '') {
+            if (note_description != '') {
+                var maxlen_Description = $('#notification_descriptions').text().length
+                if (maxlen_Description <= 2500) {
+                    var notification_description = $('#notification_descriptions').html();
+                    if (confirm('Are you sure want to submit notification?')) {
+                       
+                        var model = {
+                            Title: notification_title, Description: notification_description,Updated_id:$('#notification_id').val().trim()
+                        }
+                        $.ajax({
+                            url: save_update,
+                            type: 'POST',
+                            data: model,
+                            dataType: 'json',
+                            success: function (data) {
+                                if (data.MSG_TYPE == '1') {
+                                    setData(data.Grid);
+                                    $('#notification_title').val("");
+                                    $('#notification_descriptions').empty();
+                                    alert('Notification created successfully!!')
+                                }
+                            },
+                            error: function (xhr, errorType, exception) {
+                                alert(exception)
+                            }
+                        });
+                       
+                    }
+                    else {
+                        e.stopImmediatePropagation();
+                    }
+                }
+                else {
+                    alert('Maximum 2500 characters are allowed for notification description');
+                }
+            }
+            else {
+                alert('Please enter notification description');
+            }
+        }
+        else {
+            alert('Please enter notification title');
+        }
+    }
+
+    $(document).ready(function ($) {
+        // bind_Table();
+
+        var div_wid = $(".create_notification ").width();
+        $(".note-editor").css('width', (div_wid - 60) + 'px');
+
+        $('.btn-toggle').click(function () {
+            $(this).find('.btn').toggleClass('active');
+            if ($(this).find('.btn-primary').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-primary');
+            }
+            if ($(this).find('.btn-danger').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-danger');
+            }
+            if ($(this).find('.btn-success').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-success');
+            }
+            if ($(this).find('.btn-info').size() > 0) {
+                $(this).find('.btn').toggleClass('btn-info');
+            }
+            $(this).find('.btn').toggleClass('btn-default');
+
+            if ($(".no_active").hasClass("active")) {
+                //debugger;
+                $(this).addClass('red');
+                // $('#hdn_btn_status').val('False')
+            } else {
+                $(this).removeClass('red');
+                // $('#hdn_btn_status').val('True')
+
+            }
+        });
+    });
+
+    $('.dropdown-toggle').click(function () {
+        $(".notification_contaner_outer").slideDown();
+        $(".black_overlay").show();
+    });
+
+    $('.close').on('click', function () {
+        //alert( $('.notification_contaner_outer li').length )
+        if ($('.notification_contaner_outer li').length > 1) {
+            $(this).parent("a").parent("li").remove();
+        }
+        else {
+            $(this).parent("a").parent("li").remove('');
+            $(".notification_contaner_outer").hide();
+            $(".black_overlay").hide();
+        }
+    });
+
+    $('.black_overlay').click(function () {
+        $(this).hide();
+        $(".notification_contaner_outer").hide();
+
+    });
+
+    $('.collpas_expand').click(function () {
+        $(this).toggleClass("opened");
+    });
+    //$(document).mouseup(function (e){var container = $(".notification_contaner_outer");if (!container.is(e.target) && //container.has(e.target).length ===0){container.slideUp();}});
+    $('.custom-scrollbar').perfectScrollbar();
+    //
+    $('.summernote').summernote({
+        placeholder: '',
+        tabsize: 2,
+        height: 120,
+        airmode: true
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,699 @@
+{% extends 'hotel/base.html' %}
+{% load static %}
+{% block header %}
+<style>
+    .add_domain_div {
+        padding: 20px 20px;
+        border-radius: 3px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, .2);
+        position: relative;
+        border-radius: 5px;
+        background: #fff;
+    }
+
+    .add_domain_div label {
+        font-weight: 500;
+        margin: 5px 0 4px;
+    }
+
+    .add_domain_div .form-control {
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, .1)!important;
+    }
+
+    .add_domain_container {
+        margin-top: 40px;
+    }
+
+    .domain_btn label {
+        display: block;
+    }
+
+    .domain_btn {
+        margin-top: 0px;
+    }
+
+    .domain_btn button.btn.btn-default {
+        background: #a267c8;
+        border: none;
+        color: #fff;
+        outline: none;
+        padding: 5px 12px;
+    }
+
+    .add_domain_div .upload_file {
+        border: 1px solid #ccc;
+        height: 30px;
+        border-radius: 3px;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, .1)!important;
+    }
+
+    .add_domain_div .upload_file p {
+        top: auto;
+        font-size: 13px;
+        color: #999;
+        line-height: 30px;
+        text-align: justify;
+        padding: 0 10px
+    }
+
+    .add_domain_div .upload_file span.file_type {
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        border-radius: 1px;
+        background: #eee;
+        line-height: 26px;
+        text-align: left;
+        color: #000;
+        font-size: 13px;
+        padding: 0 10px;
+    }
+
+    .add_domain_div .upload_file img {
+        position: absolute;
+        width: 20px;
+        top: 5px;
+        left: auto;
+        right: 7px;
+        z-index: 9;
+    }
+
+    .alert {
+        max-width: 450px;
+        top: 12%;
+        right: 0;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        box-shadow: 0 1px 13px rgba(0, 0, 0, .1);
+    }
+
+    .alert p b {
+        font-weight: normal;
+    }
+
+    .errormesg {
+        color: #F00!important;
+    }
+
+    .blisnames {
+        font-weight: bold;
+        color: #000;
+        font-size: 15px;
+        display: block;
+        line-height: 20px;
+        padding: 3px 0;
+    }
+
+    .blisnames:before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        display: inline-block;
+        background: #000;
+        margin-right: 8px;
+        border-radius: 100px;
+    }
+
+    strong#div_str_suc {
+        display: block;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #aacbaa;
+        padding-bottom: 10px;
+    }
+
+    p#div_p_suc {
+        max-height: 250px;
+        overflow-y: auto;
+    }
+    .custom_table > thead > tr > th { 
+        width:auto!important;
+    }
+    .dataTables_wrapper {
+        padding: 20px 5px;
+    }
+    #datavalidation {
+    width: 100% !important;
+}
+#datavalidation_length select,  #datavalidation_filter input { 
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+</style>
+
+{% endblock %}
+{% block content %}
+
+<section class="body_contaner no_sidebar">
+    <div class="container_content">
+        <div class="inner_content_contaner">
+            <div class="add_domain_container clearfix">
+                <h3 class="slide_heading  " style="float:none;">Add Domain</h3>
+                <div class="white_bg add_domain_div">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="">Domain</label>
+      
+                                <select id="add_domain_id" class="form-control">
+                                        <option value="">Select Domain</option>
+                                        {% for dom in domains %}
+                                        <option value="{{ dom.id }}">{{ dom.domainname }}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group multi_select_contaner">
+                                <label for="cpw">Competitor</label>
+                               
+                                <select id="competitor_list" class="form-control">
+                                        <option value="0">Select Competitor</option>
+                                        {% for com in comps %}
+                                        <option value="{{ com.id }}">{{ com.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3" style="display: none;">
+                            <div class="form-group multi_select_contaner">
+                                <label for="cpw">Market</label>
+                                <select id="markit_id" class="form-control">
+                                    <option value="0">Select Market</option>
+                                    {% for country in countries %}
+                                    <option value="{{ country.id }}">{{ country.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group ">
+                                <label for="">Upload Crawler file</label>
+                                <span class="upload upload_file">
+                                    <input type="file" class="CrawlerField" id="CfileId">
+                                    <img src="/static/hotel/images/upload_file.png" />
+                                    <p> Drag File to upload </p>
+                                    <span class="file_type"></span>
+                                </span>
+                            </div>
+                        </div>
+                       
+
+
+                        <div class="col-sm-3">
+                            <div class="form-group ">
+                                <label for="">Upload Parser file</label>
+                                <span class="upload upload_file">
+                                    <input type="file" class="ParserField" id="PfileId">
+                                    <img src="/static/hotel/images/upload_file.png" />
+                                    <p> Drag File to upload </p>
+                                    <span class="file_type"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group ">
+                                <label for="">Upload Crawler  config file</label>
+                                <span class="upload upload_file">
+                                    <input type="file" class="CrawlerField" id="Cfile_config_Id">
+                                    <img src="/static/hotel/images/upload_file.png" />
+                                    <p> Drag File to upload </p>
+                                    <span class="file_type"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group ">
+                                <label for="">Upload Parser config file</label>
+                                <span class="upload upload_file">
+                                    <input type="file" class="CrawlerField" id="Pfile_config_Id">
+                                    <img src="/static/hotel/images/upload_file.png" />
+                                    <p> Drag File to upload </p>
+                                    <span class="file_type"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="domain_btn">
+                                <label> &nbsp; </label>
+                                <button type="submit" class="btn btn-default" id="btnDomain" onclick="add_domain()"> Add Domain
+                                <button type="submit" class="btn btn-default" style="display:none" id="btnUpdateDomain" onclick="add_domain()"> Update Domain
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="responsive-table " style="display: none;" id= "div_tble">
+    <div class="col-md-12">
+        <table id="datavalidation" class="display nowrap custom_table" style="width:100%">
+            <thead>
+                <tr id="ColumnHead">
+                    <th width="30%">DomainName </th>
+                    <th width="30%">CompetitorName</th>
+                    <th width="30%">Download</th>
+                    <th width="30%">Action</th>
+                </tr>
+            </thead>
+            <tbody id="tbl_tbody">
+
+            </tbody>
+        </table>
+        </div> 
+    </div>
+    <input type="hidden" id="hdn_id_update">
+</section>
+<div class="alert alert-success alert-dismissible " id="div_suc" style="display:none;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong id="div_str_suc"></strong>
+    <p id="div_p_suc"></p>
+</div>
+
+{% endblock %}
+{% block footer %}
+
+<script>
+
+    function alert_message(str, html) {
+        $('#div_str_suc').text(str);
+        $('#div_p_suc').html(html);
+        $('#div_suc').show();
+    }
+
+    $(document).ready(function ($) {
+        Bind_data_on_page_load();
+    });
+
+    function Bind_data_on_page_load() {
+
+        $.ajax({
+            url: "{% url 'GetDomainName' %}",
+            type: "GET",
+            contentType: false,
+            success: function (data) {
+
+                Bind_grid_main(data.country);
+                $('#div_tble').show();
+            },
+            error: function (xhr, errorType, exception) {
+                alert(exception)
+            }
+        });
+    }
+
+    function Bind_grid_main(data) {
+       
+        var table = $("#datavalidation").dataTable();
+        table.fnClearTable();
+        table.fnDraw();
+        table.fnDestroy();
+        var trHTML = '';
+
+        $.each(data, function (i, item) {
+           
+            trHTML += '<tr id="trid_' + item.id + '">' +
+                '<td><label id="DomainName_' + item.id + '">' + item.DomainName + '</label></td>' +
+                '<td><label id="CompetitorName_' + item.id + '"> ' + item.CompetitorName + ' </label></td>' +
+ 		'<td> <a id="download_' + item.id + '"  onclick= "download_C_file(' + item.id + ')" href= "javascript:void(0);"> Download</a> </td>' +
+                '<td><span class="edit_btn" data-toggle="modal" id="edit_' + item.id + '" data-target="#Addnew_master" onclick="return LoadRecord(event);">Edit</span></td>' +
+                '</tr>';
+        });
+        $('#tbl_tbody').append(trHTML);
+        $('#datavalidation').dataTable({
+            "sPaginationType": "full_numbers",
+            "bFilter": true,
+            "bInfo": false,
+            "aaSorting": [],
+            "bPaginate": true,
+            paging: true,
+        });
+    }
+
+    function LoadRecord(e) {
+    debugger
+        var recordID = e.target.id.split('_').pop();
+        var DomainName = document.getElementById('DomainName_' + recordID).innerHTML;
+        var CompetitorName = document.getElementById('CompetitorName_' + recordID).innerHTML;
+
+        $("#add_domain_id option").each(function () {
+		  
+            if ($(this).text().trim() == DomainName.trim()) {			
+                $(this).prop('selected', 'selected');
+            }
+        });
+		
+        $("#competitor_list option").each(function () {
+		  
+            if ($(this).text().trim() == CompetitorName.trim()) {			
+                $(this).prop('selected', 'selected');
+            }
+        });
+        
+        $("#btnDomain").css("display","none")
+        $("#btnUpdateDomain").css("display","block")
+        $("#hdn_id_update").val(recordID)
+        $('#add_domain_id').prop("disabled", true);
+        $('#competitor_list').prop("disabled", true);
+        
+
+
+    }
+
+    function FileNullCheck(uploaded_files) {
+        for (var i = 0; i < uploaded_files.length; i++) {
+            if (uploaded_files[i].value == "") {
+                return false;
+            }
+        }
+        return true;
+    }
+    function FileUploadObject(uploaded_files) {
+
+        for (i = 1; i < uploaded_files.length; i++) {
+            file_obj = uploaded_files[i];
+            domain_obj = uploaded_domains.eq(i);
+
+            formdata.append(file_obj['name'], file_obj.files[0]);
+            formdata.append(domain_obj.attr('name'), domain_obj.val());
+        }
+    }
+
+    function FilExtentionCheck(uploaded_files) {
+        for (var i = 0; i < uploaded_files.length; i++) {
+            if (uploaded_files[i].value != "") {
+                fname = uploaded_files[i].value;
+                fileExtension = fname.substr((fname.lastIndexOf('.') + 1));
+                if (fileExtension != "py") {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+    function Fil_name_Check(fileupload, comp_name) {
+
+            if (fileupload[0] != undefined && fileupload[0] != null  && fileupload[0].files.length>0) {
+                if (fileupload[0].files[0].name.toLowerCase().trim().indexOf(comp_name.toLowerCase()) != -1) {
+                    return true;
+                }
+                return false;
+            }
+            return true;
+        }
+    function download_C_file(id)
+    {
+       
+        var model ={comp_id:id}
+        $.ajax({
+            type: "POST",
+            url: "{% url 'domain_uploader_file_download' %}",
+            data: model,
+            datatype: "json",
+            success: function (data) {  
+		
+		window.location.href = data.crawl_file;
+		
+            },
+            error: function (e) {
+               
+		alert("Opps something went wrong!!!");
+            }
+        });
+    }
+
+    function add_domain() {
+        uploaded_Cfiles = $('#CfileId');
+        uploaded_Pfiles = $('#PfileId');
+        uploaded_Cfiles_config = $('#Cfile_config_Id')
+        uploaded_Pfiles_config = $('#Pfile_config_Id')
+        update_req = $("#hdn_id_update").val()
+    
+        domain = $('#add_domain_id').val();
+        competitor = $("#competitor_list").val();
+        
+        
+        if (domain == null || domain == "") {
+            bootbox.alert('<b class="blisnames">Domain is required.</b>', function () { })
+            return false;
+        }
+       
+       
+
+         if (competitor == null || competitor == ""||competitor == "0") {
+            bootbox.alert('<b class="blisnames">Competitor is required.</b>', function () { })
+            return false;
+        }
+
+        
+        c_valid = FileNullCheck(uploaded_Cfiles);
+        c_ext = FilExtentionCheck(uploaded_Cfiles);
+        p_valid = FileNullCheck(uploaded_Pfiles)
+        p_ext = FilExtentionCheck(uploaded_Pfiles);
+        c_config_null = FileNullCheck(uploaded_Cfiles_config);
+        c_config_ext = FilExtentionCheck(uploaded_Cfiles_config);
+        p_config_null = FileNullCheck(uploaded_Pfiles_config);
+        p_config_ext = FilExtentionCheck(uploaded_Pfiles_config);
+
+		
+        if ( !c_valid  &&   !p_valid  && (update_req ==0  || update_req == '' || update_req == undefined )) {
+            bootbox.alert('<b class="blisnames">Please upload crawler or parser  file.</b>', function () { })
+            return false;
+        }
+        if (c_ext == false) {
+            bootbox.alert('<b class="blisnames">Only .py extention crawler file allowed.</b>', function () { })
+            return false;
+        }
+        
+        if (p_ext == false) {
+            bootbox.alert('<b class="blisnames">Only .py extention parser file allowed.</b>', function () { })
+            return false;
+        }
+        if (!c_config_ext || !p_config_ext) {
+            bootbox.alert('<b class="blisnames">Only .py extention  file allowed.</b>', function () { })
+            return false;
+        }
+
+		var bool_chk = true;
+		
+         if (c_valid   &&  !c_config_null  ) {
+			 if (confirm('You are uploading only crawler file , you should also upload crawler  config file .   Do you want to continue?')) {
+					bool_chk = true;
+				} else {
+					bool_chk = false;
+                    return false;
+				}
+        }
+       
+       if (p_valid   &&  !p_config_null) {
+            if (confirm('You are uploading only parser file , you should also upload parser  config file .   Do you want to continue')) {
+					bool_chk = true;
+				} else {
+					bool_chk = false;
+                    return false;
+				}
+        }
+        
+
+     var domain_name_var = $('#competitor_list option:selected').text().trim(); 
+     //var file_name_to_check = $('#CfileId')[0].files[0].name.trim();
+     var file_name_chk_var = Fil_name_Check(uploaded_Cfiles,domain_name_var);
+     if (!file_name_chk_var)
+     {
+        if (confirm('You have uploded '+uploaded_Cfiles[0].files[0].name.trim()+'    as  crawler file, and it does not contain competitor name  '+domain_name_var+'.   Do you want to continue')) {
+					bool_chk = true;
+				} else {
+					bool_chk = false;
+                    return false;
+				}
+     }
+
+     //file_name_to_check = uploaded_Pfiles[0].files[0].name.trim();
+     var file_name_chk_var = Fil_name_Check(uploaded_Pfiles,domain_name_var);
+     if (!file_name_chk_var)
+     {
+        if (confirm('You have uploded '+uploaded_Pfiles[0].files[0].name.trim()+' as  parser file, and it does not contain competitor name  '+domain_name_var+'.   Do you want to continue')) {
+					bool_chk = true;
+				} else {
+					bool_chk = false;
+                    return false;
+				}
+     }
+     //file_name_to_check = uploaded_Cfiles_config[0].files[0].name.trim();
+     var file_name_chk_var = Fil_name_Check(uploaded_Cfiles_config,domain_name_var);
+     if (!file_name_chk_var)
+     {
+        if (confirm('You have uploded '+uploaded_Cfiles_config[0].files[0].name.trim()+' as  crawler config file, and it does not contain competitor name  '+domain_name_var+'.   Do you want to continue')) {
+					bool_chk = true;
+				} else {
+					bool_chk = false;
+                    return false;
+				}
+     }
+
+     //file_name_to_check = uploaded_Pfiles_config[0].files[0].name.trim();
+     var file_name_chk_var = Fil_name_Check(uploaded_Pfiles_config,domain_name_var);
+     if (!file_name_chk_var)
+     {
+        if (confirm('You have uploded '+uploaded_Pfiles_config[0].files[0].name.trim()+' as  parser config file, and it does not contain competitor name  '+domain_name_var+'.   Do you want to continue')) {
+					bool_chk = true;
+				} else {
+					bool_chk = false;
+                    return false;
+				}
+     }
+      
+
+       if (!bool_chk)
+	   {
+	     return false;
+	   }
+
+
+        formdata = new FormData();
+
+        file_objs = uploaded_Cfiles;
+        for (i = 0; i < file_objs.length; i++) {
+            file_obj = file_objs[i];
+            if (file_obj.files[0]!= undefined)
+            {
+                c_fileName = file_obj.files[0].name
+                formdata.append(c_fileName.concat("+1"), file_obj.files[0]);
+            }
+            
+        }
+        file_Pobjs = uploaded_Pfiles;
+        for (i = 0; i < file_Pobjs.length; i++) {
+            file_pobj = file_Pobjs[i];
+            if (file_pobj.files[0]!= undefined)
+            {
+                p_fileName = file_pobj.files[0].name
+                formdata.append(p_fileName.concat("+2"), file_pobj.files[0]);
+            }
+        }
+		
+		file_Cobjs_config = uploaded_Cfiles_config;
+        for (i = 0; i < file_Cobjs_config.length; i++) {
+            file_Cobj_config = file_Cobjs_config[i];
+            if (file_Cobj_config.files[0]!= undefined)
+            {
+                c_fileName_config = file_Cobj_config.files[0].name
+                formdata.append(c_fileName_config.concat("+3"), file_Cobj_config.files[0]);
+            }
+        }
+        file_Pobjs_config = uploaded_Pfiles_config;
+        for (i = 0; i < file_Pobjs_config.length; i++) {
+            file_Pobj_config = file_Pobjs_config[i];
+            if (file_Pobj_config.files[0]!= undefined)
+            {
+                p_fileName_config = file_Pobj_config.files[0].name
+                formdata.append(p_fileName_config.concat("+4"), file_Pobj_config.files[0]);
+            }
+        }
+
+        
+
+        
+        formdata.append('domain', domain);
+        formdata.append('competitor', competitor);
+        formdata.append('markit_id', 1);
+        formdata.append('update_req', update_req);
+        $("#full_loader").css("display", "block");
+        $.ajax({
+            type: "POST",
+            url: "{% url 'domain_uploader_post' %}",
+            data: formdata,
+            datatype: "json",
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                $('.loader_div').show();
+            },
+            success: function (data) {
+
+                $("#full_loader").css("display", "none");
+                if (data.error != undefined &&  data.error!='') {
+                    //alert_message(data.error);
+					alert(data.error);
+                }
+				if (  data.detail != undefined &&  data.detail!='') {
+                    //alert_message(data.detail);
+					alert(data.detail);
+                }
+                else {
+                    var chtml = "";
+                    var phtml = "";
+                    var err_chtml = ""
+                    var err_phtml = ""
+                    var finalhtml = ""
+                    for (var i = 0; i < data.r1.length; i++) {
+                        if (data.r1[i].status == "Success") {
+                            chtml +=  data.r1[i].detail ;
+                        }
+                        else {
+                            err_chtml +=  data.r1[i].error ;
+                        }
+                    }
+                    for (var j = 0; j < data.r2.length; j++) {
+                        if (data.r2[j].status == "Success") {
+                            phtml +=  data.r2[j].detail ;
+                        }
+                        else {
+                            err_phtml += data.r2[j].error ;
+                        }
+                    }
+                    finalhtml = err_chtml + err_phtml + phtml + chtml;
+                   //alert_message('File Status', finalhtml);
+					alert(finalhtml);
+                    Bind_data_on_page_load();
+                    reset();
+                }
+            },
+            complete:function(data){
+                $('.loader_div').hide();
+            },
+            error: function (e) {
+                $("#full_loader").css("display", "none");
+                //var html = '<b class="blisnames errormesg">' + "Opps something went wrong!!!" + '</b>'
+                //alert_message('Error', html);
+				alert("Opps something went wrong!!!");
+            }
+        });
+
+    }
+    $('.multiselect_box').multiselect({
+        includeSelectAllOption: true,
+        buttonWidth: 250,
+        enableFiltering: true,
+        enableCaseInsensitiveFiltering: true,
+        includeSelectAllOption: false
+    });
+
+    function reset()
+    {
+       $('#add_domain_id').val('');
+       $("#competitor_list").val('0');
+       $('#CfileId').val(null);
+       $('#CfileId').val('');
+       $('#PfileId').val(null);
+       $('#PfileId').val('');
+	   $('.file_type').text('');
+       
+    }
+</script>
+
+<script>
+    $(function () {
+        var competitors = "{{ competitors | safe }}";
+        var availableTags = competitors.split(",");
+        $("#competitor_list").autocomplete({
+            source: availableTags
+        });
+    });
+</script>
+<script src="{% static 'hotel/js/bootbox.min.js' %}" type="text/javascript"></script>
+{% endblock %}

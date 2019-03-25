@@ -1,0 +1,214 @@
+2019-02-01 12:45:04,082|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-01 12:45:04,083|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-01 12:45:04,094|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-01 12:45:37,072|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-01 12:45:37,073|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-01 12:45:37,084|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-01 12:47:27,808|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:47:27,808|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:47:27,824|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:47:33,957|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:47:33,958|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:47:33,972|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:47:56,803|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:47:56,803|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:47:56,818|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:47:57,289|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:47:57,290|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:47:57,303|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:48:02,416|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:48:02,417|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:48:02,429|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:48:04,078|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:48:04,079|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:48:04,091|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:53:15,145|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:53:15,146|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:53:15,156|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:53:29,855|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:53:29,856|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:53:29,869|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:53:35,695|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:53:35,695|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:53:35,706|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:53:42,450|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:53:42,450|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:53:42,462|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:53:49,996|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:53:49,997|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:53:50,008|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:56:32,778|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:56:32,778|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:56:32,793|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:56:39,279|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:56:39,280|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:56:39,293|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:56:40,730|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:56:40,730|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:56:40,741|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:56:42,091|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:56:42,091|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:56:42,102|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:56:43,414|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 12:56:43,414|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 12:56:43,427|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 12:57:14,739|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-01 12:57:14,739|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-01 12:57:14,749|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-01 13:01:57,037|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:01:57,037|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:01:57,050|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:01:58,470|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:01:58,470|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:01:58,479|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:02:01,838|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:02:01,838|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:02:01,849|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:02:05,166|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:02:05,166|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:02:05,176|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:02:06,549|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:02:06,549|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:02:06,559|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:02:08,510|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:02:08,510|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:02:08,520|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:05:33,363|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:05:33,363|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:05:33,376|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:05:35,121|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:05:35,121|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:05:35,131|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:05:36,941|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:05:36,941|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:05:36,952|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:05:38,685|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:05:38,685|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:05:38,696|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:05:40,744|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:05:40,744|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:05:40,761|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:10:45,191|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:10:45,191|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:10:45,204|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:10:47,028|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:10:47,028|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:10:47,040|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:10:48,565|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:10:48,565|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:10:48,577|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:10:50,257|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:10:50,257|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:10:50,270|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:10:52,551|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:10:52,551|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:10:52,565|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:12:54,712|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:12:54,712|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:12:54,724|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:12:56,167|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:12:56,167|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:12:56,179|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:12:57,559|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:12:57,559|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:12:57,572|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:12:57,574|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:12:57,574|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:12:57,582|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:12:58,866|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:12:58,867|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:12:58,879|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:13:00,180|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:13:00,180|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:13:00,194|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:15:36,761|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:15:36,761|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:15:36,773|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:15:37,994|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:15:37,995|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:15:38,006|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:15:39,555|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:15:39,555|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:15:39,566|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:15:40,874|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:15:40,875|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:15:40,892|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:15:42,173|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:15:42,174|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:15:42,186|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:15:50,099|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:15:50,099|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:15:50,111|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:15:51,409|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:15:51,409|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:15:51,421|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:15:52,836|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:15:52,837|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:15:52,848|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:15:54,154|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:15:54,154|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:15:54,164|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:15:55,409|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:15:55,409|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:15:55,420|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:17:17,002|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:17:17,002|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:17:17,013|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:17:17,780|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:17:17,780|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:17:17,790|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:17:18,831|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:17:18,831|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:17:18,842|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:17:19,715|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:17:19,715|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:17:19,726|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:17:20,496|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:17:20,497|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:17:20,507|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:20:11,963|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:20:11,963|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:20:11,974|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:20:16,909|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:20:16,909|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:20:16,920|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:20:22,916|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:20:22,917|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:20:22,927|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:20:29,793|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:20:29,793|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:20:29,808|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:20:37,833|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:20:37,833|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:20:37,844|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:36:07,607|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-01 13:36:07,608|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-01 13:36:07,618|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-01 13:39:40,718|proxy_api|INFO| |domain:Best Western|Request Received
+2019-02-01 13:39:40,719|proxy_api|INFO| |domain:Best Western|Getting Proxy Details
+2019-02-01 13:43:19,575|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:43:19,575|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:43:19,588|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:43:21,583|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:43:21,583|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:43:21,595|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:43:27,998|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:43:27,998|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:43:28,013|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:43:29,417|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:43:29,418|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:43:29,433|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:43:30,911|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 13:43:30,911|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 13:43:30,922|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 13:51:11,685|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-01 13:51:11,685|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-01 13:51:11,698|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-01 14:03:35,645|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Request Received
+2019-02-01 14:03:35,645|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Getting Proxy Details
+2019-02-01 14:03:35,657|proxy_api|INFO| |domain:Agoda|pos:United Kingdom|Proxy Returned
+2019-02-01 14:19:13,309|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-01 14:19:13,310|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details
+2019-02-01 14:34:11,533|proxy_api|INFO| |domain:TravelRepublic|Proxy Returned
+2019-02-01 14:34:12,774|proxy_api|INFO| |domain:TravelRepublic|Request Received
+2019-02-01 14:34:12,775|proxy_api|INFO| |domain:TravelRepublic|Getting Proxy Details

@@ -1,0 +1,19 @@
+2018-06-25 14:44:47,787|crawler_queue|INFO|  | Attempting GetRequest. 
+2018-06-25 14:44:47,837|crawler_queue|DEBUG|  | Database Connection Established
+2018-06-25 14:44:57,934|crawler_queue|DEBUG|  | Database Connection Established
+2018-06-25 14:44:57,935|crawler_queue|DEBUG| |R:(0, '') | Error Returned  by spGetRequestRunDetail Query
+2018-06-25 14:45:07,946|crawler_queue|DEBUG|  | Database Connection Established
+2018-06-25 14:45:07,947|crawler_queue|DEBUG| |R:(0, '') | Error Returned  by spGetRequestRunDetail Query
+2018-06-25 14:45:17,959|crawler_queue|DEBUG|  | Database Connection Established
+2018-06-25 14:45:17,959|crawler_queue|DEBUG| |R:(0, '') | Error Returned  by spGetRequestRunDetail Query
+2018-06-25 14:45:27,969|crawler_queue|DEBUG|  | Database Connection Established
+2018-06-25 14:45:27,970|crawler_queue|DEBUG| |R:(0, '') | Error Returned  by spGetRequestRunDetail Query
+2018-06-25 14:45:37,980|crawler_queue|DEBUG|  | Database Connection Established
+2018-06-25 14:45:37,981|crawler_queue|DEBUG| |R:(0, '') | Error Returned  by spGetRequestRunDetail Query
+2018-06-25 14:45:47,990|crawler_queue|DEBUG|  | Database Connection Established
+2018-06-25 14:45:47,990|crawler_queue|DEBUG| |R:(0, '') | Error Returned  by spGetRequestRunDetail Query
+2018-06-25 14:45:57,998|crawler_queue|DEBUG|  | Database Connection Established
+2018-06-25 14:45:57,999|crawler_queue|DEBUG| |R:(0, '') | Error Returned  by spGetRequestRunDetail Query
+2018-06-25 14:46:03,334|crawler_queue|INFO|  | Attempting GetRequest. 
+2018-06-25 14:46:03,377|crawler_queue|DEBUG|  | Database Connection Established
+2018-06-25 14:46:13,387|crawler_queue|DEBUG|  | Database Connection Established

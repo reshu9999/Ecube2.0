@@ -1,0 +1,24 @@
+{% load user_management %}
+<div class="row">
+    <div class="">
+        {% for dropdown in LIMIT_DATA %}
+        <div class="col-md-3 col-sm-4   {{ dropdown.name|snake_case }}__parent">
+            {% include 'hotel/user_management/components/limits/menu_access.html' with name=dropdown.name renderType=text %}
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+   
+        {% endif %}
+        <div id="{{ dropdown.name|snake_case }}__child" style="display: none;" class="module_access child_checkbox col-md-3 col-sm-4">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for dd_item in dropdown.list %}
+                    <div class="">
+                        {% include 'hotel/user_management/components/limits/menu_access.html' with name=dd_item.name renderType=text %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

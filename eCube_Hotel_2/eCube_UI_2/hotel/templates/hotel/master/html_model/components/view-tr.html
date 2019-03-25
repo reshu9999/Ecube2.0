@@ -1,0 +1,9 @@
+<tr>
+    {% for field in view_fields %}
+    <td>{{ field }}</td>
+    {% endfor %}
+    <td>
+        <span class="edit_btn" data-toggle="modal" data-target="#{{ object.id }}__update_id">Edit</span>
+        <span class="del_btn" onclick="delete_object('{{ object.id }}')">Delete</span>
+    </td>
+</tr>

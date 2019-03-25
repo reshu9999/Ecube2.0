@@ -1,0 +1,458 @@
+{% extends 'hotel/base.html' %}
+{% block header %}
+    <style>
+        .ui-widget.ui-widget-content {
+            z-index: 999999999999;
+        }
+        .select_hotel_click { cursor: pointer; }
+        .choose_file, .error_log, .success_msg { width:168px; }
+  #btn_error {
+    width: 150px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 19px;
+}
+    </style>
+  {% endblock %}
+  {% block content %}
+    <section class="body_contaner no_sidebar">
+        <div class="container_content">
+            <div class="inner_content_contaner">
+                <div class="clearfix"></div>
+                <div class="white_bg marT30 multibatch_download common_div  clearfix">
+                    <div class="col-md-12">
+                        <h3 class="slide_heading border_heading"> Hotel Match / Unmatch </h3>
+                    </div>
+                    <div class="marT70 clearfix">
+                        <div class="col-sm-12">
+                            <div class="col-sm-3 col-md-3">
+
+                                <div class="form-group multi_select_contaner mb5 ">
+                                    <label for="primary_supplier">Primary Supplier</label>
+                                    <span class="suplier_heading"> Hotelopia </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3  col-md-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-md-offset-1">
+                                         <div class="form-group mb5">
+                                            <label>Upload Data</label>
+                                            <div class="buttons_contaner clickable_action">
+                                                <a class="excel_upload_btn" href="javascript:void()"> Excel Upload </a>
+
+                                            </div>
+                                            <div class="excelupload_view fade in">
+                                                <span class="close_excel"> X </span>
+                                                <div class="excelupload_heading">
+                                                    <h3> Excel Upload </h3>
+                                                    <a href="javascript:Void();" id="download_templates" onclick="download_template();"> Download template </a></div>
+                                                <div class="box_view clearfix">
+                                                    <div class="file_upload_tabs">
+                                                       
+                                                        <div class="tab-content">
+                                                            <div id="schedule_batch" class="tab-pane fade in active">
+                                                                <div class="row">
+                                                                    <div class="">
+                                                                        <div class="">
+                                                                            <div class="form-group "> 
+                                                                        <span  class="upload upload_file" >
+                              <input type="file" id="excel_upload_file_control">
+                              <img src="/static/hotel/images/upload_file.png" alt="">
+                              <p> Drag File to upload </p>
+                              <span class="file_type"></span> </span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clearfix marT20">
+                                                                        <div class="pull-left"><input type="button"
+                                                                                                      name=""
+                                                                                                      class="choose_file float_none"
+                                                                                                      value="Upload File" id="choose_file_excel" onclick="Excel_upload_Match_unmatch();">
+                                                                        </div>
+
+                                                                        <div class="pull-right">
+                                                                            <a  class="error_log float_none" href="javascript:void(0);"
+                                                                            id="btn_error" style="display: none;">Error Log</a>
+                                                                            <!-- <input type="button" name=""
+                                                                                   class="success_msg float_none"
+                                                                                   value="Success"> -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <div class="form-group multi_select_contaner required">
+                                            <label for="suppliers">Suppliers</label>
+                                            <select class="multiselect_box form-control" multiple="multiple"
+                                                    id="drpCompt">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-10 col-md-offset-1">
+                                        <div class="form-group multi_select_contaner required">
+                                            <label for="country">Country</label>
+                                            <select class="multiselect_box form-control" id="drp_country"
+                                                    onchange="Bind_city_name_func(this)">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-10 col-md-offset-1">
+                                        <div class="form-group multi_select_contaner required">
+                                            <label for="city">City</label>
+                                            <select class="multiselect_box form-control" id="drp_cities"
+                                                    onchange="Bind_hotel_name(this)">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-10 col-md-offset-1">
+                                        <div class="form-group multi_select_contaner required">
+                                            <label for="hotels">Hotels</label>
+                                            <select class="multiselect_box form-control" multiple="multiple"
+                                                    id="drp_hotels">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix">
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-10 ">
+
+                                        <div class="form-group multi_select_contaner required">
+                                            <label for="hotel_status">Hotel Status</label>
+                                            <select class="multiselect_box form-control" multiple="multiple" id ="drp_htls_status">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-10 col-md-offset-1">
+                                        <div class="form-group multi_select_contaner">
+                                            <label for="matching_status">Matching Status</label>
+                                            <div class="checkbox checkbox-default checkbox-inline pull-left">
+                                                <input id="match" type="checkbox" value="1" checked>
+                                                <label for="match"> Match </label>
+                                            </div>
+                                            <div class="checkbox checkbox-default checkbox-inline pull-left">
+                                                <input id="unmatch" type="checkbox" value="1">
+                                                <label for="unmatch"> Unmatch </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-10 col-md-offset-1">
+                                        <div class="custom_btn marT10">
+                                            <div> &nbsp;</div>
+                                            <button class="btn btn_reset" onclick="reset_frm();"> Reset</button>
+
+                                            <button class="btn btn_search" onclick="Seach_match_unmatch();"> Search
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="clearfix"> &nbsp;</div>
+                </div>
+
+
+                <div class="clearfix"> &nbsp;</div>
+                <div class="table-responsive marT60   hotel_match_table"    id="div_tbl_main_grid"  style="display: none;" >
+                    <div class="custom_table_heading clearfix">
+                        <div class="pull-left"><h3> Search Result </h3></div>
+                        <div class="pull-right"><a href="javascript:void(0);" style="display: none;"> Download Excel </a></div>
+                    </div>
+
+                    <table id="hotel_match_unmatch" class="display nowrap custom_table" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th width="">Code</th>
+                            <th width="">Primary Hotel</th>
+                            <th width="">Status</th>
+                            <th width="">Hotel Address</th>
+                            <th width="">Longitude</th>
+                            <th width="">Latitude</th>
+                            <th width="">Supplier</th>
+                            <th width="">Secondary ID</th>
+                            <th width="">Secondry Hotel</th>
+                            <th width="">Hotel Address</th>
+                            <th width="">Longitude</th>
+                            <th width="">Latitude</th>
+                            <th width="">Matched On</th>
+                            <th width="">Status</th>
+                            <th width="">Last Appearance</th>
+                            <th width="">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="id_tbl_body">
+                                                   
+        
+
+                        </tbody>
+                    </table>
+                    <div class="col-md-12   col-sm-12 text-center">
+                
+                        <input type="button" name="" class="previous_action_button float_none" value="Reset" onclick="Seach_match_unmatch();">
+                        <input type="button" name="" class="save_request_button float_none" onclick="Save_match_unmatch();"
+                               value="Save Match">
+                    </div>
+
+                </div>
+            </div>
+            <input type="hidden" value="" id="hdn_id_json">
+            <input type="hidden" value="" id="hdn_primary_grid_id">
+          
+            <div class="clearfix"> &nbsp;</div>
+        </div>
+
+        <!-- /*******************************************/-->
+        <!-- Modal -->
+        <div class="modal fade full_width in" id="myModal" role="dialog">
+            <div class="modal-dialog addcity_popuop">
+                <!-- Modal content-->
+                <div class="modal-content full_height">
+                    <div class="modal-body">
+                        <div class="header_addcity">
+                            <button type="button" class="close" data-dismiss="modal"><img
+                                    src="/static/hotel/images/close_pop.png"
+                                    alt=""></button>
+                            <h4> Select Secondary Hotels </h4>
+                        </div>
+                        <div class="addcity_popuop_body clearfix">
+
+                            <div class="row marT10">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label for="city">City</label>
+                                            <span class="suplier_heading" id="spn_city_popup"> Bangkok </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="supplier">Supplier</label>
+                                            <span class="suplier_heading text-capitalize" id="spn_sup_popup"> Agoda </span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-10">
+                                                <div class="form-group ">
+                                                    <label for="search_hotel">Search Hotel</label>
+                                                    <div class="ui-widget"><input type="text" name="search_hotel"
+                                                                                  id="txthotels" class="form-control"
+                                                                                  onblur="Bind_sec_htls_frm_auto_complete_clear();"/>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-10">
+                                                <div class="form-group ">
+                                                    <label for="address">Search Address</label>
+                                                    <input type="text" name="address" class="form-control"
+                                                           id="txthtls_search"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-10">
+                                                <div class="form-group ">
+                                                    <label for="competitor_id">Search Competitor ID</label>
+                                                    <input type="text" id="txt_comp_sec" name="competitor_id"
+                                                           class="form-control"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <div class="custom_btn">
+                                            <div> &nbsp;</div>
+                                            <button class="btn btn_search" onclick="Bind_sec_htls_frm_auto_complete();">
+                                                Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"> &nbsp;</div>
+                        <div class="table-responsive marT20">
+                            <table id="selected_hotels_grid" class="display nowrap custom_table" cellspacing="0"
+                                   width="100%">
+                                <thead>
+                                <tr class="row_contaner">
+                                    <th>&nbsp;</th>
+                                    <th width="14%">Hotel Id</th>
+                                    <th width="14%">Hotel Name</th>
+                                    <th width="14%">Hotel Address</th>
+                                    <th width="14%">Last Apperancce</th>
+                                    <th width="14%">Longitude</th>
+                                    <th width="14%">Latitude</th>
+                                    <th width="14%">Competitor Hotel Id</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tbody_selec_grid_second">
+                               
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-12   col-sm-12 text-center hotel_matching_popup_btn">
+                            <!-- <input type="button" name="" class="previous_action_button float_none" value="Close"> -->
+                            <input type="button" name="" class="save_request_button float_none" value="Submit"
+                                   onclick="get_sec_htls_details();">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+    {% block footer %}
+
+    <script>
+            Bind_Country_name = "{% url 'Bind_Country_name' %}";
+            Bind_city_name = "{% url 'Bind_city_name' %}";
+            Match_unmatch_Bind_hotel_name = "{% url 'Match_unmatch_Bind_hotel_name' %}";
+            matach_unmatch_upload_excel = "{% url 'matach_unmatch_upload_excel' %}";
+            SERVICES_IP = SERVICES_IP;
+            DJANGO_BASEURL = DJANGO_BASEURL;
+            Hdn_Session_id ={{ request.session.UserID }};
+    </script>
+
+   
+<!-- jquery.dataTables.min_main_fixed -->
+<script type="text/javascript" charset="utf8" src="/static/hotel/js/jquery.dataTables.min_main_fixed.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="/static/hotel/js/dataTables.fixedColumns.min.js"></script>
+    
+    <script type="text/javascript" charset="utf8" src="/static/hotel/js/app/Match_n_unmatch.js"></script>
+    <script src="/static/hotel/js/custom.js"></script>
+   
+    <script>
+     $('#hotel_match_unmatch').DataTable({
+        "sPaginationType": "full_numbers",
+        "bFilter": true,
+        "bInfo": false,
+        "bPaginate": true,
+        scrollX: true,
+        scrollCollapse: true,
+        paging: true,
+        fixedColumns: {
+            leftColumns: 0,
+            rightColumns: 1
+        }
+    });
+    $('.dataTables_scrollBody').perfectScrollbar();
+    $('.dataTables_scrollBody').perfectScrollbar();
+
+        $('ul.multiselect-container.dropdown-menu').perfectScrollbar();
+        $(document).ready(function () {
+            $(".excel_upload_btn").click(function () {
+                $(this).toggleClass("active");
+                $(".excelupload_view").toggleClass("active")
+            });
+            $(".close_excel").click(function () {
+                $(".excelupload_view").removeClass("active");
+                $(".excel_upload_btn").removeClass("active");
+            });
+        });
+
+        $(".round_btn").click(function () {
+            debugger;
+            $(".round_btn").children().removeClass("active");
+            $(this).children().addClass("active");
+        });
+        $(".upload_hotel_trigger").click(function () {
+            debugger;
+            $(".upload_hotel_contaner").slideDown();
+        });
+        $(".choose_file ").click(function () {
+            debugger;
+            $(".upload_hotel_contaner").slideUp();
+        });
+
+        $(document).mouseup(function (e) {
+            var container = $(".upload_hotel_contaner");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                container.slideUp();
+            }
+        });
+
+        ///Activate Scrllbar
+        $(".addhotel_checkbox_contaner").mouseenter(function () {
+            $('*').perfectScrollbar('update');
+        });
+    </script>
+
+{% endblock %}

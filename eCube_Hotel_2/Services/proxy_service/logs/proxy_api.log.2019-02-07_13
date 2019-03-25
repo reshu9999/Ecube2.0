@@ -1,0 +1,102 @@
+2019-02-07 13:04:05,702|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 13:04:05,703|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 13:04:05,716|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 13:09:56,381|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 13:09:56,381|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 13:09:56,393|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 13:13:29,480|proxy_api|INFO| |domain:STARWOOD_HOTELS|Request Received
+2019-02-07 13:13:29,481|proxy_api|INFO| |domain:STARWOOD_HOTELS|Getting Proxy Details
+2019-02-07 13:13:29,491|proxy_api|INFO| |domain:STARWOOD_HOTELS|Proxy Returned
+2019-02-07 13:28:02,393|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 13:28:02,393|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 13:28:02,405|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 13:28:56,081|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 13:28:56,082|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 13:28:56,094|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 13:30:57,621|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 13:30:57,622|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 13:30:57,633|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 13:31:11,493|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 13:31:11,493|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 13:31:11,504|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 13:31:15,596|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 13:31:15,597|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 13:31:15,607|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 13:31:19,515|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 13:31:19,515|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 13:31:19,525|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 13:32:16,573|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 13:32:16,574|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 13:32:16,585|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 13:32:36,625|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 13:32:36,625|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 13:32:36,638|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 13:37:33,214|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Request Received
+2019-02-07 13:37:33,214|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Getting Proxy Details
+2019-02-07 13:37:33,242|proxy_api|INFO| |domain:Booking|pos:United Kingdom|Proxy Returned
+2019-02-07 13:49:50,904|proxy_api|INFO| |domain:ExpediaApp|tag:List|Request Received
+2019-02-07 13:49:50,905|proxy_api|INFO| |domain:ExpediaApp|tag:List|Getting Proxy Details
+2019-02-07 13:51:30,653|proxy_api|INFO| |domain:ExpediaApp|tag:List|Request Received
+2019-02-07 13:51:30,653|proxy_api|INFO| |domain:ExpediaApp|tag:List|Getting Proxy Details
+2019-02-07 14:18:53,475|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 14:18:53,475|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 14:23:18,534|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 14:23:40,825|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 14:23:40,826|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 14:23:40,835|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 14:25:43,286|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 14:25:43,286|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 14:25:43,296|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 14:27:14,309|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:27:14,309|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:27:14,320|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:28:56,006|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:28:56,007|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:28:56,016|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:28:59,860|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:28:59,860|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:28:59,870|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:03,942|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:03,942|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:03,952|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:07,765|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:07,765|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:07,780|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:11,890|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:11,890|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:11,901|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:15,673|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:15,673|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:15,682|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:20,040|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:20,040|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:20,050|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:23,879|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:23,879|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:23,890|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:28,046|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:28,046|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:28,056|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:31,991|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:31,991|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:32,001|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:36,210|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:36,211|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:36,221|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:40,144|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:40,145|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:40,153|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:44,308|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:44,309|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:44,321|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:29:48,227|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:29:48,227|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:29:48,240|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 14:49:12,086|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 14:49:12,086|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
+2019-02-07 14:49:12,099|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Proxy Returned
+2019-02-07 14:53:51,452|proxy_api|INFO| |domain:Tripadvisor|Request Received
+2019-02-07 14:53:51,452|proxy_api|INFO| |domain:Tripadvisor|Getting Proxy Details
+2019-02-07 14:53:51,463|proxy_api|INFO| |domain:Tripadvisor|Proxy Returned
+2019-02-07 15:04:04,831|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Request Received
+2019-02-07 15:04:04,832|proxy_api|INFO| |domain:ExpediaHotel|tag:List|Getting Proxy Details
